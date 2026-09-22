@@ -11,7 +11,7 @@
     <a class="k-underline-link" href="{{ source.url }}">{{ 'kapsule.general.view_all' | t }}</a>
   </div>
   <div class="k-grid k-grid--home">
-    {%- for product in source.products limit: section.settings.limit -%}
+    {%- for product in source.products limit: section.settings.limit, offset: section.settings.offset -%}
       {% render 'kapsule-card', product: product, style: 'home', show_concerns: true %}
     {%- endfor -%}
   </div>
@@ -32,7 +32,17 @@
       "min": 4,
       "max": 16,
       "step": 4,
-      "default": 8
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "offset",
+      "label": "Skip the first products",
+      "info": "Use 4 to avoid repeating the products shown in the hero.",
+      "min": 0,
+      "max": 12,
+      "step": 1,
+      "default": 0
     }
   ],
   "presets": [{ "name": "Kapsule product grid" }]

@@ -76,7 +76,8 @@
       "type": "kapsule-products",
       "settings": {
         "copy_key": "home.bestsellers",
-        "limit": 8
+        "limit": 4,
+        "offset": 4
       }
     },
     "houses": {

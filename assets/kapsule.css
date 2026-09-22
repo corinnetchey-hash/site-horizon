@@ -933,8 +933,12 @@ body.kapsule #header-group {
 }
 
 .k-grid--shop {
-  grid-template-columns: repeat(auto-fill, minmax(min(165px, 47%), 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   margin-top: 0;
+}
+
+.k-grid--home {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .k-grid--related {
@@ -943,8 +947,9 @@ body.kapsule #header-group {
 }
 
 @media (max-width: 699px) {
-  .k-grid--home {
-    grid-template-columns: repeat(auto-fill, minmax(min(165px, 47%), 1fr));
+  .k-grid--home,
+  .k-grid--shop {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .k-grid--home > .k-card:nth-child(n + 5) {
