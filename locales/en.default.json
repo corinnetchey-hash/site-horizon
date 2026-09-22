@@ -371,5 +371,348 @@
       "default_title": "Default Title",
       "sticky_add_to_cart": "Quick add to cart bar"
     }
+  },
+  "kapsule": {
+    "general": {
+      "search": "Search",
+      "search_placeholder": "Search a product, a house, a concern…",
+      "search_empty": "No results.",
+      "close": "Close",
+      "cart": "Cart",
+      "quick_add": "Add",
+      "view_all": "View all",
+      "products_count": "{{ count }} products",
+      "shades": "{{ count }} shades",
+      "home": "Home",
+      "shop": "Shop",
+      "menu": "Menu",
+      "language": "Language"
+    },
+    "nav": {
+      "home": "Home",
+      "shop": "Shop",
+      "institut": "Institut",
+      "popup": "Pop-up",
+      "vision": "Our vision"
+    },
+    "shipping": {
+      "free": "Free shipping unlocked 🎉",
+      "to": "Free shipping over {{ amount }}",
+      "remaining": "{{ amount }} to go"
+    },
+    "cart": {
+      "title": "Your cart",
+      "empty": "Your cart is empty.",
+      "subtotal": "Subtotal",
+      "checkout": "Checkout",
+      "foot": "Secure payment · Shipped from Le Marais",
+      "decrease": "Decrease quantity",
+      "increase": "Increase quantity",
+      "error": "This product could not be added."
+    },
+    "concerns": {
+      "eclat": "Radiance & dullness",
+      "age": "Lines & firmness",
+      "secheresse": "Dryness",
+      "sensible": "Sensitive skin",
+      "rougeurs": "Redness"
+    },
+    "categories": {
+      "serums_ampoules": "Serums & Ampoules",
+      "toniques_essences": "Toners & Essences",
+      "cremes_baumes": "Creams & Balms",
+      "nettoyants_demaquillants": "Cleansers",
+      "masques_patchs": "Masks & Patches",
+      "maquillage": "Makeup"
+    },
+    "home": {
+      "hero": {
+        "kicker": "CURATION HOUSE — PARIS",
+        "heading_a": "Curated &",
+        "heading_b": "Premium",
+        "heading_c": "Korean Brands",
+        "text": "The bridge between Parisian elegance and Korean avant-garde — a demanding curation of Korean houses, in the heart of Le Marais.",
+        "cta": "Shop the selection",
+        "cta2": "Find my routine",
+        "trust1": "Free shipping in France over €49",
+        "trust2": "Store & institute — Paris 3e"
+      },
+      "band": {
+        "text": "Care, ritual and style — Korean excellence"
+      },
+      "concerns": {
+        "heading": "Shop by skin concern",
+        "subheading": "Two clicks to the right product"
+      },
+      "bestsellers": {
+        "heading": "The essentials of the selection"
+      },
+      "houses": {
+        "kicker": "THE HOUSES WE CARRY"
+      },
+      "institut": {
+        "kicker": "01 — KAPSULE PALAIS",
+        "heading": "Where K-Beauty gives way to K-Aesthetics",
+        "text": "Jiwon Hong's method, 34 years of practice — realignment, circulation, structural restoration.",
+        "button": "Book a treatment",
+        "photo": "PHOTO — KAPSULE PALAIS"
+      },
+      "ugc": {
+        "heading": "Le Marais, right now",
+        "handle": "@kapsule.paris"
+      },
+      "newsletter": {
+        "heading": "New arrivals, before anyone else",
+        "text": "Drops, restocks and pop-up edits — one letter a month, never more.",
+        "placeholder": "Your e-mail",
+        "button": "Subscribe",
+        "success": "Thank you ✓"
+      }
+    },
+    "shop": {
+      "kicker": "THE BOUTIQUE",
+      "heading": "A demanding, precise curation",
+      "text": "Prestigious cosmetics houses, chosen for the nobility of their actives and the proven efficacy of their formulas — available in our Marais store and on this e-shop.",
+      "all_products": "All products",
+      "categories": "Categories",
+      "brands": "Houses",
+      "concerns": "Concerns",
+      "price": "Price",
+      "price_all": "All prices",
+      "price_under": "Under {{ amount }}",
+      "price_between": "{{ min }} – {{ max }}",
+      "price_over": "Over {{ amount }}",
+      "reset": "Reset filters",
+      "reset_short": "Reset",
+      "filter": "Filter",
+      "hide_filters": "Hide filters",
+      "no_results": "No product matches these filters.",
+      "sort_best": "Our selection",
+      "sort_new": "New in",
+      "sort_asc": "Price low to high",
+      "sort_desc": "Price high to low",
+      "remove_filter": "Remove filter {{ label }}"
+    },
+    "product": {
+      "format": "SIZE",
+      "add_to_cart": "Add to cart",
+      "added": "Added ✓",
+      "sold_out": "Sold out",
+      "each": "{{ price }} each",
+      "quantity": "Quantity",
+      "benefit_1": "No synthetic fragrance",
+      "benefit_2": "Formulated in Korea",
+      "benefit_3": "Dermatologically tested",
+      "reassurance_1": "Free shipping in France over €49",
+      "reassurance_2": "Shipped from our Marais boutique",
+      "reassurance_3": "Personal advice from our aestheticians",
+      "reassurance_4": "Also available in store, Paris 3e",
+      "the_house": "THE HOUSE",
+      "actives": "The actives",
+      "actives_fallback": "Actives chosen for their proven efficacy, at honest concentrations — the full INCI list is printed on every bottle, nothing hidden.",
+      "texture": "Texture & application",
+      "texture_fallback": "Fluid texture, absorbed in seconds, no sticky film. After cleansing and toning, apply to face and neck, working outwards, morning and night.",
+      "delivery": "Delivery & returns",
+      "delivery_text": "Shipped from our Marais boutique. Free shipping in France over €49. Taxes included, shipping calculated at checkout.",
+      "bundle_title": "Complete your routine",
+      "bundle_save": "−{{ percent }}% on the full routine",
+      "bundle_total": "Routine total",
+      "add_bundle": "Add the routine",
+      "related": "Pairs well with",
+      "ritual": "The ritual, step by step",
+      "ritual_1_title": "Cleanse",
+      "ritual_1_text": "Double cleanse, oil then foam, dry skin then damp.",
+      "ritual_2_title": "Tone",
+      "ritual_2_text": "A hydrating essence patted in with fingertips.",
+      "ritual_3_title": "This product",
+      "ritual_3_text": "A few drops or a pea-sized amount, morning and night, before moisturiser.",
+      "ritual_4_title": "Seal",
+      "ritual_4_text": "Moisturiser and SPF — essential in the morning."
+    },
+    "houses": {
+      "default": "A Korean house selected by Kapsule for the nobility of its actives and the consistency of its formulas — available in our Marais boutique and on this e-shop.",
+      "zisu_c": "A professional skincare house born in the treatment room, ZISU’C formulates for aestheticians before formulating for the bathroom shelf. Centella and ginseng exosomes, patented peptide complexes: every reference is conceived as a protocol, and that clinical rigour is why it sits in our cabins as well as on our shelves.",
+      "urang": "Urang works cold-pressed botanical oils the way a perfumer works an absolute: few ingredients, all identifiable, all justified. Distilled Damask rose, blue chamomile, centella — short, certified-natural formulas made for skin that conventional cosmetics irritate.",
+      "vt_cosmetics": "One of the most-followed houses in Seoul, VT Cosmetics owes its reputation to making cutting-edge research accessible — the R5 complex, PDRN capsules — without ever diluting concentrations.",
+      "mixsoon": "Minimalism as method: one ingredient, one formula. Mixsoon removes rather than adds, and its single-active products — fermented soybean, multi-weight hyaluronic acid — have become the entry point to thousands of Korean routines.",
+      "round_lab": "Round Lab draws its actives from Korean terroirs — Baekdu birch sap, Dokdo seawater — and formulates them with rare restraint: bare, fragrance-free textures made for skin that tolerates almost nothing.",
+      "some_by_mi": "The house behind the famous 30-day protocol: AHA, BHA and PHA dosed to refine skin texture week after week, without the harshness of classic exfoliants. A reference for blemish-prone skin.",
+      "k_secret": "Under its Seoul 1988 signature, K-Secret reinterprets Korean botanical remedies — red pine, centella, probiotics — in cleansing textures that respect the microbiome rather than stripping it.",
+      "anua": "Anua built its reputation on one gesture: hydration, done right. Houttuynia cordata, rice, peach and PDRN make up hydrogel masks that deliver in twenty minutes what others promise in a month.",
+      "celimax": "Celimax works with strong actives — retinal, niacinamide — at dosages that genuinely work, in booster formats to slot into an established routine.",
+      "axis_y": "Born of a dialogue between chemists and users, AXIS-Y targets dark spots and uneven tone with short, plant-based formulas that are transparent about their percentages.",
+      "tocobo": "Tocobo looks after the steps we neglect: lips, the lipid barrier, daily protection. Melting textures, a discreet signature, efficacy that doesn’t announce itself.",
+      "d_alba": "The white truffle house, d’Alba invented the spray serum and made it a gesture in its own right. Nourishing treatments carried by an Italian signature that is rare in Korean cosmetics.",
+      "glash": "Glash embodies contemporary Korean makeup: reinvented magnetic lashes, melting textures, luminous finishes designed for daylight rather than flash.",
+      "rom_nd": "A phenomenon of the Seoul beauty scene, rom&nd builds shades you recognise at a glance — melting tinted balms, palettes with unexpected harmonies, never garish."
+    },
+    "quiz": {
+      "cta": "Start the diagnostic",
+      "kicker": "YOUR ROUTINE IN 3 QUESTIONS",
+      "step": "QUESTION {{ step }}/{{ total }}",
+      "result_label": "RESULT",
+      "result_title": "Your selection",
+      "result_text": "Three products matched to your profile — add them in one click.",
+      "add_all": "Add all to cart",
+      "restart": "Retake the diagnostic",
+      "q1": "Your skin type?",
+      "q1_a": "Dry or dehydrated",
+      "q1_b": "Combination to oily",
+      "q1_c": "Sensitive, reactive",
+      "q1_d": "Normal",
+      "q2": "Your main concern?",
+      "q2_a": "Dullness, no glow",
+      "q2_b": "Lines and loss of firmness",
+      "q2_c": "Redness and discomfort",
+      "q2_d": "Tightness, dryness",
+      "q3": "Your current routine?",
+      "q3_a": "Starting out (1–2 products)",
+      "q3_b": "Established routine (3–5)",
+      "q3_c": "Full Korean ritual"
+    },
+    "institut": {
+      "hero": {
+        "kicker": "—— KAPSULE PALAIS",
+        "heading": "Where K-Beauty gives way to K-Aesthetics"
+      },
+      "quote": {
+        "text": "“To work on the human body is, in the end, to touch a person’s life.”",
+        "author": "— Jiwon Hong, founder, 34 years of practice in Korea"
+      },
+      "card_1": {
+        "title": "From technique to system",
+        "text": "Rather than intuition, a clear methodology — the Integrated Follow-up Care Method, refined over 20,000 clinical cases."
+      },
+      "card_2": {
+        "title": "Why we start with the face",
+        "text": "Tension, dull complexion, contours — often tied to circulation and to neck and shoulder tension."
+      },
+      "card_3": {
+        "title": "Education & global practice",
+        "text": "Practitioners trained in this method work in Korea, the United States and the UAE."
+      },
+      "card_4": {
+        "title": "A tailored experience",
+        "text": "Every visit begins with a personal consultation — realignment, circulation and structural restoration."
+      },
+      "band": {
+        "text": "Realignment — Circulation — Structural restoration"
+      },
+      "treatments": {
+        "heading": "Our treatments",
+        "photo": "PHOTO — TREATMENT ROOM",
+        "venue": "Kapsule Palais",
+        "address": "10 Rue Charles-François Dupuis, 75003 Paris",
+        "hours": "Tuesday to Sunday — 11am to 8pm",
+        "selected": "Selected: {{ treatment }}",
+        "button": "Book a treatment",
+        "sent": "Request sent ✓",
+        "name": "Name",
+        "email": "E-mail",
+        "phone": "Phone",
+        "error": "Please check your e-mail."
+      },
+      "treatment_1": {
+        "name": "Consultation & realignment",
+        "text": "Full assessment, MSSI method",
+        "duration": "60 min",
+        "price": "€120"
+      },
+      "treatment_2": {
+        "name": "Structural facial",
+        "text": "Circulation, drainage, contours",
+        "duration": "90 min",
+        "price": "€180"
+      },
+      "treatment_3": {
+        "name": "PLS protocol — course",
+        "text": "Four sessions, integrated follow-up",
+        "duration": "4 × 60 min",
+        "price": "€620"
+      },
+      "treatment_4": {
+        "name": "Kapsule Signature ritual",
+        "text": "Face, neck and shoulders",
+        "duration": "120 min",
+        "price": "€240"
+      }
+    },
+    "popup": {
+      "hero": {
+        "kicker": "—— POP-UP STORE",
+        "heading": "Lifestyle exclusivity",
+        "text": "An ephemeral space devoted to Korean lifestyle culture — houses, emerging creators and unique pieces, in exclusive rotating edits."
+      },
+      "tile_1": "PHOTO — WINDOW",
+      "tile_2": "CERAMICS",
+      "tile_3": "TEXTILE",
+      "tile_4": "STATIONERY",
+      "edits": {
+        "heading": "Current edits"
+      },
+      "edit_1": {
+        "name": "Seoul ceramics",
+        "status": "Until 12 October"
+      },
+      "edit_2": {
+        "name": "Textile Studio — capsule edition",
+        "status": "New this week"
+      },
+      "edit_3": {
+        "name": "Stationery & objects — young creators",
+        "status": "Permanent"
+      },
+      "visit": {
+        "heading": "Find us",
+        "text_html": "10-12 Rue Charles-François Dupuis<br>75003 Paris — in the heart of Le Marais"
+      }
+    },
+    "vision": {
+      "intro": {
+        "kicker": "—— OUR VISION",
+        "heading": "Kapsule is not only a place, it is a destination.",
+        "text": "Born of a desire to redefine the standards of excellence, Kapsule stands in the heart of Le Marais as the privileged bridge between Parisian elegance and Korean avant-garde. Our vision is to carry the art of living of Seoul to new heights, offering a total immersion where high cosmetics, deep wellbeing and exclusive lifestyle meet.",
+        "quote": "More than a concept store, Kapsule is an ecosystem built around three complementary worlds, each exploring a facet of Korean excellence: care, ritual and style."
+      },
+      "block_1": {
+        "kicker": "01 — KAPSULE PALAIS",
+        "heading": "Where K-Beauty gives way to K-Aesthetics",
+        "text": "Kapsule Palais is the confidential setting where K-Beauty gives way to K-Aesthetics. Our institute draws on the precious heritage of Jiwon Hong, an emblematic figure of Korean aesthetics. Through her method of structural recovery, she brings to our treatments an expertise forged by three decades of practice and the study of thousands of skin profiles. From meridian stimulation to sacred jade rituals, every protocol is a moment out of time, designed to rebalance your vitality with absolute precision.",
+        "link": "Discover the institute",
+        "photo": "PHOTO — KAPSULE PALAIS"
+      },
+      "block_2": {
+        "kicker": "02 — THE BOUTIQUE",
+        "heading": "A demanding, precise curation",
+        "text": "Our boutique rests on a demanding, precise curation. We have gathered prestigious cosmetics houses, chosen for the nobility of their actives and the proven efficacy of their formulas. Every product, available in our physical setting and on our e-shop, embodies excellence for those seeking the elite of Korean skincare.",
+        "link": "Explore the boutique",
+        "photo": "PHOTO — BOUTIQUE SHELVES"
+      },
+      "block_3": {
+        "kicker": "03 — THE POP-UP STORE",
+        "heading": "Lifestyle exclusivity",
+        "text": "Because innovation never stops, Kapsule devotes a space to lifestyle revelations from the Korean scene. We host a rotating selection of emerging creators, with ephemeral showcases and rare pieces. This shifting universe offers a constantly renewed view of contemporary Seoul creativity, making every visit a unique encounter with exclusivity.",
+        "link": "See the pop-up",
+        "photo": "PHOTO — POP-UP STORE"
+      },
+      "b2b": {
+        "heading": "Partnerships & B2B vision",
+        "text": "Kapsule is also a strategic partner for professionals: K-Premium aesthetic collaborations, exclusive brand distribution and bespoke partnerships. We believe in shared growth and are open to players in luxury and lifestyle.",
+        "button": "Make a request"
+      }
+    },
+    "footer": {
+      "about": "More than a concept store, Kapsule is an ecosystem around three worlds: care, ritual and style.",
+      "services": "SERVICES",
+      "infos": "INFORMATION",
+      "social": "FOLLOW US",
+      "store": "The Paris store",
+      "institute": "The Paris institute",
+      "book": "Book a treatment",
+      "vision": "Our vision",
+      "trade": "Trade & wholesale",
+      "contact": "Contact us",
+      "location": "Paris — Le Marais"
+    }
   }
 }

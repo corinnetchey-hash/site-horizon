@@ -1,0 +1,36 @@
+{%- comment -%}
+  Exposes routes, settings and translated UI strings to assets/kapsule.js.
+{%- endcomment -%}
+<script>
+  window.Kapsule = {
+    config: {
+      currency: {{ cart.currency.iso_code | json }},
+      freeShipping: {{ settings.kapsule_free_shipping | times: 100 | json }}
+    },
+    routes: {
+      cart: {{ routes.cart_url | json }},
+      cart_add: {{ routes.cart_add_url | json }},
+      cart_change: {{ routes.cart_change_url | json }},
+      predictive_search: {{ routes.predictive_search_url | json }}
+    },
+    strings: {
+      ship_free: {{ 'kapsule.shipping.free' | t | json }},
+      ship_to: {{ 'kapsule.shipping.to' | t | json }},
+      ship_remaining: {{ 'kapsule.shipping.remaining' | t | json }},
+      decrease: {{ 'kapsule.cart.decrease' | t | json }},
+      increase: {{ 'kapsule.cart.increase' | t | json }},
+      cart_error: {{ 'kapsule.cart.error' | t | json }},
+      search_empty: {{ 'kapsule.general.search_empty' | t | json }},
+      quick_add: {{ 'kapsule.general.quick_add' | t | json }},
+      filter: {{ 'kapsule.shop.filter' | t | json }},
+      hide_filters: {{ 'kapsule.shop.hide_filters' | t | json }},
+      add_to_cart: {{ 'kapsule.product.add_to_cart' | t | json }},
+      added: {{ 'kapsule.product.added' | t | json }},
+      sold_out: {{ 'kapsule.product.sold_out' | t | json }},
+      each: {{ 'kapsule.product.each' | t | json }},
+      quiz_step: {{ 'kapsule.quiz.step' | t | json }},
+      quiz_result: {{ 'kapsule.quiz.result_label' | t | json }},
+      treatment_selected: {{ 'kapsule.institut.treatments.selected' | t | json }}
+    }
+  };
+</script>

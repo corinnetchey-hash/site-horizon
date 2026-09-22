@@ -1,0 +1,40 @@
+<div class="k-container" style="padding-top: {{ section.settings.padding_top }}px">
+  <div class="k-cards">
+    {%- for block in section.blocks -%}
+      {%- assign copy_key = 'kapsule.' | append: block.settings.copy_key | append: '.' -%}
+      <div class="k-panel" {{ block.shopify_attributes }}>
+        <h2 class="k-panel__title">{% render 'kapsule-t', value: block.settings.title, key: copy_key, field: 'title' %}</h2>
+        <p class="k-panel__body">{% render 'kapsule-t', value: block.settings.text, key: copy_key, field: 'text' %}</p>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Kapsule text cards",
+  "settings": [
+    { "type": "range", "id": "padding_top", "label": "Top spacing", "min": 0, "max": 60, "step": 2, "unit": "px", "default": 38 }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        { "type": "text", "id": "copy_key", "label": "Default copy key", "info": "e.g. institut.card_1" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "textarea", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kapsule text cards",
+      "blocks": [
+        { "type": "card", "settings": { "copy_key": "institut.card_1" } },
+        { "type": "card", "settings": { "copy_key": "institut.card_2" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

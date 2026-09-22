@@ -1,0 +1,65 @@
+<div class="k-container" style="padding-top: 18px">
+  <div class="k-tiles">
+    {%- for block in section.blocks -%}
+      <div
+        class="k-media k-tint--{{ block.settings.tint }}"
+        style="min-height: {{ block.settings.height }}px"
+        {{ block.shopify_attributes }}
+      >
+        {%- if block.settings.image != blank -%}
+          {{ block.settings.image | image_url: width: 1000 | image_tag: sizes: '(min-width: 700px) 33vw, 100vw', loading: 'lazy' }}
+        {%- else -%}
+          <span class="k-media__label">
+            {%- if block.settings.label != blank -%}
+              {{ block.settings.label }}
+            {%- else -%}
+              {%- assign label_key = 'kapsule.' | append: block.settings.copy_key -%}
+              {{ label_key | t }}
+            {%- endif -%}
+          </span>
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Kapsule image tiles",
+  "blocks": [
+    {
+      "type": "tile",
+      "name": "Tile",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "copy_key", "label": "Default label key", "info": "e.g. popup.tile_1" },
+        { "type": "text", "id": "label", "label": "Placeholder label" },
+        {
+          "type": "select",
+          "id": "tint",
+          "label": "Placeholder tint",
+          "options": [
+            { "value": "sand", "label": "Sand" },
+            { "value": "amber", "label": "Amber" },
+            { "value": "green", "label": "Green" },
+            { "value": "stone", "label": "Stone" },
+            { "value": "pink", "label": "Pink" },
+            { "value": "popup", "label": "Magenta" }
+          ],
+          "default": "sand"
+        },
+        { "type": "range", "id": "height", "label": "Height", "min": 120, "max": 480, "step": 10, "unit": "px", "default": 150 }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kapsule image tiles",
+      "blocks": [
+        { "type": "tile", "settings": { "copy_key": "popup.tile_1", "tint": "sand", "height": 320 } },
+        { "type": "tile", "settings": { "copy_key": "popup.tile_2", "tint": "amber" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,172 @@
+{%- liquid
+  assign locale_root = routes.root_url
+  if locale_root == '/'
+    assign locale_root = ''
+  endif
+-%}
+{%- liquid
+  assign menu = section.settings.menu
+  assign languages = localization.available_languages
+-%}
+<div class="k-stripe" aria-hidden="true"></div>
+<header class="k-header" data-k-header>
+  <div class="k-header__row">
+    <a class="k-header__logo" href="{{ routes.root_url }}">
+      {%- if section.settings.logo != blank -%}
+        {{
+          section.settings.logo
+          | image_url: width: 300
+          | image_tag: alt: shop.name, height: 40, width: 135, loading: 'eager', fetchpriority: 'high'
+        }}
+      {%- else -%}
+        <img
+          src="{{ 'kapsule-wordmark.png' | asset_url }}"
+          alt="{{ shop.name }}"
+          width="135"
+          height="40"
+          fetchpriority="high"
+        >
+      {%- endif -%}
+    </a>
+
+    <nav class="k-nav" aria-label="{{ 'accessibility.header_navigation_label' | t }}" id="KapsuleNav">
+      {%- if menu.links.size > 0 -%}
+        {%- for link in menu.links -%}
+          <a
+            class="k-nav__link"
+            href="{{ link.url }}"
+            {% if link.current or link.child_active %}
+              aria-current="page"
+            {% endif %}
+          >
+            {{- link.title -}}
+          </a>
+        {%- endfor -%}
+      {%- else -%}
+        {%- liquid
+          assign shop_active = false
+          if template.name == 'collection' or template.name == 'product'
+            assign shop_active = true
+          endif
+        -%}
+        <a class="k-nav__link" href="{{ routes.root_url }}" {% if template.name == 'index' %}aria-current="page"{% endif %}>
+          {{- 'kapsule.nav.home' | t -}}
+        </a>
+        <a class="k-nav__link" href="{{ routes.all_products_collection_url }}" {% if shop_active %}aria-current="page"{% endif %}>
+          {{- 'kapsule.nav.shop' | t -}}
+        </a>
+        <a class="k-nav__link" href="{{ locale_root }}/pages/institut" {% if page.handle == 'institut' %}aria-current="page"{% endif %}>
+          {{- 'kapsule.nav.institut' | t -}}
+        </a>
+        <a class="k-nav__link" href="{{ locale_root }}/pages/pop-up" {% if page.handle == 'pop-up' %}aria-current="page"{% endif %}>
+          {{- 'kapsule.nav.popup' | t -}}
+        </a>
+        <a class="k-nav__link" href="{{ locale_root }}/pages/notre-vision" {% if page.handle == 'notre-vision' %}aria-current="page"{% endif %}>
+          {{- 'kapsule.nav.vision' | t -}}
+        </a>
+      {%- endif -%}
+    </nav>
+
+    <div class="k-header__tools">
+      {%- if section.settings.show_language and languages.size > 1 -%}
+        <div class="k-lang" role="group" aria-label="{{ 'kapsule.general.language' | t }}">
+          {%- for language in languages -%}
+            {%- unless forloop.first -%}
+              <span class="k-lang__sep" aria-hidden="true">/</span>
+            {%- endunless -%}
+            <button
+              type="button"
+              data-k-locale="{{ language.iso_code }}"
+              lang="{{ language.iso_code }}"
+              {% if language.iso_code == localization.language.iso_code %}
+                aria-current="true"
+              {% endif %}
+            >
+              {{- language.iso_code | upcase -}}
+            </button>
+          {%- endfor -%}
+        </div>
+        {%- form 'localization', data-k-locale-form: '', hidden: '' -%}
+          <input type="hidden" name="locale_code" value="{{ localization.language.iso_code }}">
+        {%- endform -%}
+      {%- endif -%}
+
+      <button
+        type="button"
+        class="k-header__search-toggle"
+        data-k-search-toggle
+        aria-expanded="false"
+        aria-controls="KapsuleSearch"
+      >
+        {{- 'kapsule.general.search' | t -}}
+      </button>
+
+      <a
+        href="{{ routes.cart_url }}"
+        class="k-cart-pill{% if cart.item_count > 0 %} has-items{% endif %}"
+        data-k-cart-open
+        data-k-cart-pill
+      >
+        {{- 'kapsule.general.cart' | t }} · <span data-k-cart-count>{{ cart.item_count }}</span>
+      </a>
+
+      <button
+        type="button"
+        class="k-menu-toggle"
+        data-k-menu-toggle
+        aria-expanded="false"
+        aria-controls="KapsuleNav"
+      >
+        {{- 'kapsule.general.menu' | t -}}
+      </button>
+    </div>
+  </div>
+
+  <div class="k-search" id="KapsuleSearch" data-k-search hidden>
+    <form class="k-search__bar" action="{{ routes.search_url }}" method="get" role="search">
+      <input type="hidden" name="type" value="product">
+      <label class="k-visually-hidden" for="KapsuleSearchInput">{{ 'kapsule.general.search' | t }}</label>
+      <input
+        class="k-search__input"
+        id="KapsuleSearchInput"
+        type="search"
+        name="q"
+        autocomplete="off"
+        placeholder="{{ 'kapsule.general.search_placeholder' | t }}"
+      >
+      <button type="button" class="k-search__close" data-k-search-close>{{ 'kapsule.general.close' | t }}</button>
+    </form>
+    <div class="k-search__results" data-k-search-results aria-live="polite"></div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Kapsule header",
+  "class": "k-header-section",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo",
+      "info": "Leave empty to use the bundled Kapsule wordmark."
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu",
+      "info": "Without links, the default Kapsule navigation is shown (Accueil · Boutique · Institut · Pop-up · Notre vision)."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_language",
+      "label": "Show FR / EN switch",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,117 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "kapsule-banner",
+      "settings": {
+        "copy_key": "institut.hero",
+        "style": "bordeaux"
+      }
+    },
+    "quote": {
+      "type": "kapsule-quote",
+      "settings": {
+        "copy_key": "institut.quote"
+      }
+    },
+    "cards": {
+      "type": "kapsule-cards",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "copy_key": "institut.card_1"
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "copy_key": "institut.card_2"
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "copy_key": "institut.card_3"
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "copy_key": "institut.card_4"
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4"
+      ],
+      "settings": {
+        "padding_top": 38
+      }
+    },
+    "band": {
+      "type": "kapsule-band",
+      "settings": {
+        "copy_key": "institut.band",
+        "padding_top": 38
+      }
+    },
+    "treatments": {
+      "type": "kapsule-treatments",
+      "blocks": {
+        "treatment_1": {
+          "type": "treatment",
+          "settings": {
+            "copy_key": "institut.treatment_1"
+          }
+        },
+        "treatment_2": {
+          "type": "treatment",
+          "settings": {
+            "copy_key": "institut.treatment_2"
+          }
+        },
+        "treatment_3": {
+          "type": "treatment",
+          "settings": {
+            "copy_key": "institut.treatment_3"
+          }
+        },
+        "treatment_4": {
+          "type": "treatment",
+          "settings": {
+            "copy_key": "institut.treatment_4"
+          }
+        }
+      },
+      "block_order": [
+        "treatment_1",
+        "treatment_2",
+        "treatment_3",
+        "treatment_4"
+      ],
+      "settings": {
+        "copy_key": "institut.treatments",
+        "selected": 2
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "quote",
+    "cards",
+    "band",
+    "treatments"
+  ]
+}

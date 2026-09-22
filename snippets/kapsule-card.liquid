@@ -1,0 +1,63 @@
+{%- comment -%}
+  Kapsule product card: 4:5 cover with house pill, shade badge, brand kicker, name, price and quick add.
+
+  Accepts:
+  - product {product}
+  - style {string} - 'shop' (default), 'home' or 'compact'
+  - show_concerns {boolean} - Shows the translated concern labels under the name
+  - sizes {string} - Image sizes attribute
+{%- endcomment -%}
+{%- liquid
+  assign style = style | default: 'shop'
+  assign sizes = sizes | default: '(min-width: 1200px) 320px, (min-width: 700px) 30vw, 50vw'
+  assign first_variant = product.selected_or_first_available_variant
+  assign variant_count = product.variants.size
+  if product.has_only_default_variant
+    assign variant_count = 1
+  endif
+-%}
+<div class="k-card k-card--{{ style }}">
+  <a class="k-card__media" href="{{ product.url }}" tabindex="-1" aria-hidden="true">
+    {%- if product.featured_media -%}
+      {{
+        product.featured_media
+        | image_url: width: 900
+        | image_tag: widths: '240, 360, 480, 640, 900', sizes: sizes, loading: 'lazy', alt: product.featured_media.alt
+      }}
+    {%- endif -%}
+    {%- if style != 'compact' and product.vendor != blank -%}
+      <span class="k-brand-pill">{{ product.vendor }}</span>
+    {%- endif -%}
+    {%- if style == 'shop' and variant_count > 1 -%}
+      <span class="k-card__tag">{{ 'kapsule.general.shades' | t: count: variant_count }}</span>
+    {%- endif -%}
+  </a>
+  <div class="k-card__body">
+    {%- if style != 'home' -%}
+      <div class="k-card__brand">{{ product.vendor }}</div>
+    {%- endif -%}
+    <a class="k-card__name" href="{{ product.url }}">{{ product.title }}</a>
+    {%- if show_concerns -%}
+      <div class="k-card__concerns">{% render 'kapsule-concern-labels', product: product %}</div>
+    {%- endif -%}
+    <div class="k-card__foot">
+      <span class="k-card__price">
+        {{- product.price_min | money -}}
+        {%- if product.compare_at_price_min > product.price_min -%}
+          <s>{{ product.compare_at_price_min | money }}</s>
+        {%- endif -%}
+      </span>
+      {%- if product.available -%}
+        <form action="{{ routes.cart_add_url }}" method="post" data-k-add>
+          <input type="hidden" name="id" value="{{ first_variant.id }}">
+          <input type="hidden" name="quantity" value="1">
+          {%- if style == 'compact' -%}
+            <button type="submit" class="k-text-add">{{ 'kapsule.general.quick_add' | t }}</button>
+          {%- else -%}
+            <button type="submit" class="k-btn k-btn--dark k-btn--sm">{{ 'kapsule.general.quick_add' | t }}</button>
+          {%- endif -%}
+        </form>
+      {%- endif -%}
+    </div>
+  </div>
+</div>

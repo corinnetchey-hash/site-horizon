@@ -25,6 +25,16 @@
     {%- render 'theme-styles-variables' -%}
     {%- render 'color-palette' -%}
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap"
+      rel="stylesheet"
+    >
+    {{ 'kapsule.css' | asset_url | stylesheet_tag }}
+    {%- render 'kapsule-config' -%}
+    <script src="{{ 'kapsule.js' | asset_url }}" defer></script>
+
     {% if request.design_mode %}
       {%- render 'theme-editor' -%}
     {% endif %}
@@ -32,7 +42,7 @@
     {{ content_for_header }}
   </head>
 
-  <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
+  <body class="kapsule page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
     {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
 
     {% render 'chat-drawer' %}
@@ -165,7 +175,10 @@
       </footer>
     </div>
 
-    {% render 'cart-drawer', render_wrapper: true %}
+    {% render 'kapsule-cart-drawer' %}
+    {%- if settings.kapsule_quiz_enabled -%}
+      {% render 'kapsule-quiz' %}
+    {%- endif -%}
     {% render 'theme-drawer' %}
 
     {% render 'search-modal' %}

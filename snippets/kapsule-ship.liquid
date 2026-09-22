@@ -1,0 +1,31 @@
+{%- comment -%}
+  Free-shipping progress bar. Rendered server-side from the cart, then kept live by kapsule.js.
+
+  Accepts:
+  - boxed {boolean} - Wraps the bar in a bordered surface (product page)
+{%- endcomment -%}
+{%- liquid
+  assign threshold = settings.kapsule_free_shipping | times: 100
+  assign subtotal = cart.items_subtotal_price
+  assign threshold_money = threshold | money_without_trailing_zeros
+  if subtotal >= threshold
+    assign message = 'kapsule.shipping.free' | t
+    assign remaining = ''
+    assign pct = 100
+  else
+    assign message = 'kapsule.shipping.to' | t: amount: threshold_money
+    assign remaining_money = threshold | minus: subtotal | money
+    assign remaining = 'kapsule.shipping.remaining' | t: amount: remaining_money
+    assign pct = subtotal | times: 100 | divided_by: threshold
+  endif
+-%}
+{%- if threshold > 0 -%}
+  <div class="{% if boxed %}k-ship{% endif %}" data-k-ship>
+    <div class="k-ship__row">
+      <span data-k-ship-message>{{ message }}</span><span data-k-ship-remaining>{{ remaining }}</span>
+    </div>
+    <div class="k-ship__track" aria-hidden="true">
+      <div class="k-ship__fill" data-k-ship-fill style="width: {{ pct }}%"></div>
+    </div>
+  </div>
+{%- endif -%}

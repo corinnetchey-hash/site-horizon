@@ -1,0 +1,51 @@
+{%- assign copy_key = 'kapsule.' | append: section.settings.copy_key | append: '.' -%}
+<div class="k-container k-section k-section--end">
+  <div class="k-newsletter">
+    <div>
+      <h2 class="k-newsletter__title">
+        {%- render 'kapsule-t', value: section.settings.heading, key: copy_key, field: 'heading' -%}
+      </h2>
+      <p class="k-newsletter__text">
+        {%- render 'kapsule-t', value: section.settings.text, key: copy_key, field: 'text' -%}
+      </p>
+    </div>
+    {%- form 'customer', id: 'KapsuleNewsletter' -%}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      {%- capture placeholder -%}{% render 'kapsule-t', value: '', key: copy_key, field: 'placeholder' %}{%- endcapture -%}
+      <label class="k-visually-hidden" for="KapsuleNewsletterEmail">{{ placeholder }}</label>
+      <input
+        id="KapsuleNewsletterEmail"
+        type="email"
+        name="contact[email]"
+        autocomplete="email"
+        required
+        placeholder="{{ placeholder }}"
+      >
+      {%- if form.posted_successfully? -%}
+        <button type="submit" class="k-btn" disabled>
+          {%- render 'kapsule-t', value: '', key: copy_key, field: 'success' -%}
+        </button>
+      {%- else -%}
+        <button type="submit" class="k-btn">
+          {%- render 'kapsule-t', value: section.settings.button, key: copy_key, field: 'button' -%}
+        </button>
+      {%- endif -%}
+      {%- if form.errors -%}
+        <p class="k-newsletter__msg">{{ form.errors | default_errors }}</p>
+      {%- endif -%}
+    {%- endform -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Kapsule newsletter",
+  "settings": [
+    { "type": "text", "id": "copy_key", "label": "Default copy key", "default": "home.newsletter" },
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "textarea", "id": "text", "label": "Text" },
+    { "type": "text", "id": "button", "label": "Button label" }
+  ],
+  "presets": [{ "name": "Kapsule newsletter" }]
+}
+{% endschema %}

@@ -8,6 +8,35 @@
     "theme_support_url": "https://support.shopify.com/"
   },
   {
+    "name": "Kapsule",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Kapsule storefront settings. Copy defaults live in the fr / en locale files under the kapsule namespace."
+      },
+      {
+        "type": "number",
+        "id": "kapsule_free_shipping",
+        "label": "Free shipping threshold",
+        "info": "In the store currency. Drives the progress bar in the cart drawer and on product pages. 0 hides it.",
+        "default": 49
+      },
+      {
+        "type": "checkbox",
+        "id": "kapsule_quiz_enabled",
+        "label": "Enable the skin diagnostic",
+        "info": "Floating bubble (hidden on product pages) and the 3-question quiz.",
+        "default": true
+      },
+      {
+        "type": "collection",
+        "id": "kapsule_quiz_collection",
+        "label": "Diagnostic product pool",
+        "info": "Products are matched on their besoin-* tags. Defaults to all products."
+      }
+    ]
+  },
+  {
     "name": "t:names.logo_and_favicon",
     "settings": [
       {

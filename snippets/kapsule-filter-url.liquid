@@ -1,0 +1,48 @@
+{%- comment -%}
+  Outputs a collection URL that keeps the active storefront filters and sort order,
+  minus one filter parameter, plus an optional extra fragment. Used for single-choice
+  filters (category, price band) and sort pills.
+
+  Accepts:
+  - filters {array} - collection.filters
+  - base_url {string} - collection.url
+  - exclude {string} - Param name to drop, or 'price' for the price range
+  - add {string} - Extra query fragment, e.g. 'filter.p.product_type=Maquillage' (already encoded)
+  - sort_by {string} - Sort order to keep
+{%- endcomment -%}
+{%- liquid
+  assign query = ''
+  for filter in filters
+    if filter.type == 'price_range'
+      if exclude != 'price'
+        if filter.min_value.value != nil
+          assign amount = filter.min_value.value | divided_by: 100.0
+          assign query = query | append: '&' | append: filter.min_value.param_name | append: '=' | append: amount
+        endif
+        if filter.max_value.value != nil
+          assign amount = filter.max_value.value | divided_by: 100.0
+          assign query = query | append: '&' | append: filter.max_value.param_name | append: '=' | append: amount
+        endif
+      endif
+    else
+      for value in filter.active_values
+        if value.param_name != exclude
+          assign encoded = value.value | url_encode
+          assign query = query | append: '&' | append: value.param_name | append: '=' | append: encoded
+        endif
+      endfor
+    endif
+  endfor
+  if add != blank
+    assign query = query | append: '&' | append: add
+  endif
+  if sort_by != blank
+    assign query = query | append: '&sort_by=' | append: sort_by
+  endif
+  assign query = query | remove_first: '&'
+  if query != blank
+    echo base_url | append: '?' | append: query
+  else
+    echo base_url
+  endif
+-%}

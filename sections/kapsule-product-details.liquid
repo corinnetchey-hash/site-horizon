@@ -1,0 +1,199 @@
+{%- liquid
+  assign copy_key = 'kapsule.product.'
+  assign house_key = product.vendor | handleize | replace: '-', '_' | prepend: 'kapsule.houses.'
+  assign house_story = house_key | t
+  if house_story contains 'ranslation missing'
+    assign house_story = 'kapsule.houses.default' | t
+  endif
+  for block in section.blocks
+    if block.type == 'house' and block.settings.vendor == product.vendor and block.settings.story != blank
+      assign house_story = block.settings.story
+    endif
+  endfor
+
+  assign ingredients = product.metafields.custom.ingredients.value
+  assign texture = product.metafields.custom.texture.value
+
+  assign pool = section.settings.bundle_collection
+  if pool == blank
+    assign pool = collections['all']
+  endif
+  assign bundle_ids = product.selected_or_first_available_variant.id
+  assign bundle_total = product.selected_or_first_available_variant.price
+  assign bundle_count = 0
+-%}
+
+{%- if recommendations.performed? -%}
+  {%- comment -%} Rendered by the Product Recommendations API for the “À associer” block {%- endcomment -%}
+  <div data-k-recommendations>
+    {%- if recommendations.products_count > 0 -%}
+      <div class="k-grid k-grid--related">
+        {%- for rec in recommendations.products limit: 4 -%}
+          {% render 'kapsule-card', product: rec, style: 'compact', sizes: '(min-width: 1200px) 320px, 47vw' %}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+{%- else -%}
+  <div class="k-container" style="padding-bottom: 56px">
+    <div class="k-house">
+      <div class="k-kicker">{% render 'kapsule-t', value: section.settings.house_kicker, key: copy_key, field: 'the_house' %}</div>
+      <h2 class="k-h2" style="margin-top:10px">{{ product.vendor }}</h2>
+      <p class="k-house__story">{{ house_story }}</p>
+    </div>
+
+    <div class="k-panels">
+      <div class="k-panel">
+        <h3 class="k-panel__title">{{ 'kapsule.product.actives' | t }}</h3>
+        <div class="k-panel__body">
+          {%- if ingredients != blank -%}{{ ingredients }}{%- else -%}{{ 'kapsule.product.actives_fallback' | t }}{%- endif -%}
+        </div>
+      </div>
+      <div class="k-panel">
+        <h3 class="k-panel__title">{{ 'kapsule.product.texture' | t }}</h3>
+        <div class="k-panel__body">
+          {%- if texture != blank -%}{{ texture }}{%- else -%}{{ 'kapsule.product.texture_fallback' | t }}{%- endif -%}
+        </div>
+      </div>
+      <div class="k-panel">
+        <h3 class="k-panel__title">{{ 'kapsule.product.delivery' | t }}</h3>
+        <p class="k-panel__body">{% render 'kapsule-t', value: section.settings.delivery_text, key: copy_key, field: 'delivery_text' %}</p>
+      </div>
+    </div>
+
+    {%- if section.settings.show_ritual -%}
+      <div class="k-block-gap">
+        <h2 class="k-h2" style="font-size:28px">{{ 'kapsule.product.ritual' | t }}</h2>
+        <ol class="k-ritual">
+          {%- for i in (1..4) -%}
+            {%- assign step_key = 'kapsule.product.ritual_' | append: i | append: '_' -%}
+            <li>
+              <div class="k-ritual__num">0{{ i }}</div>
+              <div class="k-ritual__title">{{ step_key | append: 'title' | t }}</div>
+              <p class="k-ritual__text">{{ step_key | append: 'text' | t }}</p>
+            </li>
+          {%- endfor -%}
+        </ol>
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} Complétez votre routine: this product + up to 2 from the same house, never a random cross-sell {%- endcomment -%}
+    {%- capture bundle_items -%}
+      {%- for item in pool.products limit: 250 -%}
+        {%- if item.id == product.id or item.vendor != product.vendor or item.available == false -%}{%- continue -%}{%- endif -%}
+        {%- liquid
+          assign bundle_count = bundle_count | plus: 1
+          assign bundle_ids = bundle_ids | append: ',' | append: item.selected_or_first_available_variant.id
+          assign bundle_total = bundle_total | plus: item.selected_or_first_available_variant.price
+        -%}
+        <a class="k-bundle__item" href="{{ item.url }}">
+          {%- if item.featured_media -%}
+            {{ item.featured_media | image_url: width: 500 | image_tag: loading: 'lazy', alt: '' }}
+          {%- endif -%}
+          <span class="k-bundle__body">
+            <span class="k-card__brand">{{ item.vendor }}</span>
+            <span class="k-bundle__name">{{ item.title }}</span>
+            <span class="k-bundle__price">{{ item.selected_or_first_available_variant.price | money }}</span>
+          </span>
+        </a>
+        {%- if bundle_count >= 2 -%}{%- break -%}{%- endif -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+
+    {%- if section.settings.show_bundle and bundle_count > 0 -%}
+      {%- liquid
+        assign discount = section.settings.bundle_discount
+        assign keep = 100 | minus: discount
+        assign bundle_discounted = bundle_total | times: keep | divided_by: 100
+      -%}
+      <div class="k-bundle k-block-gap">
+        <div class="k-head-row">
+          <h2 class="k-h2 k-h2--sm">{{ 'kapsule.product.bundle_title' | t }}</h2>
+          {%- if discount > 0 -%}
+            <span class="k-meta" style="color: var(--k-ink-2)">{{ 'kapsule.product.bundle_save' | t: percent: discount }}</span>
+          {%- endif -%}
+        </div>
+        <div class="k-bundle__grid">
+          <div class="k-bundle__item">
+            {%- if product.featured_media -%}
+              {{ product.featured_media | image_url: width: 500 | image_tag: loading: 'lazy', alt: '' }}
+            {%- endif -%}
+            <span class="k-bundle__body">
+              <span class="k-card__brand">{{ product.vendor }}</span>
+              <span class="k-bundle__name">{{ product.title }}</span>
+              <span class="k-bundle__price">{{ product.selected_or_first_available_variant.price | money }}</span>
+            </span>
+          </div>
+          {{ bundle_items }}
+          <div class="k-bundle__total">
+            <div class="k-bundle__total-label">{{ 'kapsule.product.bundle_total' | t }} · {{ bundle_total | money }}</div>
+            <div class="k-bundle__total-value">
+              {%- if discount > 0 -%}{{ bundle_discounted | money }}{%- else -%}{{ bundle_total | money }}{%- endif -%}
+            </div>
+            <button type="button" class="k-btn k-btn--dark" style="font-size:13px;font-weight:600" data-k-add-many="{{ bundle_ids }}">
+              {{- 'kapsule.product.add_bundle' | t -}}
+            </button>
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+
+    <div class="k-block-gap">
+      <h2 class="k-h2 k-h2--sm" style="margin-bottom:18px">{{ 'kapsule.product.related' | t }}</h2>
+      <div
+        data-k-recommendations
+        data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4&intent=related"
+      >
+        {%- comment -%} Fallback until recommendations load: other products from the pool {%- endcomment -%}
+        <div class="k-grid k-grid--related">
+          {%- assign shown = 0 -%}
+          {%- for item in pool.products limit: 12 -%}
+            {%- if item.id == product.id -%}{%- continue -%}{%- endif -%}
+            {% render 'kapsule-card', product: item, style: 'compact', sizes: '(min-width: 1200px) 320px, 47vw' %}
+            {%- assign shown = shown | plus: 1 -%}
+            {%- if shown >= 4 -%}{%- break -%}{%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Kapsule product details",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "La maison: portraits per vendor live in the locale files (kapsule.houses.*). Add a House block to override one. Les actifs reads the custom.ingredients metafield; Texture & application reads custom.texture."
+    },
+    { "type": "text", "id": "house_kicker", "label": "House kicker" },
+    { "type": "textarea", "id": "delivery_text", "label": "Delivery & returns text" },
+    { "type": "checkbox", "id": "show_ritual", "label": "Show ritual steps", "default": true },
+    { "type": "header", "content": "Complete your routine" },
+    { "type": "checkbox", "id": "show_bundle", "label": "Show same-house bundle", "default": true },
+    {
+      "type": "range",
+      "id": "bundle_discount",
+      "label": "Displayed bundle discount",
+      "info": "Display only — create a matching automatic discount in Shopify admin so checkout applies it.",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "%",
+      "default": 10
+    },
+    { "type": "collection", "id": "bundle_collection", "label": "Product pool", "info": "Defaults to all products." }
+  ],
+  "blocks": [
+    {
+      "type": "house",
+      "name": "House portrait",
+      "settings": [
+        { "type": "text", "id": "vendor", "label": "Vendor", "info": "Must match the product vendor exactly." },
+        { "type": "textarea", "id": "story", "label": "Portrait" }
+      ]
+    }
+  ]
+}
+{% endschema %}

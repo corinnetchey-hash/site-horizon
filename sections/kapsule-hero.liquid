@@ -1,0 +1,92 @@
+{%- liquid
+  assign copy_key = 'kapsule.' | append: section.settings.copy_key | append: '.'
+  assign products = section.settings.products
+  if products == blank or products.size == 0
+    assign source = section.settings.collection
+    if source == blank
+      assign source = collections['all']
+    endif
+    assign products = source.products
+  endif
+  assign cta_link = section.settings.cta_link | default: routes.all_products_collection_url
+-%}
+<div class="k-container k-section--flush k-fade" style="padding-top: 24px">
+  <div class="k-hero">
+    <div>
+      <div class="k-hero__kicker">
+        {%- render 'kapsule-t', value: section.settings.kicker, key: copy_key, field: 'kicker' -%}
+      </div>
+      <h1 class="k-hero__title">
+        {% render 'kapsule-t', value: section.settings.heading_a, key: copy_key, field: 'heading_a' %}
+        <em>{% render 'kapsule-t', value: section.settings.heading_b, key: copy_key, field: 'heading_b' %}</em><br>
+        {%- render 'kapsule-t', value: section.settings.heading_c, key: copy_key, field: 'heading_c' -%}
+      </h1>
+      <p class="k-hero__text">
+        {%- render 'kapsule-t', value: section.settings.text, key: copy_key, field: 'text' -%}
+      </p>
+      <div class="k-hero__ctas">
+        <a class="k-btn k-btn--light" href="{{ cta_link }}">
+          {%- render 'kapsule-t', value: section.settings.cta, key: copy_key, field: 'cta' -%}
+        </a>
+        {%- if settings.kapsule_quiz_enabled -%}
+          <button type="button" class="k-btn k-btn--ghost-light" data-k-quiz-open>
+            {%- render 'kapsule-t', value: section.settings.cta2, key: copy_key, field: 'cta2' -%}
+          </button>
+        {%- endif -%}
+      </div>
+      <div class="k-hero__trust">
+        <span>{% render 'kapsule-t', value: section.settings.trust1, key: copy_key, field: 'trust1' %}</span>
+        <span>{% render 'kapsule-t', value: section.settings.trust2, key: copy_key, field: 'trust2' %}</span>
+      </div>
+    </div>
+    <div class="k-hero__products">
+      {%- for product in products limit: 4 -%}
+        <a class="k-mini-card" href="{{ product.url }}">
+          <span class="k-mini-card__media">
+            {%- if product.featured_media -%}
+              {{
+                product.featured_media
+                | image_url: width: 600
+                | image_tag: widths: '200, 300, 400, 600', sizes: '(min-width: 1200px) 300px, 45vw', alt: product.featured_media.alt
+              }}
+            {%- endif -%}
+            <span class="k-brand-pill">{{ product.vendor }}</span>
+          </span>
+          <span class="k-mini-card__body">
+            <span class="k-mini-card__name">{{ product.title }}</span>
+            <span class="k-mini-card__price" style="display:block">{{ product.price_min | money }}</span>
+          </span>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Kapsule hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "copy_key",
+      "label": "Default copy key",
+      "default": "home.hero",
+      "info": "Blank text fields fall back to the bilingual copy under kapsule.<key> in the locale files."
+    },
+    { "type": "text", "id": "kicker", "label": "Kicker" },
+    { "type": "text", "id": "heading_a", "label": "Heading — first part" },
+    { "type": "text", "id": "heading_b", "label": "Heading — italic part" },
+    { "type": "text", "id": "heading_c", "label": "Heading — second line" },
+    { "type": "textarea", "id": "text", "label": "Text" },
+    { "type": "text", "id": "cta", "label": "Primary button label" },
+    { "type": "url", "id": "cta_link", "label": "Primary button link" },
+    { "type": "text", "id": "cta2", "label": "Diagnostic button label", "info": "Opens the skin diagnostic." },
+    { "type": "text", "id": "trust1", "label": "Reassurance line 1" },
+    { "type": "text", "id": "trust2", "label": "Reassurance line 2" },
+    { "type": "header", "content": "Products" },
+    { "type": "product_list", "id": "products", "label": "Products", "limit": 4 },
+    { "type": "collection", "id": "collection", "label": "Or a collection", "info": "Used when no products are picked. Defaults to all products." }
+  ],
+  "presets": [{ "name": "Kapsule hero" }]
+}
+{% endschema %}

@@ -1,0 +1,374 @@
+{%- liquid
+  assign copy_key = 'kapsule.' | append: section.settings.copy_key | append: '.'
+  assign use_collection_copy = false
+  if section.settings.use_collection_copy and collection.handle != 'all'
+    assign use_collection_copy = true
+  endif
+
+  assign current_sort = collection.sort_by
+  if current_sort == blank
+    assign current_sort = collection.default_sort_by
+  endif
+
+  assign band_1 = section.settings.price_band_1
+  assign band_2 = section.settings.price_band_2
+  assign band_1_cents = band_1 | times: 100
+  assign band_2_cents = band_2 | times: 100
+  assign band_1_max = band_1 | minus: 0.01
+  assign band_2_max = band_2 | minus: 0.01
+  assign band_1_money = band_1_cents | money_without_trailing_zeros
+  assign band_2_money = band_2_cents | money_without_trailing_zeros
+
+  assign category_filter = nil
+  assign brand_filter = nil
+  assign concern_filter = nil
+  assign price_filter = nil
+  for filter in collection.filters
+    case filter.param_name
+      when 'filter.p.product_type'
+        assign category_filter = filter
+      when 'filter.p.vendor'
+        assign brand_filter = filter
+      when 'filter.p.tag'
+        assign concern_filter = filter
+    endcase
+    if filter.type == 'price_range'
+      assign price_filter = filter
+    endif
+  endfor
+
+  assign active_category = nil
+  if category_filter
+    assign active_category = category_filter.active_values.first
+  endif
+
+  assign price_min = nil
+  assign price_max = nil
+  if price_filter
+    assign price_min = price_filter.min_value.value
+    assign price_max = price_filter.max_value.value
+  endif
+  assign active_band = ''
+  if price_min != nil or price_max != nil
+    assign active_band = 'custom'
+    assign band_2_max_cents = band_2_cents | minus: 1
+    assign band_1_max_cents = band_1_cents | minus: 1
+    if price_min == nil and price_max == band_1_max_cents
+      assign active_band = 'a'
+    elsif price_min == band_1_cents and price_max == band_2_max_cents
+      assign active_band = 'b'
+    elsif price_min == band_2_cents and price_max == nil
+      assign active_band = 'c'
+    endif
+  endif
+-%}
+
+{%- capture all_url -%}
+  {%- render 'kapsule-filter-url', filters: collection.filters, base_url: collection.url, exclude: 'filter.p.product_type', sort_by: collection.sort_by -%}
+{%- endcapture -%}
+
+{%- capture category_links -%}
+  <a class="k-filter-cat" href="{{ all_url }}" {% unless active_category %}aria-current="true"{% endunless %}>
+    {{- 'kapsule.shop.all_products' | t -}}
+  </a>
+  {%- if category_filter -%}
+    {%- for value in category_filter.values -%}
+      {%- if value.count == 0 and value.active == false -%}{%- continue -%}{%- endif -%}
+      {%- liquid
+        assign encoded = value.value | url_encode
+        assign fragment = 'filter.p.product_type=' | append: encoded
+        assign label_key = value.label | handleize | replace: '-', '_' | prepend: 'kapsule.categories.'
+        assign label = label_key | t
+        if label contains 'ranslation missing'
+          assign label = value.label
+        endif
+      -%}
+      <a
+        class="k-filter-cat"
+        href="{% render 'kapsule-filter-url', filters: collection.filters, base_url: collection.url, exclude: 'filter.p.product_type', add: fragment, sort_by: collection.sort_by %}"
+        {% if value.active %}
+          aria-current="true"
+        {% endif %}
+      >
+        {{- label -}}
+      </a>
+    {%- endfor -%}
+  {%- endif -%}
+{%- endcapture -%}
+
+<div class="k-container k-shop k-fade" data-k-shop>
+  <div class="k-kicker">——
+    {% if use_collection_copy %}{{ 'kapsule.general.shop' | t | upcase }}{% else %}{% render 'kapsule-t', value: section.settings.kicker, key: copy_key, field: 'kicker' %}{% endif %}
+  </div>
+  <h1 class="k-h1 k-h1--shop">
+    {%- if use_collection_copy -%}
+      {{ collection.title }}
+    {%- else -%}
+      {%- render 'kapsule-t', value: section.settings.heading, key: copy_key, field: 'heading' -%}
+    {%- endif -%}
+  </h1>
+  <div class="k-shop__intro">
+    {%- if use_collection_copy and collection.description != blank -%}
+      <div class="k-rte">{{ collection.description }}</div>
+    {%- else -%}
+      {%- render 'kapsule-t', value: section.settings.text, key: copy_key, field: 'text' -%}
+    {%- endif -%}
+  </div>
+  <nav class="k-breadcrumb" aria-label="Breadcrumb">
+    <a href="{{ routes.root_url }}">{{ 'kapsule.general.home' | t }}</a> /
+    <a href="{{ routes.all_products_collection_url }}">{{ 'kapsule.general.shop' | t }}</a>
+    {%- if collection.handle != 'all' %} / {{ collection.title }}{% endif -%}
+    {%- if active_category %} / {{ active_category.label }}{% endif -%}
+  </nav>
+
+  <div class="k-shop__mobile">
+    <div class="k-scroll-row k-shop__chips">
+      {{ category_links | replace: 'class="k-filter-cat"', 'class="k-pill"' }}
+    </div>
+    <div class="k-shop__mobile-bar">
+      <button type="button" class="k-pill" data-k-filters-toggle aria-expanded="false" aria-controls="KapsuleFilters">
+        {{- 'kapsule.shop.filter' | t -}}
+      </button>
+      <span class="k-meta">{{ 'kapsule.general.products_count' | t: count: collection.products_count }}</span>
+    </div>
+  </div>
+
+  {%- paginate collection.products by section.settings.per_page -%}
+    <div class="k-shop__layout">
+      <aside class="k-shop__aside" id="KapsuleFilters">
+        <h2 class="k-filter-title">{{ 'kapsule.shop.categories' | t }}</h2>
+        <div class="k-filter-list">
+          {{ category_links }}
+        </div>
+
+        {%- if brand_filter and brand_filter.values.size > 0 -%}
+          <h2 class="k-filter-title">{{ 'kapsule.shop.brands' | t }}</h2>
+          <ul class="k-filter-list">
+            {%- assign brand_values = brand_filter.values | sort_natural: 'label' -%}
+            {%- for value in brand_values -%}
+              {%- if value.count == 0 and value.active == false -%}{%- continue -%}{%- endif -%}
+              {%- if value.label == shop.name -%}{%- continue -%}{%- endif -%}
+              <li>
+                <a
+                  class="k-filter-brand"
+                  href="{% if value.active %}{{ value.url_to_remove }}{% else %}{{ value.url_to_add }}{% endif %}"
+                  {% if value.active %}
+                    aria-current="true"
+                  {% endif %}
+                >
+                  <span class="k-filter-brand__dot" aria-hidden="true"></span>
+                  {{- value.label -}}
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        {%- if concern_filter -%}
+          {%- capture concern_chips -%}
+            {%- for value in concern_filter.values -%}
+              {%- assign value_handle = value.value | handleize -%}
+              {%- unless value_handle contains 'besoin-' -%}{%- continue -%}{%- endunless -%}
+              {%- if value.count == 0 and value.active == false -%}{%- continue -%}{%- endif -%}
+              {%- liquid
+                assign label_key = value_handle | remove_first: 'besoin-' | replace: '-', '_' | prepend: 'kapsule.concerns.'
+                assign label = label_key | t
+                if label contains 'ranslation missing'
+                  assign label = value.label | remove_first: 'besoin-'
+                endif
+              -%}
+              <a
+                class="k-pill{% if value.active %} is-active{% endif %}"
+                href="{% if value.active %}{{ value.url_to_remove }}{% else %}{{ value.url_to_add }}{% endif %}"
+              >
+                {{- label -}}
+              </a>
+            {%- endfor -%}
+          {%- endcapture -%}
+          {%- if concern_chips != blank -%}
+            <h2 class="k-filter-title">{{ 'kapsule.shop.concerns' | t }}</h2>
+            <div class="k-filter-chips">{{ concern_chips }}</div>
+          {%- endif -%}
+        {%- endif -%}
+
+        {%- if price_filter -%}
+          {%- liquid
+            assign count_a = 0
+            assign count_b = 0
+            assign count_c = 0
+            for product in collection.products
+              if product.price_min < band_1_cents
+                assign count_a = count_a | plus: 1
+              elsif product.price_min < band_2_cents
+                assign count_b = count_b | plus: 1
+              else
+                assign count_c = count_c | plus: 1
+              endif
+            endfor
+            assign fragment_a = price_filter.max_value.param_name | append: '=' | append: band_1_max
+            assign fragment_b = price_filter.min_value.param_name | append: '=' | append: band_1 | append: '&' | append: price_filter.max_value.param_name | append: '=' | append: band_2_max
+            assign fragment_c = price_filter.min_value.param_name | append: '=' | append: band_2
+          -%}
+          <h2 class="k-filter-title">{{ 'kapsule.shop.price' | t }}</h2>
+          <ul class="k-filter-list">
+            <li>
+              <a class="k-filter-price" href="{% render 'kapsule-filter-url', filters: collection.filters, base_url: collection.url, exclude: 'price', sort_by: collection.sort_by %}" {% if active_band == '' %}aria-current="true"{% endif %}>
+                <span>{{ 'kapsule.shop.price_all' | t }}</span>
+                <span class="k-filter-price__count">{% if active_band == '' %}{{ collection.products_count }}{% endif %}</span>
+              </a>
+            </li>
+            <li>
+              <a class="k-filter-price" href="{% render 'kapsule-filter-url', filters: collection.filters, base_url: collection.url, exclude: 'price', add: fragment_a, sort_by: collection.sort_by %}" {% if active_band == 'a' %}aria-current="true"{% endif %}>
+                <span>{{ 'kapsule.shop.price_under' | t: amount: band_1_money }}</span>
+                <span class="k-filter-price__count">{% if active_band == '' %}{{ count_a }}{% endif %}</span>
+              </a>
+            </li>
+            <li>
+              <a class="k-filter-price" href="{% render 'kapsule-filter-url', filters: collection.filters, base_url: collection.url, exclude: 'price', add: fragment_b, sort_by: collection.sort_by %}" {% if active_band == 'b' %}aria-current="true"{% endif %}>
+                <span>{{ 'kapsule.shop.price_between' | t: min: band_1_money, max: band_2_money }}</span>
+                <span class="k-filter-price__count">{% if active_band == '' %}{{ count_b }}{% endif %}</span>
+              </a>
+            </li>
+            <li>
+              <a class="k-filter-price" href="{% render 'kapsule-filter-url', filters: collection.filters, base_url: collection.url, exclude: 'price', add: fragment_c, sort_by: collection.sort_by %}" {% if active_band == 'c' %}aria-current="true"{% endif %}>
+                <span>{{ 'kapsule.shop.price_over' | t: amount: band_2_money }}</span>
+                <span class="k-filter-price__count">{% if active_band == '' %}{{ count_c }}{% endif %}</span>
+              </a>
+            </li>
+          </ul>
+        {%- endif -%}
+
+        <a class="k-filter-reset" href="{{ collection.url }}">{{ 'kapsule.shop.reset' | t }}</a>
+      </aside>
+
+      <div>
+        {%- capture active_chips -%}
+          {%- for filter in collection.filters -%}
+            {%- if filter.type == 'price_range' -%}
+              {%- if price_min != nil or price_max != nil -%}
+                {%- liquid
+                  case active_band
+                    when 'a'
+                      assign price_label = 'kapsule.shop.price_under' | t: amount: band_1_money
+                    when 'b'
+                      assign price_label = 'kapsule.shop.price_between' | t: min: band_1_money, max: band_2_money
+                    when 'c'
+                      assign price_label = 'kapsule.shop.price_over' | t: amount: band_2_money
+                    else
+                      assign min_money = price_min | default: 0 | money_without_trailing_zeros
+                      assign max_money = price_max | default: price_filter.range_max | money_without_trailing_zeros
+                      assign price_label = 'kapsule.shop.price_between' | t: min: min_money, max: max_money
+                  endcase
+                -%}
+                <a class="k-pill is-active" href="{{ filter.url_to_remove }}" aria-label="{{ 'kapsule.shop.remove_filter' | t: label: price_label }}">
+                  {{- price_label }}<span aria-hidden="true">✕</span>
+                </a>
+              {%- endif -%}
+            {%- else -%}
+              {%- for value in filter.active_values -%}
+                {%- liquid
+                  assign label = value.label
+                  if filter.param_name == 'filter.p.product_type'
+                    assign label_key = value.label | handleize | replace: '-', '_' | prepend: 'kapsule.categories.'
+                    assign translated = label_key | t
+                    unless translated contains 'ranslation missing'
+                      assign label = translated
+                    endunless
+                  elsif filter.param_name == 'filter.p.tag'
+                    assign label_key = value.value | handleize | remove_first: 'besoin-' | replace: '-', '_' | prepend: 'kapsule.concerns.'
+                    assign translated = label_key | t
+                    unless translated contains 'ranslation missing'
+                      assign label = translated
+                    endunless
+                  endif
+                -%}
+                <a class="k-pill is-active" href="{{ value.url_to_remove }}" aria-label="{{ 'kapsule.shop.remove_filter' | t: label: label }}">
+                  {{- label }}<span aria-hidden="true">✕</span>
+                </a>
+              {%- endfor -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endcapture -%}
+        {%- if active_chips != blank -%}
+          <div class="k-active-filters">
+            {{ active_chips }}
+            <a class="k-pill" href="{{ collection.url }}" style="color: var(--k-ink-3)">{{ 'kapsule.shop.reset_short' | t }}</a>
+          </div>
+        {%- endif -%}
+
+        <div class="k-shop__toolbar">
+          <span class="k-shop__count">{{ 'kapsule.general.products_count' | t: count: collection.products_count }}</span>
+          <div class="k-scroll-row" role="group" aria-label="{{ 'actions.sort' | t }}">
+            {%- liquid
+              assign sort_keys = collection.default_sort_by | append: ',created-descending,price-ascending,price-descending'
+              assign sort_keys = sort_keys | split: ','
+              assign sort_labels = 'kapsule.shop.sort_best,kapsule.shop.sort_new,kapsule.shop.sort_asc,kapsule.shop.sort_desc' | split: ','
+            -%}
+            {%- for sort_key in sort_keys -%}
+              {%- assign sort_label = sort_labels[forloop.index0] -%}
+              <a
+                class="k-pill"
+                href="{% render 'kapsule-filter-url', filters: collection.filters, base_url: collection.url, sort_by: sort_key %}"
+                {% if current_sort == sort_key %}
+                  aria-current="true"
+                {% endif %}
+              >
+                {{- sort_label | t -}}
+              </a>
+            {%- endfor -%}
+          </div>
+        </div>
+
+        {%- if collection.products.size > 0 -%}
+          <div class="k-grid k-grid--shop">
+            {%- for product in collection.products -%}
+              {% render 'kapsule-card', product: product, style: 'shop', sizes: '(min-width: 1200px) 260px, (min-width: 700px) 28vw, 47vw' %}
+            {%- endfor -%}
+          </div>
+        {%- else -%}
+          <p class="k-empty">{{ 'kapsule.shop.no_results' | t }}</p>
+        {%- endif -%}
+
+        {%- if paginate.pages > 1 -%}
+          <nav class="k-pagination" aria-label="{{ 'content.pagination.nav_label' | t }}">
+            {%- for part in paginate.parts -%}
+              {%- if part.is_link -%}
+                <a class="k-pill" href="{{ part.url }}">{{ part.title }}</a>
+              {%- elsif part.title == paginate.current_page -%}
+                <span class="k-pill is-active" aria-current="page">{{ part.title }}</span>
+              {%- else -%}
+                <span class="k-pill">{{ part.title }}</span>
+              {%- endif -%}
+            {%- endfor -%}
+          </nav>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endpaginate -%}
+</div>
+
+{% schema %}
+{
+  "name": "Kapsule boutique",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Filters come from the Search & Discovery app: enable Product type (categories), Vendor (houses), Tag (concerns, tagged besoin-*) and Price."
+    },
+    { "type": "text", "id": "copy_key", "label": "Default copy key", "default": "shop" },
+    { "type": "text", "id": "kicker", "label": "Kicker" },
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "textarea", "id": "text", "label": "Intro" },
+    {
+      "type": "checkbox",
+      "id": "use_collection_copy",
+      "label": "Use the collection title and description",
+      "info": "Applies to every collection except All products.",
+      "default": true
+    },
+    { "type": "range", "id": "per_page", "label": "Products per page", "min": 12, "max": 48, "step": 12, "default": 48 },
+    { "type": "number", "id": "price_band_1", "label": "First price band limit", "default": 30 },
+    { "type": "number", "id": "price_band_2", "label": "Second price band limit", "default": 55 }
+  ]
+}
+{% endschema %}

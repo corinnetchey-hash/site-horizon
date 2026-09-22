@@ -1,0 +1,19 @@
+{%- assign copy_key = 'kapsule.' | append: section.settings.copy_key | append: '.' -%}
+{%- capture label -%}
+  {%- render 'kapsule-t', value: section.settings.text, key: copy_key, field: 'text' -%}
+{%- endcapture -%}
+<div class="k-container" style="padding-top: {{ section.settings.padding_top }}px">
+  {% render 'kapsule-meander', label: label %}
+</div>
+
+{% schema %}
+{
+  "name": "Kapsule greek-key band",
+  "settings": [
+    { "type": "text", "id": "copy_key", "label": "Default copy key", "default": "home.band" },
+    { "type": "text", "id": "text", "label": "Label" },
+    { "type": "range", "id": "padding_top", "label": "Top spacing", "min": 0, "max": 60, "step": 2, "unit": "px", "default": 22 }
+  ],
+  "presets": [{ "name": "Kapsule greek-key band" }]
+}
+{% endschema %}

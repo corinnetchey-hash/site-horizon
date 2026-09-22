@@ -1,0 +1,19 @@
+{%- assign copy_key = 'kapsule.' | append: section.settings.copy_key | append: '.' -%}
+<div class="k-container" style="padding-top: 44px">
+  <blockquote class="k-quote">
+    <p>{% render 'kapsule-t', value: section.settings.quote, key: copy_key, field: 'text' %}</p>
+    <footer>{% render 'kapsule-t', value: section.settings.author, key: copy_key, field: 'author' %}</footer>
+  </blockquote>
+</div>
+
+{% schema %}
+{
+  "name": "Kapsule pull quote",
+  "settings": [
+    { "type": "text", "id": "copy_key", "label": "Default copy key", "default": "institut.quote" },
+    { "type": "textarea", "id": "quote", "label": "Quote" },
+    { "type": "text", "id": "author", "label": "Attribution" }
+  ],
+  "presets": [{ "name": "Kapsule pull quote" }]
+}
+{% endschema %}

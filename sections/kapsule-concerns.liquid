@@ -1,0 +1,91 @@
+{%- liquid
+  assign copy_key = 'kapsule.' | append: section.settings.copy_key | append: '.'
+  assign source = section.settings.collection
+  if source == blank
+    assign source = collections['all']
+  endif
+-%}
+<div class="k-container k-section">
+  <div class="k-head-row">
+    <h2 class="k-h2">{% render 'kapsule-t', value: section.settings.heading, key: copy_key, field: 'heading' %}</h2>
+    <span class="k-meta">{% render 'kapsule-t', value: section.settings.subheading, key: copy_key, field: 'subheading' %}</span>
+  </div>
+  <div class="k-concerns">
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign tag = 'besoin-' | append: block.settings.concern
+        assign count = 0
+        for product in source.products limit: 250
+          for product_tag in product.tags
+            assign product_tag_handle = product_tag | handleize
+            if product_tag_handle == tag
+              assign count = count | plus: 1
+              break
+            endif
+          endfor
+        endfor
+        assign label_key = 'kapsule.concerns.' | append: block.settings.concern
+        assign filter_url = source.url | append: '?filter.p.tag=' | append: tag
+      -%}
+      <a class="k-concern" href="{{ filter_url }}" style="background: {{ block.settings.background }}" {{ block.shopify_attributes }}>
+        <span class="k-concern__label">
+          {%- if block.settings.label != blank -%}{{ block.settings.label }}{%- else -%}{{ label_key | t }}{%- endif -%}
+        </span>
+        <span class="k-concern__count">{{ 'kapsule.general.products_count' | t: count: count }}</span>
+      </a>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Kapsule skin concerns",
+  "settings": [
+    { "type": "text", "id": "copy_key", "label": "Default copy key", "default": "home.concerns" },
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "text", "id": "subheading", "label": "Subheading" },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "info": "Tiles link to this collection filtered by the concern tag. Defaults to all products."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "concern",
+      "name": "Concern",
+      "settings": [
+        {
+          "type": "select",
+          "id": "concern",
+          "label": "Concern",
+          "info": "Matches products tagged besoin-<concern>, e.g. besoin-eclat.",
+          "options": [
+            { "value": "eclat", "label": "Éclat & teint terne" },
+            { "value": "age", "label": "Rides & fermeté" },
+            { "value": "secheresse", "label": "Sécheresse" },
+            { "value": "sensible", "label": "Peau sensible" },
+            { "value": "rougeurs", "label": "Rougeurs" }
+          ],
+          "default": "eclat"
+        },
+        { "type": "text", "id": "label", "label": "Label override" },
+        { "type": "color", "id": "background", "label": "Background", "default": "#F1E8EC" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kapsule skin concerns",
+      "blocks": [
+        { "type": "concern", "settings": { "concern": "eclat", "background": "#F1E8EC" } },
+        { "type": "concern", "settings": { "concern": "age", "background": "#E9EAE2" } },
+        { "type": "concern", "settings": { "concern": "secheresse", "background": "#EDE6DC" } },
+        { "type": "concern", "settings": { "concern": "sensible", "background": "#E6EDEA" } },
+        { "type": "concern", "settings": { "concern": "rougeurs", "background": "#F0E9E3" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

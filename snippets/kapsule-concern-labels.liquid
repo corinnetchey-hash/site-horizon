@@ -1,0 +1,26 @@
+{%- comment -%}
+  Outputs the translated skin-concern labels of a product, joined with " · ".
+  Concerns are product tags prefixed with `besoin-` (e.g. `besoin-eclat`).
+
+  Accepts:
+  - product {product}
+{%- endcomment -%}
+{%- liquid
+  assign labels = ''
+  for tag in product.tags
+    assign tag_handle = tag | handleize
+    if tag_handle contains 'besoin-'
+      assign concern_key = tag_handle | remove_first: 'besoin-' | replace: '-', '_'
+      assign translation_key = 'kapsule.concerns.' | append: concern_key
+      assign label = translation_key | t
+      if label contains 'ranslation missing'
+        assign label = tag | remove_first: 'besoin-'
+      endif
+      if labels != blank
+        assign labels = labels | append: ' · '
+      endif
+      assign labels = labels | append: label
+    endif
+  endfor
+  echo labels
+-%}

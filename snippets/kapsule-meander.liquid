@@ -1,0 +1,16 @@
+{%- comment -%}
+  Greek-key band with a centred pill label.
+
+  Accepts:
+  - label {string}
+{%- endcomment -%}
+<div class="k-band">
+  <div class="k-band__motif" aria-hidden="true">
+    {%- for i in (1..40) -%}
+      <span class="k-band__square"></span>
+    {%- endfor -%}
+  </div>
+  {%- if label != blank -%}
+    <div class="k-band__label">{{ label }}</div>
+  {%- endif -%}
+</div>

@@ -1,0 +1,28 @@
+{%- assign copy_key = 'kapsule.' | append: section.settings.copy_key | append: '.' -%}
+<div class="k-container" id="b2b" style="padding-top: 16px; padding-bottom: 64px">
+  <div class="k-b2b">
+    <div>
+      <h2 class="k-b2b__title">{% render 'kapsule-t', value: section.settings.heading, key: copy_key, field: 'heading' %}</h2>
+      <p class="k-b2b__text">{% render 'kapsule-t', value: section.settings.text, key: copy_key, field: 'text' %}</p>
+    </div>
+    <div class="k-b2b__cta">
+      <a class="k-btn k-btn--sage" style="padding:15px 30px" href="{{ section.settings.link }}">
+        {%- render 'kapsule-t', value: section.settings.button, key: copy_key, field: 'button' -%}
+      </a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Kapsule B2B panel",
+  "settings": [
+    { "type": "text", "id": "copy_key", "label": "Default copy key", "default": "vision.b2b" },
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "textarea", "id": "text", "label": "Text" },
+    { "type": "text", "id": "button", "label": "Button label" },
+    { "type": "url", "id": "link", "label": "Button link", "default": "/pages/contact" }
+  ],
+  "presets": [{ "name": "Kapsule B2B panel" }]
+}
+{% endschema %}

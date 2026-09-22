@@ -1,0 +1,21 @@
+{%- assign copy_key = 'kapsule.' | append: section.settings.copy_key | append: '.' -%}
+<section class="k-vision-intro k-fade">
+  <div class="k-kicker">{% render 'kapsule-t', value: section.settings.kicker, key: copy_key, field: 'kicker' %}</div>
+  <h1 class="k-h1">{% render 'kapsule-t', value: section.settings.heading, key: copy_key, field: 'heading' %}</h1>
+  <p class="k-vision-intro__text">{% render 'kapsule-t', value: section.settings.text, key: copy_key, field: 'text' %}</p>
+  <p class="k-vision-intro__quote">{% render 'kapsule-t', value: section.settings.quote, key: copy_key, field: 'quote' %}</p>
+</section>
+
+{% schema %}
+{
+  "name": "Kapsule vision intro",
+  "settings": [
+    { "type": "text", "id": "copy_key", "label": "Default copy key", "default": "vision.intro" },
+    { "type": "text", "id": "kicker", "label": "Kicker" },
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "textarea", "id": "text", "label": "Text" },
+    { "type": "textarea", "id": "quote", "label": "Italic statement" }
+  ],
+  "presets": [{ "name": "Kapsule vision intro" }]
+}
+{% endschema %}

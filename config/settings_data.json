@@ -49,9 +49,9 @@
     "badge_corner_radius": 100,
     "badge_text_transform": "none",
     "primary_button_border_width": 0,
-    "button_border_radius_primary": 14,
+    "button_border_radius_primary": 100,
     "secondary_button_border_width": 1,
-    "button_border_radius_secondary": 14,
+    "button_border_radius_secondary": 100,
     "cart_type": "drawer",
     "cart_price_font": "subheading",
     "show_cart_note": false,
@@ -77,12 +77,14 @@
     "palette_input_border": "{{ settings.color_palette.color3 }}",
     "palette_variant_border": "{{ settings.color_palette.color3 }}",
     "color_palette": {
-      "background": "#ffffff",
-      "foreground": "#000000",
-      "color1": "#333333",
-      "color2": "#EEF1EA",
-      "color3": "#DFDFDF"
-    }
+      "background": "#F7F4EE",
+      "foreground": "#1A1714",
+      "color1": "#1A1714",
+      "color2": "#EFEBE1",
+      "color3": "#E3DED5"
+    },
+    "kapsule_free_shipping": 49,
+    "kapsule_quiz_enabled": true
   },
   "presets": {
     "Default": {

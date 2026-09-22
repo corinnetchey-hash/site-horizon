@@ -1,0 +1,43 @@
+{%- comment -%}
+  Right-hand cart drawer. Lines are rendered by assets/kapsule.js from the AJAX Cart API.
+{%- endcomment -%}
+<div class="k-drawer" data-k-cart-drawer hidden>
+  <div class="k-scrim" data-k-cart-close></div>
+  <div
+    class="k-drawer__panel"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="KapsuleCartTitle"
+  >
+    <div class="k-drawer__head">
+      <h2 class="k-drawer__title" id="KapsuleCartTitle">{{ 'kapsule.cart.title' | t }}</h2>
+      <button type="button" class="k-link-btn" data-k-cart-close data-k-autofocus>
+        {{- 'kapsule.general.close' | t -}}
+      </button>
+    </div>
+    <div class="k-drawer__ship">
+      {% render 'kapsule-ship' %}
+    </div>
+    <div class="k-drawer__lines">
+      <div data-k-cart-lines></div>
+      <div class="k-drawer__empty" data-k-cart-empty {% if cart.item_count > 0 %}hidden{% endif %}>
+        <p>{{ 'kapsule.cart.empty' | t }}</p>
+        <a class="k-btn k-btn--dark k-btn--sm" href="{{ routes.all_products_collection_url }}">
+          {{- 'kapsule.home.hero.cta' | t -}}
+        </a>
+      </div>
+    </div>
+    <div class="k-drawer__foot" data-k-cart-foot {% if cart.item_count == 0 %}hidden{% endif %}>
+      <div class="k-drawer__subtotal">
+        <span>{{ 'kapsule.cart.subtotal' | t }}</span>
+        <strong data-k-cart-subtotal>{{ cart.total_price | money }}</strong>
+      </div>
+      <form action="{{ routes.cart_url }}" method="post">
+        <button type="submit" name="checkout" class="k-btn k-btn--bordeaux k-drawer__checkout">
+          {{- 'kapsule.cart.checkout' | t -}}
+        </button>
+      </form>
+      <div class="k-drawer__note">{{ 'kapsule.cart.foot' | t }}</div>
+    </div>
+  </div>
+</div>

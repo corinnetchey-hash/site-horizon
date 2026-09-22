@@ -1,0 +1,114 @@
+{%- comment -%}
+  Floating diagnostic bubble + 3-question quiz modal.
+  Products are matched on their `besoin-*` tags; the pool comes from the collection chosen
+  in Theme settings › Kapsule.
+{%- endcomment -%}
+{%- liquid
+  assign quiz_collection = settings.kapsule_quiz_collection
+  if quiz_collection == blank
+    assign quiz_collection = collections['all']
+  endif
+-%}
+{%- unless template.name == 'product' -%}
+  <button type="button" class="k-bubble" data-k-quiz-open aria-haspopup="dialog">
+    <img
+      src="{{ 'kapsule-monogram.png' | asset_url }}"
+      alt=""
+      width="36"
+      height="36"
+      loading="lazy"
+    >
+    <span class="k-bubble__text">
+      <span class="k-bubble__title">{{ 'kapsule.quiz.cta' | t }}</span>
+      <span class="k-bubble__kicker">{{ 'kapsule.quiz.kicker' | t }}</span>
+    </span>
+  </button>
+{%- endunless -%}
+
+<div class="k-modal" data-k-quiz hidden>
+  <div class="k-scrim" data-k-quiz-close></div>
+  <div class="k-modal__panel" role="dialog" aria-modal="true" aria-labelledby="KapsuleQuizTitle">
+    <div class="k-modal__head">
+      <span class="k-kicker" data-k-quiz-step></span>
+      <button type="button" class="k-link-btn" data-k-quiz-close data-k-autofocus>
+        {{- 'kapsule.general.close' | t -}}
+      </button>
+    </div>
+    <div data-k-quiz-asking>
+      <h2 class="k-modal__title" id="KapsuleQuizTitle" data-k-quiz-question></h2>
+      <div class="k-quiz__options" data-k-quiz-options></div>
+    </div>
+    <div data-k-quiz-result hidden>
+      <h2 class="k-modal__title">{{ 'kapsule.quiz.result_title' | t }}</h2>
+      <p class="k-quiz__sub">{{ 'kapsule.quiz.result_text' | t }}</p>
+      <div class="k-quiz__picks" data-k-quiz-picks></div>
+      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-top:18px">
+        <button type="button" class="k-btn k-btn--dark k-btn--sm" data-k-quiz-add-all data-k-add-many="">
+          {{- 'kapsule.quiz.add_all' | t -}}
+        </button>
+        <button type="button" class="k-underline-link" data-k-quiz-restart style="font-size:12.5px;color:var(--k-ink-3)">
+          {{- 'kapsule.quiz.restart' | t -}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="application/json" data-k-quiz-json>
+  {
+    "questions": [
+      {
+        "q": {{ 'kapsule.quiz.q1' | t | json }},
+        "options": [
+          { "label": {{ 'kapsule.quiz.q1_a' | t | json }}, "concern": "secheresse" },
+          { "label": {{ 'kapsule.quiz.q1_b' | t | json }}, "concern": "eclat" },
+          { "label": {{ 'kapsule.quiz.q1_c' | t | json }}, "concern": "sensible" },
+          { "label": {{ 'kapsule.quiz.q1_d' | t | json }}, "concern": "eclat" }
+        ]
+      },
+      {
+        "q": {{ 'kapsule.quiz.q2' | t | json }},
+        "options": [
+          { "label": {{ 'kapsule.quiz.q2_a' | t | json }}, "concern": "eclat" },
+          { "label": {{ 'kapsule.quiz.q2_b' | t | json }}, "concern": "age" },
+          { "label": {{ 'kapsule.quiz.q2_c' | t | json }}, "concern": "rougeurs" },
+          { "label": {{ 'kapsule.quiz.q2_d' | t | json }}, "concern": "secheresse" }
+        ]
+      },
+      {
+        "q": {{ 'kapsule.quiz.q3' | t | json }},
+        "options": [
+          { "label": {{ 'kapsule.quiz.q3_a' | t | json }}, "concern": "" },
+          { "label": {{ 'kapsule.quiz.q3_b' | t | json }}, "concern": "" },
+          { "label": {{ 'kapsule.quiz.q3_c' | t | json }}, "concern": "" }
+        ]
+      }
+    ],
+    "products": [
+      {%- for product in quiz_collection.products limit: 50 -%}
+        {%- unless product.available -%}{%- continue -%}{%- endunless -%}
+        {%- liquid
+          assign concerns = ''
+          for tag in product.tags
+            assign tag_handle = tag | handleize
+            if tag_handle contains 'besoin-'
+              assign concern = tag_handle | remove_first: 'besoin-'
+              assign concerns = concerns | append: concern | append: ','
+            endif
+          endfor
+          assign concern_list = concerns | split: ','
+        -%}
+        {%- unless first_written -%}{%- assign first_written = true -%}{%- else -%},{%- endunless -%}
+        {
+          "title": {{ product.title | json }},
+          "vendor": {{ product.vendor | json }},
+          "url": {{ product.url | json }},
+          "image": {% if product.featured_media %}{{ product.featured_media | image_url: width: 400 | json }}{% else %}null{% endif %},
+          "price": {{ product.selected_or_first_available_variant.price | json }},
+          "variant": {{ product.selected_or_first_available_variant.id | json }},
+          "concerns": {{ concern_list | json }}
+        }
+      {%- endfor -%}
+    ]
+  }
+</script>

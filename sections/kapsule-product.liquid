@@ -1,0 +1,240 @@
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign copy_key = 'kapsule.product.'
+  assign media_list = product.media | where: 'media_type', 'image'
+  assign main_media = current_variant.featured_media | default: product.featured_media
+  assign show_variants = true
+  if product.has_only_default_variant
+    assign show_variants = false
+  endif
+  assign description = product.description | strip_html | strip_newlines
+  assign description_limit = section.settings.description_length
+-%}
+
+<div class="k-container k-pdp k-fade" data-k-product>
+  <nav class="k-breadcrumb" aria-label="Breadcrumb" style="margin-top:0">
+    <a href="{{ routes.root_url }}">{{ 'kapsule.general.home' | t }}</a> /
+    <a href="{{ routes.all_products_collection_url }}">{{ 'kapsule.general.shop' | t }}</a> /
+    {{ product.title }}
+  </nav>
+
+  <div class="k-pdp__grid">
+    <div>
+      <div class="k-pdp__main">
+        {%- if main_media -%}
+          {{
+            main_media
+            | image_url: width: 1400
+            | image_tag:
+              widths: '480, 720, 960, 1200, 1400',
+              sizes: '(min-width: 700px) 52vw, 100vw',
+              loading: 'eager',
+              fetchpriority: 'high',
+              alt: main_media.alt,
+              data-k-main-image: ''
+          }}
+        {%- endif -%}
+        {%- if product.vendor != blank -%}
+          <span class="k-brand-pill">{{ product.vendor }}</span>
+        {%- endif -%}
+      </div>
+      {%- if media_list.size > 1 -%}
+        <div class="k-pdp__thumbs">
+          {%- for media in media_list limit: 8 -%}
+            {%- liquid
+              assign thumb_src = media | image_url: width: 1400
+              assign thumb_srcset = ''
+              assign widths = '480,720,960,1200,1400' | split: ','
+              for w in widths
+                assign width_int = w | plus: 0
+                assign url = media | image_url: width: width_int
+                assign thumb_srcset = thumb_srcset | append: url | append: ' ' | append: w | append: 'w'
+                unless forloop.last
+                  assign thumb_srcset = thumb_srcset | append: ', '
+                endunless
+              endfor
+            -%}
+            <button
+              type="button"
+              class="k-pdp__thumb"
+              data-k-thumb
+              data-src="{{ thumb_src }}"
+              data-srcset="{{ thumb_srcset }}"
+              aria-current="{% if media.id == main_media.id %}true{% else %}false{% endif %}"
+              aria-label="{{ media.alt | default: product.title | escape }} {{ forloop.index }}"
+            >
+              {{ media | image_url: width: 240 | image_tag: loading: 'lazy', alt: '' }}
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="k-pdp__info">
+      <div class="k-kicker">{{ product.vendor }}</div>
+      <h1 class="k-pdp__title">{{ product.title }}</h1>
+      {%- if description != blank -%}
+        <p class="k-pdp__desc">
+          {%- if description.size > description_limit -%}
+            {%- liquid
+              assign clipped = description | slice: 0, description_limit
+              assign sentences = clipped | split: '. '
+              if sentences.size > 1
+                assign last = sentences | last
+                assign clipped = clipped | remove_last: last | strip
+              endif
+            -%}
+            {{ clipped }}
+          {%- else -%}
+            {{ description }}
+          {%- endif -%}
+        </p>
+      {%- endif -%}
+
+      <div class="k-pdp__benefits">
+        {%- for i in (1..3) -%}
+          {%- assign setting_id = 'benefit_' | append: i -%}
+          {%- capture benefit -%}{% render 'kapsule-t', value: section.settings[setting_id], key: copy_key, field: setting_id %}{%- endcapture -%}
+          {%- if benefit != blank -%}
+            <span>{{ benefit }}</span>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      {%- form 'product', product, data-k-product-form: '', novalidate: 'novalidate' -%}
+        <input type="hidden" name="id" value="{{ current_variant.id }}">
+
+        {%- if show_variants -%}
+          <div class="k-pdp__label" id="KapsuleVariantLabel">
+            {%- if product.options.size == 1 -%}{{ product.options.first | upcase }}{%- else -%}{{ 'kapsule.product.format' | t }}{%- endif -%}
+          </div>
+          <div class="k-variants" role="radiogroup" aria-labelledby="KapsuleVariantLabel">
+            {%- for variant in product.variants -%}
+              <button
+                type="button"
+                class="k-variant"
+                role="radio"
+                data-k-variant="{{ variant.id }}"
+                aria-checked="{% if variant.id == current_variant.id %}true{% else %}false{% endif %}"
+                {% unless variant.available %}
+                  aria-disabled="true"
+                {% endunless %}
+              >
+                <span class="k-variant__size">{{ variant.title }}</span>
+                <span class="k-variant__price">{{ variant.price | money }}</span>
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        <div class="k-pdp__price">
+          <span class="k-pdp__price-value" data-k-price>{{ current_variant.price | money }}</span>
+          <span class="k-pdp__price-unit" data-k-unit>
+            {%- if show_variants %}{{ current_variant.title }} · {% endif -%}
+            {%- assign unit_price = current_variant.price | money -%}
+            {{- 'kapsule.product.each' | t: price: unit_price -}}
+          </span>
+          {%- if current_variant.compare_at_price > current_variant.price -%}
+            <s class="k-pdp__price-unit">{{ current_variant.compare_at_price | money }}</s>
+          {%- endif -%}
+        </div>
+
+        <div class="k-pdp__buy">
+          <div class="k-qty">
+            <button type="button" data-k-qty="-1" aria-label="{{ 'kapsule.cart.decrease' | t }}">−</button>
+            <label class="k-visually-hidden" for="KapsuleQty">{{ 'kapsule.product.quantity' | t }}</label>
+            <input id="KapsuleQty" type="number" name="quantity" value="1" min="1" inputmode="numeric">
+            <button type="button" data-k-qty="1" aria-label="{{ 'kapsule.cart.increase' | t }}">+</button>
+          </div>
+          <button
+            type="submit"
+            class="k-btn k-btn--bordeaux k-pdp__add"
+            data-k-add-button
+            {% unless current_variant.available %}
+              disabled
+            {% endunless %}
+          >
+            {%- if current_variant.available -%}
+              {{ 'kapsule.product.add_to_cart' | t }}
+            {%- else -%}
+              {{ 'kapsule.product.sold_out' | t }}
+            {%- endif -%}
+          </button>
+        </div>
+        {{ form | payment_terms }}
+      {%- endform -%}
+
+      {% render 'kapsule-ship', boxed: true %}
+
+      <ul class="k-reassurance">
+        {%- for i in (1..4) -%}
+          {%- assign setting_id = 'reassurance_' | append: i -%}
+          {%- capture line -%}{% render 'kapsule-t', value: section.settings[setting_id], key: copy_key, field: setting_id %}{%- endcapture -%}
+          {%- if line != blank -%}
+            <li>{{ line }}</li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+
+  <script type="application/json" data-k-product-json>
+    {
+      "id": {{ product.id | json }},
+      "variants": [
+        {%- for variant in product.variants -%}
+          {
+            "id": {{ variant.id | json }},
+            "title": {{ variant.title | json }},
+            "price": {{ variant.price | json }},
+            "available": {{ variant.available | json }},
+            "image": {% if variant.featured_media %}{{ variant.featured_media | image_url: width: 1400 | json }}{% else %}null{% endif %}
+          }{%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+</div>
+
+<div class="k-sticky-atc" data-k-sticky-atc>
+  <div class="k-sticky-atc__inner">
+    <div class="k-sticky-atc__product">
+      {%- if product.featured_media -%}
+        {{ product.featured_media | image_url: width: 120 | image_tag: loading: 'lazy', alt: '' }}
+      {%- endif -%}
+      <div>
+        <div class="k-sticky-atc__name">{{ product.title }}</div>
+        <div class="k-sticky-atc__meta">{{ product.vendor }} · <span data-k-sticky-price>{{ current_variant.price | money }}</span></div>
+      </div>
+    </div>
+    <button type="button" class="k-btn k-btn--bordeaux" data-k-sticky-add>
+      {{- 'kapsule.product.add_to_cart' | t -}}
+    </button>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Kapsule product",
+  "settings": [
+    {
+      "type": "range",
+      "id": "description_length",
+      "label": "Description length",
+      "info": "Longer descriptions are clipped on a sentence boundary.",
+      "min": 200,
+      "max": 1000,
+      "step": 20,
+      "default": 460
+    },
+    { "type": "header", "content": "Reassurance", "info": "Leave empty to use the bilingual default copy." },
+    { "type": "text", "id": "benefit_1", "label": "Benefit 1" },
+    { "type": "text", "id": "benefit_2", "label": "Benefit 2" },
+    { "type": "text", "id": "benefit_3", "label": "Benefit 3" },
+    { "type": "text", "id": "reassurance_1", "label": "Delivery line 1" },
+    { "type": "text", "id": "reassurance_2", "label": "Delivery line 2" },
+    { "type": "text", "id": "reassurance_3", "label": "Delivery line 3" },
+    { "type": "text", "id": "reassurance_4", "label": "Delivery line 4" }
+  ]
+}
+{% endschema %}

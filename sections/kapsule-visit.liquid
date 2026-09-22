@@ -1,0 +1,38 @@
+{%- assign copy_key = 'kapsule.' | append: section.settings.copy_key | append: '.' -%}
+<div class="k-container k-section--end" style="padding-top: 38px">
+  <div class="k-split">
+    <div class="k-media k-tint--{{ section.settings.tint }}">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1200 | image_tag: sizes: '(min-width: 700px) 50vw, 100vw', loading: 'lazy' }}
+      {%- endif -%}
+    </div>
+    <div class="k-dark-card">
+      <h2 class="k-dark-card__title">{% render 'kapsule-t', value: section.settings.heading, key: copy_key, field: 'heading' %}</h2>
+      <div class="k-dark-card__text">{% render 'kapsule-t', value: section.settings.text, key: copy_key, field: 'text_html' %}</div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Kapsule visit card",
+  "settings": [
+    { "type": "text", "id": "copy_key", "label": "Default copy key", "default": "popup.visit" },
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "richtext", "id": "text", "label": "Address" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    {
+      "type": "select",
+      "id": "tint",
+      "label": "Placeholder tint",
+      "options": [
+        { "value": "popup", "label": "Magenta" },
+        { "value": "bordeaux", "label": "Bordeaux" },
+        { "value": "sage-deep", "label": "Sage" }
+      ],
+      "default": "popup"
+    }
+  ],
+  "presets": [{ "name": "Kapsule visit card" }]
+}
+{% endschema %}
