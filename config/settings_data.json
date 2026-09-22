@@ -84,7 +84,8 @@
       "color3": "#E3DED5"
     },
     "kapsule_free_shipping": 49,
-    "kapsule_quiz_enabled": true
+    "kapsule_quiz_enabled": true,
+    "favicon": "shopify://shop_images/kapsule-monogram.png"
   },
   "presets": {
     "Default": {

@@ -561,17 +561,12 @@
         return;
       }
       stepLabel.textContent = t('quiz_result');
+      /* As in the design: the first three products, in collection order, matching any answered concern */
       const wanted = answers.filter(Boolean);
-      const scored = data.products
-        .map((product) => ({
-          product: product,
-          score: product.concerns.filter((concern) => wanted.indexOf(concern) !== -1).length,
-        }))
-        .filter((entry) => entry.score > 0)
-        .sort((a, b) => b.score - a.score)
-        .slice(0, 3)
-        .map((entry) => entry.product);
-      const selection = scored.length ? scored : data.products.slice(0, 3);
+      const matches = data.products
+        .filter((product) => product.concerns.some((concern) => wanted.indexOf(concern) !== -1))
+        .slice(0, 3);
+      const selection = matches.length ? matches : data.products.slice(0, 3);
       picks.innerHTML = selection.map(cardHtml).join('');
       addAll.setAttribute('data-k-add-many', selection.map((p) => p.variant).join(','));
     }

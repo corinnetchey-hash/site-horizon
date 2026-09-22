@@ -142,9 +142,11 @@
       <h2 class="k-h2 k-h2--sm" style="margin-bottom:18px">{{ 'kapsule.product.related' | t }}</h2>
       <div
         data-k-recommendations
-        data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4&intent=related"
+        {% if section.settings.use_recommendations %}
+          data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4&intent=related"
+        {% endif %}
       >
-        {%- comment -%} Fallback until recommendations load: other products from the pool {%- endcomment -%}
+        {%- comment -%} The first four other products of the pool, as in the design; replaced by Shopify recommendations when enabled {%- endcomment -%}
         <div class="k-grid k-grid--related">
           {%- assign shown = 0 -%}
           {%- for item in pool.products limit: 12 -%}
@@ -183,7 +185,15 @@
       "unit": "%",
       "default": 10
     },
-    { "type": "collection", "id": "bundle_collection", "label": "Product pool", "info": "Defaults to all products." }
+    { "type": "collection", "id": "bundle_collection", "label": "Product pool", "info": "Defaults to all products." },
+    { "type": "header", "content": "Pairs well with" },
+    {
+      "type": "checkbox",
+      "id": "use_recommendations",
+      "label": "Use Shopify product recommendations",
+      "info": "Off: the first four other products of the pool, as in the design.",
+      "default": false
+    }
   ],
   "blocks": [
     {
