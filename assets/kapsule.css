@@ -371,6 +371,82 @@ body.kapsule #header-group {
   z-index: 50;
 }
 
+/* With the scrolling banner, it scrolls away together with the stripe. */
+body.kapsule #header-group:has(.k-marquee) {
+  top: calc(-10px - var(--k-marquee-height));
+}
+
+/* ---------- Scrolling banner ---------- */
+
+:root {
+  --k-marquee-height: 36px;
+}
+
+.k-marquee {
+  height: var(--k-marquee-height);
+  overflow: hidden;
+  background: var(--k-marquee-bg, var(--k-ink));
+  color: var(--k-marquee-fg, var(--k-light));
+  display: flex;
+  align-items: center;
+}
+
+.k-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: k-marquee var(--k-marquee-duration, 40s) linear infinite;
+}
+
+.k-marquee:hover .k-marquee__track,
+.k-marquee:focus-within .k-marquee__track {
+  animation-play-state: paused;
+}
+
+.k-marquee__group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.k-marquee__item {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: inherit;
+  text-decoration: none;
+}
+
+a.k-marquee__item:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.k-marquee__sep {
+  width: 5px;
+  height: 5px;
+  margin: 0 28px;
+  flex-shrink: 0;
+  background: currentColor;
+  opacity: 0.55;
+  transform: rotate(45deg);
+}
+
+@keyframes k-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .k-marquee__track {
+    animation: none;
+  }
+}
+
 .k-header {
   position: relative;
   background: rgba(247, 244, 238, 0.92);

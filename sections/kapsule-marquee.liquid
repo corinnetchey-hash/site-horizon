@@ -1,0 +1,103 @@
+{%- liquid
+  assign items = ''
+  for block in section.blocks
+    assign text = block.settings.text | strip | escape
+    if text == blank
+      assign item_key = 'kapsule.marquee.item_' | append: forloop.index
+      assign text = item_key | t
+      if text contains 'ranslation missing'
+        continue
+      endif
+    endif
+    capture item
+      assign link = block.settings.link | escape
+      if link != blank
+        assign link_target = ''
+        if link contains '://'
+          assign link_target = ' target="_blank" rel="noopener"'
+        endif
+        echo '<a class="k-marquee__item" href="' | append: link | append: '"' | append: link_target | append: '>' | append: text | append: '</a>'
+      else
+        echo '<span class="k-marquee__item">' | append: text | append: '</span>'
+      endif
+      echo '<span class="k-marquee__sep" aria-hidden="true"></span>'
+    endcapture
+    assign items = items | append: item
+  endfor
+-%}
+{%- if items != blank -%}
+  <div
+    class="k-marquee"
+    style="--k-marquee-bg: {{ section.settings.background }}; --k-marquee-fg: {{ section.settings.color }}; --k-marquee-duration: {{ section.settings.duration }}s;"
+  >
+    <div class="k-marquee__track">
+      {%- for i in (1..2) -%}
+        <div class="k-marquee__group"{% if i == 2 %} aria-hidden="true"{% endif %}>
+          {%- for r in (1..section.settings.repeat) -%}
+            {%- if i == 2 -%}
+              {{ items | replace: '<a ', '<a tabindex="-1" ' }}
+            {%- else -%}
+              {{ items }}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Kapsule scrolling banner",
+  "class": "k-marquee-section",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    { "type": "color", "id": "background", "label": "Background", "default": "#1A1714" },
+    { "type": "color", "id": "color", "label": "Text", "default": "#FBF6F0" },
+    {
+      "type": "range",
+      "id": "duration",
+      "label": "Loop duration (seconds)",
+      "info": "Higher is slower.",
+      "min": 10,
+      "max": 90,
+      "step": 5,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "repeat",
+      "label": "Repeat messages",
+      "info": "Repeats the messages so the banner stays full on wide screens.",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 3
+    }
+  ],
+  "blocks": [
+    {
+      "type": "message",
+      "name": "Message",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "info": "Leave empty to use the bilingual default message for this position."
+        },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kapsule scrolling banner",
+      "blocks": [{ "type": "message" }, { "type": "message" }, { "type": "message" }, { "type": "message" }]
+    }
+  ]
+}
+{% endschema %}

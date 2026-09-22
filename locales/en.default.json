@@ -373,6 +373,12 @@
     }
   },
   "kapsule": {
+    "marquee": {
+      "item_1": "Free shipping in France over €49",
+      "item_2": "Store & institute — Paris 3e",
+      "item_3": "Care, ritual and style — Korean excellence",
+      "item_4": "Follow us on Instagram @kapsule.global"
+    },
     "general": {
       "search": "Search",
       "search_placeholder": "Search a product, a house, a concern…",

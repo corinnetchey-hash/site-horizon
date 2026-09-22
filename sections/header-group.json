@@ -11,6 +11,17 @@
   "type": "header",
   "name": "t:names.header",
   "sections": {
+    "kapsule_marquee": {
+      "type": "kapsule-marquee",
+      "blocks": {
+        "message_1": { "type": "message", "settings": {} },
+        "message_2": { "type": "message", "settings": {} },
+        "message_3": { "type": "message", "settings": {} },
+        "message_4": { "type": "message", "settings": { "link": "https://www.instagram.com/kapsule.global" } }
+      },
+      "block_order": ["message_1", "message_2", "message_3", "message_4"],
+      "settings": {}
+    },
     "kapsule_header": {
       "type": "kapsule-header",
       "settings": {
@@ -20,6 +31,7 @@
     }
   },
   "order": [
+    "kapsule_marquee",
     "kapsule_header"
   ]
 }

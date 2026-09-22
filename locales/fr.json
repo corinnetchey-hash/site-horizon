@@ -352,6 +352,12 @@
     }
   },
   "kapsule": {
+    "marquee": {
+      "item_1": "Livraison offerte en France dès 49€ d'achat",
+      "item_2": "Boutique & institut — Paris 3e",
+      "item_3": "Le soin, le rituel et le style — l'excellence coréenne",
+      "item_4": "Suivez-nous sur Instagram @kapsule.global"
+    },
     "general": {
       "search": "Recherche",
       "search_placeholder": "Chercher un produit, une marque, un besoin…",
