@@ -25,7 +25,7 @@
           endfor
         endfor
         assign label_key = 'kapsule.concerns.' | append: block.settings.concern
-        assign filter_url = source.url | append: '?filter.p.tag=' | append: tag
+        assign filter_url = source.url | append: '/' | append: tag
       -%}
       <a class="k-concern" href="{{ filter_url }}" style="background: {{ block.settings.background }}" {{ block.shopify_attributes }}>
         <span class="k-concern__label">

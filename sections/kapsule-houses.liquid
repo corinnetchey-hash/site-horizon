@@ -13,8 +13,7 @@
     <ul class="k-houses__list">
       {%- if section.blocks.size > 0 -%}
         {%- for block in section.blocks -%}
-          {%- assign vendor_param = block.settings.vendor | url_encode -%}
-          {%- assign house_url = source.url | append: '?filter.p.vendor=' | append: vendor_param -%}
+          {%- assign house_url = block.settings.vendor | url_for_vendor -%}
           <li {{ block.shopify_attributes }}>
             <a href="{{ block.settings.link | default: house_url }}">
               {%- if block.settings.logo != blank -%}
@@ -30,7 +29,7 @@
         {%- for vendor in vendors -%}
           {%- if vendor == shop.name -%}{%- continue -%}{%- endif -%}
           <li>
-            <a href="{{ source.url }}?filter.p.vendor={{ vendor | url_encode }}">{{ vendor }}</a>
+            <a href="{{ vendor | url_for_vendor }}">{{ vendor }}</a>
           </li>
         {%- endfor -%}
       {%- endif -%}

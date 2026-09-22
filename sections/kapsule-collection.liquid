@@ -42,6 +42,21 @@
     assign active_category = category_filter.active_values.first
   endif
 
+  # Without Search & Discovery filters, the sidebar falls back to Shopify's native
+  # /collections/types, /collections/vendors and tag URLs.
+  assign is_type_page = false
+  assign is_vendor_page = false
+  if collection.handle == 'types'
+    assign is_type_page = true
+  elsif collection.handle == 'vendors'
+    assign is_vendor_page = true
+  endif
+  assign catalog = collections['all']
+  assign tag_base = collection
+  if is_type_page or is_vendor_page
+    assign tag_base = catalog
+  endif
+
   assign price_min = nil
   assign price_max = nil
   if price_filter
@@ -68,7 +83,17 @@
 {%- endcapture -%}
 
 {%- capture category_links -%}
-  <a class="k-filter-cat" href="{{ all_url }}" {% unless active_category %}aria-current="true"{% endunless %}>
+  {%- liquid
+    assign all_href = all_url
+    unless category_filter
+      assign all_href = routes.all_products_collection_url
+    endunless
+    assign all_current = true
+    if active_category or is_type_page
+      assign all_current = false
+    endif
+  -%}
+  <a class="k-filter-cat" href="{{ all_href }}" {% if all_current %}aria-current="true"{% endif %}>
     {{- 'kapsule.shop.all_products' | t -}}
   </a>
   {%- if category_filter -%}
@@ -87,6 +112,27 @@
         class="k-filter-cat"
         href="{% render 'kapsule-filter-url', filters: collection.filters, base_url: collection.url, exclude: 'filter.p.product_type', add: fragment, sort_by: collection.sort_by %}"
         {% if value.active %}
+          aria-current="true"
+        {% endif %}
+      >
+        {{- label -}}
+      </a>
+    {%- endfor -%}
+  {%- else -%}
+    {%- assign type_list = catalog.all_types | sort_natural -%}
+    {%- for type in type_list -%}
+      {%- if type == blank -%}{%- continue -%}{%- endif -%}
+      {%- liquid
+        assign label_key = type | handleize | replace: '-', '_' | prepend: 'kapsule.categories.'
+        assign label = label_key | t
+        if label contains 'ranslation missing'
+          assign label = type
+        endif
+      -%}
+      <a
+        class="k-filter-cat"
+        href="{{ type | url_for_type }}"
+        {% if is_type_page and collection.title == type %}
           aria-current="true"
         {% endif %}
       >
@@ -162,7 +208,63 @@
               </li>
             {%- endfor -%}
           </ul>
+        {%- elsif catalog.all_vendors.size > 0 -%}
+          <h2 class="k-filter-title">{{ 'kapsule.shop.brands' | t }}</h2>
+          <ul class="k-filter-list">
+            {%- assign vendor_list = catalog.all_vendors | sort_natural -%}
+            {%- for vendor in vendor_list -%}
+              {%- if vendor == shop.name -%}{%- continue -%}{%- endif -%}
+              {%- liquid
+                assign vendor_active = false
+                if is_vendor_page and collection.title == vendor
+                  assign vendor_active = true
+                endif
+              -%}
+              <li>
+                <a
+                  class="k-filter-brand"
+                  href="{% if vendor_active %}{{ routes.all_products_collection_url }}{% else %}{{ vendor | url_for_vendor }}{% endif %}"
+                  {% if vendor_active %}
+                    aria-current="true"
+                  {% endif %}
+                >
+                  <span class="k-filter-brand__dot" aria-hidden="true"></span>
+                  {{- vendor -}}
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
         {%- endif -%}
+
+        {%- unless concern_filter -%}
+          {%- capture concern_chips -%}
+            {%- for tag in tag_base.all_tags -%}
+              {%- assign tag_handle = tag | handleize -%}
+              {%- unless tag_handle contains 'besoin-' -%}{%- continue -%}{%- endunless -%}
+              {%- liquid
+                assign label_key = tag_handle | remove_first: 'besoin-' | replace: '-', '_' | prepend: 'kapsule.concerns.'
+                assign label = label_key | t
+                if label contains 'ranslation missing'
+                  assign label = tag | remove_first: 'besoin-'
+                endif
+                assign tag_active = false
+                if current_tags contains tag
+                  assign tag_active = true
+                endif
+              -%}
+              <a
+                class="k-pill{% if tag_active %} is-active{% endif %}"
+                href="{% if tag_active %}{{ tag_base.url }}{% else %}{{ tag_base.url }}/{{ tag | handle }}{% endif %}"
+              >
+                {{- label -}}
+              </a>
+            {%- endfor -%}
+          {%- endcapture -%}
+          {%- if concern_chips != blank -%}
+            <h2 class="k-filter-title">{{ 'kapsule.shop.concerns' | t }}</h2>
+            <div class="k-filter-chips">{{ concern_chips }}</div>
+          {%- endif -%}
+        {%- endunless -%}
 
         {%- if concern_filter -%}
           {%- capture concern_chips -%}
@@ -243,6 +345,34 @@
 
       <div>
         {%- capture active_chips -%}
+          {%- if is_type_page or is_vendor_page -%}
+            {%- liquid
+              assign page_label = collection.title
+              if is_type_page
+                assign label_key = collection.title | handleize | replace: '-', '_' | prepend: 'kapsule.categories.'
+                assign translated = label_key | t
+                unless translated contains 'ranslation missing'
+                  assign page_label = translated
+                endunless
+              endif
+            -%}
+            <a class="k-pill is-active" href="{{ routes.all_products_collection_url }}" aria-label="{{ 'kapsule.shop.remove_filter' | t: label: page_label }}">
+              {{- page_label }}<span aria-hidden="true">✕</span>
+            </a>
+          {%- endif -%}
+          {%- for tag in current_tags -%}
+            {%- liquid
+              assign tag_label = tag
+              assign label_key = tag | handleize | remove_first: 'besoin-' | replace: '-', '_' | prepend: 'kapsule.concerns.'
+              assign translated = label_key | t
+              unless translated contains 'ranslation missing'
+                assign tag_label = translated
+              endunless
+            -%}
+            <a class="k-pill is-active" href="{{ collection.url }}" aria-label="{{ 'kapsule.shop.remove_filter' | t: label: tag_label }}">
+              {{- tag_label }}<span aria-hidden="true">✕</span>
+            </a>
+          {%- endfor -%}
           {%- for filter in collection.filters -%}
             {%- if filter.type == 'price_range' -%}
               {%- if price_min != nil or price_max != nil -%}

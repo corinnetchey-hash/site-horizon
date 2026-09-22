@@ -14,7 +14,7 @@
     "kapsule_header": {
       "type": "kapsule-header",
       "settings": {
-        "menu": "main-menu",
+        "menu": "",
         "show_language": true
       }
     }
