@@ -52,6 +52,10 @@
     assign is_vendor_page = true
   endif
   assign catalog = collections['all']
+  capture catalog_vendors
+    render 'kapsule-vendor-list', products: catalog.products
+  endcapture
+  assign catalog_vendors = catalog_vendors | split: '|' | uniq | sort_natural
   assign tag_base = collection
   if is_type_page or is_vendor_page
     assign tag_base = catalog
@@ -208,12 +212,10 @@
               </li>
             {%- endfor -%}
           </ul>
-        {%- elsif catalog.all_vendors.size > 0 -%}
+        {%- elsif catalog_vendors.size > 0 -%}
           <h2 class="k-filter-title">{{ 'kapsule.shop.brands' | t }}</h2>
           <ul class="k-filter-list">
-            {%- assign vendor_list = catalog.all_vendors | sort_natural -%}
-            {%- for vendor in vendor_list -%}
-              {%- if vendor == shop.name -%}{%- continue -%}{%- endif -%}
+            {%- for vendor in catalog_vendors -%}
               {%- liquid
                 assign vendor_active = false
                 if is_vendor_page and collection.title == vendor

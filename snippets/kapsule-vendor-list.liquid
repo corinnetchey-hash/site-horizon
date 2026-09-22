@@ -1,0 +1,18 @@
+{%- comment -%}
+  Outputs the vendors of the given products that are in stock, joined by '|'.
+  collection.all_vendors also counts draft products, so the list is built from
+  the storefront-visible products instead.
+
+  Accepts:
+  - products: {Array} products to scan
+{%- endcomment -%}
+{%- liquid
+  assign vendor_list = ''
+  for product in products
+    if product.available == false or product.vendor == blank or product.vendor == shop.name
+      continue
+    endif
+    assign vendor_list = vendor_list | append: '|' | append: product.vendor
+  endfor
+  echo vendor_list | remove_first: '|'
+-%}

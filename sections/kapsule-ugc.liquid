@@ -13,13 +13,24 @@
   </div>
   <div class="k-ugc">
     {%- for block in section.blocks -%}
-      <div class="k-media k-tint--{{ block.settings.tint }}" {{ block.shopify_attributes }}>
+      {%- if section.settings.link != blank -%}
+        <a
+          class="k-media k-tint--{{ block.settings.tint }}"
+          href="{{ section.settings.link }}"
+          target="_blank"
+          rel="noopener"
+          aria-label="{{ handle | strip }}"
+          {{ block.shopify_attributes }}
+        >
+      {%- else -%}
+        <div class="k-media k-tint--{{ block.settings.tint }}" {{ block.shopify_attributes }}>
+      {%- endif -%}
         {%- if block.settings.image != blank -%}
           {{ block.settings.image | image_url: width: 600 | image_tag: sizes: '(min-width: 700px) 16vw, 50vw', loading: 'lazy' }}
         {%- else -%}
           <span class="k-media__label">UGC {{ forloop.index }}</span>
         {%- endif -%}
-      </div>
+      {%- if section.settings.link != blank -%}</a>{%- else -%}</div>{%- endif -%}
     {%- endfor -%}
   </div>
 </div>
