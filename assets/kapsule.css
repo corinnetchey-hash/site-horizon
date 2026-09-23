@@ -3949,3 +3949,34 @@ body:has([data-k-cart-page]) .k-bubble {
 .k-duo__button {
   margin-top: 22px;
 }
+
+@media (max-width: 699px) {
+  .k-treatments--cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .k-treatments--cards .k-treatment {
+    display: grid;
+    grid-template-columns: 112px minmax(0, 1fr);
+    grid-template-rows: 1fr auto;
+  }
+
+  .k-treatments--cards .k-treatment__media {
+    grid-row: 1 / span 2;
+    aspect-ratio: auto;
+    min-height: 112px;
+  }
+
+  .k-treatments--cards .k-treatment__body {
+    padding: 14px 14px 4px;
+  }
+
+  .k-treatments--cards .k-treatment__meta {
+    padding: 0 14px 14px;
+  }
+
+  .k-treatments--cards .k-treatment__name {
+    font-size: 18px;
+  }
+}

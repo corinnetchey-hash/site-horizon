@@ -24,7 +24,8 @@
           {%- if section.settings.layout == 'cards' -%}
             <span class="k-media k-tint--sage k-treatment__media">
               {%- if block.settings.image != blank -%}
-                {{ block.settings.image | image_url: width: 900 | image_tag: sizes: '(min-width: 900px) 30vw, 100vw', loading: 'lazy', alt: name }}
+                {%- assign image_alt = name | replace: '&amp;', '&' -%}
+                {{ block.settings.image | image_url: width: 900 | image_tag: sizes: '(min-width: 900px) 30vw, 100vw', loading: 'lazy', alt: image_alt }}
               {%- endif -%}
             </span>
           {%- endif -%}

@@ -40,47 +40,40 @@
     "treatments": {
       "type": "kapsule-treatments",
       "blocks": {
-        "oak_an_su": {
+        "treatment_1": {
           "type": "treatment",
           "settings": {
-            "copy_key": "institut_page.oak_an_su",
-            "name": "",
-            "text": "",
-            "duration": "",
-            "price": "",
-            "link": "https://www.fresha.com/book-now/kapsule-vpzocr2g/services?lid=2889132&eid=5105548&oiid=sv%3A26746772&share=true&pId=2793504",
+            "copy_key": "institut.treatment_1",
+            "image": "shopify://shop_images/DSC_4017.webp"
+          }
+        },
+        "treatment_2": {
+          "type": "treatment",
+          "settings": {
+            "copy_key": "institut.treatment_2",
             "image": "shopify://shop_images/Photo_Oak-An_Su_Charlotte.jpg"
           }
         },
-        "oak_an_jin": {
+        "treatment_3": {
           "type": "treatment",
           "settings": {
-            "copy_key": "institut_page.oak_an_jin",
-            "name": "",
-            "text": "",
-            "duration": "",
-            "price": "",
-            "link": "https://www.fresha.com/book-now/kapsule-vpzocr2g/services?lid=2889132&eid=5105548&oiid=sv%3A26747282&share=true&pId=2793504",
-            "image": "shopify://shop_images/Kapsule_Palais.webp"
+            "copy_key": "institut.treatment_3",
+            "image": "shopify://shop_images/IMG_5925.jpg"
           }
         },
-        "susu_an": {
+        "treatment_4": {
           "type": "treatment",
           "settings": {
-            "copy_key": "institut_page.susu_an_treatment",
-            "name": "",
-            "text": "",
-            "duration": "",
-            "price": "",
-            "link": "https://www.fresha.com/a/kapsule-paris-10-12-rue-charles-francois-dupuis-mjeorknn?pId=2793504",
-            "image": "shopify://shop_images/IMG_5925.jpg"
+            "copy_key": "institut.treatment_4",
+            "image": "shopify://shop_images/Kapsule_Palais.webp"
           }
         }
       },
       "block_order": [
-        "oak_an_su",
-        "oak_an_jin",
-        "susu_an"
+        "treatment_1",
+        "treatment_2",
+        "treatment_3",
+        "treatment_4"
       ],
       "settings": {
         "copy_key": "institut_page.treatments",
