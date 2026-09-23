@@ -19,8 +19,7 @@
       "type": "kapsule-product-details",
       "settings": {
         "show_ritual": true,
-        "show_bundle": true,
-        "bundle_discount": 10
+        "show_bundle": true
       }
     }
   },
