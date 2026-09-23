@@ -373,6 +373,109 @@
     }
   },
   "kapsule": {
+    "institut_page": {
+      "banner": {
+        "kicker": "KAPSULE PALAIS — PARIS HAUT-MARAIS",
+        "heading": "Institut",
+        "text": "A place where time stands still to make room for transformation — a confidential retreat in the heart of the Haut-Marais, devoted to the renewal of your skin and your serenity.",
+        "body_html": "<p>KAPSULE Palais carries forward the heritage and philosophy of 34 years of Korean structural care. Every practitioner is trained through a rigorous professional programme: our treatments are not about simple relaxation, they are designed for <strong>realignment</strong>, <strong>circulation</strong> and <strong>structural restoration</strong>.</p><p><strong>10 Rue Charles-François Dupuis, 75003 Paris</strong><br>Tuesday to Sunday — 11am to 8pm, by appointment</p>",
+        "button": "Book a treatment"
+      },
+      "fondatrice": {
+        "kicker": "A WORD FROM OUR FOUNDER",
+        "heading": "The Art of Structural Care",
+        "quote": "“Working on the human body ultimately means touching a person's life.”",
+        "text_html": "<p>For 34 years in Korea, I have practised structural aesthetic care guided by this fundamental principle. Through tens of thousands of treatments, I have come to understand that the skin is never an isolated surface. It mirrors the body's circulation, its structural balance and each person's rhythm of life.</p><p>When the body loses its balance, fatigue builds up. Sleep becomes fragile. Mental clarity fades. Over time, these internal changes inevitably leave their mark on the skin.</p><p>That is why I have never seen aesthetics as a mere way of improving appearance. My approach has always been to restore the conditions the body needs to regain its natural ability to recover.</p>"
+      },
+      "technique": {
+        "kicker": "THE METHOD",
+        "heading": "From Technique to System",
+        "text_html": "<p>Rather than relying on intuition or passing techniques, I have devoted my career to building a structured, explainable system of care.</p><p>Drawing on the traditional Korean understanding of meridians, circulation and energy flow, I organised these principles into a clear methodology, refined through more than 20,000 clinical cases.</p><p>Over time, this research gave rise to what I call the <strong>Integrated Tracking Care Method</strong> — a system designed to observe the body, track its structural changes and guide the recovery process.</p><p>The philosophy behind this work goes beyond technique. It is about understanding structure, reading the body's flows and mapping the path back to balance.</p>"
+      },
+      "batang": {
+        "kicker": "THE PHILOSOPHY",
+        "heading": "BATANG, the foundation",
+        "text_html": "<p>In Korean, the word <strong>“Batang (바탕)”</strong> means foundation, base or underlying structure. It refers to the essential layer on which everything is built — the fundamental condition that supports balance, stability and growth.</p><p>At <strong>KAPSULE PALAIS</strong>, BATANG is far more than a treatment. It is the very foundation of our entire aesthetic philosophy.</p>"
+      },
+      "origine": {
+        "kicker": "THE ORIGIN",
+        "heading": "The origin of a Korean royal care ritual",
+        "text_html": "<p>A refined care ritual, inspired by the Korean royal court and carried through time, is reborn today at KAPSULE.</p><p>It is a protocol built on a rigorous system, founded on 34 years of structural aesthetic practice in Korea and more than 20,000 clinical cases. Rooted in the traditional Korean understanding of meridians and energy flow, this method combines traditional tools, precise pressure and rhythmic movements to restore natural circulation and recalibrate the skin's rhythm.</p><p>BATANG is KAPSULE PALAIS's signature programme: rather than focusing on the surface of the skin alone, it works on circulation, lymphatic pathways, muscular balance and structural alignment.</p>"
+      },
+      "visage": {
+        "kicker": "THE FACE AS A STARTING POINT",
+        "heading": "Why start with the face",
+        "text": "Although the human body works as a single, integrated structure, imbalances often show on the face first: tension, puffiness, dull skin, loss of definition — frequently linked to blood circulation, lymphatic flow, muscle tension and imbalances in the neck and shoulders. Our facial treatments work on these underlying structures for better circulation, sharper contours and a visibly more balanced appearance."
+      },
+      "oak_an": {
+        "kicker": "THE BATANG PROGRAMMES",
+        "heading": "OAK-AN (옥안)",
+        "text_html": "<p>A facial ritual using traditional jade tools, designed to boost circulation, stimulate lymphatic flow and restore clarity and vitality to the complexion. It comes as OAK-AN SU — hydration and skin balance — and OAK-AN JIN — anti-ageing and skin resilience, with targeted ampoules for elasticity and firmness. Duration: 1 hour.</p>",
+        "link_label": "Book OAK-AN"
+      },
+      "susu_an": {
+        "kicker": "THE HAND MERIDIAN RITUAL",
+        "heading": "SUSU-AN (수수안)",
+        "text_html": "<p>A high-precision treatment focused on structural balance. Warm towels, precise pressure and rhythmic stimulation of acupressure points along the hand meridians: a condensed diagnostic ritual that releases blockages, calms the nervous system and awakens body awareness.</p>",
+        "link_label": "Book SUSU-AN"
+      },
+      "treatments": {
+        "heading": "Our treatments"
+      },
+      "oak_an_su": {
+        "name": "OAK-AN SU (옥안 수)",
+        "text": "Hydration & skin balance — jade and brass ritual",
+        "duration": "60 min"
+      },
+      "oak_an_jin": {
+        "name": "OAK-AN JIN (옥안 진)",
+        "text": "Anti-ageing & skin resilience — elasticity and firmness ampoules",
+        "duration": "60 min"
+      },
+      "susu_an_treatment": {
+        "name": "SUSU-AN (수수안)",
+        "text": "Hand meridian ritual — structural balance"
+      },
+      "experience": {
+        "kicker": "YOUR VISIT",
+        "heading": "A Tailored Experience",
+        "text_html": "<p>Every visit to KAPSULE PALAIS begins with a personal consultation. Whether you are looking for structural improvement, a soothing treatment or an expert consultation, our practitioners, trained in the most advanced techniques, devote their expertise to what makes you unique.</p>"
+      },
+      "education": {
+        "kicker": "PASSING IT ON",
+        "heading": "Education and Global Practice",
+        "text_html": "<p>Throughout my career, I have not only treated clients; I have also trained aestheticians and practitioners through specialised teaching programmes built on this structural care methodology.</p><p>These programmes do not pass on mere personal intuition. They teach a system that is understandable, reproducible and practised responsibly.</p><p>Today, practitioners trained in this method work not only in Korea but also in the United States and the United Arab Emirates, applying the same philosophy of structural care.</p><p>I do not see myself simply as someone who teaches techniques. I believe my role is to pass on a standard of excellence.</p>"
+      },
+      "exigence": {
+        "kicker": "THE KAPSULE STANDARD",
+        "heading": "Not stimulation, but precision.",
+        "text_html": "<p>Not trends, but quality. Not exaggeration, but ethics. KAPSULE brings together the heritage of traditional Korean care and modern standards of hygiene and safety. Every treatment starts in the same place: the foundation. That foundation is <strong>BATANG</strong>.</p>",
+        "button": "Book online"
+      }
+    },
+    "contact_page": {
+      "main": {
+        "kicker": "KAPSULE & KAPSULE PALAIS",
+        "heading": "Contact us",
+        "intro": "A question about a product, an order or a treatment? Write to us — we reply within 24 to 48 hours.",
+        "form_heading": "Write to us"
+      },
+      "address": {
+        "kicker": "FIND US",
+        "title": "Kapsule & Kapsule Palais",
+        "text_html": "<p>10 - 12 Rue Charles-François Dupuis<br>75003 Paris — Le Marais</p><p><strong>Phone</strong><br><a href=\"tel:+33775705772\">+33 7 75 70 57 72</a></p>"
+      },
+      "shop": {
+        "kicker": "THE BOUTIQUE",
+        "title": "Boutique opening hours",
+        "text_html": "<p><strong>Tuesday to Saturday</strong><br>11am — 7pm</p><p><strong>Sunday &amp; Monday</strong><br>Closed</p>"
+      },
+      "institut": {
+        "kicker": "THE INSTITUT — BY APPOINTMENT",
+        "title": "Kapsule Palais",
+        "text_html": "<p><strong>Tuesday to Sunday</strong><br>11am — 8pm</p><p><strong>Monday</strong><br>Closed</p><p>From 7pm to 8pm Tuesday to Saturday, and all day on Sunday, access is by online booking only.</p>"
+      }
+    },
     "contact": {
       "sent": "Thank you! Your message has been sent — we reply within 24 to 48 hours.",
       "error": "Please check the form fields.",

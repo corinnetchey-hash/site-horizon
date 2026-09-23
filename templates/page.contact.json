@@ -12,35 +12,39 @@
     "main": {
       "type": "kapsule-contact",
       "settings": {
-        "kicker": "KAPSULE & KAPSULE PALAIS",
-        "heading": "Contactez-nous",
-        "intro": "Une question concernant un produit, une commande ou un soin ? Écrivez-nous, nous vous répondons sous 24 à 48 heures.",
-        "form_heading": "Écrivez-nous",
-        "image": "shopify://shop_images/DSC_4017.webp"
+        "kicker": "",
+        "heading": "",
+        "intro": "",
+        "form_heading": "",
+        "image": "shopify://shop_images/DSC_4017.webp",
+        "copy_key": "contact_page.main"
       },
       "blocks": {
         "address": {
           "type": "card",
           "settings": {
-            "kicker": "NOUS TROUVER",
-            "title": "Kapsule & Kapsule Palais",
-            "text": "<p>10 - 12 Rue Charles-François Dupuis<br>75003 Paris — Le Marais</p><p><strong>Téléphone</strong><br><a href=\"tel:+33775705772\">07 75 70 57 72</a></p>"
+            "kicker": "",
+            "title": "",
+            "text": "",
+            "copy_key": "contact_page.address"
           }
         },
         "shop": {
           "type": "card",
           "settings": {
-            "kicker": "LA BOUTIQUE",
-            "title": "Horaires de la boutique",
-            "text": "<p><strong>Mardi au samedi</strong><br>11h00 — 19h00</p><p><strong>Dimanche &amp; lundi</strong><br>Fermé</p>"
+            "kicker": "",
+            "title": "",
+            "text": "",
+            "copy_key": "contact_page.shop"
           }
         },
         "institut": {
           "type": "card",
           "settings": {
-            "kicker": "L'INSTITUT — SUR RENDEZ-VOUS",
-            "title": "Kapsule Palais",
-            "text": "<p><strong>Mardi au dimanche</strong><br>11h00 — 20h00</p><p><strong>Lundi</strong><br>Fermé</p><p>De 19h à 20h du mardi au samedi, et le dimanche toute la journée, accès uniquement sur réservation en ligne.</p>"
+            "kicker": "",
+            "title": "",
+            "text": "",
+            "copy_key": "contact_page.institut"
           }
         }
       },

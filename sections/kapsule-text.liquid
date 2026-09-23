@@ -1,15 +1,30 @@
+{%- liquid
+  assign k = 'kapsule.' | append: section.settings.copy_key | append: '.'
+  capture kicker
+    render 'kapsule-t', value: section.settings.kicker, key: k, field: 'kicker'
+  endcapture
+  capture heading
+    render 'kapsule-t', value: section.settings.heading, key: k, field: 'heading'
+  endcapture
+  capture text
+    render 'kapsule-t', value: section.settings.text, key: k, field: 'text_html'
+  endcapture
+  capture button_label
+    render 'kapsule-t', value: section.settings.button_label, key: k, field: 'button'
+  endcapture
+-%}
 <div class="k-container k-section{% if section.settings.style != 'plain' %} k-text-wrap{% endif %}">
   <div class="k-text k-text--{{ section.settings.style }} k-text--{{ section.settings.alignment }}">
-    {%- if section.settings.kicker != blank -%}
-      <div class="k-kicker">{{ section.settings.kicker }}</div>
+    {%- if kicker != blank -%}
+      <div class="k-kicker">{{ kicker }}</div>
     {%- endif -%}
-    {%- if section.settings.heading != blank -%}
-      <h2 class="k-h2 k-text__heading">{{ section.settings.heading }}</h2>
+    {%- if heading != blank -%}
+      <h2 class="k-h2 k-text__heading">{{ heading }}</h2>
     {%- endif -%}
-    {%- if section.settings.text != blank -%}
-      <div class="k-text__body k-rte">{{ section.settings.text }}</div>
+    {%- if text != blank -%}
+      <div class="k-text__body k-rte">{{ text }}</div>
     {%- endif -%}
-    {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+    {%- if button_label != blank and section.settings.button_link != blank -%}
       <a
         class="k-btn {% if section.settings.style == 'bordeaux' %}k-btn--light{% else %}k-btn--dark{% endif %} k-text__button"
         href="{{ section.settings.button_link }}"
@@ -17,7 +32,7 @@
           target="_blank" rel="noopener"
         {% endif %}
       >
-        {{- section.settings.button_label -}}
+        {{- button_label -}}
       </a>
     {%- endif -%}
   </div>
@@ -48,6 +63,7 @@
       ],
       "default": "left"
     },
+    { "type": "text", "id": "copy_key", "label": "Default copy key", "info": "Texts left empty come from the theme language files under this key." },
     { "type": "text", "id": "kicker", "label": "Kicker" },
     { "type": "text", "id": "heading", "label": "Heading" },
     { "type": "richtext", "id": "text", "label": "Text" },

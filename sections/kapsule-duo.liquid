@@ -5,27 +5,51 @@
         class="k-duo__col{% if section.settings.layout == 'separate' %} k-duo--{{ block.settings.style }}{% endif %}"
         {{ block.shopify_attributes }}
       >
-        {%- if block.settings.kicker != blank -%}
-          <div class="k-kicker">{{ block.settings.kicker }}</div>
+        {%- liquid
+          assign k = 'kapsule.' | append: block.settings.copy_key | append: '.'
+          capture kicker
+            render 'kapsule-t', value: block.settings.kicker, key: k, field: 'kicker'
+          endcapture
+          capture heading
+            render 'kapsule-t', value: block.settings.heading, key: k, field: 'heading'
+          endcapture
+          capture quote
+            render 'kapsule-t', value: block.settings.quote, key: k, field: 'quote'
+          endcapture
+          capture text
+            render 'kapsule-t', value: block.settings.text, key: k, field: 'text_html'
+          endcapture
+          capture link_label
+            render 'kapsule-t', value: block.settings.link_label, key: k, field: 'link_label'
+          endcapture
+          assign light_button = false
+          if section.settings.layout == 'separate' and block.settings.style == 'bordeaux'
+            assign light_button = true
+          elsif section.settings.layout == 'joined' and section.settings.style == 'bordeaux'
+            assign light_button = true
+          endif
+        -%}
+        {%- if kicker != blank -%}
+          <div class="k-kicker">{{ kicker }}</div>
         {%- endif -%}
-        {%- if block.settings.heading != blank -%}
-          <h2 class="k-h2 k-duo__heading">{{ block.settings.heading }}</h2>
+        {%- if heading != blank -%}
+          <h2 class="k-h2 k-duo__heading">{{ heading }}</h2>
         {%- endif -%}
-        {%- if block.settings.quote != blank -%}
-          <blockquote class="k-duo__quote">{{ block.settings.quote }}</blockquote>
+        {%- if quote != blank -%}
+          <blockquote class="k-duo__quote">{{ quote }}</blockquote>
         {%- endif -%}
-        {%- if block.settings.text != blank -%}
-          <div class="k-duo__body k-rte">{{ block.settings.text }}</div>
+        {%- if text != blank -%}
+          <div class="k-duo__body k-rte">{{ text }}</div>
         {%- endif -%}
-        {%- if block.settings.link_label != blank and block.settings.link != blank -%}
+        {%- if link_label != blank and block.settings.link != blank -%}
           <a
-            class="k-btn {% if block.settings.style == 'bordeaux' and section.settings.layout == 'separate' %}k-btn--light{% elsif section.settings.style == 'bordeaux' and section.settings.layout == 'joined' %}k-btn--light{% else %}k-btn--dark{% endif %} k-duo__button"
+            class="k-btn {% if light_button %}k-btn--light{% else %}k-btn--dark{% endif %} k-duo__button"
             href="{{ block.settings.link }}"
             {% if block.settings.link contains '://' %}
               target="_blank" rel="noopener"
             {% endif %}
           >
-            {{- block.settings.link_label -}}
+            {{- link_label -}}
           </a>
         {%- endif -%}
       </div>
@@ -76,6 +100,7 @@
           ],
           "default": "surface"
         },
+        { "type": "text", "id": "copy_key", "label": "Default copy key", "info": "Texts left empty come from the theme language files under this key." },
         { "type": "text", "id": "kicker", "label": "Kicker" },
         { "type": "text", "id": "heading", "label": "Heading" },
         { "type": "textarea", "id": "quote", "label": "Quote" },
