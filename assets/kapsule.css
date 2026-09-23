@@ -385,8 +385,8 @@ body.kapsule #header-group:has(.k-marquee) {
 .k-marquee {
   height: var(--k-marquee-height);
   overflow: hidden;
-  background: var(--k-marquee-bg, var(--k-ink));
-  color: var(--k-marquee-fg, var(--k-light));
+  background: var(--k-marquee-bg, #c7203f);
+  color: var(--k-marquee-fg, #fff);
   display: flex;
   align-items: center;
 }
@@ -410,6 +410,7 @@ body.kapsule #header-group:has(.k-marquee) {
 
 .k-marquee__item {
   font-size: 11px;
+  font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   white-space: nowrap;

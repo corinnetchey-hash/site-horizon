@@ -20,7 +20,10 @@
         "message_4": { "type": "message", "settings": { "link": "https://www.instagram.com/kapsule.global" } }
       },
       "block_order": ["message_1", "message_2", "message_3", "message_4"],
-      "settings": {}
+      "settings": {
+        "background": "#C7203F",
+        "color": "#FFFFFF"
+      }
     },
     "kapsule_header": {
       "type": "kapsule-header",
