@@ -37,7 +37,7 @@
         <ul class="k-footer__links">
           {%- if block.settings.menu.links.size > 0 -%}
             {%- for link in block.settings.menu.links -%}
-              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              <li><a href="{{ link.url }}"{% if link.url contains '://' %} target="_blank" rel="noopener"{% endif %}>{{ link.title }}</a></li>
             {%- endfor -%}
           {%- elsif block.settings.preset == 'services' -%}
             <li><a href="{{ routes.all_products_collection_url }}">{{ 'kapsule.footer.store' | t }}</a></li>

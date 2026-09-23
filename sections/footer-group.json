@@ -18,14 +18,14 @@
           "type": "column",
           "settings": {
             "preset": "services",
-            "menu": "footer"
+            "menu": "services-kapsule-new"
           }
         },
         "column_infos": {
           "type": "column",
           "settings": {
             "preset": "infos",
-            "menu": "informations"
+            "menu": "informations-kapsule-new"
           }
         },
         "column_social": {
