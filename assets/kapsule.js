@@ -625,6 +625,74 @@
     });
   });
 
+  /* --------------------------------------------------------- hero carousel */
+
+  function initCarousel(root) {
+    if (root.dataset.kCarouselReady) return;
+    root.dataset.kCarouselReady = 'true';
+    const track = root.querySelector('[data-k-carousel-track]');
+    const slides = Array.from(root.querySelectorAll('[data-k-carousel-slide]'));
+    const dots = Array.from(root.querySelectorAll('[data-k-carousel-dot]'));
+    if (!track || slides.length < 2) return;
+    let current = 0;
+    let timer = null;
+    const delay = Number(root.getAttribute('data-k-carousel-autoplay')) || 0;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function goTo(index) {
+      current = (index + slides.length) % slides.length;
+      track.scrollTo({ left: slides[current].offsetLeft - track.offsetLeft, behavior: reduceMotion ? 'auto' : 'smooth' });
+    }
+
+    function sync() {
+      const index = Math.round(track.scrollLeft / Math.max(track.clientWidth, 1));
+      current = Math.min(Math.max(index, 0), slides.length - 1);
+      dots.forEach((dot, i) => dot.setAttribute('aria-current', String(i === current)));
+      slides.forEach((slide, i) => slide.toggleAttribute('inert', i !== current));
+    }
+
+    function stop() {
+      if (timer) window.clearInterval(timer);
+      timer = null;
+    }
+
+    function start() {
+      stop();
+      if (delay && !reduceMotion) timer = window.setInterval(() => goTo(current + 1), delay);
+    }
+
+    let frame = null;
+    track.addEventListener('scroll', () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      frame = window.requestAnimationFrame(sync);
+    });
+    const prev = root.querySelector('[data-k-carousel-prev]');
+    const next = root.querySelector('[data-k-carousel-next]');
+    if (prev) prev.addEventListener('click', () => { goTo(current - 1); start(); });
+    if (next) next.addEventListener('click', () => { goTo(current + 1); start(); });
+    dots.forEach((dot) => dot.addEventListener('click', () => { goTo(Number(dot.getAttribute('data-k-carousel-dot'))); start(); }));
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+    root.addEventListener('focusin', stop);
+    root.addEventListener('focusout', start);
+    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+
+    /* Theme editor: show the slide being edited */
+    document.addEventListener('shopify:block:select', (event) => {
+      const index = slides.indexOf(event.target);
+      if (index > -1) { stop(); goTo(index); }
+    });
+    document.addEventListener('shopify:block:deselect', start);
+
+    sync();
+    start();
+  }
+
+  document.querySelectorAll('[data-k-carousel]').forEach(initCarousel);
+  document.addEventListener('shopify:section:load', (event) => {
+    event.target.querySelectorAll('[data-k-carousel]').forEach(initCarousel);
+  });
+
   /* ------------------------------------------------------------------ init */
 
   window.Kapsule = Object.assign(K, { addToCart: addToCart, openCart: openCart, fetchCart: fetchCart, money: money });

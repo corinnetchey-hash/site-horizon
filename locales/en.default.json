@@ -373,6 +373,13 @@
     }
   },
   "kapsule": {
+    "hero_carousel": {
+      "label": "Featured",
+      "slide": "Slide {{ index }} of {{ count }}",
+      "previous": "Previous slide",
+      "next": "Next slide",
+      "photo": "PHOTO — COMING SOON"
+    },
     "marquee": {
       "item_1": "Free shipping in France over €49",
       "item_2": "Store & institute — Paris 3e",
@@ -432,6 +439,22 @@
       "maquillage": "Makeup"
     },
     "home": {
+      "hero_institut": {
+        "kicker": "KAPSULE PALAIS — INSTITUTE",
+        "heading_a": "Where K-Beauty",
+        "heading_b": "gives way",
+        "heading_c": "to K-Aesthetics",
+        "text": "The Jiwon Hong method, 34 years of practice — realignment, circulation, structural restoration.",
+        "cta": "Book a treatment"
+      },
+      "hero_popup": {
+        "kicker": "POP-UP STORE — LE MARAIS",
+        "heading_a": "Exclusive",
+        "heading_b": "Korean",
+        "heading_c": "lifestyle",
+        "text": "A pop-up space dedicated to Korean lifestyle culture — brands, emerging designers and one-off pieces, through exclusive rotating edits.",
+        "cta": "Discover the pop-up"
+      },
       "hero": {
         "kicker": "CURATION HOUSE — PARIS",
         "heading_a": "Curated &",

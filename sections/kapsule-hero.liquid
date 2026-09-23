@@ -1,5 +1,9 @@
 {%- liquid
-  assign copy_key = 'kapsule.' | append: section.settings.copy_key | append: '.'
+  assign locale_root = routes.root_url
+  if locale_root == '/'
+    assign locale_root = ''
+  endif
+
   assign products = section.settings.products
   if products == blank or products.size == 0
     assign source = section.settings.collection
@@ -8,85 +12,211 @@
     endif
     assign products = source.products
   endif
-  assign cta_link = section.settings.cta_link | default: routes.all_products_collection_url
+  assign slide_count = section.blocks.size
 -%}
 <div class="k-container k-section--flush k-fade" style="padding-top: 24px">
-  <div class="k-hero">
-    <div>
-      <div class="k-hero__kicker">
-        {%- render 'kapsule-t', value: section.settings.kicker, key: copy_key, field: 'kicker' -%}
-      </div>
-      <h1 class="k-hero__title">
-        {% render 'kapsule-t', value: section.settings.heading_a, key: copy_key, field: 'heading_a' %}
-        <em>{% render 'kapsule-t', value: section.settings.heading_b, key: copy_key, field: 'heading_b' %}</em><br>
-        {%- render 'kapsule-t', value: section.settings.heading_c, key: copy_key, field: 'heading_c' -%}
-      </h1>
-      <p class="k-hero__text">
-        {%- render 'kapsule-t', value: section.settings.text, key: copy_key, field: 'text' -%}
-      </p>
-      <div class="k-hero__ctas">
-        <a class="k-btn k-btn--light" href="{{ cta_link }}">
-          {%- render 'kapsule-t', value: section.settings.cta, key: copy_key, field: 'cta' -%}
-        </a>
-        {%- if settings.kapsule_quiz_enabled -%}
-          <button type="button" class="k-btn k-btn--ghost-light" data-k-quiz-open>
-            {%- render 'kapsule-t', value: section.settings.cta2, key: copy_key, field: 'cta2' -%}
-          </button>
-        {%- endif -%}
-      </div>
-      <div class="k-hero__trust">
-        <span>{% render 'kapsule-t', value: section.settings.trust1, key: copy_key, field: 'trust1' %}</span>
-        <span>{% render 'kapsule-t', value: section.settings.trust2, key: copy_key, field: 'trust2' %}</span>
-      </div>
-    </div>
-    <div class="k-hero__products">
-      {%- for product in products limit: 4 -%}
-        <a class="k-mini-card" href="{{ product.url }}">
-          <span class="k-mini-card__media">
-            {%- if product.featured_media -%}
-              {{
-                product.featured_media
-                | image_url: width: 600
-                | image_tag: widths: '200, 300, 400, 600', sizes: '(min-width: 1200px) 300px, 45vw', alt: product.featured_media.alt
-              }}
+  <div
+    class="k-hero-carousel"
+    data-k-carousel
+    {% if section.settings.autoplay %}
+      data-k-carousel-autoplay="{{ section.settings.interval | times: 1000 }}"
+    {% endif %}
+    role="region"
+    aria-roledescription="carousel"
+    aria-label="{{ 'kapsule.hero_carousel.label' | t }}"
+  >
+    <div class="k-hero-carousel__track" data-k-carousel-track>
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign copy = block.settings.copy
+          assign copy_key = 'kapsule.home.' | append: copy | append: '.'
+          assign cta_link = block.settings.cta_link
+          if cta_link == blank
+            case copy
+              when 'hero_institut'
+                assign cta_link = locale_root | append: '/pages/institut'
+              when 'hero_popup'
+                assign cta_link = locale_root | append: '/pages/pop-up'
+              else
+                assign cta_link = routes.all_products_collection_url
+            endcase
+          endif
+          assign slide_label = 'kapsule.hero_carousel.slide' | t: index: forloop.index, count: slide_count
+        -%}
+        <div
+          class="k-hero k-hero-carousel__slide"
+          id="KHeroSlide-{{ block.id }}"
+          role="group"
+          aria-roledescription="slide"
+          aria-label="{{ slide_label }}"
+          data-k-carousel-slide
+          {{ block.shopify_attributes }}
+        >
+          <div>
+            <div class="k-hero__kicker">
+              {%- render 'kapsule-t', value: block.settings.kicker, key: copy_key, field: 'kicker' -%}
+            </div>
+            {%- if forloop.first -%}<h1 class="k-hero__title">{%- else -%}<h2 class="k-hero__title">{%- endif -%}
+              {% render 'kapsule-t', value: block.settings.heading_a, key: copy_key, field: 'heading_a' %}
+              <em>{% render 'kapsule-t', value: block.settings.heading_b, key: copy_key, field: 'heading_b' %}</em><br>
+              {%- render 'kapsule-t', value: block.settings.heading_c, key: copy_key, field: 'heading_c' -%}
+            {%- if forloop.first -%}</h1>{%- else -%}</h2>{%- endif -%}
+            <p class="k-hero__text">
+              {%- render 'kapsule-t', value: block.settings.text, key: copy_key, field: 'text' -%}
+            </p>
+            <div class="k-hero__ctas">
+              <a class="k-btn k-btn--light" href="{{ cta_link }}">
+                {%- render 'kapsule-t', value: block.settings.cta, key: copy_key, field: 'cta' -%}
+              </a>
+              {%- if block.settings.show_quiz and settings.kapsule_quiz_enabled -%}
+                <button type="button" class="k-btn k-btn--ghost-light" data-k-quiz-open>
+                  {%- render 'kapsule-t', value: block.settings.cta2, key: 'kapsule.home.hero.', field: 'cta2' -%}
+                </button>
+              {%- endif -%}
+            </div>
+            {%- if block.settings.show_trust -%}
+              <div class="k-hero__trust">
+                <span>{% render 'kapsule-t', value: '', key: 'kapsule.home.hero.', field: 'trust1' %}</span>
+                <span>{% render 'kapsule-t', value: '', key: 'kapsule.home.hero.', field: 'trust2' %}</span>
+              </div>
             {%- endif -%}
-            <span class="k-brand-pill">{{ product.vendor }}</span>
-          </span>
-          <span class="k-mini-card__body">
-            <span class="k-mini-card__name">{{ product.title }}</span>
-            <span class="k-mini-card__price" style="display:block">{{ product.price_min | money }}</span>
-          </span>
-        </a>
+          </div>
+
+          {%- if block.settings.image != blank -%}
+            <div class="k-hero__visual">
+              {{
+                block.settings.image
+                | image_url: width: 1400
+                | image_tag:
+                  widths: '400, 600, 800, 1000, 1200, 1400',
+                  sizes: '(min-width: 1200px) 620px, 90vw',
+                  loading: 'lazy',
+                  alt: block.settings.image.alt
+              }}
+            </div>
+          {%- elsif block.settings.show_products -%}
+            <div class="k-hero__products">
+              {%- for product in products limit: 4 -%}
+                <a class="k-mini-card" href="{{ product.url }}">
+                  <span class="k-mini-card__media">
+                    {%- if product.featured_media -%}
+                      {{
+                        product.featured_media
+                        | image_url: width: 600
+                        | image_tag: widths: '200, 300, 400, 600', sizes: '(min-width: 1200px) 300px, 45vw', alt: product.featured_media.alt
+                      }}
+                    {%- endif -%}
+                    <span class="k-brand-pill">{{ product.vendor }}</span>
+                  </span>
+                  <span class="k-mini-card__body">
+                    <span class="k-mini-card__name">{{ product.title }}</span>
+                    <span class="k-mini-card__price" style="display:block">{{ product.price_min | money }}</span>
+                  </span>
+                </a>
+              {%- endfor -%}
+            </div>
+          {%- else -%}
+            <div class="k-hero__visual k-hero__visual--empty">
+              <span class="k-media__label">{{ 'kapsule.hero_carousel.photo' | t }}</span>
+            </div>
+          {%- endif -%}
+        </div>
       {%- endfor -%}
     </div>
+
+    {%- if slide_count > 1 -%}
+      <div class="k-hero-carousel__controls">
+        <button type="button" class="k-hero-carousel__arrow" data-k-carousel-prev aria-label="{{ 'kapsule.hero_carousel.previous' | t }}">
+          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+        <div class="k-hero-carousel__dots">
+          {%- for block in section.blocks -%}
+            <button
+              type="button"
+              class="k-hero-carousel__dot"
+              data-k-carousel-dot="{{ forloop.index0 }}"
+              aria-controls="KHeroSlide-{{ block.id }}"
+              aria-label="{{ 'kapsule.hero_carousel.slide' | t: index: forloop.index, count: slide_count }}"
+              {% if forloop.first %}
+                aria-current="true"
+              {% endif %}
+            ></button>
+          {%- endfor -%}
+        </div>
+        <button type="button" class="k-hero-carousel__arrow" data-k-carousel-next aria-label="{{ 'kapsule.hero_carousel.next' | t }}">
+          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+      </div>
+    {%- endif -%}
   </div>
 </div>
 
 {% schema %}
 {
   "name": "Kapsule hero",
+  "max_blocks": 6,
   "settings": [
+    { "type": "checkbox", "id": "autoplay", "label": "Change slides automatically", "default": true },
     {
-      "type": "text",
-      "id": "copy_key",
-      "label": "Default copy key",
-      "default": "home.hero",
-      "info": "Blank text fields fall back to the bilingual copy under kapsule.<key> in the locale files."
+      "type": "range",
+      "id": "interval",
+      "label": "Time per slide (seconds)",
+      "min": 3,
+      "max": 15,
+      "step": 1,
+      "default": 6
     },
-    { "type": "text", "id": "kicker", "label": "Kicker" },
-    { "type": "text", "id": "heading_a", "label": "Heading — first part" },
-    { "type": "text", "id": "heading_b", "label": "Heading — italic part" },
-    { "type": "text", "id": "heading_c", "label": "Heading — second line" },
-    { "type": "textarea", "id": "text", "label": "Text" },
-    { "type": "text", "id": "cta", "label": "Primary button label" },
-    { "type": "url", "id": "cta_link", "label": "Primary button link" },
-    { "type": "text", "id": "cta2", "label": "Diagnostic button label", "info": "Opens the skin diagnostic." },
-    { "type": "text", "id": "trust1", "label": "Reassurance line 1" },
-    { "type": "text", "id": "trust2", "label": "Reassurance line 2" },
     { "type": "header", "content": "Products" },
-    { "type": "product_list", "id": "products", "label": "Products", "limit": 4 },
+    {
+      "type": "product_list",
+      "id": "products",
+      "label": "Products",
+      "limit": 4,
+      "info": "Shown on slides with 'Show products' ticked and no image."
+    },
     { "type": "collection", "id": "collection", "label": "Or a collection", "info": "Used when no products are picked. Defaults to all products." }
   ],
-  "presets": [{ "name": "Kapsule hero" }]
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "select",
+          "id": "copy",
+          "label": "Default copy",
+          "info": "Blank text fields use this bilingual copy.",
+          "options": [
+            { "value": "hero", "label": "Selection" },
+            { "value": "hero_institut", "label": "Institute" },
+            { "value": "hero_popup", "label": "Pop-up" }
+          ],
+          "default": "hero"
+        },
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "Shown on the right. Replaces the products." },
+        { "type": "checkbox", "id": "show_products", "label": "Show products when there is no image", "default": false },
+        { "type": "text", "id": "kicker", "label": "Kicker" },
+        { "type": "text", "id": "heading_a", "label": "Heading — first part" },
+        { "type": "text", "id": "heading_b", "label": "Heading — italic part" },
+        { "type": "text", "id": "heading_c", "label": "Heading — second line" },
+        { "type": "textarea", "id": "text", "label": "Text" },
+        { "type": "text", "id": "cta", "label": "Button label" },
+        { "type": "url", "id": "cta_link", "label": "Button link" },
+        { "type": "checkbox", "id": "show_quiz", "label": "Show the diagnostic button", "default": false },
+        { "type": "text", "id": "cta2", "label": "Diagnostic button label" },
+        { "type": "checkbox", "id": "show_trust", "label": "Show reassurance lines", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kapsule hero",
+      "blocks": [
+        { "type": "slide", "settings": { "copy": "hero", "show_products": true, "show_quiz": true, "show_trust": true } },
+        { "type": "slide", "settings": { "copy": "hero_institut" } },
+        { "type": "slide", "settings": { "copy": "hero_popup" } }
+      ]
+    }
+  ]
 }
 {% endschema %}

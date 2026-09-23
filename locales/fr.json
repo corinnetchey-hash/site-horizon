@@ -352,6 +352,13 @@
     }
   },
   "kapsule": {
+    "hero_carousel": {
+      "label": "À la une",
+      "slide": "Diapositive {{ index }} sur {{ count }}",
+      "previous": "Diapositive précédente",
+      "next": "Diapositive suivante",
+      "photo": "PHOTO — À VENIR"
+    },
     "marquee": {
       "item_1": "Livraison offerte en France dès 49€ d'achat",
       "item_2": "Boutique & institut — Paris 3e",
@@ -411,6 +418,22 @@
       "maquillage": "Maquillage"
     },
     "home": {
+      "hero_institut": {
+        "kicker": "KAPSULE PALAIS — INSTITUT",
+        "heading_a": "Là où la K-Beauty",
+        "heading_b": "laisse place",
+        "heading_c": "à la K-Esthétique",
+        "text": "La méthode de Jiwon Hong, 34 ans de pratique — réalignement, circulation, restauration structurelle.",
+        "cta": "Réserver un soin"
+      },
+      "hero_popup": {
+        "kicker": "POP-UP STORE — LE MARAIS",
+        "heading_a": "L'exclusivité",
+        "heading_b": "lifestyle",
+        "heading_c": "coréenne",
+        "text": "Un espace éphémère dédié à la culture lifestyle coréenne — marques, créateurs émergents et pièces uniques, à travers des sélections exclusives et tournantes.",
+        "cta": "Découvrir le pop-up"
+      },
       "hero": {
         "kicker": "MAISON DE SÉLECTION — PARIS",
         "heading_a": "Une sélection",
