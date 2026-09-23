@@ -3737,12 +3737,6 @@ body:has([data-k-cart-page]) .k-bubble {
     height: 40px;
   }
 
-  /* Concern tiles: two per row instead of a tall stack */
-  .k-concerns {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-  }
-
   .k-concern {
     min-height: 88px;
     padding: 14px;
@@ -3750,10 +3744,6 @@ body:has([data-k-cart-page]) .k-bubble {
 
   .k-concern__label {
     font-size: 16px;
-  }
-
-  .k-concern:last-child:nth-child(odd) {
-    grid-column: 1 / -1;
   }
 
   /* Social grid: two rows of two */
@@ -3983,4 +3973,35 @@ body:has([data-k-cart-page]) .k-bubble {
 
 .k-treatments--cards .k-treatment__meta {
   justify-content: space-between;
+}
+
+/* Concern tiles: always a single row — equal columns on desktop, a swipeable row below */
+.k-concerns {
+  grid-template-columns: none;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 700px) {
+  .k-concern__label {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 1099px) {
+  .k-concerns {
+    grid-auto-columns: minmax(150px, 1fr);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+
+  .k-concerns::-webkit-scrollbar {
+    display: none;
+  }
+
+  .k-concern {
+    scroll-snap-align: start;
+  }
 }
