@@ -3980,3 +3980,7 @@ body:has([data-k-cart-page]) .k-bubble {
     font-size: 18px;
   }
 }
+
+.k-treatments--cards .k-treatment__meta {
+  justify-content: space-between;
+}
