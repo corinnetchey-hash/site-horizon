@@ -12,59 +12,74 @@
     "banner": {
       "type": "kapsule-banner",
       "settings": {
-        "copy_key": "institut.hero",
-        "style": "bordeaux"
+        "copy_key": "",
+        "style": "bordeaux",
+        "kicker": "—— KAPSULE PALAIS",
+        "heading": "Institut",
+        "text": "Un espace où le temps suspend son vol pour laisser place à la transformation — une escale confidentielle au cœur du Haut-Marais, dédiée à la renaissance de votre peau et de votre sérénité."
       }
     },
-    "quote": {
-      "type": "kapsule-quote",
+    "fondatrice": {
+      "type": "kapsule-text",
       "settings": {
-        "copy_key": "institut.quote"
+        "style": "plain",
+        "alignment": "left",
+        "kicker": "LE MOT DE LA FONDATRICE",
+        "heading": "L'Art du Soin Structurel",
+        "text": "<p><em>« Travailler sur le corps humain, c'est, en fin de compte, toucher à la vie d'une personne. »</em></p><p>Depuis 34 ans en Corée, je pratique des soins esthétiques structurels guidés par ce principe fondamental. À travers des dizaines de milliers de traitements, j’ai compris que la peau n’est jamais une surface isolée. Elle est le miroir de la circulation du corps, de son équilibre structurel et du rythme de vie de chacun.</p><p>Lorsque le corps perd son équilibre, la fatigue s'accumule. Le sommeil se fragilise. La clarté d'esprit s'estompe. Avec le temps, ces changements internes finissent inévitablement par marquer la peau.</p><p>C’est pourquoi je n’ai jamais envisagé l’esthétique comme un simple procédé d’amélioration de l’apparence. Mon approche a toujours consisté à restaurer les conditions nécessaires pour que le corps puisse retrouver ses capacités naturelles de récupération.</p>"
       }
     },
-    "cards": {
-      "type": "kapsule-cards",
-      "blocks": {
-        "card_1": {
-          "type": "card",
-          "settings": {
-            "copy_key": "institut.card_1"
-          }
-        },
-        "card_2": {
-          "type": "card",
-          "settings": {
-            "copy_key": "institut.card_2"
-          }
-        },
-        "card_3": {
-          "type": "card",
-          "settings": {
-            "copy_key": "institut.card_3"
-          }
-        },
-        "card_4": {
-          "type": "card",
-          "settings": {
-            "copy_key": "institut.card_4"
-          }
-        }
-      },
-      "block_order": [
-        "card_1",
-        "card_2",
-        "card_3",
-        "card_4"
-      ],
+    "technique": {
+      "type": "kapsule-text",
       "settings": {
-        "padding_top": 38
+        "style": "surface",
+        "alignment": "left",
+        "heading": "De la Technique au Système",
+        "text": "<p>Plutôt que de me reposer sur l'intuition ou des techniques éphémères, j'ai consacré ma carrière à bâtir un système de soin structuré et explicable.</p><p>En m'appuyant sur la compréhension traditionnelle coréenne des méridiens, de la circulation et des flux énergétiques, j'ai organisé ces principes en une méthodologie claire, affinée par plus de 20 000 cas cliniques.</p><p>Au fil du temps, ces recherches ont donné naissance à ce que j'appelle la <strong>Méthode de Soin par Suivi Intégré</strong> (<em>Integrated Tracking Care Method</em>) — un système conçu pour observer le corps, suivre ses changements structurels et orienter le processus de rétablissement.</p><p>La philosophie qui sous-tend ce travail dépasse la simple technique. Il s'agit de comprendre la structure, de lire les flux du corps et de dessiner le chemin vers l'équilibre.</p>"
       }
     },
-    "band": {
-      "type": "kapsule-band",
+    "batang": {
+      "type": "kapsule-text",
       "settings": {
-        "copy_key": "institut.band",
-        "padding_top": 38
+        "kicker": "LA PHILOSOPHIE",
+        "heading": "BATANG, le fondement",
+        "text": "<p>En coréen, le mot <strong>« Batang (바탕) »</strong> signifie fondement, base ou structure sous-jacente. Il désigne la couche essentielle sur laquelle tout se construit — la condition fondamentale qui soutient l'équilibre, la stabilité et la croissance.</p><p>Au <strong>KAPSULE PALAIS</strong>, BATANG représente bien plus qu'un simple traitement. C'est le socle même de toute notre philosophie esthétique.</p>"
+      }
+    },
+    "origine": {
+      "type": "kapsule-text",
+      "settings": {
+        "style": "surface",
+        "heading": "L'origine d'un rituel de soin royal coréen",
+        "text": "<p>Un rituel de soin raffiné, inspiré par la cour royale de Corée et porté à travers le temps, renaît aujourd'hui chez KAPSULE.</p><p>C'est un protocole conçu selon un système rigoureux, bâti sur 34 ans de pratique de l'esthétique structurelle en Corée et plus de 20 000 cas cliniques. Ancrée dans la compréhension traditionnelle coréenne des méridiens et des flux énergétiques, cette méthode associe des outils traditionnels, une pression précise et des mouvements rythmiques pour restaurer la circulation naturelle et recalibrer le rythme de la peau.</p><p>BATANG est le programme signature de KAPSULE PALAIS : plutôt que de se concentrer uniquement sur la surface de l'épiderme, il agit sur la circulation, les voies lymphatiques, l'équilibre musculaire et l'alignement structurel.</p>"
+      }
+    },
+    "visage": {
+      "type": "kapsule-editorial",
+      "settings": {
+        "copy_key": "",
+        "tint": "sand",
+        "flip": true,
+        "image": "shopify://shop_images/DSC_4011.webp",
+        "kicker": "LE VISAGE COMME POINT DE DÉPART",
+        "heading": "Pourquoi commencer par le visage",
+        "text": "Bien que le corps humain fonctionne comme une structure unique et intégrée, c'est souvent sur le visage que les déséquilibres deviennent visibles en premier : tensions, poches, teint terne, perte de définition des contours — souvent liés à la circulation sanguine, au flux lymphatique, aux tensions musculaires et aux déséquilibres du cou et des épaules. Nos soins du visage agissent sur ces structures sous-jacentes pour une meilleure circulation, des contours plus nets et une apparence visiblement plus équilibrée.",
+        "link_label": "",
+        "link": ""
+      }
+    },
+    "oak_an": {
+      "type": "kapsule-editorial",
+      "settings": {
+        "copy_key": "",
+        "tint": "bordeaux",
+        "flip": false,
+        "image": "shopify://shop_images/Photo_Oak-An_Su_Charlotte.jpg",
+        "kicker": "LES PROGRAMMES BATANG",
+        "heading": "OAK-AN (옥안)",
+        "text": "Un rituel facial utilisant des outils traditionnels en jade, conçu pour favoriser la circulation, stimuler le flux lymphatique et redonner clarté et vitalité au teint. Il se décline en OAK-AN SU — hydratation et équilibre cutané — et OAK-AN JIN — anti-âge et résilience de la peau, avec des ampoules ciblées pour l'élasticité et la fermeté. Durée : 1 heure.",
+        "link_label": "Réserver OAK-AN",
+        "link": "https://www.fresha.com/book-now/kapsule-vpzocr2g/services?lid=2889132&eid=5105548&oiid=sv%3A26746772&share=true&pId=2793504"
       }
     },
     "treatments": {
@@ -111,18 +126,86 @@
       ],
       "settings": {
         "copy_key": "institut.treatments",
-        "selected": 2,
-        "booking_url": "https://www.fresha.com/a/kapsule-paris-10-12-rue-charles-francois-dupuis-mjeorknn?pId=2793504",
         "heading": "Nos soins",
-        "image": "shopify://shop_images/DSC_4011.webp"
+        "booking_url": "https://www.fresha.com/a/kapsule-paris-10-12-rue-charles-francois-dupuis-mjeorknn?pId=2793504",
+        "image": "shopify://shop_images/Kapsule_Palais.webp",
+        "venue": "Kapsule Palais",
+        "address": "10 Rue Charles-François Dupuis, 75003 Paris",
+        "hours": "Mardi au dimanche — 11h à 20h"
+      }
+    },
+    "susu_an": {
+      "type": "kapsule-editorial",
+      "settings": {
+        "copy_key": "",
+        "tint": "sage",
+        "flip": true,
+        "image": "shopify://shop_images/IMG_5925.jpg",
+        "kicker": "LE RITUEL DES MÉRIDIENS DES MAINS",
+        "heading": "SUSU-AN (수수안)",
+        "text": "Un soin de haute précision axé sur l'équilibre structurel. Serviettes chaudes, pression précise et stimulation rythmique des points d'acupression le long des méridiens de la main : un rituel de diagnostic condensé qui libère les blocages, apaise le système nerveux et réveille la conscience du corps.",
+        "link_label": "Réserver un soin",
+        "link": "https://www.fresha.com/a/kapsule-paris-10-12-rue-charles-francois-dupuis-mjeorknn?pId=2793504"
+      }
+    },
+    "education": {
+      "type": "kapsule-text",
+      "settings": {
+        "style": "surface",
+        "alignment": "left",
+        "heading": "Éducation et Pratique Mondiale",
+        "text": "<p>Tout au long de mon parcours, je n'ai pas seulement traité des clients ; j'ai également formé des esthéticiens et praticiens via des programmes d'enseignement spécialisés, fondés sur cette méthodologie de soin structurel.</p><p>Ces programmes ne transmettent pas une simple intuition personnelle. Ils enseignent un système compréhensible, reproductible et pratiqué de manière responsable.</p><p>Aujourd'hui, des praticiens formés à cette méthode exercent non seulement en Corée, mais aussi aux États-Unis et aux Émirats Arabes Unis, appliquant cette même philosophie du soin structurel.</p><p>Je ne me vois pas simplement comme une personne qui enseigne des techniques. Je crois que mon rôle est de transmettre un standard d'excellence.</p>"
+      }
+    },
+    "palais": {
+      "type": "kapsule-editorial",
+      "settings": {
+        "copy_key": "",
+        "tint": "bordeaux",
+        "flip": false,
+        "image": "shopify://shop_images/Kapsule_Palais.webp",
+        "kicker": "PARIS — HAUT-MARAIS",
+        "heading": "Kapsule Palais",
+        "text": "Aujourd'hui, cet héritage et cette philosophie se prolongent au KAPSULE Palais à Paris. Chaque praticien chez KAPSULE est formé selon un programme professionnel rigoureux basé sur cette méthodologie. Les soins prodigués ici ne visent pas la simple détente : ils sont conçus pour le réalignement, la circulation et la restauration structurelle. Nous travaillons à comprendre la dynamique de votre corps pour définir, ensemble, le chemin vers son équilibre et sa vitalité.",
+        "link_label": "Réserver un soin",
+        "link": "https://www.fresha.com/a/kapsule-paris-10-12-rue-charles-francois-dupuis-mjeorknn?pId=2793504"
+      }
+    },
+    "experience": {
+      "type": "kapsule-text",
+      "settings": {
+        "style": "plain",
+        "alignment": "center",
+        "heading": "Une Expérience sur Mesure",
+        "text": "<p>Chaque visite au KAPSULE PALAIS commence par une consultation personnalisée. Que vous recherchiez une amélioration structurelle, un soin apaisant ou une consultation experte, nos praticiennes, formées aux techniques les plus avancées, dédient leur expertise à votre singularité.</p>"
+      }
+    },
+    "exigence": {
+      "type": "kapsule-text",
+      "settings": {
+        "style": "bordeaux",
+        "alignment": "center",
+        "kicker": "L'EXIGENCE KAPSULE",
+        "heading": "Pas de stimulation, mais de la précision.",
+        "text": "<p>Pas de tendances, mais de la qualité. Pas d'exagération, mais une éthique. KAPSULE harmonise l'héritage du soin traditionnel coréen avec les standards modernes d'hygiène et de sécurité. Chaque soin commence au même endroit : le fondement. Ce fondement, c'est <strong>BATANG</strong>.</p>",
+        "button_label": "Réserver en ligne",
+        "button_link": "https://www.fresha.com/a/kapsule-paris-10-12-rue-charles-francois-dupuis-mjeorknn?pId=2793504"
       }
     }
   },
   "order": [
     "banner",
-    "quote",
-    "cards",
-    "band",
-    "treatments"
+    "fondatrice",
+    "technique",
+    "batang",
+    "origine",
+    "visage",
+    "oak_an",
+    "treatments",
+    "susu_an",
+    "education",
+    "palais",
+    "experience",
+    "exigence"
   ]
 }

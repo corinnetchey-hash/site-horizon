@@ -195,9 +195,32 @@
             "tint": "teal",
             "image": "shopify://shop_images/Devanture_Kapsule.png"
           }
+        },
+        "instagram_feed": {
+          "type": "shopify://apps/libautech-shoppable-ugc/blocks/block/019ade11-769e-703d-9b80-f6ca3920e42f",
+          "settings": {
+            "lbt_media_collection": "",
+            "style_type": "normal",
+            "slide_size": "medium",
+            "footer_position": "bottom",
+            "arrows": true,
+            "show_unmute": false,
+            "center_video": false,
+            "play_on_hover": true,
+            "shuffle_media": false,
+            "story_border_enabled": false,
+            "story_border_color_1": "#800000",
+            "story_border_color_2": "#eeeeee",
+            "title_enabled": false,
+            "title_text": "Shop the Look",
+            "title_font_size": 24,
+            "title_font_weight": "600",
+            "title_alignment": "left"
+          }
         }
       },
       "block_order": [
+        "instagram_feed",
         "tile_1",
         "tile_2",
         "tile_3",
