@@ -14,9 +14,13 @@
       "settings": {
         "copy_key": "",
         "style": "bordeaux",
-        "kicker": "—— KAPSULE PALAIS",
+        "kicker": "KAPSULE PALAIS — PARIS HAUT-MARAIS",
         "heading": "Institut",
-        "text": "Un espace où le temps suspend son vol pour laisser place à la transformation — une escale confidentielle au cœur du Haut-Marais, dédiée à la renaissance de votre peau et de votre sérénité."
+        "text": "Un espace où le temps suspend son vol pour laisser place à la transformation — une escale confidentielle au cœur du Haut-Marais, dédiée à la renaissance de votre peau et de votre sérénité.",
+        "body": "<p>Au KAPSULE Palais se prolongent l'héritage et la philosophie de 34 ans de soin structurel coréen. Chaque praticienne est formée selon un programme professionnel rigoureux : nos soins ne visent pas la simple détente, ils sont conçus pour le <strong>réalignement</strong>, la <strong>circulation</strong> et la <strong>restauration structurelle</strong>.</p><p><strong>10 Rue Charles-François Dupuis, 75003 Paris</strong><br>Mardi au dimanche — 11h à 20h, sur rendez-vous</p>",
+        "image": "shopify://shop_images/Kapsule_Palais.webp",
+        "button_label": "Réserver un soin",
+        "button_link": "https://www.fresha.com/a/kapsule-paris-10-12-rue-charles-francois-dupuis-mjeorknn?pId=2793504"
       }
     },
     "visage": {
@@ -33,20 +37,6 @@
         "link": ""
       }
     },
-    "oak_an": {
-      "type": "kapsule-editorial",
-      "settings": {
-        "copy_key": "",
-        "tint": "bordeaux",
-        "flip": false,
-        "image": "shopify://shop_images/Photo_Oak-An_Su_Charlotte.jpg",
-        "kicker": "LES PROGRAMMES BATANG",
-        "heading": "OAK-AN (옥안)",
-        "text": "Un rituel facial utilisant des outils traditionnels en jade, conçu pour favoriser la circulation, stimuler le flux lymphatique et redonner clarté et vitalité au teint. Il se décline en OAK-AN SU — hydratation et équilibre cutané — et OAK-AN JIN — anti-âge et résilience de la peau, avec des ampoules ciblées pour l'élasticité et la fermeté. Durée : 1 heure.",
-        "link_label": "Réserver OAK-AN",
-        "link": "https://www.fresha.com/book-now/kapsule-vpzocr2g/services?lid=2889132&eid=5105548&oiid=sv%3A26746772&share=true&pId=2793504"
-      }
-    },
     "treatments": {
       "type": "kapsule-treatments",
       "blocks": {
@@ -58,7 +48,8 @@
             "text": "Hydratation & équilibre cutané — rituel au jade et au laiton",
             "duration": "60 min",
             "price": "",
-            "link": "https://www.fresha.com/book-now/kapsule-vpzocr2g/services?lid=2889132&eid=5105548&oiid=sv%3A26746772&share=true&pId=2793504"
+            "link": "https://www.fresha.com/book-now/kapsule-vpzocr2g/services?lid=2889132&eid=5105548&oiid=sv%3A26746772&share=true&pId=2793504",
+            "image": "shopify://shop_images/Photo_Oak-An_Su_Charlotte.jpg"
           }
         },
         "oak_an_jin": {
@@ -69,7 +60,8 @@
             "text": "Anti-âge & résilience de la peau — ampoules élasticité et fermeté",
             "duration": "60 min",
             "price": "",
-            "link": "https://www.fresha.com/book-now/kapsule-vpzocr2g/services?lid=2889132&eid=5105548&oiid=sv%3A26747282&share=true&pId=2793504"
+            "link": "https://www.fresha.com/book-now/kapsule-vpzocr2g/services?lid=2889132&eid=5105548&oiid=sv%3A26747282&share=true&pId=2793504",
+            "image": "shopify://shop_images/Kapsule_Palais.webp"
           }
         },
         "susu_an": {
@@ -80,7 +72,8 @@
             "text": "Rituel des méridiens des mains — équilibre structurel",
             "duration": "",
             "price": "",
-            "link": ""
+            "link": "https://www.fresha.com/a/kapsule-paris-10-12-rue-charles-francois-dupuis-mjeorknn?pId=2793504",
+            "image": "shopify://shop_images/IMG_5925.jpg"
           }
         }
       },
@@ -96,53 +89,9 @@
         "image": "shopify://shop_images/Kapsule_Palais.webp",
         "venue": "Kapsule Palais",
         "address": "10 Rue Charles-François Dupuis, 75003 Paris",
-        "hours": "Mardi au dimanche — 11h à 20h"
-      }
-    },
-    "susu_an": {
-      "type": "kapsule-editorial",
-      "settings": {
-        "copy_key": "",
-        "tint": "sage",
-        "flip": true,
-        "image": "shopify://shop_images/IMG_5925.jpg",
-        "kicker": "LE RITUEL DES MÉRIDIENS DES MAINS",
-        "heading": "SUSU-AN (수수안)",
-        "text": "Un soin de haute précision axé sur l'équilibre structurel. Serviettes chaudes, pression précise et stimulation rythmique des points d'acupression le long des méridiens de la main : un rituel de diagnostic condensé qui libère les blocages, apaise le système nerveux et réveille la conscience du corps.",
-        "link_label": "Réserver un soin",
-        "link": "https://www.fresha.com/a/kapsule-paris-10-12-rue-charles-francois-dupuis-mjeorknn?pId=2793504"
-      }
-    },
-    "education": {
-      "type": "kapsule-text",
-      "settings": {
-        "style": "surface",
-        "alignment": "left",
-        "heading": "Éducation et Pratique Mondiale",
-        "text": "<p>Tout au long de mon parcours, je n'ai pas seulement traité des clients ; j'ai également formé des esthéticiens et praticiens via des programmes d'enseignement spécialisés, fondés sur cette méthodologie de soin structurel.</p><p>Ces programmes ne transmettent pas une simple intuition personnelle. Ils enseignent un système compréhensible, reproductible et pratiqué de manière responsable.</p><p>Aujourd'hui, des praticiens formés à cette méthode exercent non seulement en Corée, mais aussi aux États-Unis et aux Émirats Arabes Unis, appliquant cette même philosophie du soin structurel.</p><p>Je ne me vois pas simplement comme une personne qui enseigne des techniques. Je crois que mon rôle est de transmettre un standard d'excellence.</p>"
-      }
-    },
-    "palais": {
-      "type": "kapsule-editorial",
-      "settings": {
-        "copy_key": "",
-        "tint": "bordeaux",
-        "flip": false,
-        "image": "shopify://shop_images/Kapsule_Palais.webp",
-        "kicker": "PARIS — HAUT-MARAIS",
-        "heading": "Kapsule Palais",
-        "text": "Aujourd'hui, cet héritage et cette philosophie se prolongent au KAPSULE Palais à Paris. Chaque praticien chez KAPSULE est formé selon un programme professionnel rigoureux basé sur cette méthodologie. Les soins prodigués ici ne visent pas la simple détente : ils sont conçus pour le réalignement, la circulation et la restauration structurelle. Nous travaillons à comprendre la dynamique de votre corps pour définir, ensemble, le chemin vers son équilibre et sa vitalité.",
-        "link_label": "Réserver un soin",
-        "link": "https://www.fresha.com/a/kapsule-paris-10-12-rue-charles-francois-dupuis-mjeorknn?pId=2793504"
-      }
-    },
-    "experience": {
-      "type": "kapsule-text",
-      "settings": {
-        "style": "plain",
-        "alignment": "center",
-        "heading": "Une Expérience sur Mesure",
-        "text": "<p>Chaque visite au KAPSULE PALAIS commence par une consultation personnalisée. Que vous recherchiez une amélioration structurelle, un soin apaisant ou une consultation experte, nos praticiennes, formées aux techniques les plus avancées, dédient leur expertise à votre singularité.</p>"
+        "hours": "Mardi au dimanche — 11h à 20h",
+        "layout": "cards",
+        "show_venue": false
       }
     },
     "exigence": {
@@ -222,6 +171,76 @@
         "layout": "joined",
         "style": "surface"
       }
+    },
+    "programmes": {
+      "type": "kapsule-duo",
+      "blocks": {
+        "oak_an": {
+          "type": "column",
+          "settings": {
+            "style": "bordeaux",
+            "kicker": "LES PROGRAMMES BATANG",
+            "heading": "OAK-AN (옥안)",
+            "quote": "",
+            "text": "<p>Un rituel facial utilisant des outils traditionnels en jade, conçu pour favoriser la circulation, stimuler le flux lymphatique et redonner clarté et vitalité au teint. Il se décline en OAK-AN SU — hydratation et équilibre cutané — et OAK-AN JIN — anti-âge et résilience de la peau, avec des ampoules ciblées pour l'élasticité et la fermeté. Durée : 1 heure.</p>",
+            "link_label": "Réserver OAK-AN",
+            "link": "https://www.fresha.com/book-now/kapsule-vpzocr2g/services?lid=2889132&eid=5105548&oiid=sv%3A26746772&share=true&pId=2793504"
+          }
+        },
+        "susu_an": {
+          "type": "column",
+          "settings": {
+            "style": "white",
+            "kicker": "LE RITUEL DES MÉRIDIENS DES MAINS",
+            "heading": "SUSU-AN (수수안)",
+            "quote": "",
+            "text": "<p>Un soin de haute précision axé sur l'équilibre structurel. Serviettes chaudes, pression précise et stimulation rythmique des points d'acupression le long des méridiens de la main : un rituel de diagnostic condensé qui libère les blocages, apaise le système nerveux et réveille la conscience du corps.</p>",
+            "link_label": "Réserver SUSU-AN",
+            "link": "https://www.fresha.com/a/kapsule-paris-10-12-rue-charles-francois-dupuis-mjeorknn?pId=2793504"
+          }
+        }
+      },
+      "block_order": [
+        "oak_an",
+        "susu_an"
+      ],
+      "settings": {
+        "layout": "separate",
+        "style": "surface"
+      }
+    },
+    "transmission": {
+      "type": "kapsule-duo",
+      "blocks": {
+        "experience": {
+          "type": "column",
+          "settings": {
+            "style": "surface",
+            "kicker": "VOTRE VISITE",
+            "heading": "Une Expérience sur Mesure",
+            "quote": "",
+            "text": "<p>Chaque visite au KAPSULE PALAIS commence par une consultation personnalisée. Que vous recherchiez une amélioration structurelle, un soin apaisant ou une consultation experte, nos praticiennes, formées aux techniques les plus avancées, dédient leur expertise à votre singularité.</p>"
+          }
+        },
+        "education": {
+          "type": "column",
+          "settings": {
+            "style": "surface",
+            "kicker": "LA TRANSMISSION",
+            "heading": "Éducation et Pratique Mondiale",
+            "quote": "",
+            "text": "<p>Tout au long de mon parcours, je n'ai pas seulement traité des clients ; j'ai également formé des esthéticiens et praticiens via des programmes d'enseignement spécialisés, fondés sur cette méthodologie de soin structurel.</p><p>Ces programmes ne transmettent pas une simple intuition personnelle. Ils enseignent un système compréhensible, reproductible et pratiqué de manière responsable.</p><p>Aujourd'hui, des praticiens formés à cette méthode exercent non seulement en Corée, mais aussi aux États-Unis et aux Émirats Arabes Unis, appliquant cette même philosophie du soin structurel.</p><p>Je ne me vois pas simplement comme une personne qui enseigne des techniques. Je crois que mon rôle est de transmettre un standard d'excellence.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "experience",
+        "education"
+      ],
+      "settings": {
+        "layout": "joined",
+        "style": "surface"
+      }
     }
   },
   "order": [
@@ -229,12 +248,9 @@
     "fondatrice_duo",
     "philosophie",
     "visage",
-    "oak_an",
+    "programmes",
     "treatments",
-    "susu_an",
-    "education",
-    "palais",
-    "experience",
+    "transmission",
     "exigence"
   ]
 }

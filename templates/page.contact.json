@@ -15,7 +15,8 @@
         "kicker": "KAPSULE & KAPSULE PALAIS",
         "heading": "Contactez-nous",
         "intro": "Une question concernant un produit, une commande ou un soin ? Écrivez-nous, nous vous répondons sous 24 à 48 heures.",
-        "form_heading": "Écrivez-nous"
+        "form_heading": "Écrivez-nous",
+        "image": "shopify://shop_images/DSC_4017.webp"
       },
       "blocks": {
         "address": {

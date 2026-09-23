@@ -29,6 +29,7 @@
     <div class="k-rte k-contact__text">{{ page.content }}</div>
   {%- endif -%}
 
+  <div class="k-contact__main{% if section.settings.image != blank %} k-contact__main--image{% endif %}">
   {%- form 'contact', class: 'k-contact__fields', id: 'KapsuleContactForm' -%}
     {%- if section.settings.form_heading != blank -%}
       <h2 class="k-contact__form-title">{{ section.settings.form_heading }}</h2>
@@ -59,6 +60,12 @@
     </div>
     <button type="submit" class="k-btn k-btn--bordeaux">{{ 'kapsule.contact.send' | t }}</button>
   {%- endform -%}
+  {%- if section.settings.image != blank -%}
+    <div class="k-media k-contact__image">
+      {{ section.settings.image | image_url: width: 1400 | image_tag: sizes: '(min-width: 900px) 50vw, 100vw', loading: 'lazy' }}
+    </div>
+  {%- endif -%}
+  </div>
 </div>
 
 {% schema %}
@@ -69,7 +76,8 @@
     { "type": "text", "id": "heading", "label": "Heading", "info": "Defaults to the page title." },
     { "type": "text", "id": "intro", "label": "Introduction" },
     { "type": "richtext", "id": "info", "label": "Address and opening hours", "info": "Used when the section has no info cards." },
-    { "type": "text", "id": "form_heading", "label": "Form heading" }
+    { "type": "text", "id": "form_heading", "label": "Form heading" },
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "Shown beside the form." }
   ],
   "blocks": [
     {

@@ -3329,12 +3329,27 @@ a.k-treatment:hover {
   margin-bottom: 0;
 }
 
+.k-contact__main {
+  max-width: 720px;
+  margin: clamp(32px, 5vw, 52px) auto clamp(40px, 6vw, 72px);
+}
+
+.k-contact__main--image {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr));
+  gap: 16px;
+  max-width: none;
+}
+
+.k-contact__image {
+  min-height: 360px;
+  border-radius: 6px;
+}
+
 .k-contact__fields {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  max-width: 720px;
-  margin: clamp(32px, 5vw, 52px) auto 0;
   background: var(--k-surface);
   border: 1px solid var(--k-hair);
   border-radius: 6px;
@@ -3345,7 +3360,6 @@ a.k-treatment:hover {
   font-family: var(--k-serif);
   font-weight: 400;
   font-size: 26px;
-  text-align: center;
   margin: 0 0 4px;
 }
 
@@ -3383,14 +3397,13 @@ a.k-treatment:hover {
 
 .k-contact__fields button {
   margin-top: 6px;
-  align-self: center;
+  align-self: flex-start;
   min-width: 200px;
 }
 
 .k-contact__msg {
   margin: 0;
   font-size: 14px;
-  text-align: center;
   color: var(--k-ink-2);
 }
 
@@ -3842,4 +3855,97 @@ body:has([data-k-cart-page]) .k-bubble {
   .k-brand-pill {
     font-size: 10px;
   }
+}
+
+/* ---------- Banner with photo, treatment cards, two-column buttons ---------- */
+
+.k-banner--split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  padding: 0;
+  overflow: hidden;
+}
+
+.k-banner--split .k-banner__content {
+  padding: clamp(36px, 5vw, 64px) clamp(28px, 5vw, 56px);
+}
+
+.k-banner__media {
+  position: relative;
+  min-height: 320px;
+}
+
+.k-banner__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.k-banner__body {
+  color: rgba(251, 246, 240, 0.8);
+  font-size: 14px;
+  line-height: 1.7;
+  margin-top: 14px;
+  max-width: 560px;
+}
+
+.k-banner__body p {
+  margin: 0 0 10px;
+}
+
+.k-banner__button {
+  margin-top: 22px;
+}
+
+@media (max-width: 899px) {
+  .k-banner--split {
+    grid-template-columns: 1fr;
+  }
+
+  .k-banner__media {
+    min-height: 240px;
+    order: -1;
+  }
+}
+
+.k-treatments--cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: 16px;
+}
+
+.k-treatments--cards > li {
+  display: flex;
+}
+
+.k-treatments--cards .k-treatment {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+.k-treatment__media {
+  aspect-ratio: 4 / 3;
+  border-radius: 0;
+  padding: 0;
+}
+
+.k-treatments--cards .k-treatment__body {
+  padding: 18px 18px 6px;
+}
+
+.k-treatments--cards .k-treatment__meta {
+  padding: 0 18px 18px;
+  margin-top: auto;
+}
+
+.k-duo__button {
+  margin-top: 22px;
 }
