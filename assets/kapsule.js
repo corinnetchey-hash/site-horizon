@@ -625,6 +625,44 @@
     });
   });
 
+  /* ------------------------------------------------------------ load more */
+
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('[data-k-load-more-link]');
+    if (!link) return;
+    const block = link.closest('[data-k-load-more]');
+    const grid = document.querySelector('.k-grid--shop');
+    if (!block || !grid) return;
+    event.preventDefault();
+    link.setAttribute('aria-busy', 'true');
+    fetch(link.href, { credentials: 'same-origin' })
+      .then((response) => {
+        if (!response.ok) throw new Error(response.status);
+        return response.text();
+      })
+      .then((html) => {
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        const nextGrid = doc.querySelector('.k-grid--shop');
+        const nextBlock = doc.querySelector('[data-k-load-more]');
+        if (!nextGrid) throw new Error('grid');
+        const firstNew = nextGrid.firstElementChild;
+        Array.from(nextGrid.children).forEach((card) => grid.appendChild(document.importNode(card, true)));
+        if (nextBlock) {
+          const back = nextBlock.querySelector('.k-load-more__back');
+          if (back) back.remove();
+          block.replaceWith(document.importNode(nextBlock, true));
+        } else {
+          block.remove();
+        }
+        /* Move focus to the first new product for keyboard and screen-reader users */
+        const focusTarget = firstNew && grid.children[grid.children.length - nextGrid.children.length] && grid.children[grid.children.length - nextGrid.children.length].querySelector('.k-card__name');
+        if (focusTarget) focusTarget.focus({ preventScroll: true });
+      })
+      .catch(() => {
+        window.location.href = link.href;
+      });
+  });
+
   /* --------------------------------------------------------- hero carousel */
 
   function initCarousel(root) {

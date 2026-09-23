@@ -499,6 +499,9 @@
       "sort_new": "Dernières arrivées",
       "sort_asc": "Prix croissant",
       "sort_desc": "Prix décroissant",
+      "load_more": "Voir plus",
+      "load_previous": "Voir les produits précédents",
+      "shown": "{{ shown }} produits sur {{ total }}",
       "remove_filter": "Retirer le filtre {{ label }}"
     },
     "product": {

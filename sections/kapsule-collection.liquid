@@ -462,17 +462,27 @@
         {%- endif -%}
 
         {%- if paginate.pages > 1 -%}
-          <nav class="k-pagination" aria-label="{{ 'content.pagination.nav_label' | t }}">
-            {%- for part in paginate.parts -%}
-              {%- if part.is_link -%}
-                <a class="k-pill" href="{{ part.url }}">{{ part.title }}</a>
-              {%- elsif part.title == paginate.current_page -%}
-                <span class="k-pill is-active" aria-current="page">{{ part.title }}</span>
-              {%- else -%}
-                <span class="k-pill">{{ part.title }}</span>
-              {%- endif -%}
-            {%- endfor -%}
-          </nav>
+          {%- liquid
+            assign shown_count = paginate.current_offset | plus: collection.products.size
+          -%}
+          <div class="k-load-more" data-k-load-more>
+            <p class="k-load-more__status" role="status">
+              {{ 'kapsule.shop.shown' | t: shown: shown_count, total: paginate.items }}
+            </p>
+            <span class="k-load-more__bar" aria-hidden="true">
+              <span style="width: {{ shown_count | times: 100 | divided_by: paginate.items }}%"></span>
+            </span>
+            {%- if paginate.next -%}
+              <a class="k-btn k-btn--outline" href="{{ paginate.next.url }}" data-k-load-more-link>
+                {{- 'kapsule.shop.load_more' | t -}}
+              </a>
+            {%- endif -%}
+            {%- if paginate.previous -%}
+              <a class="k-underline-link k-load-more__back" href="{{ paginate.previous.url }}">
+                {{- 'kapsule.shop.load_previous' | t -}}
+              </a>
+            {%- endif -%}
+          </div>
         {%- endif -%}
       </div>
     </div>
@@ -498,7 +508,7 @@
       "info": "Applies to every collection except All products.",
       "default": true
     },
-    { "type": "range", "id": "per_page", "label": "Products per page", "min": 12, "max": 48, "step": 12, "default": 48 },
+    { "type": "range", "id": "per_page", "label": "Products shown before “Load more”", "min": 12, "max": 48, "step": 12, "default": 12 },
     { "type": "number", "id": "price_band_1", "label": "First price band limit", "default": 30 },
     { "type": "number", "id": "price_band_2", "label": "Second price band limit", "default": 55 }
   ]

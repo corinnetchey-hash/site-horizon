@@ -520,6 +520,9 @@
       "sort_new": "New in",
       "sort_asc": "Price low to high",
       "sort_desc": "Price high to low",
+      "load_more": "Load more",
+      "load_previous": "Show previous products",
+      "shown": "{{ shown }} of {{ total }} products",
       "remove_filter": "Remove filter {{ label }}"
     },
     "product": {

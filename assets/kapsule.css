@@ -1687,12 +1687,55 @@ a.k-marquee__item:hover {
   font-size: 20px;
 }
 
-.k-pagination {
+.k-load-more {
   display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 28px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.k-load-more__status {
+  margin: 0;
+  font-size: 13px;
+  color: var(--k-ink-3);
+}
+
+.k-load-more__bar {
+  display: block;
+  width: min(220px, 60%);
+  height: 2px;
+  background: var(--k-hair);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.k-load-more__bar > span {
+  display: block;
+  height: 100%;
+  background: var(--k-ink);
+  transition: width 0.3s ease;
+}
+
+.k-load-more__back {
+  font-size: 13px;
+}
+
+.k-btn--outline {
+  border-color: var(--k-ink);
+  color: var(--k-ink);
+  background: transparent;
+  min-width: 200px;
+}
+
+.k-btn--outline:hover {
+  background: var(--k-ink);
+  color: var(--k-canvas);
+}
+
+.k-btn--outline[aria-busy='true'] {
+  opacity: 0.6;
+  pointer-events: none;
 }
 
 @media (max-width: 699px) {

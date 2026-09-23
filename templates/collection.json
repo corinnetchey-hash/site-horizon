@@ -14,7 +14,7 @@
       "settings": {
         "copy_key": "shop",
         "use_collection_copy": true,
-        "per_page": 48,
+        "per_page": 12,
         "price_band_1": 30,
         "price_band_2": 55
       }
