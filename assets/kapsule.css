@@ -1010,17 +1010,23 @@ a.k-marquee__item:hover {
 }
 
 .k-hero-carousel__dot {
+  border: 0;
+  padding: 8px 4px;
+  background: none;
+  cursor: pointer;
+}
+
+.k-hero-carousel__dot::before {
+  content: '';
+  display: block;
   width: 8px;
   height: 8px;
   border-radius: 999px;
-  border: 0;
-  padding: 0;
   background: rgba(251, 246, 240, 0.4);
-  cursor: pointer;
-  transition: width 0.25s ease, background 0.25s ease;
+  transition: width 0.25s ease, background-color 0.25s ease;
 }
 
-.k-hero-carousel__dot[aria-current='true'] {
+.k-hero-carousel__dot[aria-current='true']::before {
   width: 24px;
   background: var(--k-light);
 }
@@ -3003,3 +3009,166 @@ body.k-overlay-open .k-bubble {
   color: rgba(255, 255, 255, 0.7);
 }
 
+
+/* ---------- Mobile refinements ---------- */
+
+@media (max-width: 699px) {
+  /* Hero carousel: keep each slide close to one screen */
+  .k-hero {
+    gap: 22px;
+  }
+
+  .k-hero__text {
+    font-size: 14px;
+    margin-top: 14px;
+  }
+
+  .k-hero__ctas {
+    margin-top: 22px;
+  }
+
+  .k-hero__trust {
+    display: none;
+  }
+
+  .k-hero__products > .k-mini-card:nth-child(n + 3) {
+    display: none;
+  }
+
+  .k-hero__visual {
+    aspect-ratio: 4 / 3;
+  }
+
+  .k-hero-carousel:has(.k-hero-carousel__controls) .k-hero-carousel__slide {
+    padding-bottom: 78px;
+  }
+
+  /* Bigger touch area around the dots, same visual size */
+  .k-hero-carousel__dot {
+    padding: 14px 5px;
+  }
+
+  .k-hero-carousel__arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Concern tiles: two per row instead of a tall stack */
+  .k-concerns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .k-concern {
+    min-height: 88px;
+    padding: 14px;
+  }
+
+  .k-concern__label {
+    font-size: 16px;
+  }
+
+  .k-concern:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  /* Social grid: two rows of two */
+  .k-ugc > .k-media:nth-child(n + 5) {
+    display: none;
+  }
+
+  /* Feature card placeholder */
+  .k-feature .k-media--glass {
+    min-height: 180px;
+  }
+
+  /* Bundle: compact rows with a thumbnail */
+  .k-bundle {
+    padding: 20px;
+  }
+
+  .k-bundle__grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .k-bundle__item {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .k-bundle__item img {
+    width: 76px;
+    flex: 0 0 76px;
+  }
+
+  .k-bundle__body {
+    padding: 10px 14px;
+  }
+
+  /* Floating diagnostic button: smaller footprint */
+  .k-bubble {
+    padding: 7px 14px 7px 7px;
+  }
+
+  .k-bubble img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .k-bubble__title {
+    font-size: 14px;
+  }
+
+  .k-bubble__kicker {
+    display: none;
+  }
+
+  /* Comfortable touch targets for small text links */
+  .k-lang button,
+  .k-header__search-toggle {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-top: -12px;
+    margin-bottom: -12px;
+  }
+
+  .k-footer__links a,
+  .k-breadcrumb a {
+    display: inline-block;
+    padding: 7px 0;
+  }
+
+  .k-houses__list a {
+    display: inline-block;
+    padding: 8px 2px;
+  }
+
+  /* Pop-up tiles: a mosaic instead of four tall stacked blocks */
+  .k-tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .k-tiles > .k-media {
+    min-height: 0 !important;
+    aspect-ratio: 1 / 1;
+  }
+
+  .k-tiles > .k-media:first-child,
+  .k-tiles > .k-media:last-child:nth-child(even) {
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 9;
+  }
+
+  /* Editorial and visit photos */
+  .k-editorial .k-media,
+  .k-split .k-media {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  .k-brand-pill {
+    font-size: 10px;
+  }
+}
