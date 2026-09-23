@@ -385,8 +385,8 @@ body.kapsule #header-group:has(.k-marquee) {
 .k-marquee {
   height: var(--k-marquee-height);
   overflow: hidden;
-  background: var(--k-marquee-bg, #c7203f);
-  color: var(--k-marquee-fg, #fff);
+  background: var(--k-marquee-bg, #5a1410);
+  color: var(--k-marquee-fg, var(--k-light));
   display: flex;
   align-items: center;
 }

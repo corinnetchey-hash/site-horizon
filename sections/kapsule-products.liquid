@@ -4,6 +4,9 @@
   if source == blank
     assign source = collections['all']
   endif
+  assign excluded = section.settings.exclude | map: 'handle' | join: ','
+  assign excluded = ',' | append: excluded | append: ','
+  assign shown = 0
 -%}
 <div class="k-container k-section">
   <div class="k-head-row">
@@ -11,8 +14,12 @@
     <a class="k-underline-link" href="{{ source.url }}">{{ 'kapsule.general.view_all' | t }}</a>
   </div>
   <div class="k-grid k-grid--home">
-    {%- for product in source.products limit: section.settings.limit, offset: section.settings.offset -%}
+    {%- for product in source.products offset: section.settings.offset -%}
+      {%- assign needle = ',' | append: product.handle | append: ',' -%}
+      {%- if excluded contains needle -%}{%- continue -%}{%- endif -%}
       {% render 'kapsule-card', product: product, style: 'home', show_concerns: true %}
+      {%- assign shown = shown | plus: 1 -%}
+      {%- if shown >= section.settings.limit -%}{%- break -%}{%- endif -%}
     {%- endfor -%}
   </div>
 </div>
@@ -38,11 +45,18 @@
       "type": "range",
       "id": "offset",
       "label": "Skip the first products",
-      "info": "Use 4 to avoid repeating the products shown in the hero.",
+      "info": "Skips the first products of the collection.",
       "min": 0,
       "max": 12,
       "step": 1,
       "default": 0
+    },
+    {
+      "type": "product_list",
+      "id": "exclude",
+      "label": "Products to leave out",
+      "info": "Pick the hero's products here so they are not shown twice.",
+      "limit": 12
     }
   ],
   "presets": [{ "name": "Kapsule product grid" }]

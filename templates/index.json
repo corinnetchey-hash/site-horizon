@@ -12,7 +12,8 @@
     "hero": {
       "type": "kapsule-hero",
       "settings": {
-        "copy_key": "home.hero"
+        "copy_key": "home.hero",
+        "products": ["dalba-single-item-double-serum-30ml-1-pc-until-sep-2027", "soin-teinte-cicathione-glow-cushion-zisu-c", "toner-a-l-eau-de-rose-de-bulgarie-urang", "mixsoon-serum-hydratant-a-l-acide-hyaluronique"]
       }
     },
     "band": {
@@ -77,7 +78,8 @@
       "settings": {
         "copy_key": "home.bestsellers",
         "limit": 4,
-        "offset": 4
+        "offset": 0,
+        "exclude": ["dalba-single-item-double-serum-30ml-1-pc-until-sep-2027", "soin-teinte-cicathione-glow-cushion-zisu-c", "toner-a-l-eau-de-rose-de-bulgarie-urang", "mixsoon-serum-hydratant-a-l-acide-hyaluronique"]
       }
     },
     "houses": {

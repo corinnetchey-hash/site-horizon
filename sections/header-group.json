@@ -21,8 +21,8 @@
       },
       "block_order": ["message_1", "message_2", "message_3", "message_4"],
       "settings": {
-        "background": "#C7203F",
-        "color": "#FFFFFF"
+        "background": "#5A1410",
+        "color": "#FBF6F0"
       }
     },
     "kapsule_header": {
