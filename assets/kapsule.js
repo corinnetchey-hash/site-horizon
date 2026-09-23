@@ -179,6 +179,8 @@
       });
       cartState = await response.json();
       renderCart();
+      /* The /cart page is server-rendered: reload it so lines and totals match */
+      if (document.querySelector('[data-k-cart-page]')) window.location.reload();
     } finally {
       drawer && drawer.classList.remove('is-loading');
     }
@@ -228,6 +230,7 @@
     }
     const lineButton = target.closest('[data-k-line-change]');
     if (lineButton) {
+      event.preventDefault();
       changeLine(lineButton.getAttribute('data-k-line-change'), Number(lineButton.getAttribute('data-qty')));
     }
   });

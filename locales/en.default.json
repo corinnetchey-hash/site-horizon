@@ -414,6 +414,10 @@
       "remaining": "{{ amount }} to go"
     },
     "cart": {
+      "kicker": "KAPSULE — PARIS 3E",
+      "remove": "Remove",
+      "continue": "Continue shopping",
+      "taxes": "Taxes included. Shipping calculated at checkout.",
       "title": "Your cart",
       "empty": "Your cart is empty.",
       "subtotal": "Subtotal",

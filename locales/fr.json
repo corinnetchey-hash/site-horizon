@@ -393,6 +393,10 @@
       "remaining": "Plus que {{ amount }}"
     },
     "cart": {
+      "kicker": "KAPSULE — PARIS 3E",
+      "remove": "Retirer",
+      "continue": "Continuer mes achats",
+      "taxes": "Taxes incluses. Frais d'expédition calculés à l'étape de paiement.",
       "title": "Votre panier",
       "empty": "Votre panier est vide.",
       "subtotal": "Sous-total",

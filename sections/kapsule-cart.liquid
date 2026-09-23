@@ -1,0 +1,98 @@
+{%- comment -%}
+  Full cart page (/cart). Server-rendered so it works without JavaScript; kapsule.js
+  refreshes the page after a quantity change so totals stay in sync.
+{%- endcomment -%}
+<div class="k-container k-section k-cart-page" data-k-cart-page>
+  <div class="k-kicker">{{ 'kapsule.cart.kicker' | t }}</div>
+  <h1 class="k-h1 k-cart-page__title">{{ 'kapsule.cart.title' | t }}</h1>
+
+  {%- if cart.item_count > 0 -%}
+    <div class="k-cart-page__layout">
+      <div class="k-cart-page__lines">
+        {%- for item in cart.items -%}
+          {%- liquid
+            assign minus = item.quantity | minus: 1
+            assign plus = item.quantity | plus: 1
+          -%}
+          <div class="k-line k-line--page">
+            <a href="{{ item.url }}" tabindex="-1" aria-hidden="true">
+              {%- if item.image -%}
+                {{ item.image | image_url: width: 300 | image_tag: width: 110, height: 134, loading: 'lazy', alt: '' }}
+              {%- else -%}
+                <img alt="" width="110" height="134">
+              {%- endif -%}
+            </a>
+            <div class="k-line__body">
+              <div class="k-line__brand">{{ item.vendor }}</div>
+              <a class="k-line__name" href="{{ item.url }}">{{ item.product.title }}</a>
+              {%- unless item.product.has_only_default_variant -%}
+                <div class="k-line__variant">{{ item.variant.title }}</div>
+              {%- endunless -%}
+              <div class="k-line__unit">{{ item.final_price | money }}</div>
+              <div class="k-line__foot">
+                <div class="k-qty k-qty--sm">
+                  <a
+                    href="{{ routes.cart_change_url }}?id={{ item.key }}&quantity={{ minus }}"
+                    role="button"
+                    data-k-line-change="{{ item.key }}"
+                    data-qty="{{ minus }}"
+                    aria-label="{{ 'kapsule.cart.decrease' | t }}"
+                  >−</a>
+                  <span>{{ item.quantity }}</span>
+                  <a
+                    href="{{ routes.cart_change_url }}?id={{ item.key }}&quantity={{ plus }}"
+                    role="button"
+                    data-k-line-change="{{ item.key }}"
+                    data-qty="{{ plus }}"
+                    aria-label="{{ 'kapsule.cart.increase' | t }}"
+                  >+</a>
+                </div>
+                <span class="k-line__total">{{ item.final_line_price | money }}</span>
+              </div>
+              <a
+                class="k-line__remove"
+                href="{{ item.url_to_remove }}"
+                data-k-line-change="{{ item.key }}"
+                data-qty="0"
+              >
+                {{- 'kapsule.cart.remove' | t -}}
+              </a>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <aside class="k-cart-page__summary">
+        {% render 'kapsule-ship', boxed: false %}
+        <div class="k-drawer__subtotal">
+          <span>{{ 'kapsule.cart.subtotal' | t }}</span>
+          <strong>{{ cart.total_price | money }}</strong>
+        </div>
+        <p class="k-cart-page__taxes">{{ 'kapsule.cart.taxes' | t }}</p>
+        <form action="{{ routes.cart_url }}" method="post">
+          <button type="submit" name="checkout" class="k-btn k-btn--bordeaux k-drawer__checkout">
+            {{- 'kapsule.cart.checkout' | t -}}
+          </button>
+        </form>
+        <div class="k-drawer__note">{{ 'kapsule.cart.foot' | t }}</div>
+        <a class="k-underline-link k-cart-page__continue" href="{{ routes.all_products_collection_url }}">
+          {{- 'kapsule.cart.continue' | t -}}
+        </a>
+      </aside>
+    </div>
+  {%- else -%}
+    <div class="k-cart-page__empty">
+      <p>{{ 'kapsule.cart.empty' | t }}</p>
+      <a class="k-btn k-btn--dark" href="{{ routes.all_products_collection_url }}">
+        {{- 'kapsule.home.hero.cta' | t -}}
+      </a>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Kapsule cart",
+  "settings": []
+}
+{% endschema %}
