@@ -1,0 +1,82 @@
+<div class="k-container k-section">
+  <div class="k-duo k-duo--{{ section.settings.layout }}{% if section.settings.layout == 'joined' %} k-duo--{{ section.settings.style }}{% endif %}">
+    {%- for block in section.blocks -%}
+      <div
+        class="k-duo__col{% if section.settings.layout == 'separate' %} k-duo--{{ block.settings.style }}{% endif %}"
+        {{ block.shopify_attributes }}
+      >
+        {%- if block.settings.kicker != blank -%}
+          <div class="k-kicker">{{ block.settings.kicker }}</div>
+        {%- endif -%}
+        {%- if block.settings.heading != blank -%}
+          <h2 class="k-h2 k-duo__heading">{{ block.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if block.settings.quote != blank -%}
+          <blockquote class="k-duo__quote">{{ block.settings.quote }}</blockquote>
+        {%- endif -%}
+        {%- if block.settings.text != blank -%}
+          <div class="k-duo__body k-rte">{{ block.settings.text }}</div>
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Kapsule two columns",
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        { "value": "separate", "label": "Two blocks side by side" },
+        { "value": "joined", "label": "One block, two columns" }
+      ],
+      "default": "separate"
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Panel style (one block)",
+      "options": [
+        { "value": "surface", "label": "Light panel" },
+        { "value": "white", "label": "White panel" },
+        { "value": "bordeaux", "label": "Bordeaux panel" }
+      ],
+      "default": "surface"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Column",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Style (two blocks)",
+          "options": [
+            { "value": "surface", "label": "Light panel" },
+            { "value": "white", "label": "White panel" },
+            { "value": "bordeaux", "label": "Bordeaux panel" }
+          ],
+          "default": "surface"
+        },
+        { "type": "text", "id": "kicker", "label": "Kicker" },
+        { "type": "text", "id": "heading", "label": "Heading" },
+        { "type": "textarea", "id": "quote", "label": "Quote" },
+        { "type": "richtext", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kapsule two columns",
+      "blocks": [{ "type": "column" }, { "type": "column" }]
+    }
+  ]
+}
+{% endschema %}

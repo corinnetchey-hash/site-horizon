@@ -19,41 +19,6 @@
         "text": "Un espace où le temps suspend son vol pour laisser place à la transformation — une escale confidentielle au cœur du Haut-Marais, dédiée à la renaissance de votre peau et de votre sérénité."
       }
     },
-    "fondatrice": {
-      "type": "kapsule-text",
-      "settings": {
-        "style": "plain",
-        "alignment": "left",
-        "kicker": "LE MOT DE LA FONDATRICE",
-        "heading": "L'Art du Soin Structurel",
-        "text": "<p><em>« Travailler sur le corps humain, c'est, en fin de compte, toucher à la vie d'une personne. »</em></p><p>Depuis 34 ans en Corée, je pratique des soins esthétiques structurels guidés par ce principe fondamental. À travers des dizaines de milliers de traitements, j’ai compris que la peau n’est jamais une surface isolée. Elle est le miroir de la circulation du corps, de son équilibre structurel et du rythme de vie de chacun.</p><p>Lorsque le corps perd son équilibre, la fatigue s'accumule. Le sommeil se fragilise. La clarté d'esprit s'estompe. Avec le temps, ces changements internes finissent inévitablement par marquer la peau.</p><p>C’est pourquoi je n’ai jamais envisagé l’esthétique comme un simple procédé d’amélioration de l’apparence. Mon approche a toujours consisté à restaurer les conditions nécessaires pour que le corps puisse retrouver ses capacités naturelles de récupération.</p>"
-      }
-    },
-    "technique": {
-      "type": "kapsule-text",
-      "settings": {
-        "style": "surface",
-        "alignment": "left",
-        "heading": "De la Technique au Système",
-        "text": "<p>Plutôt que de me reposer sur l'intuition ou des techniques éphémères, j'ai consacré ma carrière à bâtir un système de soin structuré et explicable.</p><p>En m'appuyant sur la compréhension traditionnelle coréenne des méridiens, de la circulation et des flux énergétiques, j'ai organisé ces principes en une méthodologie claire, affinée par plus de 20 000 cas cliniques.</p><p>Au fil du temps, ces recherches ont donné naissance à ce que j'appelle la <strong>Méthode de Soin par Suivi Intégré</strong> (<em>Integrated Tracking Care Method</em>) — un système conçu pour observer le corps, suivre ses changements structurels et orienter le processus de rétablissement.</p><p>La philosophie qui sous-tend ce travail dépasse la simple technique. Il s'agit de comprendre la structure, de lire les flux du corps et de dessiner le chemin vers l'équilibre.</p>"
-      }
-    },
-    "batang": {
-      "type": "kapsule-text",
-      "settings": {
-        "kicker": "LA PHILOSOPHIE",
-        "heading": "BATANG, le fondement",
-        "text": "<p>En coréen, le mot <strong>« Batang (바탕) »</strong> signifie fondement, base ou structure sous-jacente. Il désigne la couche essentielle sur laquelle tout se construit — la condition fondamentale qui soutient l'équilibre, la stabilité et la croissance.</p><p>Au <strong>KAPSULE PALAIS</strong>, BATANG représente bien plus qu'un simple traitement. C'est le socle même de toute notre philosophie esthétique.</p>"
-      }
-    },
-    "origine": {
-      "type": "kapsule-text",
-      "settings": {
-        "style": "surface",
-        "heading": "L'origine d'un rituel de soin royal coréen",
-        "text": "<p>Un rituel de soin raffiné, inspiré par la cour royale de Corée et porté à travers le temps, renaît aujourd'hui chez KAPSULE.</p><p>C'est un protocole conçu selon un système rigoureux, bâti sur 34 ans de pratique de l'esthétique structurelle en Corée et plus de 20 000 cas cliniques. Ancrée dans la compréhension traditionnelle coréenne des méridiens et des flux énergétiques, cette méthode associe des outils traditionnels, une pression précise et des mouvements rythmiques pour restaurer la circulation naturelle et recalibrer le rythme de la peau.</p><p>BATANG est le programme signature de KAPSULE PALAIS : plutôt que de se concentrer uniquement sur la surface de l'épiderme, il agit sur la circulation, les voies lymphatiques, l'équilibre musculaire et l'alignement structurel.</p>"
-      }
-    },
     "visage": {
       "type": "kapsule-editorial",
       "settings": {
@@ -191,14 +156,78 @@
         "button_label": "Réserver en ligne",
         "button_link": "https://www.fresha.com/a/kapsule-paris-10-12-rue-charles-francois-dupuis-mjeorknn?pId=2793504"
       }
+    },
+    "fondatrice_duo": {
+      "type": "kapsule-duo",
+      "blocks": {
+        "fondatrice": {
+          "type": "column",
+          "settings": {
+            "style": "surface",
+            "kicker": "LE MOT DE LA FONDATRICE",
+            "heading": "L'Art du Soin Structurel",
+            "quote": "« Travailler sur le corps humain, c'est, en fin de compte, toucher à la vie d'une personne. »",
+            "text": "<p>Depuis 34 ans en Corée, je pratique des soins esthétiques structurels guidés par ce principe fondamental. À travers des dizaines de milliers de traitements, j’ai compris que la peau n’est jamais une surface isolée. Elle est le miroir de la circulation du corps, de son équilibre structurel et du rythme de vie de chacun.</p><p>Lorsque le corps perd son équilibre, la fatigue s'accumule. Le sommeil se fragilise. La clarté d'esprit s'estompe. Avec le temps, ces changements internes finissent inévitablement par marquer la peau.</p><p>C’est pourquoi je n’ai jamais envisagé l’esthétique comme un simple procédé d’amélioration de l’apparence. Mon approche a toujours consisté à restaurer les conditions nécessaires pour que le corps puisse retrouver ses capacités naturelles de récupération.</p>"
+          }
+        },
+        "technique": {
+          "type": "column",
+          "settings": {
+            "style": "white",
+            "kicker": "LA MÉTHODE",
+            "heading": "De la Technique au Système",
+            "quote": "",
+            "text": "<p>Plutôt que de me reposer sur l'intuition ou des techniques éphémères, j'ai consacré ma carrière à bâtir un système de soin structuré et explicable.</p><p>En m'appuyant sur la compréhension traditionnelle coréenne des méridiens, de la circulation et des flux énergétiques, j'ai organisé ces principes en une méthodologie claire, affinée par plus de 20 000 cas cliniques.</p><p>Au fil du temps, ces recherches ont donné naissance à ce que j'appelle la <strong>Méthode de Soin par Suivi Intégré</strong> (<em>Integrated Tracking Care Method</em>) — un système conçu pour observer le corps, suivre ses changements structurels et orienter le processus de rétablissement.</p><p>La philosophie qui sous-tend ce travail dépasse la simple technique. Il s'agit de comprendre la structure, de lire les flux du corps et de dessiner le chemin vers l'équilibre.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "fondatrice",
+        "technique"
+      ],
+      "settings": {
+        "layout": "separate",
+        "style": "surface"
+      }
+    },
+    "philosophie": {
+      "type": "kapsule-duo",
+      "blocks": {
+        "batang": {
+          "type": "column",
+          "settings": {
+            "style": "surface",
+            "kicker": "LA PHILOSOPHIE",
+            "heading": "BATANG, le fondement",
+            "quote": "",
+            "text": "<p>En coréen, le mot <strong>« Batang (바탕) »</strong> signifie fondement, base ou structure sous-jacente. Il désigne la couche essentielle sur laquelle tout se construit — la condition fondamentale qui soutient l'équilibre, la stabilité et la croissance.</p><p>Au <strong>KAPSULE PALAIS</strong>, BATANG représente bien plus qu'un simple traitement. C'est le socle même de toute notre philosophie esthétique.</p>"
+          }
+        },
+        "origine": {
+          "type": "column",
+          "settings": {
+            "style": "surface",
+            "kicker": "L'ORIGINE",
+            "heading": "L'origine d'un rituel de soin royal coréen",
+            "quote": "",
+            "text": "<p>Un rituel de soin raffiné, inspiré par la cour royale de Corée et porté à travers le temps, renaît aujourd'hui chez KAPSULE.</p><p>C'est un protocole conçu selon un système rigoureux, bâti sur 34 ans de pratique de l'esthétique structurelle en Corée et plus de 20 000 cas cliniques. Ancrée dans la compréhension traditionnelle coréenne des méridiens et des flux énergétiques, cette méthode associe des outils traditionnels, une pression précise et des mouvements rythmiques pour restaurer la circulation naturelle et recalibrer le rythme de la peau.</p><p>BATANG est le programme signature de KAPSULE PALAIS : plutôt que de se concentrer uniquement sur la surface de l'épiderme, il agit sur la circulation, les voies lymphatiques, l'équilibre musculaire et l'alignement structurel.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "batang",
+        "origine"
+      ],
+      "settings": {
+        "layout": "joined",
+        "style": "surface"
+      }
     }
   },
   "order": [
     "banner",
-    "fondatrice",
-    "technique",
-    "batang",
-    "origine",
+    "fondatrice_duo",
+    "philosophie",
     "visage",
     "oak_an",
     "treatments",

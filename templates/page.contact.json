@@ -14,10 +14,40 @@
       "settings": {
         "kicker": "KAPSULE & KAPSULE PALAIS",
         "heading": "Contactez-nous",
-        "info": "<p><strong>KAPSULE &amp; KAPSULE PALAIS</strong><br>10 - 12 Rue Charles-François Dupuis<br>75003 Paris</p><p><strong>Horaires de la boutique</strong></p><ul><li><strong>Mardi au samedi :</strong> 11h00 — 19h00</li><li><strong>Dimanche &amp; lundi :</strong> Fermé</li></ul><p><strong>Institut Kapsule Palais</strong> (sur rendez-vous uniquement)</p><ul><li><strong>Mardi au samedi :</strong> 11h00 — 20h00</li><li><strong>Dimanche :</strong> 11h00 — 20h00</li><li><strong>Lundi :</strong> Fermé</li></ul><p>De 19h à 20h du mardi au samedi, ainsi que le dimanche toute la journée, l'accès se fait exclusivement sur réservation en ligne.</p><p><strong>Téléphone :</strong> 07 75 70 57 72</p>",
         "intro": "Une question concernant un produit, une commande ou un soin ? Écrivez-nous, nous vous répondons sous 24 à 48 heures.",
-        "image": "shopify://shop_images/DSC_4017.webp"
-      }
+        "form_heading": "Écrivez-nous"
+      },
+      "blocks": {
+        "address": {
+          "type": "card",
+          "settings": {
+            "kicker": "NOUS TROUVER",
+            "title": "Kapsule & Kapsule Palais",
+            "text": "<p>10 - 12 Rue Charles-François Dupuis<br>75003 Paris — Le Marais</p><p><strong>Téléphone</strong><br><a href=\"tel:+33775705772\">07 75 70 57 72</a></p>"
+          }
+        },
+        "shop": {
+          "type": "card",
+          "settings": {
+            "kicker": "LA BOUTIQUE",
+            "title": "Horaires de la boutique",
+            "text": "<p><strong>Mardi au samedi</strong><br>11h00 — 19h00</p><p><strong>Dimanche &amp; lundi</strong><br>Fermé</p>"
+          }
+        },
+        "institut": {
+          "type": "card",
+          "settings": {
+            "kicker": "L'INSTITUT — SUR RENDEZ-VOUS",
+            "title": "Kapsule Palais",
+            "text": "<p><strong>Mardi au dimanche</strong><br>11h00 — 20h00</p><p><strong>Lundi</strong><br>Fermé</p><p>De 19h à 20h du mardi au samedi, et le dimanche toute la journée, accès uniquement sur réservation en ligne.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "address",
+        "shop",
+        "institut"
+      ]
     }
   },
   "order": [
