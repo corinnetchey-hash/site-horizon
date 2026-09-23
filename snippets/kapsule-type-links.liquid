@@ -1,0 +1,19 @@
+{%- comment -%}
+  Category links built from the “Product type collections” theme setting.
+
+  Accepts:
+  - type_handles {array} - Collection handles
+{%- endcomment -%}
+{%- for type_handle in type_handles -%}
+  {%- assign type_collection = collections[type_handle] -%}
+  {%- if type_collection == blank or type_collection.products_count == 0 -%}{%- continue -%}{%- endif -%}
+  <a
+    class="k-filter-cat"
+    href="{{ type_collection.url }}"
+    {% if collection.handle == type_handle %}
+      aria-current="true"
+    {% endif %}
+  >
+    {{- type_collection.title -}}
+  </a>
+{%- endfor -%}

@@ -88,6 +88,9 @@
       {%- for product in quiz_collection.products limit: 50 -%}
         {%- unless product.available -%}{%- continue -%}{%- endunless -%}
         {%- liquid
+          capture product_brand
+            render 'kapsule-brand', product: product
+          endcapture
           assign concerns = ''
           for tag in product.tags
             assign tag_handle = tag | handleize
@@ -96,12 +99,27 @@
               assign concerns = concerns | append: concern | append: ','
             endif
           endfor
-          assign concern_list = concerns | split: ','
+          # Stores that organise concerns as collections: map them onto the quiz answers
+          for concern_collection in product.collections
+            case concern_collection.handle
+              when 'deshydratation', 'peau-seche'
+                assign concerns = concerns | append: 'secheresse,'
+              when 'manque-declat', 'taches-pigmentaires'
+                assign concerns = concerns | append: 'eclat,'
+              when 'rides-perte-de-fermete'
+                assign concerns = concerns | append: 'age,'
+              when 'sensibilite-rougeurs'
+                assign concerns = concerns | append: 'sensible,rougeurs,'
+              when 'peau-sensible'
+                assign concerns = concerns | append: 'sensible,'
+            endcase
+          endfor
+          assign concern_list = concerns | split: ',' | uniq
         -%}
         {%- unless first_written -%}{%- assign first_written = true -%}{%- else -%},{%- endunless -%}
         {
           "title": {{ product.title | json }},
-          "vendor": {{ product.vendor | json }},
+          "vendor": {{ product_brand | json }},
           "url": {{ product.url | json }},
           "image": {% if product.featured_media %}{{ product.featured_media | image_url: width: 400 | json }}{% else %}null{% endif %},
           "price": {{ product.selected_or_first_available_variant.price | json }},

@@ -373,6 +373,15 @@
     }
   },
   "kapsule": {
+    "contact": {
+      "sent": "Thank you! Your message has been sent — we reply within 24 to 48 hours.",
+      "error": "Please check the form fields.",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "message": "Your message",
+      "send": "Send"
+    },
     "hero_carousel": {
       "label": "Featured",
       "slide": "Slide {{ index }} of {{ count }}",
@@ -544,6 +553,11 @@
       "reassurance_3": "Personal advice from our aestheticians",
       "reassurance_4": "Also available in store, Paris 3e",
       "the_house": "THE HOUSE",
+      "usage": "How to use",
+      "full_ingredients": "Full ingredient list",
+      "precautions": "Precautions",
+      "story": "The story behind the product",
+      "reviews": "Customer reviews",
       "actives": "The actives",
       "actives_fallback": "Actives chosen for their proven efficacy, at honest concentrations — the full INCI list is printed on every bottle, nothing hidden.",
       "texture": "Texture & application",

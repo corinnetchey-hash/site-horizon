@@ -9,161 +9,454 @@
  */
 {
   "sections": {
-    "collection_list_Wfgh3m": {
-      "type": "main-collection-list",
+    "types": {
+      "type": "kapsule-collection-list",
       "blocks": {
-        "group_4FtiAg": {
-          "type": "group",
-          "name": "t:names.header",
+        "c0": {
+          "type": "collection",
           "settings": {
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "link": "",
-            "open_in_new_tab": false,
-            "padding-block-start": 0,
-            "padding-block-end": 48,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "text_fRMQMR": {
-              "type": "text",
-              "name": "t:names.text",
-              "settings": {
-                "text": "<h1>Shop by collection</h1>",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h2",
-                "font": "var(--font-body--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 16,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "text_fRMQMR"
-          ]
+            "collection": "nettoyant-visage"
+          }
         },
-        "static-collection-card": {
-          "type": "_collection-card",
-          "name": "t:names.collection_card",
-          "static": true,
+        "c1": {
+          "type": "collection",
           "settings": {
-            "placement": "below_image",
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "flex-start",
-            "collection_card_gap": 8,
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0
-          },
-          "blocks": {
-            "collection_title_7YgBPU": {
-              "type": "collection-title",
-              "name": "t:names.collection_title",
-              "settings": {
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "collection-card-image": {
-              "type": "_collection-card-image",
-              "name": "t:names.collection_card_image",
-              "static": true,
-              "settings": {
-                "image_ratio": "adapt",
-                "toggle_overlay": false,
-                "overlay_color": "#00000026",
-                "overlay_style": "solid",
-                "gradient_direction": "to top",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "collection_title_7YgBPU"
-          ]
+            "collection": "tonique-visage"
+          }
+        },
+        "c2": {
+          "type": "collection",
+          "settings": {
+            "collection": "masque-visage"
+          }
+        },
+        "c3": {
+          "type": "collection",
+          "settings": {
+            "collection": "serum-visage"
+          }
+        },
+        "c4": {
+          "type": "collection",
+          "settings": {
+            "collection": "brumes-visages"
+          }
+        },
+        "c5": {
+          "type": "collection",
+          "settings": {
+            "collection": "creme-visage"
+          }
+        },
+        "c6": {
+          "type": "collection",
+          "settings": {
+            "collection": "protection-solaire-visage"
+          }
+        },
+        "c7": {
+          "type": "collection",
+          "settings": {
+            "collection": "soins-pour-les-cheveux"
+          }
+        },
+        "c8": {
+          "type": "collection",
+          "settings": {
+            "collection": "soins-pour-le-corps"
+          }
+        },
+        "c9": {
+          "type": "collection",
+          "settings": {
+            "collection": "accessoires"
+          }
+        },
+        "c10": {
+          "type": "collection",
+          "settings": {
+            "collection": "maquillage"
+          }
+        },
+        "c11": {
+          "type": "collection",
+          "settings": {
+            "collection": "kit-de-voyage"
+          }
         }
       },
       "block_order": [
-        "group_4FtiAg"
+        "c0",
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8",
+        "c9",
+        "c10",
+        "c11"
       ],
-      "name": "t:names.collection_list",
       "settings": {
-        "layout_type": "grid",
-        "carousel_on_mobile": false,
-        "columns": 3,
-        "mobile_columns": "2",
-        "columns_gap": 12,
-        "bento_gap": 8,
-        "rows_gap": 24,
-        "max_collections": 4,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "page-width",
-        "gap": 12,
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "show_header": false,
+        "heading": "Types de produits"
+      }
+    },
+    "concerns": {
+      "type": "kapsule-collection-list",
+      "blocks": {
+        "c0": {
+          "type": "collection",
+          "settings": {
+            "collection": "acne-imperfections"
+          }
+        },
+        "c1": {
+          "type": "collection",
+          "settings": {
+            "collection": "deshydratation"
+          }
+        },
+        "c2": {
+          "type": "collection",
+          "settings": {
+            "collection": "manque-declat"
+          }
+        },
+        "c3": {
+          "type": "collection",
+          "settings": {
+            "collection": "points-noirs-pores"
+          }
+        },
+        "c4": {
+          "type": "collection",
+          "settings": {
+            "collection": "rides-perte-de-fermete"
+          }
+        },
+        "c5": {
+          "type": "collection",
+          "settings": {
+            "collection": "sensibilite-rougeurs"
+          }
+        },
+        "c6": {
+          "type": "collection",
+          "settings": {
+            "collection": "taches-pigmentaires"
+          }
+        }
+      },
+      "block_order": [
+        "c0",
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6"
+      ],
+      "settings": {
+        "show_header": false,
+        "heading": "Préoccupations"
+      }
+    },
+    "skin": {
+      "type": "kapsule-collection-list",
+      "blocks": {
+        "c0": {
+          "type": "collection",
+          "settings": {
+            "collection": "peau-grasse"
+          }
+        },
+        "c1": {
+          "type": "collection",
+          "settings": {
+            "collection": "peau-mixte"
+          }
+        },
+        "c2": {
+          "type": "collection",
+          "settings": {
+            "collection": "peau-normale"
+          }
+        },
+        "c3": {
+          "type": "collection",
+          "settings": {
+            "collection": "peau-sensible"
+          }
+        },
+        "c4": {
+          "type": "collection",
+          "settings": {
+            "collection": "peau-seche"
+          }
+        }
+      },
+      "block_order": [
+        "c0",
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "settings": {
+        "show_header": false,
+        "heading": "Types de peau"
+      }
+    },
+    "brands": {
+      "type": "kapsule-collection-list",
+      "blocks": {
+        "c0": {
+          "type": "collection",
+          "settings": {
+            "collection": "anua"
+          }
+        },
+        "c1": {
+          "type": "collection",
+          "settings": {
+            "collection": "arencia"
+          }
+        },
+        "c2": {
+          "type": "collection",
+          "settings": {
+            "collection": "axis-y"
+          }
+        },
+        "c3": {
+          "type": "collection",
+          "settings": {
+            "collection": "beauty-of-joseon"
+          }
+        },
+        "c4": {
+          "type": "collection",
+          "settings": {
+            "collection": "beigic"
+          }
+        },
+        "c5": {
+          "type": "collection",
+          "settings": {
+            "collection": "biodance"
+          }
+        },
+        "c6": {
+          "type": "collection",
+          "settings": {
+            "collection": "celimax"
+          }
+        },
+        "c7": {
+          "type": "collection",
+          "settings": {
+            "collection": "chobs"
+          }
+        },
+        "c8": {
+          "type": "collection",
+          "settings": {
+            "collection": "cosrx"
+          }
+        },
+        "c9": {
+          "type": "collection",
+          "settings": {
+            "collection": "dalba"
+          }
+        },
+        "c10": {
+          "type": "collection",
+          "settings": {
+            "collection": "della-born"
+          }
+        },
+        "c11": {
+          "type": "collection",
+          "settings": {
+            "collection": "dm-cell"
+          }
+        },
+        "c12": {
+          "type": "collection",
+          "settings": {
+            "collection": "dr-althea"
+          }
+        },
+        "c13": {
+          "type": "collection",
+          "settings": {
+            "collection": "dr-different"
+          }
+        },
+        "c14": {
+          "type": "collection",
+          "settings": {
+            "collection": "eau-de-silk"
+          }
+        },
+        "c15": {
+          "type": "collection",
+          "settings": {
+            "collection": "glash"
+          }
+        },
+        "c16": {
+          "type": "collection",
+          "settings": {
+            "collection": "haruharu-wonder"
+          }
+        },
+        "c17": {
+          "type": "collection",
+          "settings": {
+            "collection": "isoi"
+          }
+        },
+        "c18": {
+          "type": "collection",
+          "settings": {
+            "collection": "k-secret"
+          }
+        },
+        "c19": {
+          "type": "collection",
+          "settings": {
+            "collection": "medicube"
+          }
+        },
+        "c20": {
+          "type": "collection",
+          "settings": {
+            "collection": "mediheal"
+          }
+        },
+        "c21": {
+          "type": "collection",
+          "settings": {
+            "collection": "mixsoon"
+          }
+        },
+        "c22": {
+          "type": "collection",
+          "settings": {
+            "collection": "nacific"
+          }
+        },
+        "c23": {
+          "type": "collection",
+          "settings": {
+            "collection": "numbuzin"
+          }
+        },
+        "c24": {
+          "type": "collection",
+          "settings": {
+            "collection": "rom-amp-nd"
+          }
+        },
+        "c25": {
+          "type": "collection",
+          "settings": {
+            "collection": "round-lab"
+          }
+        },
+        "c26": {
+          "type": "collection",
+          "settings": {
+            "collection": "skin-1004"
+          }
+        },
+        "c27": {
+          "type": "collection",
+          "settings": {
+            "collection": "some-by-mi"
+          }
+        },
+        "c28": {
+          "type": "collection",
+          "settings": {
+            "collection": "tocobo"
+          }
+        },
+        "c29": {
+          "type": "collection",
+          "settings": {
+            "collection": "unleashia"
+          }
+        },
+        "c30": {
+          "type": "collection",
+          "settings": {
+            "collection": "urang"
+          }
+        },
+        "c31": {
+          "type": "collection",
+          "settings": {
+            "collection": "vt-cosmetics"
+          }
+        },
+        "c32": {
+          "type": "collection",
+          "settings": {
+            "collection": "zisu-c"
+          }
+        }
+      },
+      "block_order": [
+        "c0",
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8",
+        "c9",
+        "c10",
+        "c11",
+        "c12",
+        "c13",
+        "c14",
+        "c15",
+        "c16",
+        "c17",
+        "c18",
+        "c19",
+        "c20",
+        "c21",
+        "c22",
+        "c23",
+        "c24",
+        "c25",
+        "c26",
+        "c27",
+        "c28",
+        "c29",
+        "c30",
+        "c31",
+        "c32"
+      ],
+      "settings": {
+        "show_header": false,
+        "heading": "Nos marques"
       }
     }
   },
   "order": [
-    "collection_list_Wfgh3m"
+    "types",
+    "concerns",
+    "skin",
+    "brands"
   ]
 }

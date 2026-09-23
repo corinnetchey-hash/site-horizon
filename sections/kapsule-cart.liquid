@@ -23,7 +23,7 @@
               {%- endif -%}
             </a>
             <div class="k-line__body">
-              <div class="k-line__brand">{{ item.vendor }}</div>
+              <div class="k-line__brand">{% render 'kapsule-brand', product: item.product %}</div>
               <a class="k-line__name" href="{{ item.url }}">{{ item.product.title }}</a>
               {%- unless item.product.has_only_default_variant -%}
                 <div class="k-line__variant">{{ item.variant.title }}</div>

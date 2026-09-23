@@ -352,6 +352,15 @@
     }
   },
   "kapsule": {
+    "contact": {
+      "sent": "Merci ! Votre message a bien été envoyé, nous vous répondons sous 24 à 48 heures.",
+      "error": "Merci de vérifier les champs du formulaire.",
+      "name": "Nom",
+      "email": "E-mail",
+      "phone": "Téléphone",
+      "message": "Votre message",
+      "send": "Envoyer"
+    },
     "hero_carousel": {
       "label": "À la une",
       "slide": "Diapositive {{ index }} sur {{ count }}",
@@ -523,6 +532,11 @@
       "reassurance_3": "Conseil personnalisé par nos esthéticiennes",
       "reassurance_4": "Disponible aussi en boutique, Paris 3e",
       "the_house": "LA MAISON",
+      "usage": "Conseils d'utilisation",
+      "full_ingredients": "Liste complète des ingrédients",
+      "precautions": "Précautions",
+      "story": "L'histoire du produit",
+      "reviews": "Avis clients",
       "actives": "Les actifs",
       "actives_fallback": "Des actifs choisis pour leur efficacité prouvée, à des concentrations honnêtes — la liste INCI complète figure sur chaque flacon, sans zone d'ombre.",
       "texture": "Texture & application",

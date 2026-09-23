@@ -1,0 +1,37 @@
+{%- comment -%}
+  Outputs a product's brand. Uses the vendor unless it is blank or the shop name,
+  otherwise the first of the product's collections listed in the
+  “Brand collections” theme setting.
+
+  Accepts:
+  - product {product}
+  - field {string} - 'title' (default), 'url' or 'handle'
+{%- endcomment -%}
+{%- liquid
+  assign field = field | default: 'title'
+  assign brand = ''
+  if product.vendor != blank and product.vendor != shop.name
+    if field == 'url'
+      assign brand = product.vendor | url_for_vendor
+    else
+      assign brand = product.vendor
+    endif
+  elsif settings.kapsule_brand_collections != blank
+    assign brand_list = settings.kapsule_brand_collections | strip_newlines | remove: ' ' | prepend: ',' | append: ','
+    for brand_collection in product.collections
+      assign needle = ',' | append: brand_collection.handle | append: ','
+      if brand_list contains needle
+        case field
+          when 'url'
+            assign brand = brand_collection.url
+          when 'handle'
+            assign brand = brand_collection.handle
+          else
+            assign brand = brand_collection.title | split: ' : ' | first | split: ' | ' | first | strip
+        endcase
+        break
+      endif
+    endfor
+  endif
+  echo brand
+-%}

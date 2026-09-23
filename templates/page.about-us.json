@@ -1,0 +1,60 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "intro": {
+      "type": "kapsule-vision-intro",
+      "settings": {
+        "copy_key": "vision.intro"
+      }
+    },
+    "palais": {
+      "type": "kapsule-editorial",
+      "settings": {
+        "copy_key": "vision.block_1",
+        "tint": "bordeaux",
+        "flip": false,
+        "link": "/pages/institut"
+      }
+    },
+    "boutique": {
+      "type": "kapsule-editorial",
+      "settings": {
+        "copy_key": "vision.block_2",
+        "tint": "sage",
+        "flip": true,
+        "link": "/collections/all"
+      }
+    },
+    "popup": {
+      "type": "kapsule-editorial",
+      "settings": {
+        "copy_key": "vision.block_3",
+        "tint": "popup",
+        "flip": false,
+        "link": "/pages/pop-up-store"
+      }
+    },
+    "b2b": {
+      "type": "kapsule-b2b",
+      "settings": {
+        "copy_key": "vision.b2b",
+        "link": "/pages/contact"
+      }
+    }
+  },
+  "order": [
+    "intro",
+    "palais",
+    "boutique",
+    "popup",
+    "b2b"
+  ]
+}

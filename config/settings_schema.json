@@ -32,7 +32,33 @@
         "type": "collection",
         "id": "kapsule_quiz_collection",
         "label": "Diagnostic product pool",
-        "info": "Products are matched on their besoin-* tags. Defaults to all products."
+        "info": "Products are matched on their besoin-* tags or on the concern collections below. Defaults to all products."
+      },
+      {
+        "type": "header",
+        "content": "Store structure"
+      },
+      {
+        "type": "paragraph",
+        "content": "Collection handles separated by commas. Use them when brands, skin concerns or product types are organised as collections rather than vendors and tags."
+      },
+      {
+        "type": "textarea",
+        "id": "kapsule_brand_collections",
+        "label": "Brand collections",
+        "info": "Drives the brand shown on products, “Les maisons de la sélection” and the Brands filter. Products whose vendor is the shop name take their brand from these collections."
+      },
+      {
+        "type": "textarea",
+        "id": "kapsule_concern_collections",
+        "label": "Skin concern collections",
+        "info": "Drives the concern labels on product cards and the Concerns filter."
+      },
+      {
+        "type": "textarea",
+        "id": "kapsule_type_collections",
+        "label": "Product type collections",
+        "info": "Drives the Categories list on the shop page."
       }
     ]
   },

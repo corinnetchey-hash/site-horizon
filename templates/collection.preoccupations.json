@@ -1,0 +1,76 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "kapsule-collection-list",
+      "blocks": {
+        "c0": {
+          "type": "collection",
+          "settings": {
+            "collection": "acne-imperfections"
+          }
+        },
+        "c1": {
+          "type": "collection",
+          "settings": {
+            "collection": "deshydratation"
+          }
+        },
+        "c2": {
+          "type": "collection",
+          "settings": {
+            "collection": "manque-declat"
+          }
+        },
+        "c3": {
+          "type": "collection",
+          "settings": {
+            "collection": "points-noirs-pores"
+          }
+        },
+        "c4": {
+          "type": "collection",
+          "settings": {
+            "collection": "rides-perte-de-fermete"
+          }
+        },
+        "c5": {
+          "type": "collection",
+          "settings": {
+            "collection": "sensibilite-rougeurs"
+          }
+        },
+        "c6": {
+          "type": "collection",
+          "settings": {
+            "collection": "taches-pigmentaires"
+          }
+        }
+      },
+      "block_order": [
+        "c0",
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6"
+      ],
+      "settings": {
+        "show_header": true,
+        "heading": ""
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

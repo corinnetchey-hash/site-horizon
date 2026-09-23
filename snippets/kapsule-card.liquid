@@ -16,6 +16,7 @@
     assign variant_count = 1
   endif
 -%}
+{%- capture brand -%}{% render 'kapsule-brand', product: product %}{%- endcapture -%}
 <div class="k-card k-card--{{ style }}">
   <a class="k-card__media" href="{{ product.url }}" tabindex="-1" aria-hidden="true">
     {%- if product.featured_media -%}
@@ -25,8 +26,8 @@
         | image_tag: widths: '240, 360, 480, 640, 900', sizes: sizes, loading: 'lazy', alt: product.featured_media.alt
       }}
     {%- endif -%}
-    {%- if style != 'compact' and product.vendor != blank -%}
-      <span class="k-brand-pill">{{ product.vendor }}</span>
+    {%- if style != 'compact' and brand != blank -%}
+      <span class="k-brand-pill">{{ brand }}</span>
     {%- endif -%}
     {%- if style == 'shop' and variant_count > 1 -%}
       <span class="k-card__tag">{{ 'kapsule.general.shades' | t: count: variant_count }}</span>
@@ -34,7 +35,7 @@
   </a>
   <div class="k-card__body">
     {%- if style != 'home' -%}
-      <div class="k-card__brand">{{ product.vendor }}</div>
+      <div class="k-card__brand">{{ brand }}</div>
     {%- endif -%}
     <a class="k-card__name" href="{{ product.url }}">{{ product.title }}</a>
     {%- if show_concerns -%}

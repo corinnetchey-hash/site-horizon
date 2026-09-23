@@ -1,0 +1,111 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "kapsule-collection-list",
+      "blocks": {
+        "c0": {
+          "type": "collection",
+          "settings": {
+            "collection": "nettoyant-visage"
+          }
+        },
+        "c1": {
+          "type": "collection",
+          "settings": {
+            "collection": "tonique-visage"
+          }
+        },
+        "c2": {
+          "type": "collection",
+          "settings": {
+            "collection": "masque-visage"
+          }
+        },
+        "c3": {
+          "type": "collection",
+          "settings": {
+            "collection": "serum-visage"
+          }
+        },
+        "c4": {
+          "type": "collection",
+          "settings": {
+            "collection": "brumes-visages"
+          }
+        },
+        "c5": {
+          "type": "collection",
+          "settings": {
+            "collection": "creme-visage"
+          }
+        },
+        "c6": {
+          "type": "collection",
+          "settings": {
+            "collection": "protection-solaire-visage"
+          }
+        },
+        "c7": {
+          "type": "collection",
+          "settings": {
+            "collection": "soins-pour-les-cheveux"
+          }
+        },
+        "c8": {
+          "type": "collection",
+          "settings": {
+            "collection": "soins-pour-le-corps"
+          }
+        },
+        "c9": {
+          "type": "collection",
+          "settings": {
+            "collection": "accessoires"
+          }
+        },
+        "c10": {
+          "type": "collection",
+          "settings": {
+            "collection": "maquillage"
+          }
+        },
+        "c11": {
+          "type": "collection",
+          "settings": {
+            "collection": "kit-de-voyage"
+          }
+        }
+      },
+      "block_order": [
+        "c0",
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8",
+        "c9",
+        "c10",
+        "c11"
+      ],
+      "settings": {
+        "show_header": true,
+        "heading": ""
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

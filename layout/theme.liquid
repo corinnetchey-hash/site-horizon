@@ -40,6 +40,9 @@
     {% endif %}
 
     {{ content_for_header }}
+    {%- if shop.metafields.judgeme.settings != blank -%}
+      {% render 'judgeme_core' %}
+    {%- endif -%}
   </head>
 
   <body class="kapsule page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">

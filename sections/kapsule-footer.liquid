@@ -42,7 +42,7 @@
           {%- elsif block.settings.preset == 'services' -%}
             <li><a href="{{ routes.all_products_collection_url }}">{{ 'kapsule.footer.store' | t }}</a></li>
             <li><a href="{{ locale_root }}/pages/institut">{{ 'kapsule.footer.institute' | t }}</a></li>
-            <li><a href="{{ locale_root }}/pages/institut#reserver">{{ 'kapsule.footer.book' | t }}</a></li>
+            <li><a href="{% if pages['reserver-un-soin'].url != blank %}{{ pages['reserver-un-soin'].url }}{% else %}{{ locale_root }}/pages/institut#reserver{% endif %}">{{ 'kapsule.footer.book' | t }}</a></li>
           {%- elsif block.settings.preset == 'infos' -%}
             <li><a href="{{ locale_root }}/pages/notre-vision">{{ 'kapsule.footer.vision' | t }}</a></li>
             <li><a href="{{ locale_root }}/pages/notre-vision#b2b">{{ 'kapsule.footer.trade' | t }}</a></li>

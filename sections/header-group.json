@@ -14,12 +14,31 @@
     "kapsule_marquee": {
       "type": "kapsule-marquee",
       "blocks": {
-        "message_1": { "type": "message", "settings": {} },
-        "message_2": { "type": "message", "settings": {} },
-        "message_3": { "type": "message", "settings": {} },
-        "message_4": { "type": "message", "settings": { "link": "https://www.instagram.com/kapsule.global" } }
+        "message_1": {
+          "type": "message",
+          "settings": {}
+        },
+        "message_2": {
+          "type": "message",
+          "settings": {}
+        },
+        "message_3": {
+          "type": "message",
+          "settings": {}
+        },
+        "message_4": {
+          "type": "message",
+          "settings": {
+            "link": "https://www.instagram.com/kapsule.global"
+          }
+        }
       },
-      "block_order": ["message_1", "message_2", "message_3", "message_4"],
+      "block_order": [
+        "message_1",
+        "message_2",
+        "message_3",
+        "message_4"
+      ],
       "settings": {
         "background": "#5A1410",
         "color": "#FBF6F0"
@@ -28,7 +47,7 @@
     "kapsule_header": {
       "type": "kapsule-header",
       "settings": {
-        "menu": "",
+        "menu": "main-menu",
         "show_language": true
       }
     }

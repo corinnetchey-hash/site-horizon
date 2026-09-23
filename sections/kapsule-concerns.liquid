@@ -12,6 +12,16 @@
   </div>
   <div class="k-concerns">
     {%- for block in section.blocks -%}
+      {%- if block.settings.concern_collection != blank -%}
+        {%- assign concern_collection = block.settings.concern_collection -%}
+        <a class="k-concern" href="{{ concern_collection.url }}" style="background: {{ block.settings.background }}" {{ block.shopify_attributes }}>
+          <span class="k-concern__label">
+            {%- if block.settings.label != blank -%}{{ block.settings.label }}{%- else -%}{{ concern_collection.title }}{%- endif -%}
+          </span>
+          <span class="k-concern__count">{{ 'kapsule.general.products_count' | t: count: concern_collection.products_count }}</span>
+        </a>
+        {%- continue -%}
+      {%- endif -%}
       {%- liquid
         assign tag = 'besoin-' | append: block.settings.concern
         assign count = 0
@@ -69,6 +79,12 @@
             { "value": "rougeurs", "label": "Rougeurs" }
           ],
           "default": "eclat"
+        },
+        {
+          "type": "collection",
+          "id": "concern_collection",
+          "label": "Or a concern collection",
+          "info": "When set, the tile links to this collection and shows its title and product count instead of the tag."
         },
         { "type": "text", "id": "label", "label": "Label override" },
         { "type": "color", "id": "background", "label": "Background", "default": "#F1E8EC" }

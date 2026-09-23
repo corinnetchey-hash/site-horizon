@@ -1,0 +1,17 @@
+<div class="k-container k-section">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="k-h2" style="margin-bottom: 22px">{{ section.settings.heading }}</h2>
+  {%- endif -%}
+  {%- for block in section.blocks -%}
+    {% render block %}
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "Kapsule apps",
+  "settings": [{ "type": "text", "id": "heading", "label": "Heading" }],
+  "blocks": [{ "type": "@app" }],
+  "presets": [{ "name": "Kapsule apps" }]
+}
+{% endschema %}

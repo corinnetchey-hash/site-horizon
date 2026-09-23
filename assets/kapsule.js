@@ -153,7 +153,7 @@
           '<div class="k-line">' +
           '<a href="' + escapeHtml(item.url) + '" tabindex="-1">' + image + '</a>' +
           '<div class="k-line__body">' +
-          '<div class="k-line__brand">' + escapeHtml(item.vendor) + '</div>' +
+          (item.vendor && item.vendor !== config.shopName ? '<div class="k-line__brand">' + escapeHtml(item.vendor) + '</div>' : '') +
           '<a class="k-line__name" href="' + escapeHtml(item.url) + '">' + escapeHtml(item.product_title) + '</a>' +
           (variant ? '<div class="k-line__variant">' + escapeHtml(variant) + '</div>' : '') +
           '<div class="k-line__foot">' +
@@ -332,7 +332,7 @@
           return (
             '<a class="k-search__item" href="' + escapeHtml(product.url) + '">' +
             (product.image ? '<img src="' + escapeHtml(sizedImage(product.image, 120)) + '" alt="" width="52" height="52" loading="lazy">' : '<img alt="" width="52" height="52">') +
-            '<span><span class="k-search__brand">' + escapeHtml(product.vendor) + '</span><br>' +
+            '<span>' + (product.vendor && product.vendor !== config.shopName ? '<span class="k-search__brand">' + escapeHtml(product.vendor) + '</span><br>' : '') +
             '<span class="k-search__name">' + escapeHtml(product.title) + '</span><br>' +
             '<span class="k-search__price">' + money(price) + '</span></span></a>'
           );

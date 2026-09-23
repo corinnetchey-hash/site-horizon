@@ -85,7 +85,29 @@
     },
     "kapsule_free_shipping": 49,
     "kapsule_quiz_enabled": true,
-    "favicon": "shopify://shop_images/kapsule-monogram.png"
+    "favicon": "shopify://shop_images/K.png",
+    "kapsule_brand_collections": "anua, axis-y, beauty-of-joseon, beigic, biodance, celimax, chobs, cosrx, dalba, della-born, dm-cell, dr-althea, dr-different, eau-de-silk, glash, isoi, k-secret, medicube, mediheal, mixsoon, nacific, numbuzin, rom-amp-nd, round-lab, skin-1004, some-by-mi, tocobo, unleashia, urang, vt-cosmetics, zisu-c, arencia, haruharu-wonder",
+    "kapsule_concern_collections": "acne-imperfections, deshydratation, manque-declat, points-noirs-pores, rides-perte-de-fermete, sensibilite-rougeurs, taches-pigmentaires",
+    "kapsule_type_collections": "nettoyant-visage, tonique-visage, masque-visage, serum-visage, brumes-visages, creme-visage, protection-solaire-visage, soins-pour-les-cheveux, soins-pour-le-corps, accessoires, maquillage, kit-de-voyage",
+    "blocks": {
+      "5537102726230261467": {
+        "type": "shopify://apps/revenuehunt-recommender-quiz/blocks/v2-link-quiz/672f3d48-fd3b-4227-8778-c6e58c4f8a98",
+        "disabled": false,
+        "settings": {
+          "quiz_width": "100",
+          "quiz_height": "100",
+          "quiz_z_index": 100,
+          "popup_close_color": "#777777",
+          "show_list": true,
+          "quiz_id": "Diagnostic De Peau"
+        }
+      },
+      "855628211100114053": {
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {}
+      }
+    }
   },
   "presets": {
     "Default": {

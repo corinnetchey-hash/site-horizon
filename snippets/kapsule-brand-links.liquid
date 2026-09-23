@@ -1,0 +1,35 @@
+{%- comment -%}
+  Brand filter links built from the “Brand collections” theme setting, alphabetical.
+
+  Accepts:
+  - brand_handles {array} - Collection handles
+{%- endcomment -%}
+{%- liquid
+  assign entries = ''
+  for brand_handle in brand_handles
+    assign brand_collection = collections[brand_handle]
+    if brand_collection == blank or brand_collection.products_count == 0
+      continue
+    endif
+    assign brand_name = brand_collection.title | split: ' : ' | first | split: ' | ' | first | strip
+    assign entries = entries | append: brand_name | append: '§' | append: brand_collection.url | append: '§' | append: brand_handle | append: '¶'
+  endfor
+  assign entries = entries | split: '¶' | sort_natural
+-%}
+{%- for entry in entries -%}
+  {%- assign parts = entry | split: '§' -%}
+  {%- assign brand_active = false -%}
+  {%- if collection.handle == parts[2] -%}{%- assign brand_active = true -%}{%- endif -%}
+  <li>
+    <a
+      class="k-filter-brand"
+      href="{% if brand_active %}{{ routes.all_products_collection_url }}{% else %}{{ parts[1] }}{% endif %}"
+      {% if brand_active %}
+        aria-current="true"
+      {% endif %}
+    >
+      <span class="k-filter-brand__dot" aria-hidden="true"></span>
+      {{- parts[0] -}}
+    </a>
+  </li>
+{%- endfor -%}

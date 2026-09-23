@@ -1,23 +1,45 @@
+{%- capture brand -%}{% render 'kapsule-brand', product: product %}{%- endcapture -%}
+{%- capture brand_handle -%}{% render 'kapsule-brand', product: product, field: 'handle' %}{%- endcapture -%}
 {%- liquid
   assign copy_key = 'kapsule.product.'
-  assign house_key = product.vendor | handleize | replace: '-', '_' | prepend: 'kapsule.houses.'
+  assign brand_collection = nil
+  if brand_handle != blank
+    assign brand_collection = collections[brand_handle]
+  endif
+
+  assign house_key = brand | handleize | replace: '-', '_' | prepend: 'kapsule.houses.'
   assign house_story = house_key | t
   if house_story contains 'ranslation missing'
-    assign house_story = 'kapsule.houses.default' | t
+    if brand_collection != blank and brand_collection.description != blank
+      assign house_story = brand_collection.description | strip_html | truncatewords: 70
+    else
+      assign house_story = 'kapsule.houses.default' | t
+    endif
   endif
   for block in section.blocks
-    if block.type == 'house' and block.settings.vendor == product.vendor and block.settings.story != blank
+    if block.type == 'house' and block.settings.vendor == brand and block.settings.story != blank
       assign house_story = block.settings.story
     endif
   endfor
 
-  assign ingredients = product.metafields.custom.ingredients.value
-  assign texture = product.metafields.custom.texture.value
+  # Product copy lives in custom.* metafields: key actives, usage, full INCI list, precautions, story
+  assign mf = product.metafields.custom
+  assign key_ingredients = mf.ingredients_phares
+  assign full_ingredients = mf.ingredients
+  if key_ingredients == blank
+    assign key_ingredients = full_ingredients
+    assign full_ingredients = nil
+  endif
+  assign usage = mf.conseils_d_utilisation
+  assign texture = mf.texture
+  assign precautions = mf.securite_et_precautions
+  assign product_story = mf.l_histoire_du_produit
 
   assign pool = section.settings.bundle_collection
   if pool == blank
     assign pool = collections['all']
   endif
+  assign complementary = product.metafields['shopify--discovery--product_recommendation'].complementary_products.value
   assign bundle_ids = product.selected_or_first_available_variant.id
   assign bundle_total = product.selected_or_first_available_variant.price
   assign bundle_count = 0
@@ -38,28 +60,58 @@
   <div class="k-container" style="padding-bottom: 56px">
     <div class="k-house">
       <div class="k-kicker">{% render 'kapsule-t', value: section.settings.house_kicker, key: copy_key, field: 'the_house' %}</div>
-      <h2 class="k-h2" style="margin-top:10px">{{ product.vendor }}</h2>
+      <h2 class="k-h2" style="margin-top:10px">
+        {%- if brand_collection != blank -%}<a href="{{ brand_collection.url }}">{{ brand }}</a>{%- else -%}{{ brand }}{%- endif -%}
+      </h2>
       <p class="k-house__story">{{ house_story }}</p>
     </div>
 
     <div class="k-panels">
       <div class="k-panel">
         <h3 class="k-panel__title">{{ 'kapsule.product.actives' | t }}</h3>
-        <div class="k-panel__body">
-          {%- if ingredients != blank -%}{{ ingredients }}{%- else -%}{{ 'kapsule.product.actives_fallback' | t }}{%- endif -%}
+        <div class="k-panel__body k-rte">
+          {%- if key_ingredients != blank -%}{{ key_ingredients | metafield_tag }}{%- else -%}{{ 'kapsule.product.actives_fallback' | t }}{%- endif -%}
         </div>
       </div>
       <div class="k-panel">
-        <h3 class="k-panel__title">{{ 'kapsule.product.texture' | t }}</h3>
-        <div class="k-panel__body">
-          {%- if texture != blank -%}{{ texture }}{%- else -%}{{ 'kapsule.product.texture_fallback' | t }}{%- endif -%}
-        </div>
+        {%- if usage != blank -%}
+          <h3 class="k-panel__title">{{ 'kapsule.product.usage' | t }}</h3>
+          <div class="k-panel__body k-rte">{{ usage | metafield_tag }}</div>
+        {%- else -%}
+          <h3 class="k-panel__title">{{ 'kapsule.product.texture' | t }}</h3>
+          <div class="k-panel__body k-rte">
+            {%- if texture != blank -%}{{ texture | metafield_tag }}{%- else -%}{{ 'kapsule.product.texture_fallback' | t }}{%- endif -%}
+          </div>
+        {%- endif -%}
       </div>
       <div class="k-panel">
         <h3 class="k-panel__title">{{ 'kapsule.product.delivery' | t }}</h3>
         <p class="k-panel__body">{% render 'kapsule-t', value: section.settings.delivery_text, key: copy_key, field: 'delivery_text' %}</p>
       </div>
     </div>
+
+    {%- if full_ingredients != blank or precautions != blank or product_story != blank -%}
+      <div class="k-accordions">
+        {%- if full_ingredients != blank -%}
+          <details class="k-accordion">
+            <summary>{{ 'kapsule.product.full_ingredients' | t }}</summary>
+            <div class="k-accordion__body k-rte">{{ full_ingredients | metafield_tag }}</div>
+          </details>
+        {%- endif -%}
+        {%- if precautions != blank -%}
+          <details class="k-accordion">
+            <summary>{{ 'kapsule.product.precautions' | t }}</summary>
+            <div class="k-accordion__body k-rte">{{ precautions | metafield_tag }}</div>
+          </details>
+        {%- endif -%}
+        {%- if product_story != blank -%}
+          <details class="k-accordion">
+            <summary>{{ 'kapsule.product.story' | t }}</summary>
+            <div class="k-accordion__body k-rte">{{ product_story | metafield_tag }}</div>
+          </details>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
 
     {%- if section.settings.show_ritual -%}
       <div class="k-block-gap">
@@ -79,8 +131,21 @@
 
     {%- comment -%} Complétez votre routine: this product + up to 2 from the same house, never a random cross-sell {%- endcomment -%}
     {%- capture bundle_items -%}
-      {%- for item in pool.products limit: 250 -%}
-        {%- if item.id == product.id or item.vendor != product.vendor or item.available == false -%}{%- continue -%}{%- endif -%}
+      {%- liquid
+        # Search & Discovery complementary products first, then the same brand collection, then same vendor
+        assign bundle_mode = 'vendor'
+        assign bundle_source = pool.products
+        if complementary != blank and complementary.size > 0
+          assign bundle_mode = 'list'
+          assign bundle_source = complementary
+        elsif brand_collection != blank
+          assign bundle_mode = 'list'
+          assign bundle_source = brand_collection.products
+        endif
+      -%}
+      {%- for item in bundle_source limit: 250 -%}
+        {%- if item.id == product.id or item.available == false -%}{%- continue -%}{%- endif -%}
+        {%- if bundle_mode == 'vendor' and item.vendor != product.vendor -%}{%- continue -%}{%- endif -%}
         {%- liquid
           assign bundle_count = bundle_count | plus: 1
           assign bundle_ids = bundle_ids | append: ',' | append: item.selected_or_first_available_variant.id
@@ -91,7 +156,7 @@
             {{ item.featured_media | image_url: width: 500 | image_tag: loading: 'lazy', alt: '' }}
           {%- endif -%}
           <span class="k-bundle__body">
-            <span class="k-card__brand">{{ item.vendor }}</span>
+            <span class="k-card__brand">{% render 'kapsule-brand', product: item %}</span>
             <span class="k-bundle__name">{{ item.title }}</span>
             <span class="k-bundle__price">{{ item.selected_or_first_available_variant.price | money }}</span>
           </span>
@@ -111,7 +176,7 @@
               {{ product.featured_media | image_url: width: 500 | image_tag: loading: 'lazy', alt: '' }}
             {%- endif -%}
             <span class="k-bundle__body">
-              <span class="k-card__brand">{{ product.vendor }}</span>
+              <span class="k-card__brand">{{ brand }}</span>
               <span class="k-bundle__name">{{ product.title }}</span>
               <span class="k-bundle__price">{{ product.selected_or_first_available_variant.price | money }}</span>
             </span>
@@ -148,6 +213,13 @@
         </div>
       </div>
     </div>
+
+    {%- if section.settings.show_reviews and shop.metafields.judgeme.settings != blank -%}
+      <div class="k-block-gap k-reviews" id="avis">
+        <h2 class="k-h2 k-h2--sm" style="margin-bottom:18px">{{ 'kapsule.product.reviews' | t }}</h2>
+        {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false, product: product %}
+      </div>
+    {%- endif -%}
   </div>
 {%- endif -%}
 
@@ -157,14 +229,14 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "La maison: portraits per vendor live in the locale files (kapsule.houses.*). Add a House block to override one. Les actifs reads the custom.ingredients metafield; Texture & application reads custom.texture."
+      "content": "La maison: portraits per brand live in the locale files (kapsule.houses.*), then the brand collection description. Add a House block to override one. Les actifs reads custom.ingredients_phares (or custom.ingredients); the second panel reads custom.conseils_d_utilisation (or custom.texture). custom.ingredients, custom.securite_et_precautions and custom.l_histoire_du_produit show as accordions."
     },
     { "type": "text", "id": "house_kicker", "label": "House kicker" },
     { "type": "textarea", "id": "delivery_text", "label": "Delivery & returns text" },
     { "type": "checkbox", "id": "show_ritual", "label": "Show ritual steps", "default": true },
     { "type": "header", "content": "Complete your routine" },
     { "type": "checkbox", "id": "show_bundle", "label": "Show same-house bundle", "default": true },
-    { "type": "collection", "id": "bundle_collection", "label": "Product pool", "info": "Defaults to all products." },
+    { "type": "collection", "id": "bundle_collection", "label": "Product pool", "info": "Used when a product has no complementary products (Search & Discovery) and no brand collection. Defaults to all products." },
     { "type": "header", "content": "Pairs well with" },
     {
       "type": "checkbox",
@@ -172,6 +244,14 @@
       "label": "Use Shopify product recommendations",
       "info": "Off: the first four other products of the pool, as in the design.",
       "default": false
+    },
+    { "type": "header", "content": "Reviews" },
+    {
+      "type": "checkbox",
+      "id": "show_reviews",
+      "label": "Show Judge.me reviews",
+      "info": "Needs the Judge.me app on the store.",
+      "default": true
     }
   ],
   "blocks": [
@@ -179,7 +259,7 @@
       "type": "house",
       "name": "House portrait",
       "settings": [
-        { "type": "text", "id": "vendor", "label": "Vendor", "info": "Must match the product vendor exactly." },
+        { "type": "text", "id": "vendor", "label": "Brand", "info": "Must match the brand shown on the product exactly." },
         { "type": "textarea", "id": "story", "label": "Portrait" }
       ]
     }

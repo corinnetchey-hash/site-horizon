@@ -24,6 +24,35 @@
             </a>
           </li>
         {%- endfor -%}
+      {%- elsif settings.kapsule_brand_collections != blank -%}
+        {%- comment -%} Brand collections with at least one product in stock, alphabetical {%- endcomment -%}
+        {%- liquid
+          assign brand_handles = settings.kapsule_brand_collections | strip_newlines | remove: ' ' | split: ','
+          assign entries = ''
+          for brand_handle in brand_handles
+            assign brand_collection = collections[brand_handle]
+            if brand_collection == blank or brand_collection.products_count == 0
+              continue
+            endif
+            assign in_stock = false
+            for brand_product in brand_collection.products limit: 50
+              if brand_product.available
+                assign in_stock = true
+                break
+              endif
+            endfor
+            unless in_stock
+              continue
+            endunless
+            assign brand_name = brand_collection.title | split: ' : ' | first | split: ' | ' | first | strip
+            assign entries = entries | append: brand_name | append: '§' | append: brand_collection.url | append: '¶'
+          endfor
+          assign entries = entries | split: '¶' | sort_natural
+        -%}
+        {%- for entry in entries -%}
+          {%- assign parts = entry | split: '§' -%}
+          <li><a href="{{ parts[1] }}">{{ parts[0] }}</a></li>
+        {%- endfor -%}
       {%- else -%}
         {%- paginate source.products by 250 -%}
           {%- capture vendor_list -%}{% render 'kapsule-vendor-list', products: source.products %}{%- endcapture -%}
@@ -49,7 +78,7 @@
       "type": "collection",
       "id": "collection",
       "label": "Collection",
-      "info": "Without blocks, every vendor with a product in stock in this collection is listed. Defaults to all products."
+      "info": "Without blocks, the brand collections from the theme settings are listed; failing that, every vendor with a product in stock in this collection. Defaults to all products."
     }
   ],
   "blocks": [

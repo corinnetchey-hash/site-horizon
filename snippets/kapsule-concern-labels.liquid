@@ -1,26 +1,47 @@
 {%- comment -%}
-  Outputs the translated skin-concern labels of a product, joined with " · ".
-  Concerns are product tags prefixed with `besoin-` (e.g. `besoin-eclat`).
+  Outputs the skin-concern labels of a product, joined with " · ".
+  Concerns come from the “Skin concern collections” theme setting when it is set,
+  otherwise from product tags prefixed with `besoin-` (e.g. `besoin-eclat`).
 
   Accepts:
   - product {product}
+  - limit {number} - Maximum number of labels (default 3)
 {%- endcomment -%}
 {%- liquid
+  assign limit = limit | default: 3
   assign labels = ''
-  for tag in product.tags
-    assign tag_handle = tag | handleize
-    if tag_handle contains 'besoin-'
-      assign concern_key = tag_handle | remove_first: 'besoin-' | replace: '-', '_'
-      assign translation_key = 'kapsule.concerns.' | append: concern_key
-      assign label = translation_key | t
-      if label contains 'ranslation missing'
-        assign label = tag | remove_first: 'besoin-'
+  assign shown = 0
+  if settings.kapsule_concern_collections != blank
+    assign concern_list = settings.kapsule_concern_collections | strip_newlines | remove: ' ' | prepend: ',' | append: ','
+    for concern_collection in product.collections
+      assign needle = ',' | append: concern_collection.handle | append: ','
+      if concern_list contains needle
+        if labels != blank
+          assign labels = labels | append: ' · '
+        endif
+        assign labels = labels | append: concern_collection.title
+        assign shown = shown | plus: 1
+        if shown >= limit
+          break
+        endif
       endif
-      if labels != blank
-        assign labels = labels | append: ' · '
+    endfor
+  else
+    for tag in product.tags
+      assign tag_handle = tag | handleize
+      if tag_handle contains 'besoin-'
+        assign concern_key = tag_handle | remove_first: 'besoin-' | replace: '-', '_'
+        assign translation_key = 'kapsule.concerns.' | append: concern_key
+        assign label = translation_key | t
+        if label contains 'ranslation missing'
+          assign label = tag | remove_first: 'besoin-'
+        endif
+        if labels != blank
+          assign labels = labels | append: ' · '
+        endif
+        assign labels = labels | append: label
       endif
-      assign labels = labels | append: label
-    endif
-  endfor
+    endfor
+  endif
   echo labels
 -%}

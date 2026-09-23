@@ -32,18 +32,44 @@
     <nav class="k-nav" aria-label="{{ 'accessibility.header_navigation_label' | t }}" id="KapsuleNav">
       {%- if menu.links.size > 0 -%}
         {%- for link in menu.links -%}
-          <a
-            class="k-nav__link"
-            href="{{ link.url }}"
-            {% if link.current or link.child_active %}
-              aria-current="page"
-            {% endif %}
-          >
-            {{- link.title -}}
-          </a>
+          {%- if link.links.size > 0 -%}
+            <div class="k-nav__group">
+              <a
+                class="k-nav__link"
+                href="{{ link.url }}"
+                aria-haspopup="true"
+                {% if link.current or link.child_active %}
+                  aria-current="page"
+                {% endif %}
+              >
+                {{- link.title -}}
+              </a>
+              <ul class="k-nav__sub">
+                {%- for child in link.links -%}
+                  <li>
+                    <a href="{{ child.url }}" {% if child.current %}aria-current="page"{% endif %}>{{ child.title }}</a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- else -%}
+            <a
+              class="k-nav__link"
+              href="{{ link.url }}"
+              {% if link.current or link.child_active %}
+                aria-current="page"
+              {% endif %}
+            >
+              {{- link.title -}}
+            </a>
+          {%- endif -%}
         {%- endfor -%}
       {%- else -%}
         {%- liquid
+          assign popup_page = pages['pop-up']
+          if popup_page.url == blank
+            assign popup_page = pages['pop-up-store']
+          endif
           assign shop_active = false
           if template.name == 'collection' or template.name == 'product'
             assign shop_active = true
@@ -58,7 +84,7 @@
         <a class="k-nav__link" href="{{ locale_root }}/pages/institut" {% if page.handle == 'institut' %}aria-current="page"{% endif %}>
           {{- 'kapsule.nav.institut' | t -}}
         </a>
-        <a class="k-nav__link" href="{{ locale_root }}/pages/pop-up" {% if page.handle == 'pop-up' %}aria-current="page"{% endif %}>
+        <a class="k-nav__link" href="{% if popup_page.url != blank %}{{ popup_page.url }}{% else %}{{ locale_root }}/pages/pop-up{% endif %}" {% if page.handle == 'pop-up' or page.handle == 'pop-up-store' %}aria-current="page"{% endif %}>
           {{- 'kapsule.nav.popup' | t -}}
         </a>
         <a class="k-nav__link" href="{{ locale_root }}/pages/notre-vision" {% if page.handle == 'notre-vision' %}aria-current="page"{% endif %}>

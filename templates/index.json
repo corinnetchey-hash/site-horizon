@@ -14,22 +14,40 @@
       "blocks": {
         "slide_selection": {
           "type": "slide",
-          "settings": { "copy": "hero", "show_products": true, "show_quiz": true, "show_trust": true }
+          "settings": {
+            "copy": "hero",
+            "show_products": true,
+            "show_quiz": true,
+            "show_trust": true
+          }
         },
         "slide_institut": {
           "type": "slide",
-          "settings": { "copy": "hero_institut" }
+          "settings": {
+            "copy": "hero_institut"
+          }
         },
         "slide_popup": {
           "type": "slide",
-          "settings": { "copy": "hero_popup" }
+          "settings": {
+            "copy": "hero_popup"
+          }
         }
       },
-      "block_order": ["slide_selection", "slide_institut", "slide_popup"],
+      "block_order": [
+        "slide_selection",
+        "slide_institut",
+        "slide_popup"
+      ],
       "settings": {
         "autoplay": true,
         "interval": 6,
-        "products": ["dalba-single-item-double-serum-30ml-1-pc-until-sep-2027", "soin-teinte-cicathione-glow-cushion-zisu-c", "toner-a-l-eau-de-rose-de-bulgarie-urang", "mixsoon-serum-hydratant-a-l-acide-hyaluronique"]
+        "products": [
+          "della-born-creme-au-collagene-marin-50-ml",
+          "zisu-c-kira-60-c-tide-serum-45ml",
+          "toner-a-l-eau-de-rose-de-bulgarie-urang",
+          "essence-soja-fermente"
+        ]
       }
     },
     "band": {
@@ -42,48 +60,62 @@
     "concerns": {
       "type": "kapsule-concerns",
       "blocks": {
-        "concern_eclat": {
+        "concern_manque_declat": {
           "type": "concern",
           "settings": {
             "concern": "eclat",
+            "concern_collection": "manque-declat",
             "background": "#F1E8EC"
           }
         },
-        "concern_age": {
+        "concern_rides_perte_de_fermete": {
           "type": "concern",
           "settings": {
-            "concern": "age",
+            "concern": "eclat",
+            "concern_collection": "rides-perte-de-fermete",
             "background": "#E9EAE2"
           }
         },
-        "concern_secheresse": {
+        "concern_deshydratation": {
           "type": "concern",
           "settings": {
-            "concern": "secheresse",
+            "concern": "eclat",
+            "concern_collection": "deshydratation",
             "background": "#EDE6DC"
           }
         },
-        "concern_sensible": {
+        "concern_sensibilite_rougeurs": {
           "type": "concern",
           "settings": {
-            "concern": "sensible",
+            "concern": "eclat",
+            "concern_collection": "sensibilite-rougeurs",
             "background": "#E6EDEA"
           }
         },
-        "concern_rougeurs": {
+        "concern_taches_pigmentaires": {
           "type": "concern",
           "settings": {
-            "concern": "rougeurs",
+            "concern": "eclat",
+            "concern_collection": "taches-pigmentaires",
             "background": "#F0E9E3"
+          }
+        },
+        "concern_acne_imperfections": {
+          "type": "concern",
+          "settings": {
+            "concern": "eclat",
+            "concern_collection": "acne-imperfections",
+            "background": "#ECE8F0"
           }
         }
       },
       "block_order": [
-        "concern_eclat",
-        "concern_age",
-        "concern_secheresse",
-        "concern_sensible",
-        "concern_rougeurs"
+        "concern_manque_declat",
+        "concern_rides_perte_de_fermete",
+        "concern_deshydratation",
+        "concern_sensibilite_rougeurs",
+        "concern_taches_pigmentaires",
+        "concern_acne_imperfections"
       ],
       "settings": {
         "copy_key": "home.concerns"
@@ -95,7 +127,12 @@
         "copy_key": "home.bestsellers",
         "limit": 4,
         "offset": 0,
-        "exclude": ["dalba-single-item-double-serum-30ml-1-pc-until-sep-2027", "soin-teinte-cicathione-glow-cushion-zisu-c", "toner-a-l-eau-de-rose-de-bulgarie-urang", "mixsoon-serum-hydratant-a-l-acide-hyaluronique"]
+        "exclude": [
+          "della-born-creme-au-collagene-marin-50-ml",
+          "zisu-c-kira-60-c-tide-serum-45ml",
+          "toner-a-l-eau-de-rose-de-bulgarie-urang",
+          "essence-soja-fermente"
+        ]
       }
     },
     "houses": {

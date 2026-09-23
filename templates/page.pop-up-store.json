@@ -1,0 +1,108 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "kapsule-banner",
+      "settings": {
+        "copy_key": "popup.hero",
+        "style": "popup"
+      }
+    },
+    "tiles": {
+      "type": "kapsule-tiles",
+      "blocks": {
+        "tile_1": {
+          "type": "tile",
+          "settings": {
+            "copy_key": "popup.tile_1",
+            "tint": "sand",
+            "height": 320
+          }
+        },
+        "tile_2": {
+          "type": "tile",
+          "settings": {
+            "copy_key": "popup.tile_2",
+            "tint": "amber",
+            "height": 150
+          }
+        },
+        "tile_3": {
+          "type": "tile",
+          "settings": {
+            "copy_key": "popup.tile_3",
+            "tint": "green",
+            "height": 150
+          }
+        },
+        "tile_4": {
+          "type": "tile",
+          "settings": {
+            "copy_key": "popup.tile_4",
+            "tint": "stone",
+            "height": 150
+          }
+        }
+      },
+      "block_order": [
+        "tile_1",
+        "tile_2",
+        "tile_3",
+        "tile_4"
+      ],
+      "settings": {}
+    },
+    "edits": {
+      "type": "kapsule-edits",
+      "blocks": {
+        "edit_1": {
+          "type": "edit",
+          "settings": {
+            "copy_key": "popup.edit_1"
+          }
+        },
+        "edit_2": {
+          "type": "edit",
+          "settings": {
+            "copy_key": "popup.edit_2"
+          }
+        },
+        "edit_3": {
+          "type": "edit",
+          "settings": {
+            "copy_key": "popup.edit_3"
+          }
+        }
+      },
+      "block_order": [
+        "edit_1",
+        "edit_2",
+        "edit_3"
+      ],
+      "settings": {
+        "copy_key": "popup.edits"
+      }
+    },
+    "visit": {
+      "type": "kapsule-visit",
+      "settings": {
+        "copy_key": "popup.visit",
+        "tint": "popup"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "tiles",
+    "edits",
+    "visit"
+  ]
+}

@@ -1,0 +1,17 @@
+<div class="k-container k-section k-page">
+  <div class="k-kicker">—— {{ section.settings.kicker | default: shop.name | upcase }}</div>
+  <h1 class="k-h1 k-page__title">{{ page.title }}</h1>
+  {%- if page.content != blank -%}
+    <div class="k-page__content k-rte">{{ page.content }}</div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Kapsule page",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "info": "Defaults to the shop name." }
+  ],
+  "presets": [{ "name": "Kapsule page" }]
+}
+{% endschema %}

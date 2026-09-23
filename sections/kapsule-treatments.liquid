@@ -9,22 +9,27 @@
       {%- if forloop.index == section.settings.selected -%}
         {%- assign selected_label = name | append: ' — ' | append: price -%}
       {%- endif -%}
+      {%- assign treatment_link = block.settings.link | default: section.settings.booking_url -%}
       <li {{ block.shopify_attributes }}>
+        {%- if treatment_link != blank -%}
+        <a class="k-treatment" href="{{ treatment_link }}" target="_blank" rel="noopener">
+        {%- else -%}
         <button
           type="button"
           class="k-treatment"
           data-k-treatment="{{ name | append: ' — ' | append: price | escape }}"
           aria-pressed="{% if forloop.index == section.settings.selected %}true{% else %}false{% endif %}"
         >
+        {%- endif -%}
           <span>
             <span class="k-treatment__name" style="display:block">{{ name }}</span>
             <span class="k-treatment__desc" style="display:block">{% render 'kapsule-t', value: block.settings.text, key: block_key, field: 'text' %}</span>
           </span>
           <span class="k-treatment__meta">
             <span class="k-treatment__duration">{% render 'kapsule-t', value: block.settings.duration, key: block_key, field: 'duration' %}</span>
-            <span class="k-treatment__price">{{ price }}</span>
+            {%- if price != blank -%}<span class="k-treatment__price">{{ price }}</span>{%- endif -%}
           </span>
-        </button>
+        {%- if treatment_link != blank -%}</a>{%- else -%}</button>{%- endif -%}
       </li>
     {%- endfor -%}
   </ul>
@@ -43,6 +48,11 @@
         {% render 'kapsule-t', value: section.settings.address, key: copy_key, field: 'address' %}<br>
         {% render 'kapsule-t', value: section.settings.hours, key: copy_key, field: 'hours' %}
       </div>
+      {%- if section.settings.booking_url != blank -%}
+        <a class="k-btn k-btn--sage" href="{{ section.settings.booking_url }}" target="_blank" rel="noopener" style="margin-top:18px">
+          {%- render 'kapsule-t', value: section.settings.button, key: copy_key, field: 'button' -%}
+        </a>
+      {%- else -%}
       {%- form 'contact', class: 'k-booking', id: 'KapsuleBooking' -%}
         <div class="k-dark-card__meta" data-k-treatment-selected>
           {{- 'kapsule.institut.treatments.selected' | t: treatment: selected_label -}}
@@ -65,6 +75,7 @@
           </button>
         {%- endif -%}
       {%- endform -%}
+      {%- endif -%}
     </div>
   </div>
 </div>
@@ -75,7 +86,7 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "Booking requests are sent through the store contact form with the selected treatment."
+      "content": "Without an online booking link, requests are sent through the store contact form with the selected treatment."
     },
     { "type": "text", "id": "copy_key", "label": "Default copy key", "default": "institut.treatments" },
     { "type": "text", "id": "heading", "label": "Heading" },
@@ -84,7 +95,13 @@
     { "type": "text", "id": "venue", "label": "Venue name" },
     { "type": "text", "id": "address", "label": "Address" },
     { "type": "text", "id": "hours", "label": "Opening hours" },
-    { "type": "text", "id": "button", "label": "Button label" }
+    { "type": "text", "id": "button", "label": "Button label" },
+    {
+      "type": "url",
+      "id": "booking_url",
+      "label": "Online booking link",
+      "info": "e.g. your Fresha or Planity page. When set, treatments and the button open it instead of the request form."
+    }
   ],
   "blocks": [
     {
@@ -96,7 +113,8 @@
         { "type": "text", "id": "name", "label": "Name" },
         { "type": "text", "id": "text", "label": "Description" },
         { "type": "text", "id": "duration", "label": "Duration" },
-        { "type": "text", "id": "price", "label": "Price" }
+        { "type": "text", "id": "price", "label": "Price", "info": "Leave empty to hide." },
+        { "type": "url", "id": "link", "label": "Booking link", "info": "Overrides the section booking link for this treatment." }
       ]
     }
   ],

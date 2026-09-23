@@ -1,0 +1,62 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "kapsule-collection-list",
+      "blocks": {
+        "c0": {
+          "type": "collection",
+          "settings": {
+            "collection": "peau-grasse"
+          }
+        },
+        "c1": {
+          "type": "collection",
+          "settings": {
+            "collection": "peau-mixte"
+          }
+        },
+        "c2": {
+          "type": "collection",
+          "settings": {
+            "collection": "peau-normale"
+          }
+        },
+        "c3": {
+          "type": "collection",
+          "settings": {
+            "collection": "peau-sensible"
+          }
+        },
+        "c4": {
+          "type": "collection",
+          "settings": {
+            "collection": "peau-seche"
+          }
+        }
+      },
+      "block_order": [
+        "c0",
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "settings": {
+        "show_header": true,
+        "heading": ""
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

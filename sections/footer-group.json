@@ -17,13 +17,15 @@
         "column_services": {
           "type": "column",
           "settings": {
-            "preset": "services"
+            "preset": "services",
+            "menu": "footer"
           }
         },
         "column_infos": {
           "type": "column",
           "settings": {
-            "preset": "infos"
+            "preset": "infos",
+            "menu": "informations"
           }
         },
         "column_social": {
@@ -39,7 +41,8 @@
         "column_social"
       ],
       "settings": {
-        "instagram": "https://www.instagram.com/kapsule.global"
+        "instagram": "https://www.instagram.com/kapsule.global",
+        "tiktok": "https://www.tiktok.com/@kapsule.global"
       }
     }
   },

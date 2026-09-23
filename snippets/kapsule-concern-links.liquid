@@ -1,0 +1,18 @@
+{%- comment -%}
+  Concern filter pills built from the “Skin concern collections” theme setting.
+
+  Accepts:
+  - concern_handles {array} - Collection handles
+{%- endcomment -%}
+{%- for concern_handle in concern_handles -%}
+  {%- assign concern_collection = collections[concern_handle] -%}
+  {%- if concern_collection == blank or concern_collection.products_count == 0 -%}{%- continue -%}{%- endif -%}
+  {%- assign concern_active = false -%}
+  {%- if collection.handle == concern_handle -%}{%- assign concern_active = true -%}{%- endif -%}
+  <a
+    class="k-pill{% if concern_active %} is-active{% endif %}"
+    href="{% if concern_active %}{{ routes.all_products_collection_url }}{% else %}{{ concern_collection.url }}{% endif %}"
+  >
+    {{- concern_collection.title -}}
+  </a>
+{%- endfor -%}

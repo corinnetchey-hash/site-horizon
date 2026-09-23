@@ -10,11 +10,21 @@
 {
   "sections": {
     "main": {
-      "type": "kapsule-page",
-      "settings": {}
+      "type": "kapsule-product",
+      "settings": {
+        "description_length": 460
+      }
+    },
+    "details": {
+      "type": "kapsule-product-details",
+      "settings": {
+        "show_ritual": true,
+        "show_bundle": true
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "details"
   ]
 }

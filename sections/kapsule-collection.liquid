@@ -51,6 +51,10 @@
   elsif collection.handle == 'vendors'
     assign is_vendor_page = true
   endif
+  # Stores that organise types, brands and concerns as collections (theme settings)
+  assign type_handles = settings.kapsule_type_collections | strip_newlines | remove: ' ' | split: ','
+  assign brand_handles = settings.kapsule_brand_collections | strip_newlines | remove: ' ' | split: ','
+  assign concern_handles = settings.kapsule_concern_collections | strip_newlines | remove: ' ' | split: ','
   assign catalog = collections['all']
   capture catalog_vendors
     render 'kapsule-vendor-list', products: catalog.products
@@ -97,10 +101,16 @@
       assign all_current = false
     endif
   -%}
-  <a class="k-filter-cat" href="{{ all_href }}" {% if all_current %}aria-current="true"{% endif %}>
+  {%- if type_handles.size > 0 -%}
+    {%- assign all_current = false -%}
+    {%- if collection.handle == 'all' -%}{%- assign all_current = true -%}{%- endif -%}
+  {%- endif -%}
+  <a class="k-filter-cat" href="{% if type_handles.size > 0 %}{{ routes.all_products_collection_url }}{% else %}{{ all_href }}{% endif %}" {% if all_current %}aria-current="true"{% endif %}>
     {{- 'kapsule.shop.all_products' | t -}}
   </a>
-  {%- if category_filter -%}
+  {%- if type_handles.size > 0 -%}
+    {%- render 'kapsule-type-links', type_handles: type_handles -%}
+  {%- elsif category_filter -%}
     {%- for value in category_filter.values -%}
       {%- if value.count == 0 and value.active == false -%}{%- continue -%}{%- endif -%}
       {%- liquid
@@ -191,7 +201,13 @@
           {{ category_links }}
         </div>
 
-        {%- if brand_filter and brand_filter.values.size > 0 -%}
+        {%- if brand_handles.size > 0 -%}
+          {%- capture brand_links -%}{% render 'kapsule-brand-links', brand_handles: brand_handles %}{%- endcapture -%}
+          {%- if brand_links != blank -%}
+            <h2 class="k-filter-title">{{ 'kapsule.shop.brands' | t }}</h2>
+            <ul class="k-filter-list">{{ brand_links }}</ul>
+          {%- endif -%}
+        {%- elsif brand_filter and brand_filter.values.size > 0 -%}
           <h2 class="k-filter-title">{{ 'kapsule.shop.brands' | t }}</h2>
           <ul class="k-filter-list">
             {%- assign brand_values = brand_filter.values | sort_natural: 'label' -%}
@@ -238,7 +254,15 @@
           </ul>
         {%- endif -%}
 
-        {%- unless concern_filter -%}
+        {%- if concern_handles.size > 0 -%}
+          {%- capture concern_chips -%}
+            {%- render 'kapsule-concern-links', concern_handles: concern_handles -%}
+          {%- endcapture -%}
+          {%- if concern_chips != blank -%}
+            <h2 class="k-filter-title">{{ 'kapsule.shop.concerns' | t }}</h2>
+            <div class="k-filter-chips">{{ concern_chips }}</div>
+          {%- endif -%}
+        {%- elsif concern_filter == nil -%}
           {%- capture concern_chips -%}
             {%- for tag in tag_base.all_tags -%}
               {%- assign tag_handle = tag | handleize -%}
@@ -266,9 +290,9 @@
             <h2 class="k-filter-title">{{ 'kapsule.shop.concerns' | t }}</h2>
             <div class="k-filter-chips">{{ concern_chips }}</div>
           {%- endif -%}
-        {%- endunless -%}
+        {%- endif -%}
 
-        {%- if concern_filter -%}
+        {%- if concern_filter and concern_handles.size == 0 -%}
           {%- capture concern_chips -%}
             {%- for value in concern_filter.values -%}
               {%- assign value_handle = value.value | handleize -%}

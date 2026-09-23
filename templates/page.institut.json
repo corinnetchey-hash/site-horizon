@@ -70,40 +70,50 @@
     "treatments": {
       "type": "kapsule-treatments",
       "blocks": {
-        "treatment_1": {
+        "oak_an_su": {
           "type": "treatment",
           "settings": {
-            "copy_key": "institut.treatment_1"
+            "copy_key": "",
+            "name": "OAK-AN SU (옥안 수)",
+            "text": "Hydratation & équilibre cutané — rituel au jade et au laiton",
+            "duration": "60 min",
+            "price": "",
+            "link": "https://www.fresha.com/book-now/kapsule-vpzocr2g/services?lid=2889132&eid=5105548&oiid=sv%3A26746772&share=true&pId=2793504"
           }
         },
-        "treatment_2": {
+        "oak_an_jin": {
           "type": "treatment",
           "settings": {
-            "copy_key": "institut.treatment_2"
+            "copy_key": "",
+            "name": "OAK-AN JIN (옥안 진)",
+            "text": "Anti-âge & résilience de la peau — ampoules élasticité et fermeté",
+            "duration": "60 min",
+            "price": "",
+            "link": "https://www.fresha.com/book-now/kapsule-vpzocr2g/services?lid=2889132&eid=5105548&oiid=sv%3A26747282&share=true&pId=2793504"
           }
         },
-        "treatment_3": {
+        "susu_an": {
           "type": "treatment",
           "settings": {
-            "copy_key": "institut.treatment_3"
-          }
-        },
-        "treatment_4": {
-          "type": "treatment",
-          "settings": {
-            "copy_key": "institut.treatment_4"
+            "copy_key": "",
+            "name": "SUSU-AN (수수안)",
+            "text": "Rituel des méridiens des mains — équilibre structurel",
+            "duration": "",
+            "price": "",
+            "link": ""
           }
         }
       },
       "block_order": [
-        "treatment_1",
-        "treatment_2",
-        "treatment_3",
-        "treatment_4"
+        "oak_an_su",
+        "oak_an_jin",
+        "susu_an"
       ],
       "settings": {
         "copy_key": "institut.treatments",
-        "selected": 2
+        "selected": 2,
+        "booking_url": "https://www.fresha.com/a/kapsule-paris-10-12-rue-charles-francois-dupuis-mjeorknn?pId=2793504",
+        "heading": "Nos soins"
       }
     }
   },

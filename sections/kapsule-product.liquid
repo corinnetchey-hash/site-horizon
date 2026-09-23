@@ -10,6 +10,8 @@
   assign description = product.description | strip_html | strip_newlines
   assign description_limit = section.settings.description_length
 -%}
+{%- capture brand -%}{% render 'kapsule-brand', product: product %}{%- endcapture -%}
+{%- capture brand_url -%}{% render 'kapsule-brand', product: product, field: 'url' %}{%- endcapture -%}
 
 <div class="k-container k-pdp k-fade" data-k-product>
   <nav class="k-breadcrumb" aria-label="Breadcrumb" style="margin-top:0">
@@ -34,8 +36,8 @@
               data-k-main-image: ''
           }}
         {%- endif -%}
-        {%- if product.vendor != blank -%}
-          <span class="k-brand-pill">{{ product.vendor }}</span>
+        {%- if brand != blank -%}
+          <span class="k-brand-pill">{{ brand }}</span>
         {%- endif -%}
       </div>
       {%- if media_list.size > 1 -%}
@@ -71,8 +73,15 @@
     </div>
 
     <div class="k-pdp__info">
-      <div class="k-kicker">{{ product.vendor }}</div>
+      <div class="k-kicker">
+        {%- if brand_url != blank -%}<a href="{{ brand_url }}">{{ brand }}</a>{%- else -%}{{ brand }}{%- endif -%}
+      </div>
       <h1 class="k-pdp__title">{{ product.title }}</h1>
+      {%- if shop.metafields.judgeme.settings != blank -%}
+        <a class="k-pdp__rating" href="#avis">
+          {%- render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: false, product: product -%}
+        </a>
+      {%- endif -%}
       {%- if description != blank -%}
         <p class="k-pdp__desc">
           {%- if description.size > description_limit -%}
@@ -204,7 +213,7 @@
       {%- endif -%}
       <div>
         <div class="k-sticky-atc__name">{{ product.title }}</div>
-        <div class="k-sticky-atc__meta">{{ product.vendor }} · <span data-k-sticky-price>{{ current_variant.price | money }}</span></div>
+        <div class="k-sticky-atc__meta">{% if brand != blank %}{{ brand }} · {% endif %}<span data-k-sticky-price>{{ current_variant.price | money }}</span></div>
       </div>
     </div>
     <button type="button" class="k-btn k-btn--bordeaux" data-k-sticky-add>

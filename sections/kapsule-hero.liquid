@@ -36,7 +36,13 @@
               when 'hero_institut'
                 assign cta_link = locale_root | append: '/pages/institut'
               when 'hero_popup'
-                assign cta_link = locale_root | append: '/pages/pop-up'
+                assign cta_link = pages['pop-up'].url
+                if cta_link == blank
+                  assign cta_link = pages['pop-up-store'].url
+                endif
+                if cta_link == blank
+                  assign cta_link = locale_root | append: '/pages/pop-up'
+                endif
               else
                 assign cta_link = routes.all_products_collection_url
             endcase
@@ -106,7 +112,8 @@
                         | image_tag: widths: '200, 300, 400, 600', sizes: '(min-width: 1200px) 300px, 45vw', alt: product.featured_media.alt
                       }}
                     {%- endif -%}
-                    <span class="k-brand-pill">{{ product.vendor }}</span>
+                    {%- capture brand -%}{% render 'kapsule-brand', product: product %}{%- endcapture -%}
+                    {%- if brand != blank -%}<span class="k-brand-pill">{{ brand }}</span>{%- endif -%}
                   </span>
                   <span class="k-mini-card__body">
                     <span class="k-mini-card__name">{{ product.title }}</span>

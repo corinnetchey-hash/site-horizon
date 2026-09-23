@@ -5,7 +5,8 @@
   window.Kapsule = {
     config: {
       currency: {{ cart.currency.iso_code | json }},
-      freeShipping: {{ settings.kapsule_free_shipping | times: 100 | json }}
+      freeShipping: {{ settings.kapsule_free_shipping | times: 100 | json }},
+      shopName: {{ shop.name | json }}
     },
     routes: {
       cart: {{ routes.cart_url | json }},
