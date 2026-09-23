@@ -443,9 +443,10 @@ a.k-marquee__item:hover {
   }
 }
 
+/* The banner is informational: keep it moving, just slower, when motion is reduced */
 @media (prefers-reduced-motion: reduce) {
   .k-marquee__track {
-    animation: none;
+    animation-duration: calc(var(--k-marquee-duration, 40s) * 2);
   }
 }
 

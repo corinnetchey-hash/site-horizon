@@ -113,7 +113,8 @@
         "copy_key": "institut.treatments",
         "selected": 2,
         "booking_url": "https://www.fresha.com/a/kapsule-paris-10-12-rue-charles-francois-dupuis-mjeorknn?pId=2793504",
-        "heading": "Nos soins"
+        "heading": "Nos soins",
+        "image": "shopify://shop_images/DSC_4011.webp"
       }
     }
   },

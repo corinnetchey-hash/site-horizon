@@ -24,7 +24,8 @@
           "settings": {
             "copy_key": "popup.tile_1",
             "tint": "sand",
-            "height": 320
+            "height": 320,
+            "image": "shopify://shop_images/IMG_9308.jpg"
           }
         },
         "tile_2": {
@@ -32,7 +33,8 @@
           "settings": {
             "copy_key": "popup.tile_2",
             "tint": "amber",
-            "height": 150
+            "height": 150,
+            "image": "shopify://shop_images/IMG_1422.jpg"
           }
         },
         "tile_3": {
@@ -40,7 +42,8 @@
           "settings": {
             "copy_key": "popup.tile_3",
             "tint": "green",
-            "height": 150
+            "height": 150,
+            "image": "shopify://shop_images/IMG_1427.jpg"
           }
         },
         "tile_4": {
@@ -48,7 +51,8 @@
           "settings": {
             "copy_key": "popup.tile_4",
             "tint": "stone",
-            "height": 150
+            "height": 150,
+            "image": "shopify://shop_images/IMG_1425.jpg"
           }
         }
       },
@@ -95,7 +99,8 @@
       "type": "kapsule-visit",
       "settings": {
         "copy_key": "popup.visit",
-        "tint": "popup"
+        "tint": "popup",
+        "image": "shopify://shop_images/Devanture_Kapsule.png"
       }
     }
   },

@@ -24,13 +24,15 @@
         "slide_institut": {
           "type": "slide",
           "settings": {
-            "copy": "hero_institut"
+            "copy": "hero_institut",
+            "image": "shopify://shop_images/Kapsule_Palais.webp"
           }
         },
         "slide_popup": {
           "type": "slide",
           "settings": {
-            "copy": "hero_popup"
+            "copy": "hero_popup",
+            "image": "shopify://shop_images/IMG_1425.jpg"
           }
         }
       },
@@ -145,7 +147,8 @@
       "type": "kapsule-feature",
       "settings": {
         "copy_key": "home.institut",
-        "link": "/pages/institut"
+        "link": "/pages/institut",
+        "image": "shopify://shop_images/DSC_4011.webp"
       }
     },
     "ugc": {
@@ -154,37 +157,43 @@
         "tile_1": {
           "type": "tile",
           "settings": {
-            "tint": "pink"
+            "tint": "pink",
+            "image": "shopify://shop_images/IMG_1422.jpg"
           }
         },
         "tile_2": {
           "type": "tile",
           "settings": {
-            "tint": "mint"
+            "tint": "mint",
+            "image": "shopify://shop_images/IMG_1425.jpg"
           }
         },
         "tile_3": {
           "type": "tile",
           "settings": {
-            "tint": "sand"
+            "tint": "sand",
+            "image": "shopify://shop_images/IMG_1427.jpg"
           }
         },
         "tile_4": {
           "type": "tile",
           "settings": {
-            "tint": "blue"
+            "tint": "blue",
+            "image": "shopify://shop_images/tageres_boutique_Kapsule.jpg"
           }
         },
         "tile_5": {
           "type": "tile",
           "settings": {
-            "tint": "rose"
+            "tint": "rose",
+            "image": "shopify://shop_images/Photo_Manon_Journal_Kapsule_Coming_Soon.jpg"
           }
         },
         "tile_6": {
           "type": "tile",
           "settings": {
-            "tint": "teal"
+            "tint": "teal",
+            "image": "shopify://shop_images/Devanture_Kapsule.png"
           }
         }
       },

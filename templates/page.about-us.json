@@ -21,7 +21,8 @@
         "copy_key": "vision.block_1",
         "tint": "bordeaux",
         "flip": false,
-        "link": "/pages/institut"
+        "link": "/pages/institut",
+        "image": "shopify://shop_images/Kapsule_Palais.webp"
       }
     },
     "boutique": {
@@ -30,7 +31,8 @@
         "copy_key": "vision.block_2",
         "tint": "sage",
         "flip": true,
-        "link": "/collections/all"
+        "link": "/collections/all",
+        "image": "shopify://shop_images/tageres_boutique_Kapsule.jpg"
       }
     },
     "popup": {
@@ -39,7 +41,8 @@
         "copy_key": "vision.block_3",
         "tint": "popup",
         "flip": false,
-        "link": "/pages/pop-up-store"
+        "link": "/pages/pop-up-store",
+        "image": "shopify://shop_images/IMG_1425.jpg"
       }
     },
     "b2b": {
