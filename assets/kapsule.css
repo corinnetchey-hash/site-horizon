@@ -3834,9 +3834,37 @@ body:has([data-k-cart-page]) .k-bubble {
     padding: 7px 0;
   }
 
+  /* Brands: a tidy two-column list in alphabetical order instead of centred rows of uneven length */
+  .k-houses {
+    padding: 22px 20px 12px;
+  }
+
+  .k-houses__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 20px;
+    row-gap: 0;
+    margin-top: 12px;
+  }
+
+  .k-houses__list li {
+    border-top: 1px solid var(--k-hair);
+  }
+
   .k-houses__list a {
-    display: inline-block;
-    padding: 8px 2px;
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 4px 0;
+    font-size: 17px;
+    overflow-wrap: anywhere;
+  }
+
+  .k-houses__list img {
+    height: 26px;
+    max-width: 100%;
+    object-fit: contain;
+    object-position: left center;
   }
 
   /* Pop-up tiles: a mosaic instead of four tall stacked blocks */
