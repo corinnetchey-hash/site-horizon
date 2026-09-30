@@ -23,83 +23,6 @@
         "button_link": "https://www.fresha.com/a/kapsule-paris-10-12-rue-charles-francois-dupuis-mjeorknn?pId=2793504"
       }
     },
-    "visage": {
-      "type": "kapsule-editorial",
-      "settings": {
-        "copy_key": "institut_page.visage",
-        "tint": "sand",
-        "flip": true,
-        "image": "shopify://shop_images/DSC_4011.webp",
-        "kicker": "",
-        "heading": "",
-        "text": "",
-        "link_label": "",
-        "link": ""
-      }
-    },
-    "treatments": {
-      "type": "kapsule-treatments",
-      "blocks": {
-        "treatment_1": {
-          "type": "treatment",
-          "settings": {
-            "copy_key": "institut.treatment_1",
-            "image": "shopify://shop_images/DSC_4017.webp"
-          }
-        },
-        "treatment_2": {
-          "type": "treatment",
-          "settings": {
-            "copy_key": "institut.treatment_2",
-            "image": "shopify://shop_images/Photo_Oak-An_Su_Charlotte.jpg"
-          }
-        },
-        "treatment_3": {
-          "type": "treatment",
-          "settings": {
-            "copy_key": "institut.treatment_3",
-            "image": "shopify://shop_images/IMG_5925.jpg"
-          }
-        },
-        "treatment_4": {
-          "type": "treatment",
-          "settings": {
-            "copy_key": "institut.treatment_4",
-            "image": "shopify://shop_images/Kapsule_Palais.webp"
-          }
-        }
-      },
-      "block_order": [
-        "treatment_1",
-        "treatment_2",
-        "treatment_3",
-        "treatment_4"
-      ],
-      "settings": {
-        "copy_key": "institut_page.treatments",
-        "heading": "",
-        "booking_url": "https://www.fresha.com/a/kapsule-paris-10-12-rue-charles-francois-dupuis-mjeorknn?pId=2793504",
-        "image": "shopify://shop_images/Kapsule_Palais.webp",
-        "venue": "Kapsule Palais",
-        "address": "10 Rue Charles-François Dupuis, 75003 Paris",
-        "hours": "Mardi au dimanche — 11h à 20h",
-        "layout": "cards",
-        "show_venue": false
-      }
-    },
-    "exigence": {
-      "type": "kapsule-text",
-      "settings": {
-        "style": "bordeaux",
-        "alignment": "center",
-        "kicker": "",
-        "heading": "",
-        "text": "",
-        "button_label": "",
-        "button_link": "https://www.fresha.com/a/kapsule-paris-10-12-rue-charles-francois-dupuis-mjeorknn?pId=2793504",
-        "copy_key": "institut_page.exigence"
-      }
-    },
     "fondatrice_duo": {
       "type": "kapsule-duo",
       "blocks": {
@@ -107,24 +30,26 @@
           "type": "column",
           "settings": {
             "style": "surface",
+            "copy_key": "institut_page.fondatrice",
             "kicker": "",
             "heading": "",
             "quote": "",
             "text": "",
             "link_label": "",
-            "copy_key": "institut_page.fondatrice"
+            "link": ""
           }
         },
         "technique": {
           "type": "column",
           "settings": {
             "style": "white",
+            "copy_key": "institut_page.technique",
             "kicker": "",
             "heading": "",
             "quote": "",
             "text": "",
             "link_label": "",
-            "copy_key": "institut_page.technique"
+            "link": ""
           }
         }
       },
@@ -144,24 +69,26 @@
           "type": "column",
           "settings": {
             "style": "surface",
+            "copy_key": "institut_page.batang",
             "kicker": "",
             "heading": "",
             "quote": "",
             "text": "",
             "link_label": "",
-            "copy_key": "institut_page.batang"
+            "link": ""
           }
         },
         "origine": {
           "type": "column",
           "settings": {
             "style": "surface",
+            "copy_key": "institut_page.origine",
             "kicker": "",
             "heading": "",
             "quote": "",
             "text": "",
             "link_label": "",
-            "copy_key": "institut_page.origine"
+            "link": ""
           }
         }
       },
@@ -174,6 +101,20 @@
         "style": "surface"
       }
     },
+    "visage": {
+      "type": "kapsule-editorial",
+      "settings": {
+        "copy_key": "institut_page.visage",
+        "anchor": "",
+        "flip": true,
+        "tint": "sand",
+        "kicker": "",
+        "heading": "",
+        "text": "",
+        "link_label": "",
+        "link": ""
+      }
+    },
     "programmes": {
       "type": "kapsule-duo",
       "blocks": {
@@ -181,26 +122,26 @@
           "type": "column",
           "settings": {
             "style": "bordeaux",
+            "copy_key": "institut_page.oak_an",
             "kicker": "",
             "heading": "",
             "quote": "",
             "text": "",
             "link_label": "",
-            "link": "https://www.fresha.com/book-now/kapsule-vpzocr2g/services?lid=2889132&eid=5105548&oiid=sv%3A26746772&share=true&pId=2793504",
-            "copy_key": "institut_page.oak_an"
+            "link": "https://www.fresha.com/book-now/kapsule-vpzocr2g/services?lid=2889132&eid=5105548&oiid=sv%3A26746772&share=true&pId=2793504"
           }
         },
         "susu_an": {
           "type": "column",
           "settings": {
             "style": "white",
+            "copy_key": "institut_page.susu_an",
             "kicker": "",
             "heading": "",
             "quote": "",
             "text": "",
             "link_label": "",
-            "link": "https://www.fresha.com/a/kapsule-paris-10-12-rue-charles-francois-dupuis-mjeorknn?pId=2793504",
-            "copy_key": "institut_page.susu_an"
+            "link": "https://www.fresha.com/a/kapsule-paris-10-12-rue-charles-francois-dupuis-mjeorknn?pId=2793504"
           }
         }
       },
@@ -213,6 +154,78 @@
         "style": "surface"
       }
     },
+    "treatments": {
+      "type": "kapsule-treatments",
+      "blocks": {
+        "treatment_1": {
+          "type": "treatment",
+          "settings": {
+            "copy_key": "institut.treatment_1",
+            "image": "shopify://shop_images/Kapsule_Palais.webp",
+            "name": "Masterclass Guasha",
+            "text": "Offrez-vous un véritable coup d’éclat et apprenez les secrets de la beauté holistique avec notre nouvelle Masterclass Guasha. Le Guasha est l'outil indispensable pour transformer l'aspect de votre peau au quotidien. Durant cet atelier, notre experte vous transmet les gestes précis et les techniques d’automassage pour devenir totalement autonome à la maison.",
+            "duration": "30 min",
+            "price": "50€",
+            "link": "https://tr.ee/0PZERqCBB0"
+          }
+        },
+        "treatment_2": {
+          "type": "treatment",
+          "settings": {
+            "copy_key": "institut.treatment_2",
+            "image": "shopify://shop_images/Photo_Oak-An_Su_Charlotte.jpg",
+            "name": "OAK-AN SU",
+            "text": "OAK-AN SU est le programme facial fondamental au sein du système de soins BATANG. Ce traitement suit l'intégralité du rituel facial OAK-AN, utilisant des instruments traditionnels en jade et en laiton. Il associe des techniques d’acupression coréennes, des pressions rythmiques et un soin ciblé sur la stimulation de la circulation. Le programme se concentre sur l’hydratation profonde, l’équilibre cutané et la vitalité globale. Il utilise des ampoules coréennes de haute technologie, rigoureusement sélectionnées et adaptées à l'état spécifique de la peau de chaque client.",
+            "duration": "60 min",
+            "price": "150€",
+            "link": ""
+          }
+        },
+        "treatment_3": {
+          "type": "treatment",
+          "settings": {
+            "copy_key": "institut.treatment_3",
+            "image": "shopify://shop_images/IMG_5925.jpg",
+            "name": "SUSU-AN",
+            "text": "Tout comme votre visage, vos mains gardent en elles les tensions qui brouillent votre éclat. Bien plus qu'un soin, ce rituel de 10 minutes est une reconnexion. Par une stimulation précise des méridiens, il libère les blocages et stimule la circulation profonde. En dénouant vos mains, vous réveillez la vitalité et la lumière naturelle de votre visage.",
+            "duration": "10 min",
+            "price": "20€",
+            "link": ""
+          }
+        },
+        "treatment_4": {
+          "type": "treatment",
+          "settings": {
+            "copy_key": "institut.treatment_4",
+            "image": "shopify://shop_images/IMG_1566.jpg",
+            "name": "OAK-AN JIN",
+            "text": "Le soin OAK-AN JIN  suit l'intégralité du rituel facial OAK-AN, utilisant des instruments traditionnels en jade et en laiton. Il associe des techniques d’acupression coréennes, des pressions rythmiques et un soin ciblé sur la stimulation de la circulation. Sa particularité réside dans l’utilisation d’ampoules spécifiques, formulées pour outenir l’élasticité, la fermeté et une action anti-âge globale. Ce programme est recommandé pour les clients recherchant une revitalisation profonde et une amélioration visible de la résilience cutanée.",
+            "duration": "60 min",
+            "price": "190€",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "treatment_1",
+        "treatment_2",
+        "treatment_3",
+        "treatment_4"
+      ],
+      "settings": {
+        "copy_key": "institut_page.treatments",
+        "heading": "",
+        "layout": "cards",
+        "show_venue": false,
+        "selected": 2,
+        "image": "shopify://shop_images/Kapsule_Palais.webp",
+        "venue": "Kapsule Palais",
+        "address": "10-12 Rue Charles-François Dupuis, 75003 Paris",
+        "hours": "Mardi au dimanche — 11h à 20h",
+        "button": "",
+        "booking_url": "https://www.fresha.com/a/kapsule-paris-10-12-rue-charles-francois-dupuis-mjeorknn?pId=2793504"
+      }
+    },
     "transmission": {
       "type": "kapsule-duo",
       "blocks": {
@@ -220,24 +233,26 @@
           "type": "column",
           "settings": {
             "style": "surface",
+            "copy_key": "institut_page.experience",
             "kicker": "",
             "heading": "",
             "quote": "",
             "text": "",
             "link_label": "",
-            "copy_key": "institut_page.experience"
+            "link": ""
           }
         },
         "education": {
           "type": "column",
           "settings": {
             "style": "surface",
+            "copy_key": "institut_page.education",
             "kicker": "",
             "heading": "",
             "quote": "",
             "text": "",
             "link_label": "",
-            "copy_key": "institut_page.education"
+            "link": ""
           }
         }
       },
@@ -248,6 +263,19 @@
       "settings": {
         "layout": "joined",
         "style": "surface"
+      }
+    },
+    "exigence": {
+      "type": "kapsule-text",
+      "settings": {
+        "style": "bordeaux",
+        "alignment": "center",
+        "copy_key": "institut_page.exigence",
+        "kicker": "",
+        "heading": "",
+        "text": "",
+        "button_label": "",
+        "button_link": "https://www.fresha.com/a/kapsule-paris-10-12-rue-charles-francois-dupuis-mjeorknn?pId=2793504"
       }
     }
   },

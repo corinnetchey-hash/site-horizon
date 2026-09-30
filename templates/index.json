@@ -17,7 +17,15 @@
           "settings": {
             "copy": "hero",
             "show_products": true,
+            "kicker": "",
+            "heading_a": "",
+            "heading_b": "",
+            "heading_c": "",
+            "text": "",
+            "cta": "",
+            "cta_link": "",
             "show_quiz": true,
+            "cta2": "",
             "show_trust": true
           }
         },
@@ -25,14 +33,36 @@
           "type": "slide",
           "settings": {
             "copy": "hero_institut",
-            "image": "shopify://shop_images/Kapsule_Palais.webp"
+            "image": "shopify://shop_images/Kapsule_Palais.webp",
+            "show_products": false,
+            "kicker": "",
+            "heading_a": "",
+            "heading_b": "",
+            "heading_c": "",
+            "text": "",
+            "cta": "",
+            "cta_link": "",
+            "show_quiz": false,
+            "cta2": "",
+            "show_trust": false
           }
         },
         "slide_popup": {
           "type": "slide",
           "settings": {
             "copy": "hero_popup",
-            "image": "shopify://shop_images/IMG_1425.jpg"
+            "image": "shopify://shop_images/IMG_1425.jpg",
+            "show_products": false,
+            "kicker": "",
+            "heading_a": "",
+            "heading_b": "",
+            "heading_c": "",
+            "text": "",
+            "cta": "",
+            "cta_link": "",
+            "show_quiz": false,
+            "cta2": "",
+            "show_trust": false
           }
         }
       },
@@ -49,13 +79,15 @@
           "zisu-c-kira-60-c-tide-serum-45ml",
           "toner-a-l-eau-de-rose-de-bulgarie-urang",
           "essence-soja-fermente"
-        ]
+        ],
+        "collection": ""
       }
     },
     "band": {
       "type": "kapsule-band",
       "settings": {
         "copy_key": "home.band",
+        "text": "",
         "padding_top": 22
       }
     },
@@ -67,7 +99,8 @@
           "settings": {
             "concern": "eclat",
             "concern_collection": "manque-declat",
-            "background": "#F1E8EC"
+            "label": "",
+            "background": "#f1e8ec"
           }
         },
         "concern_rides_perte_de_fermete": {
@@ -75,7 +108,8 @@
           "settings": {
             "concern": "eclat",
             "concern_collection": "rides-perte-de-fermete",
-            "background": "#E9EAE2"
+            "label": "",
+            "background": "#e9eae2"
           }
         },
         "concern_deshydratation": {
@@ -83,7 +117,8 @@
           "settings": {
             "concern": "eclat",
             "concern_collection": "deshydratation",
-            "background": "#EDE6DC"
+            "label": "",
+            "background": "#ede6dc"
           }
         },
         "concern_sensibilite_rougeurs": {
@@ -91,7 +126,8 @@
           "settings": {
             "concern": "eclat",
             "concern_collection": "sensibilite-rougeurs",
-            "background": "#E6EDEA"
+            "label": "",
+            "background": "#e6edea"
           }
         },
         "concern_taches_pigmentaires": {
@@ -99,7 +135,8 @@
           "settings": {
             "concern": "eclat",
             "concern_collection": "taches-pigmentaires",
-            "background": "#F0E9E3"
+            "label": "",
+            "background": "#f0e9e3"
           }
         },
         "concern_acne_imperfections": {
@@ -107,7 +144,8 @@
           "settings": {
             "concern": "eclat",
             "concern_collection": "acne-imperfections",
-            "background": "#ECE8F0"
+            "label": "",
+            "background": "#ece8f0"
           }
         }
       },
@@ -120,13 +158,18 @@
         "concern_acne_imperfections"
       ],
       "settings": {
-        "copy_key": "home.concerns"
+        "copy_key": "home.concerns",
+        "heading": "",
+        "subheading": "",
+        "collection": ""
       }
     },
     "bestsellers": {
       "type": "kapsule-products",
       "settings": {
         "copy_key": "home.bestsellers",
+        "heading": "",
+        "collection": "",
         "limit": 4,
         "offset": 0,
         "exclude": [
@@ -140,62 +183,26 @@
     "houses": {
       "type": "kapsule-houses",
       "settings": {
-        "copy_key": "home.houses"
+        "copy_key": "home.houses",
+        "kicker": "",
+        "collection": ""
       }
     },
     "institut": {
       "type": "kapsule-feature",
       "settings": {
         "copy_key": "home.institut",
+        "kicker": "",
+        "heading": "",
+        "text": "",
+        "button": "",
         "link": "/pages/institut",
-        "image": "shopify://shop_images/DSC_4011.webp"
+        "image": "shopify://shop_images/PHOTO_KAPSULE_PALAIS_CABIN.png"
       }
     },
     "ugc": {
       "type": "kapsule-ugc",
       "blocks": {
-        "tile_1": {
-          "type": "tile",
-          "settings": {
-            "tint": "pink",
-            "image": "shopify://shop_images/IMG_1422.jpg"
-          }
-        },
-        "tile_2": {
-          "type": "tile",
-          "settings": {
-            "tint": "mint",
-            "image": "shopify://shop_images/IMG_1425.jpg"
-          }
-        },
-        "tile_3": {
-          "type": "tile",
-          "settings": {
-            "tint": "sand",
-            "image": "shopify://shop_images/IMG_1427.jpg"
-          }
-        },
-        "tile_4": {
-          "type": "tile",
-          "settings": {
-            "tint": "blue",
-            "image": "shopify://shop_images/tageres_boutique_Kapsule.jpg"
-          }
-        },
-        "tile_5": {
-          "type": "tile",
-          "settings": {
-            "tint": "rose",
-            "image": "shopify://shop_images/Photo_Manon_Journal_Kapsule_Coming_Soon.jpg"
-          }
-        },
-        "tile_6": {
-          "type": "tile",
-          "settings": {
-            "tint": "teal",
-            "image": "shopify://shop_images/Devanture_Kapsule.png"
-          }
-        },
         "instagram_feed": {
           "type": "shopify://apps/libautech-shoppable-ugc/blocks/block/019ade11-769e-703d-9b80-f6ca3920e42f",
           "settings": {
@@ -217,6 +224,48 @@
             "title_font_weight": "600",
             "title_alignment": "left"
           }
+        },
+        "tile_1": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/IMG_1422.jpg",
+            "tint": "pink"
+          }
+        },
+        "tile_2": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/IMG_1425.jpg",
+            "tint": "mint"
+          }
+        },
+        "tile_3": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/IMG_1427.jpg",
+            "tint": "sand"
+          }
+        },
+        "tile_4": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/tageres_boutique_Kapsule.jpg",
+            "tint": "blue"
+          }
+        },
+        "tile_5": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/Photo_Manon_Journal_Kapsule_Coming_Soon.jpg",
+            "tint": "rose"
+          }
+        },
+        "tile_6": {
+          "type": "tile",
+          "settings": {
+            "image": "shopify://shop_images/Devanture_Kapsule.png",
+            "tint": "teal"
+          }
         }
       },
       "block_order": [
@@ -230,13 +279,18 @@
       ],
       "settings": {
         "copy_key": "home.ugc",
+        "heading": "",
+        "handle": "",
         "link": "https://www.instagram.com/kapsule.global"
       }
     },
     "newsletter": {
       "type": "kapsule-newsletter",
       "settings": {
-        "copy_key": "home.newsletter"
+        "copy_key": "home.newsletter",
+        "heading": "",
+        "text": "",
+        "button": ""
       }
     }
   },

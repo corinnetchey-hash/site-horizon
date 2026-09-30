@@ -13,7 +13,13 @@
       "type": "kapsule-banner",
       "settings": {
         "copy_key": "popup.hero",
-        "style": "popup"
+        "style": "popup",
+        "kicker": "",
+        "heading": "",
+        "text": "",
+        "body": "",
+        "button_label": "",
+        "button_link": ""
       }
     },
     "tiles": {
@@ -22,37 +28,41 @@
         "tile_1": {
           "type": "tile",
           "settings": {
+            "image": "shopify://shop_images/IMG_9308.jpg",
             "copy_key": "popup.tile_1",
+            "label": "",
             "tint": "sand",
-            "height": 320,
-            "image": "shopify://shop_images/IMG_9308.jpg"
+            "height": 320
           }
         },
         "tile_2": {
           "type": "tile",
           "settings": {
+            "image": "shopify://shop_images/IMG_1422.jpg",
             "copy_key": "popup.tile_2",
+            "label": "",
             "tint": "amber",
-            "height": 150,
-            "image": "shopify://shop_images/IMG_1422.jpg"
+            "height": 150
           }
         },
         "tile_3": {
           "type": "tile",
           "settings": {
+            "image": "shopify://shop_images/IMG_1427.jpg",
             "copy_key": "popup.tile_3",
+            "label": "",
             "tint": "green",
-            "height": 150,
-            "image": "shopify://shop_images/IMG_1427.jpg"
+            "height": 150
           }
         },
         "tile_4": {
           "type": "tile",
           "settings": {
+            "image": "shopify://shop_images/IMG_1425.jpg",
             "copy_key": "popup.tile_4",
+            "label": "",
             "tint": "stone",
-            "height": 150,
-            "image": "shopify://shop_images/IMG_1425.jpg"
+            "height": 150
           }
         }
       },
@@ -70,19 +80,25 @@
         "edit_1": {
           "type": "edit",
           "settings": {
-            "copy_key": "popup.edit_1"
+            "copy_key": "popup.edit_1",
+            "name": "IRI",
+            "status": "Nouveau cette semaine"
           }
         },
         "edit_2": {
           "type": "edit",
           "settings": {
-            "copy_key": "popup.edit_2"
+            "copy_key": "popup.edit_2",
+            "name": "Art De Base",
+            "status": ""
           }
         },
         "edit_3": {
           "type": "edit",
           "settings": {
-            "copy_key": "popup.edit_3"
+            "copy_key": "popup.edit_3",
+            "name": "Toyeong",
+            "status": "Nouveau cette semaine"
           }
         }
       },
@@ -92,15 +108,18 @@
         "edit_3"
       ],
       "settings": {
-        "copy_key": "popup.edits"
+        "copy_key": "popup.edits",
+        "heading": ""
       }
     },
     "visit": {
       "type": "kapsule-visit",
       "settings": {
         "copy_key": "popup.visit",
-        "tint": "popup",
-        "image": "shopify://shop_images/Devanture_Kapsule.png"
+        "heading": "",
+        "text": "",
+        "image": "shopify://shop_images/Devanture_Kapsule.png",
+        "tint": "popup"
       }
     }
   },

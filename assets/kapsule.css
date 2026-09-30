@@ -2701,9 +2701,29 @@ body.k-overlay-open .k-bubble {
 }
 
 @media (max-width: 699px) {
+  /* On phones the bubble shrinks to its monogram so it does not cover the carousel arrows or product cards */
   .k-bubble {
     right: 16px;
     bottom: 16px;
+    width: 56px;
+    height: 56px;
+    padding: 0;
+    gap: 0;
+    justify-content: center;
+  }
+
+  .k-bubble img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .k-bubble__text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
   }
 }
 
