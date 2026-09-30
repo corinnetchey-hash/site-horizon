@@ -4018,3 +4018,122 @@ body:has([data-k-cart-page]) .k-bubble {
   text-underline-offset: 3px;
   cursor: pointer;
 }
+
+/* Shop page: the brands under the heading, as on the home page */
+.k-houses--shop {
+  margin-top: 26px;
+}
+
+/* Brand (collection) pages: the collection image beside the presentation */
+.k-shop__head--image {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+}
+
+.k-shop__head-media {
+  aspect-ratio: 4 / 3;
+  border-radius: 6px;
+  padding: 0;
+}
+
+@media (max-width: 899px) {
+  .k-shop__head--image {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Shop policies (mentions légales, confidentialité, retours, expédition) ---------- */
+
+.kapsule .shopify-policy__container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: clamp(36px, 6vw, 72px) var(--k-gutter) clamp(48px, 7vw, 88px);
+  box-sizing: border-box;
+  color: var(--k-ink);
+}
+
+.kapsule .shopify-policy__title {
+  text-align: center;
+  margin-bottom: clamp(24px, 4vw, 40px);
+}
+
+.kapsule .shopify-policy__title::before {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 1px;
+  margin: 0 auto 18px;
+  background: var(--k-bordeaux);
+}
+
+.kapsule .shopify-policy__title h1 {
+  font-family: var(--k-serif);
+  font-weight: 400;
+  font-size: clamp(30px, 4vw, 44px);
+  line-height: 1.12;
+  letter-spacing: 0;
+  text-transform: none;
+  margin: 0;
+}
+
+.kapsule .shopify-policy__body {
+  background: var(--k-surface);
+  border: 1px solid var(--k-hair);
+  border-radius: 6px;
+  padding: clamp(24px, 5vw, 56px);
+  font-family: var(--k-sans);
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--k-ink-2);
+}
+
+.kapsule .shopify-policy__body :is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--k-serif);
+  font-weight: 400;
+  color: var(--k-ink);
+  line-height: 1.25;
+  letter-spacing: 0;
+  text-transform: none;
+  margin: 1.8em 0 0.6em;
+}
+
+.kapsule .shopify-policy__body h2 {
+  font-size: 24px;
+}
+
+.kapsule .shopify-policy__body h3 {
+  font-size: 20px;
+}
+
+.kapsule .shopify-policy__body :is(h4, h5, h6) {
+  font-size: 17px;
+}
+
+.kapsule .shopify-policy__body :is(h1, h2, h3, h4, h5, h6):first-child {
+  margin-top: 0;
+}
+
+.kapsule .shopify-policy__body p {
+  margin: 0 0 1em;
+}
+
+.kapsule .shopify-policy__body strong {
+  color: var(--k-ink);
+}
+
+.kapsule .shopify-policy__body a {
+  color: var(--k-bordeaux);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.kapsule .shopify-policy__body :is(ul, ol) {
+  padding-left: 1.2em;
+  margin: 0 0 1em;
+}
+
+.kapsule .shopify-policy__body li {
+  margin-bottom: 0.35em;
+}

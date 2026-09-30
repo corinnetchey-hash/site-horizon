@@ -158,23 +158,46 @@
 {%- endcapture -%}
 
 <div class="k-container k-shop k-fade" data-k-shop>
-  <div class="k-kicker">——
-    {% if use_collection_copy %}{{ 'kapsule.general.shop' | t | upcase }}{% else %}{% render 'kapsule-t', value: section.settings.kicker, key: copy_key, field: 'kicker' %}{% endif %}
-  </div>
-  <h1 class="k-h1 k-h1--shop">
-    {%- if use_collection_copy -%}
-      {{ collection.title }}
-    {%- else -%}
-      {%- render 'kapsule-t', value: section.settings.heading, key: copy_key, field: 'heading' -%}
+  {%- liquid
+    assign head_image = nil
+    if use_collection_copy and collection.handle != 'all'
+      assign head_image = collection.image
+    endif
+  -%}
+  <div class="k-shop__head{% if head_image %} k-shop__head--image{% endif %}">
+    <div class="k-shop__head-text">
+      <div class="k-kicker">——
+        {% if use_collection_copy %}{{ 'kapsule.general.shop' | t | upcase }}{% else %}{% render 'kapsule-t', value: section.settings.kicker, key: copy_key, field: 'kicker' %}{% endif %}
+      </div>
+      <h1 class="k-h1 k-h1--shop">
+        {%- if use_collection_copy -%}
+          {{ collection.title }}
+        {%- else -%}
+          {%- render 'kapsule-t', value: section.settings.heading, key: copy_key, field: 'heading' -%}
+        {%- endif -%}
+      </h1>
+      <div class="k-shop__intro">
+        {%- if use_collection_copy and collection.description != blank -%}
+          <div class="k-rte">{{ collection.description }}</div>
+        {%- else -%}
+          {%- render 'kapsule-t', value: section.settings.text, key: copy_key, field: 'text' -%}
+        {%- endif -%}
+      </div>
+    </div>
+    {%- if head_image -%}
+      <div class="k-media k-shop__head-media">
+        {{ head_image | image_url: width: 1200 | image_tag: sizes: '(min-width: 900px) 40vw, 100vw', alt: collection.title }}
+      </div>
     {%- endif -%}
-  </h1>
-  <div class="k-shop__intro">
-    {%- if use_collection_copy and collection.description != blank -%}
-      <div class="k-rte">{{ collection.description }}</div>
-    {%- else -%}
-      {%- render 'kapsule-t', value: section.settings.text, key: copy_key, field: 'text' -%}
-    {%- endif -%}
   </div>
+  {%- if collection.handle == 'all' and section.settings.show_houses -%}
+    <div class="k-houses k-houses--shop">
+      <div class="k-kicker" style="text-align:center">{{ 'kapsule.home.houses.kicker' | t }}</div>
+      <ul class="k-houses__list">
+        {%- render 'kapsule-house-list', source: collection -%}
+      </ul>
+    </div>
+  {%- endif -%}
   <nav class="k-breadcrumb" aria-label="Breadcrumb">
     <a href="{{ routes.root_url }}">{{ 'kapsule.general.home' | t }}</a> /
     <a href="{{ routes.all_products_collection_url }}">{{ 'kapsule.general.shop' | t }}</a>
@@ -201,59 +224,6 @@
         <div class="k-filter-list">
           {{ category_links }}
         </div>
-
-        {%- if brand_handles.size > 0 -%}
-          {%- capture brand_links -%}{% render 'kapsule-brand-links', brand_handles: brand_handles %}{%- endcapture -%}
-          {%- if brand_links != blank -%}
-            <h2 class="k-filter-title">{{ 'kapsule.shop.brands' | t }}</h2>
-            <ul class="k-filter-list">{{ brand_links }}</ul>
-          {%- endif -%}
-        {%- elsif brand_filter and brand_filter.values.size > 0 -%}
-          <h2 class="k-filter-title">{{ 'kapsule.shop.brands' | t }}</h2>
-          <ul class="k-filter-list">
-            {%- assign brand_values = brand_filter.values | sort_natural: 'label' -%}
-            {%- for value in brand_values -%}
-              {%- if value.count == 0 and value.active == false -%}{%- continue -%}{%- endif -%}
-              {%- if value.label == shop.name -%}{%- continue -%}{%- endif -%}
-              <li>
-                <a
-                  class="k-filter-brand"
-                  href="{% if value.active %}{{ value.url_to_remove }}{% else %}{{ value.url_to_add }}{% endif %}"
-                  {% if value.active %}
-                    aria-current="true"
-                  {% endif %}
-                >
-                  <span class="k-filter-brand__dot" aria-hidden="true"></span>
-                  {{- value.label -}}
-                </a>
-              </li>
-            {%- endfor -%}
-          </ul>
-        {%- elsif catalog_vendors.size > 0 -%}
-          <h2 class="k-filter-title">{{ 'kapsule.shop.brands' | t }}</h2>
-          <ul class="k-filter-list">
-            {%- for vendor in catalog_vendors -%}
-              {%- liquid
-                assign vendor_active = false
-                if is_vendor_page and collection.title == vendor
-                  assign vendor_active = true
-                endif
-              -%}
-              <li>
-                <a
-                  class="k-filter-brand"
-                  href="{% if vendor_active %}{{ routes.all_products_collection_url }}{% else %}{{ vendor | url_for_vendor }}{% endif %}"
-                  {% if vendor_active %}
-                    aria-current="true"
-                  {% endif %}
-                >
-                  <span class="k-filter-brand__dot" aria-hidden="true"></span>
-                  {{- vendor -}}
-                </a>
-              </li>
-            {%- endfor -%}
-          </ul>
-        {%- endif -%}
 
         {%- if concern_handles.size > 0 -%}
           {%- capture concern_chips -%}
@@ -518,6 +488,7 @@
 {
   "name": "Kapsule boutique",
   "settings": [
+    { "type": "checkbox", "id": "show_houses", "label": "Show the brands at the top of the shop page", "default": true },
     {
       "type": "paragraph",
       "content": "Filters come from the Search & Discovery app: enable Product type (categories), Vendor (houses), Tag (concerns, tagged besoin-*) and Price."
