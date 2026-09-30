@@ -1597,7 +1597,8 @@ a.k-marquee__item:hover {
 
 .k-shop__aside {
   position: sticky;
-  top: 96px;
+  /* A filter column taller than the window scrolls with the page, then stays put once its end is reached (set in kapsule.js) */
+  top: var(--k-aside-top, 96px);
 }
 
 .k-filter-title {

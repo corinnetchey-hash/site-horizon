@@ -369,6 +369,20 @@
     toggle.textContent = open ? t('hide_filters') : t('filter');
   });
 
+  /* The filter column scrolls with the products until its end, then stays in view */
+  const aside = document.querySelector('.k-shop__aside');
+  if (aside) {
+    const offset = 96;
+    const gap = 24;
+    const place = () => {
+      const top = Math.min(offset, window.innerHeight - aside.offsetHeight - gap);
+      aside.style.setProperty('--k-aside-top', top + 'px');
+    };
+    place();
+    window.addEventListener('resize', place);
+    if ('ResizeObserver' in window) new ResizeObserver(place).observe(aside);
+  }
+
   /* ---------------------------------------------------------- product page */
 
   function initProduct(root) {
