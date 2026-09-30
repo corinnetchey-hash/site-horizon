@@ -1,7 +1,8 @@
 {%- comment -%}
   Outputs a product's brand. Uses the vendor unless it is blank or the shop name,
   otherwise the first of the product's collections listed in the
-  “Brand collections” theme setting.
+  “Brand collections” theme setting, or else a collection named like the
+  start or end of the product title (e.g. “Gel Nettoyant - Kohonjin”).
 
   Accepts:
   - product {product}
@@ -32,6 +33,25 @@
         break
       endif
     endfor
+    # Brand not listed yet: match a collection named like the start or end of the title ("… - Kohonjin")
+    if brand == blank
+      assign title_first = product.title | split: ' - ' | first | strip | downcase
+      assign title_last = product.title | split: ' - ' | last | strip | downcase
+      for brand_collection in product.collections
+        assign collection_name = brand_collection.title | strip | downcase
+        if collection_name == title_last or collection_name == title_first
+          case field
+            when 'url'
+              assign brand = brand_collection.url
+            when 'handle'
+              assign brand = brand_collection.handle
+            else
+              assign brand = brand_collection.title | strip
+          endcase
+          break
+        endif
+      endfor
+    endif
   endif
   echo brand
 -%}
