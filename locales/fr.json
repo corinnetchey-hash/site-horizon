@@ -722,7 +722,7 @@
         "heading": "Nos soins",
         "photo": "PHOTO — CABINE DE SOIN",
         "venue": "Kapsule Palais",
-        "address": "10 Rue Charles-François Dupuis, 75003 Paris",
+        "address": "10-12 Rue Charles-François Dupuis, 75003 Paris",
         "hours": "Mardi au Dimanche — 11h à 20h",
         "selected": "Sélectionné : {{ treatment }}",
         "button": "Réserver un soin",
@@ -733,28 +733,28 @@
         "error": "Merci de vérifier votre e-mail."
       },
       "treatment_1": {
-        "name": "Consultation & réalignement",
-        "text": "Bilan complet, méthode MSSI",
-        "duration": "60 min",
-        "price": "120 €"
+        "name": "Masterclass Guasha",
+        "text": "Offrez-vous un véritable coup d’éclat et apprenez les secrets de la beauté holistique avec notre nouvelle Masterclass Guasha. Le Guasha est l'outil indispensable pour transformer l'aspect de votre peau au quotidien. Durant cet atelier, notre experte vous transmet les gestes précis et les techniques d’automassage pour devenir totalement autonome à la maison.",
+        "duration": "30 min",
+        "price": "50€"
       },
       "treatment_2": {
-        "name": "Soin visage structurel",
-        "text": "Circulation, drainage, contours",
-        "duration": "90 min",
-        "price": "180 €"
+        "name": "OAK-AN SU",
+        "text": "OAK-AN SU est le programme facial fondamental au sein du système de soins BATANG. Ce traitement suit l'intégralité du rituel facial OAK-AN, utilisant des instruments traditionnels en jade et en laiton. Il associe des techniques d’acupression coréennes, des pressions rythmiques et un soin ciblé sur la stimulation de la circulation. Le programme se concentre sur l’hydratation profonde, l’équilibre cutané et la vitalité globale. Il utilise des ampoules coréennes de haute technologie, rigoureusement sélectionnées et adaptées à l'état spécifique de la peau de chaque client.",
+        "duration": "60 min",
+        "price": "150€"
       },
       "treatment_3": {
-        "name": "Protocole PLS — cure",
-        "text": "Quatre séances, suivi intégré",
-        "duration": "4 × 60 min",
-        "price": "620 €"
+        "name": "SUSU-AN",
+        "text": "Tout comme votre visage, vos mains gardent en elles les tensions qui brouillent votre éclat. Bien plus qu'un soin, ce rituel de 10 minutes est une reconnexion. Par une stimulation précise des méridiens, il libère les blocages et stimule la circulation profonde. En dénouant vos mains, vous réveillez la vitalité et la lumière naturelle de votre visage.",
+        "duration": "10 min",
+        "price": "20€"
       },
       "treatment_4": {
-        "name": "Rituel Kapsule Signature",
-        "text": "Visage, nuque et épaules",
-        "duration": "120 min",
-        "price": "240 €"
+        "name": "OAK-AN JIN",
+        "text": "Le soin OAK-AN JIN suit l'intégralité du rituel facial OAK-AN, utilisant des instruments traditionnels en jade et en laiton. Il associe des techniques d’acupression coréennes, des pressions rythmiques et un soin ciblé sur la stimulation de la circulation. Sa particularité réside dans l’utilisation d’ampoules spécifiques, formulées pour soutenir l’élasticité, la fermeté et une action anti-âge globale. Ce programme est recommandé pour les clients recherchant une revitalisation profonde et une amélioration visible de la résilience cutanée.",
+        "duration": "60 min",
+        "price": "190€"
       }
     },
     "popup": {
@@ -771,16 +771,16 @@
         "heading": "Sélections en cours"
       },
       "edit_1": {
-        "name": "Céramique de Séoul",
-        "status": "Jusqu'au 12 octobre"
+        "name": "IRI",
+        "status": "Nouveau cette semaine"
       },
       "edit_2": {
-        "name": "Studio Textile — édition capsule",
+        "name": "Art De Base",
         "status": "Nouveau cette semaine"
       },
       "edit_3": {
-        "name": "Papeterie & objets — jeunes créateurs",
-        "status": "Permanent"
+        "name": "Toyeong",
+        "status": "Nouveau cette semaine"
       },
       "visit": {
         "heading": "Retrouvez-nous",

@@ -2,19 +2,27 @@
   Outputs a merchant-edited value, or falls back to the bilingual copy in the locale files.
 
   Accepts:
-  - value {string} - Setting value; wins when not blank
+  - value {string} - Setting value; wins when not blank, except in a secondary language that has locale copy for the key
   - key {string} - Locale key prefix, e.g. 'kapsule.home.hero.'
   - field {string} - Field appended to the key, e.g. 'heading'
 
   Usage:
   {% render 'kapsule-t', value: section.settings.heading, key: copy_key, field: 'heading' %}
 {%- endcomment -%}
-{%- if value != blank -%}
+{%- liquid
+  assign translation = ''
+  if key != blank
+    if value == blank or request.locale.primary == false
+      assign translation_key = key | append: field
+      assign translation = translation_key | t
+      if translation contains 'ranslation missing'
+        assign translation = ''
+      endif
+    endif
+  endif
+-%}
+{%- if value != blank and translation == blank -%}
   {{- value -}}
 {%- else -%}
-  {%- assign translation_key = key | append: field -%}
-  {%- assign translation = translation_key | t -%}
-  {%- unless translation contains 'ranslation missing' -%}
-    {{- translation -}}
-  {%- endunless -%}
+  {{- translation -}}
 {%- endif -%}

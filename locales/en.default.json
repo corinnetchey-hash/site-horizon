@@ -743,7 +743,7 @@
         "heading": "Our treatments",
         "photo": "PHOTO — TREATMENT ROOM",
         "venue": "Kapsule Palais",
-        "address": "10 Rue Charles-François Dupuis, 75003 Paris",
+        "address": "10-12 Rue Charles-François Dupuis, 75003 Paris",
         "hours": "Tuesday to Sunday — 11am to 8pm",
         "selected": "Selected: {{ treatment }}",
         "button": "Book a treatment",
@@ -754,28 +754,28 @@
         "error": "Please check your e-mail."
       },
       "treatment_1": {
-        "name": "Consultation & realignment",
-        "text": "Full assessment, MSSI method",
-        "duration": "60 min",
-        "price": "€120"
+        "name": "Guasha Masterclass",
+        "text": "Treat yourself to a real radiance boost and learn the secrets of holistic beauty with our new Guasha Masterclass. The guasha is the essential tool to transform how your skin looks every day. During this workshop, our expert shares the precise gestures and self-massage techniques so you can become fully autonomous at home.",
+        "duration": "30 min",
+        "price": "€50"
       },
       "treatment_2": {
-        "name": "Structural facial",
-        "text": "Circulation, drainage, contours",
-        "duration": "90 min",
-        "price": "€180"
+        "name": "OAK-AN SU",
+        "text": "OAK-AN SU is the fundamental facial programme of the BATANG care system. This treatment follows the complete OAK-AN facial ritual, using traditional jade and brass instruments. It combines Korean acupressure techniques, rhythmic pressure and care focused on stimulating circulation. The programme centres on deep hydration, skin balance and overall vitality, using high-tech Korean ampoules rigorously selected and adapted to each client's specific skin condition.",
+        "duration": "60 min",
+        "price": "€150"
       },
       "treatment_3": {
-        "name": "PLS protocol — course",
-        "text": "Four sessions, integrated follow-up",
-        "duration": "4 × 60 min",
-        "price": "€620"
+        "name": "SUSU-AN",
+        "text": "Just like your face, your hands hold the tensions that dull your radiance. Much more than a treatment, this 10-minute ritual is a reconnection. Through precise stimulation of the meridians, it releases blockages and boosts deep circulation. By releasing your hands, you awaken the vitality and natural light of your face.",
+        "duration": "10 min",
+        "price": "€20"
       },
       "treatment_4": {
-        "name": "Kapsule Signature ritual",
-        "text": "Face, neck and shoulders",
-        "duration": "120 min",
-        "price": "€240"
+        "name": "OAK-AN JIN",
+        "text": "The OAK-AN JIN treatment follows the complete OAK-AN facial ritual, using traditional jade and brass instruments. It combines Korean acupressure techniques, rhythmic pressure and care focused on stimulating circulation. What sets it apart is the use of specific ampoules formulated to support elasticity, firmness and an overall anti-ageing action. This programme is recommended for clients seeking deep revitalization and a visible improvement in skin resilience.",
+        "duration": "60 min",
+        "price": "€190"
       }
     },
     "popup": {
@@ -792,16 +792,16 @@
         "heading": "Current edits"
       },
       "edit_1": {
-        "name": "Seoul ceramics",
-        "status": "Until 12 October"
+        "name": "IRI",
+        "status": "New this week"
       },
       "edit_2": {
-        "name": "Textile Studio — capsule edition",
+        "name": "Art De Base",
         "status": "New this week"
       },
       "edit_3": {
-        "name": "Stationery & objects — young creators",
-        "status": "Permanent"
+        "name": "Toyeong",
+        "status": "New this week"
       },
       "visit": {
         "heading": "Find us",
