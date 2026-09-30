@@ -20,15 +20,12 @@
   assign band_2_money = band_2_cents | money_without_trailing_zeros
 
   assign category_filter = nil
-  assign brand_filter = nil
   assign concern_filter = nil
   assign price_filter = nil
   for filter in collection.filters
     case filter.param_name
       when 'filter.p.product_type'
         assign category_filter = filter
-      when 'filter.p.vendor'
-        assign brand_filter = filter
       when 'filter.p.tag'
         assign concern_filter = filter
     endcase
@@ -53,7 +50,6 @@
   endif
   # Stores that organise types, brands and concerns as collections (theme settings)
   assign type_handles = settings.kapsule_type_collections | strip_newlines | remove: ' ' | split: ','
-  assign brand_handles = settings.kapsule_brand_collections | strip_newlines | remove: ' ' | split: ','
   assign concern_handles = settings.kapsule_concern_collections | strip_newlines | remove: ' ' | split: ','
   assign catalog = collections['all']
   capture catalog_vendors

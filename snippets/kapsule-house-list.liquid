@@ -28,10 +28,13 @@
       endunless
       assign brand_name = brand_collection.title | split: ' : ' | first | split: ' | ' | first | strip
       assign brand_logo = ''
-      if brand_collection.metafields.custom.logo != blank
-        assign brand_logo = brand_collection.metafields.custom.logo.value | image_url: height: 80
+      assign brand_logo_width = ''
+      assign logo_image = brand_collection.metafields.custom.logo.value
+      if logo_image != blank
+        assign brand_logo = logo_image | image_url: height: 80
+        assign brand_logo_width = logo_image.aspect_ratio | times: 34 | round
       endif
-      assign entries = entries | append: brand_name | append: '§' | append: brand_collection.url | append: '§' | append: brand_logo | append: '¶'
+      assign entries = entries | append: brand_name | append: '§' | append: brand_collection.url | append: '§' | append: brand_logo | append: '§' | append: brand_logo_width | append: '¶'
     endfor
     assign entries = entries | split: '¶' | sort_natural
   -%}
@@ -40,7 +43,7 @@
     <li>
       <a href="{{ parts[1] }}">
         {%- if parts[2] != blank -%}
-          <img src="{{ parts[2] }}" alt="{{ parts[0] | escape }}" height="34" loading="lazy">
+          <img src="{{ parts[2] }}" alt="{{ parts[0] | escape }}" width="{{ parts[3] }}" height="34" loading="lazy">
         {%- else -%}
           {{ parts[0] }}
         {%- endif -%}
