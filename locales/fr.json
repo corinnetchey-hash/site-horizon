@@ -608,6 +608,8 @@
       "remove_filter": "Retirer le filtre {{ label }}"
     },
     "product": {
+      "desc_more": "Suite",
+      "desc_less": "Réduire",
       "format": "FORMAT",
       "add_to_cart": "Ajouter au panier",
       "added": "Ajouté ✓",

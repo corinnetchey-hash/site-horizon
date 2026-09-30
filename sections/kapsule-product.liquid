@@ -93,7 +93,18 @@
                 assign clipped = clipped | remove_last: last | strip
               endif
             -%}
-            {{ clipped }}
+            {%- assign rest = description | remove_first: clipped -%}
+            {{ clipped }}<span class="k-pdp__desc-rest" data-k-desc-rest hidden>{{ rest }}</span>
+            <button
+              type="button"
+              class="k-pdp__desc-toggle"
+              aria-expanded="false"
+              data-k-desc-toggle
+              data-more="{{ 'kapsule.product.desc_more' | t }}"
+              data-less="{{ 'kapsule.product.desc_less' | t }}"
+            >
+              {{- 'kapsule.product.desc_more' | t -}}
+            </button>
           {%- else -%}
             {{ description }}
           {%- endif -%}

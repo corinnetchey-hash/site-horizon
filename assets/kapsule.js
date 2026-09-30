@@ -740,3 +740,15 @@
 
   if (document.querySelector('[data-k-ship]') || drawer) fetchCart();
 })();
+
+/* Product description: “Suite” reveals the rest of a clipped description */
+document.addEventListener('click', (event) => {
+  const toggle = event.target.closest('[data-k-desc-toggle]');
+  if (!toggle) return;
+  const rest = toggle.parentElement.querySelector('[data-k-desc-rest]');
+  if (!rest) return;
+  const open = toggle.getAttribute('aria-expanded') === 'true';
+  rest.hidden = open;
+  toggle.setAttribute('aria-expanded', String(!open));
+  toggle.textContent = open ? toggle.dataset.more : toggle.dataset.less;
+});

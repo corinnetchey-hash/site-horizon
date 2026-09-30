@@ -629,6 +629,8 @@
       "remove_filter": "Remove filter {{ label }}"
     },
     "product": {
+      "desc_more": "Read more",
+      "desc_less": "Show less",
       "format": "SIZE",
       "add_to_cart": "Add to cart",
       "added": "Added ✓",
