@@ -5,7 +5,7 @@ directement. Soit dupliquer le thème et travailler sur la copie, soit coller le
 
 ## En attente
 
-- [ ] **Marques en 2 colonnes sur mobile** (accueil « Les maisons de la sélection » + Boutique).
+- [x] **Marques en 2 colonnes sur mobile** — envoyé sur Kapsule New le 01/10 (thème repassé en non publié) (accueil « Les maisons de la sélection » + Boutique).
       Déjà dans `assets/kapsule.css` de cette branche (commit « Mobile: brands in a tidy
       two-column alphabetical list »), mais pas encore sur la boutique en ligne.
       Bloc à ajouter à la fin de `assets/kapsule.css` : voir la règle `@media (max-width: 699px)`
