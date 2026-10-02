@@ -11,7 +11,6 @@ directement. Soit dupliquer le thème et travailler sur la copie, soit coller le
       Bloc à ajouter à la fin de `assets/kapsule.css` : voir la règle `@media (max-width: 699px)`
       commentée « Brands: a tidy two-column list… ».
 
-- [ ] **Détection automatique des marques** (02/10) — prêt dans cette branche, à envoyer sur
-      Kapsule New dès qu'il n'est plus publié : `snippets/kapsule-brand-handles.liquid` (nouveau),
+- [x] **Détection automatique des marques** (02/10) — envoyé sur Kapsule New le 02/10 : `snippets/kapsule-brand-handles.liquid` (nouveau),
       `snippets/kapsule-house-list.liquid`, `snippets/kapsule-brand.liquid`, `config/settings_schema.json`.
       Une collection dont les produits s'appellent « … - Marque » devient une marque automatiquement.
