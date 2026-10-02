@@ -37,9 +37,17 @@
     if brand == blank
       assign title_first = product.title | split: ' - ' | first | strip | downcase
       assign title_last = product.title | split: ' - ' | last | strip | downcase
+      assign title_last_handle = title_last | handleize
       for brand_collection in product.collections
         assign collection_name = brand_collection.title | strip | downcase
-        if collection_name == title_last or collection_name == title_first
+        # Also “… - Exomere” in a collection with the handle “exomere-3dayslove”
+        assign handle_match = false
+        if product.title contains ' - ' and title_last_handle.size > 3 and brand_collection.products_count <= 80
+          if brand_collection.handle contains title_last_handle
+            assign handle_match = true
+          endif
+        endif
+        if collection_name == title_last or collection_name == title_first or handle_match
           case field
             when 'url'
               assign brand = brand_collection.url

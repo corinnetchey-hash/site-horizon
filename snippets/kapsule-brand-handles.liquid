@@ -1,0 +1,41 @@
+{%- comment -%}
+  Outputs the handles of the brand collections, comma separated: those listed in the
+  “Brand collections” theme setting, plus any other collection whose products are titled
+  after it (“Sérum … - Vegetology” in the Vegetology collection), so a new brand appears
+  as soon as its collection and products exist.
+
+  Collections listed as skin concerns or product types are never treated as brands.
+{%- endcomment -%}
+{%- liquid
+  assign listed = settings.kapsule_brand_collections | strip_newlines | remove: ' '
+  assign found = listed | prepend: ',' | append: ','
+  assign excluded = settings.kapsule_concern_collections | append: ',' | append: settings.kapsule_type_collections | strip_newlines | remove: ' ' | prepend: ',' | append: ','
+
+  for brand_collection in collections
+    # Brands carry a handful of products; type and skin collections carry dozens
+    if brand_collection.products_count == 0 or brand_collection.products_count > 80
+      continue
+    endif
+    assign needle = ',' | append: brand_collection.handle | append: ','
+    if found contains needle or excluded contains needle
+      continue
+    endif
+
+    assign collection_name = brand_collection.title | handleize
+    for brand_product in brand_collection.products limit: 3
+      unless brand_product.title contains ' - '
+        continue
+      endunless
+      assign title_brand = brand_product.title | split: ' - ' | last | handleize
+      if title_brand.size < 3
+        continue
+      endif
+      if brand_collection.handle contains title_brand or collection_name contains title_brand
+        assign found = found | append: brand_collection.handle | append: ','
+        break
+      endif
+    endfor
+  endfor
+
+  echo found | remove_first: ',' | split: ',' | uniq | join: ','
+-%}

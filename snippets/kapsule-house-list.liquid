@@ -1,15 +1,16 @@
 {%- comment -%}
-  Brand list items (<li>): brand collections from the theme settings with a product in stock,
+  Brand list items (<li>): brand collections (theme setting + detected, see kapsule-brand-handles) with a product in stock,
   alphabetical, shown as their logo (collection metafield custom.logo) when set;
   otherwise every vendor with a product in stock in the source collection.
 
   Accepts:
   - source {collection} - Used when no brand collections are set
 {%- endcomment -%}
-{%- if settings.kapsule_brand_collections != blank -%}
+{%- capture brand_handle_list -%}{% render 'kapsule-brand-handles' %}{%- endcapture -%}
+{%- if brand_handle_list != blank -%}
   {%- comment -%} Brand collections with at least one product in stock, alphabetical {%- endcomment -%}
   {%- liquid
-    assign brand_handles = settings.kapsule_brand_collections | strip_newlines | remove: ' ' | split: ','
+    assign brand_handles = brand_handle_list | split: ','
     assign entries = ''
     for brand_handle in brand_handles
       assign brand_collection = collections[brand_handle]

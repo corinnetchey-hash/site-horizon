@@ -46,7 +46,7 @@
         "type": "textarea",
         "id": "kapsule_brand_collections",
         "label": "Brand collections",
-        "info": "Drives the brand shown on products, “Les maisons de la sélection” and the Brands filter. Products whose vendor is the shop name take their brand from these collections."
+        "info": "Drives the brand shown on products and “Les maisons de la sélection”. A new collection whose products are titled “… - Brand name” is added automatically; list a collection here only if its product titles do not follow that pattern."
       },
       {
         "type": "textarea",
