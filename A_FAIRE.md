@@ -14,3 +14,8 @@ directement. Soit dupliquer le thème et travailler sur la copie, soit coller le
 - [x] **Détection automatique des marques** (02/10) — envoyé sur Kapsule New le 02/10 : `snippets/kapsule-brand-handles.liquid` (nouveau),
       `snippets/kapsule-house-list.liquid`, `snippets/kapsule-brand.liquid`, `config/settings_schema.json`.
       Une collection dont les produits s'appellent « … - Marque » devient une marque automatiquement.
+
+- [x] **Noms de marque écrits différemment** (03/10) — « … - ThreeDaysLove » dans la collection
+      3DAYSLOVE n'était pas reconnu. Corrigé (`snippets/kapsule-brand-key.liquid`) et envoyé sur la copie
+      **« Kapsule New — mise à jour 03/10 »** (202824581384), à publier à la place de Kapsule New.
+      Méthode retenue : quand le thème est en ligne, dupliquer, corriger la copie, puis publier la copie.
