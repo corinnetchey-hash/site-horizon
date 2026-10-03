@@ -19,3 +19,12 @@ directement. Soit dupliquer le thème et travailler sur la copie, soit coller le
       3DAYSLOVE n'était pas reconnu. Corrigé (`snippets/kapsule-brand-key.liquid`) et envoyé sur la copie
       **« Kapsule New — mise à jour 03/10 »** (202824581384), à publier à la place de Kapsule New.
       Méthode retenue : quand le thème est en ligne, dupliquer, corriger la copie, puis publier la copie.
+
+- [x] **Traductions anglaises du contenu boutique** (03/10) — produits ThreeDaysLove/3DAYSLOVE, Kohonjin,
+      Vegetology, métachamps (actifs, utilisation, précautions), SEO collections/produits, titres de pages,
+      menus, options (Teinte/Taille, N°21/N°25) et 4 politiques (confidentialité, mentions légales,
+      livraison, retours). Données Shopify uniquement, aucun fichier du thème modifié.
+- [ ] **À vérifier par vous** : politiques traduites (la version française fait foi) ; dans la politique
+      de retours, le téléphone et les horaires sont encore « [numéro à compléter] » / « [horaires à compléter] ».
+- [ ] **Non traduits volontairement** : produits d'Alba importés, contenus B2B coréens, produits test,
+      listes INCI déjà en anglais.
