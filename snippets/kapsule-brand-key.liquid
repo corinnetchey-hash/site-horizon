@@ -1,0 +1,14 @@
+{%- comment -%}
+  Outputs a comparison key for a brand name, so that names written differently still match:
+  “ThreeDaysLove”, “3DAYSLOVE” and “exomere-3dayslove” all contain “3dayslove”.
+  Drops a trailing “(…)” such as “(Copie)”, accents, spaces and dashes, and writes number words as digits.
+
+  Accepts:
+  - text {string}
+{%- endcomment -%}
+{%- liquid
+  assign key = text | split: ' (' | first | handleize | remove: '-'
+  assign key = key | replace: 'one', '1' | replace: 'two', '2' | replace: 'three', '3' | replace: 'four', '4' | replace: 'five', '5'
+  assign key = key | replace: 'six', '6' | replace: 'seven', '7' | replace: 'eight', '8' | replace: 'nine', '9' | replace: 'ten', '10'
+  echo key
+-%}

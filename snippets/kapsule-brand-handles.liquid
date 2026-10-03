@@ -1,8 +1,8 @@
 {%- comment -%}
   Outputs the handles of the brand collections, comma separated: those listed in the
   “Brand collections” theme setting, plus any other collection whose products are titled
-  after it (“Sérum … - Vegetology” in the Vegetology collection), so a new brand appears
-  as soon as its collection and products exist.
+  after it (“Sérum … - Vegetology” in the Vegetology collection, “… - ThreeDaysLove” in
+  3DAYSLOVE), so a new brand appears as soon as its collection and products exist.
 
   Collections listed as skin concerns or product types are never treated as brands.
 {%- endcomment -%}
@@ -21,16 +21,23 @@
       continue
     endif
 
-    assign collection_name = brand_collection.title | handleize
-    for brand_product in brand_collection.products limit: 3
+    capture collection_keys
+      render 'kapsule-brand-key', text: brand_collection.handle
+      echo '|'
+      render 'kapsule-brand-key', text: brand_collection.title
+    endcapture
+    for brand_product in brand_collection.products limit: 5
       unless brand_product.title contains ' - '
         continue
       endunless
-      assign title_brand = brand_product.title | split: ' - ' | last | handleize
-      if title_brand.size < 3
+      assign title_brand = brand_product.title | split: ' - ' | last
+      capture title_key
+        render 'kapsule-brand-key', text: title_brand
+      endcapture
+      if title_key.size < 3
         continue
       endif
-      if brand_collection.handle contains title_brand or collection_name contains title_brand
+      if collection_keys contains title_key
         assign found = found | append: brand_collection.handle | append: ','
         break
       endif

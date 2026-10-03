@@ -37,13 +37,20 @@
     if brand == blank
       assign title_first = product.title | split: ' - ' | first | strip | downcase
       assign title_last = product.title | split: ' - ' | last | strip | downcase
-      assign title_last_handle = title_last | handleize
+      capture title_key
+        render 'kapsule-brand-key', text: title_last
+      endcapture
       for brand_collection in product.collections
         assign collection_name = brand_collection.title | strip | downcase
-        # Also “… - Exomere” in a collection with the handle “exomere-3dayslove”
+        # Also names written differently: “… - ThreeDaysLove” in “3DAYSLOVE” (handle “exomere-3dayslove”)
         assign handle_match = false
-        if product.title contains ' - ' and title_last_handle.size > 3 and brand_collection.products_count <= 80
-          if brand_collection.handle contains title_last_handle
+        if product.title contains ' - ' and title_key.size > 2 and brand_collection.products_count <= 80
+          capture collection_keys
+            render 'kapsule-brand-key', text: brand_collection.handle
+            echo '|'
+            render 'kapsule-brand-key', text: brand_collection.title
+          endcapture
+          if collection_keys contains title_key
             assign handle_match = true
           endif
         endif
