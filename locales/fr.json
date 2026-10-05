@@ -770,6 +770,15 @@
       "edits": {
         "heading": "Sélections en cours"
       },
+      "brands": {
+        "kicker": "—— LES MARQUES DU MOMENT",
+        "heading": "Sélections en cours",
+        "text": "Chaque marque invitée a sa ligne : faites défiler pour découvrir ses pièces, à retrouver au pop-up store.",
+        "link": "Découvrir la marque",
+        "previous": "Photos précédentes",
+        "next": "Photos suivantes",
+        "photo": "PHOTO PRODUIT"
+      },
       "edit_1": {
         "name": "IRI",
         "status": "Nouveau cette semaine"

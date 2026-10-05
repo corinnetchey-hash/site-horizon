@@ -748,6 +748,47 @@
     event.target.querySelectorAll('[data-k-carousel]').forEach(initCarousel);
   });
 
+  /* ------------------------------------------- photo rails (institute brands) */
+
+  function initRail(root) {
+    if (root.dataset.kRailReady) return;
+    root.dataset.kRailReady = 'true';
+    const track = root.querySelector('[data-k-rail-track]');
+    const prev = root.querySelector('[data-k-rail-prev]');
+    const next = root.querySelector('[data-k-rail-next]');
+    if (!track || !prev || !next) return;
+
+    function update() {
+      const max = track.scrollWidth - track.clientWidth;
+      prev.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= max - 2;
+      prev.parentElement.hidden = max <= 2;
+    }
+
+    function step(direction) {
+      const slide = track.firstElementChild;
+      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      const width = slide ? slide.getBoundingClientRect().width + gap : track.clientWidth;
+      const perView = Math.max(1, Math.floor((track.clientWidth + gap) / width));
+      track.scrollBy({ left: direction * width * perView, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    }
+
+    prev.addEventListener('click', () => step(-1));
+    next.addEventListener('click', () => step(1));
+    let frame = null;
+    track.addEventListener('scroll', () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      frame = window.requestAnimationFrame(update);
+    });
+    if ('ResizeObserver' in window) new ResizeObserver(update).observe(track);
+    update();
+  }
+
+  document.querySelectorAll('[data-k-rail]').forEach(initRail);
+  document.addEventListener('shopify:section:load', (event) => {
+    event.target.querySelectorAll('[data-k-rail]').forEach(initRail);
+  });
+
   /* ------------------------------------------------------------------ init */
 
   window.Kapsule = Object.assign(K, { addToCart: addToCart, openCart: openCart, fetchCart: fetchCart, money: money });

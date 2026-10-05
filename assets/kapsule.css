@@ -4186,3 +4186,216 @@ body:has([data-k-cart-page]) .k-bubble {
 .kapsule .shopify-policy__body li {
   margin-bottom: 0.35em;
 }
+
+/* ---------- Brand rows (pop-up store): one row per brand, each with a photo rail ---------- */
+
+.k-ibrands__head {
+  max-width: 640px;
+  margin-bottom: 30px;
+}
+
+.k-ibrands__head .k-h2 {
+  margin-top: 10px;
+}
+
+.k-ibrands__intro {
+  margin: 14px 0 0;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--k-ink-2);
+}
+
+.k-ibrand {
+  display: grid;
+  grid-template-columns: minmax(200px, 260px) minmax(0, 1fr);
+  gap: 40px;
+  padding: 34px 0;
+  border-top: 1px solid var(--k-hair);
+}
+
+.k-ibrand:last-child {
+  border-bottom: 1px solid var(--k-hair);
+}
+
+.k-ibrand__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.k-ibrand__index {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--k-ink-3-light);
+}
+
+.k-ibrand__name {
+  margin: 8px 0 0;
+  font-family: var(--k-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(26px, 2.6vw, 34px);
+  line-height: 1.1;
+}
+
+.k-ibrand__status {
+  margin-top: 10px;
+  padding: 4px 10px;
+  border: 1px solid var(--k-hair-strong);
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--k-ink-2);
+}
+
+.k-ibrand__text {
+  margin: 14px 0 0;
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--k-ink-2);
+}
+
+.k-ibrand__link {
+  margin-top: 16px;
+}
+
+.k-ibrand__arrows {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.k-ibrand__arrow {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid var(--k-hair-strong);
+  background: transparent;
+  color: var(--k-ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.k-ibrand__arrow:hover:not(:disabled) {
+  background: var(--k-hair);
+}
+
+.k-ibrand__arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.k-ibrand__arrows[hidden] {
+  display: none;
+}
+
+.k-ibrand__track {
+  --k-ibrand-gap: 14px;
+  display: flex;
+  gap: var(--k-ibrand-gap);
+  margin: 0 calc(-1 * var(--k-gutter)) 0 0;
+  padding: 0 var(--k-gutter) 4px 0;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+
+.k-ibrand__track::-webkit-scrollbar {
+  display: none;
+}
+
+.k-ibrand__slide {
+  flex: 0 0 calc((100% - 3 * var(--k-ibrand-gap)) / 3.35);
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+.k-ibrand__card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.k-ibrand__photo {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  aspect-ratio: 4 / 5;
+  padding: 14px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.k-ibrand__photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.k-ibrand__card:hover .k-ibrand__photo img {
+  transform: scale(1.03);
+}
+
+.k-ibrand__caption {
+  display: block;
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.k-ibrand__price {
+  display: block;
+  margin-top: 3px;
+  font-size: 12.5px;
+  color: var(--k-ink-2);
+}
+
+@media (max-width: 899px) {
+  .k-ibrand {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    padding: 28px 0;
+  }
+
+  .k-ibrand__arrows {
+    display: none;
+  }
+
+  .k-ibrand__track {
+    margin-left: calc(-1 * var(--k-gutter));
+    padding-left: var(--k-gutter);
+    scroll-padding-left: var(--k-gutter);
+  }
+
+  .k-ibrand__slide {
+    flex-basis: 40%;
+  }
+}
+
+@media (max-width: 599px) {
+  .k-ibrand__slide {
+    flex-basis: 62%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .k-ibrand__track {
+    scroll-behavior: auto;
+  }
+
+  .k-ibrand__photo img {
+    transition: none;
+  }
+}

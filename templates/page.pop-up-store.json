@@ -110,7 +110,8 @@
       "settings": {
         "copy_key": "popup.edits",
         "heading": ""
-      }
+      },
+      "disabled": true
     },
     "visit": {
       "type": "kapsule-visit",
@@ -121,11 +122,55 @@
         "image": "shopify://shop_images/Devanture_Kapsule.png",
         "tint": "popup"
       }
+    },
+    "brands": {
+      "type": "kapsule-brand-rows",
+      "blocks": {
+        "brand_1": {
+          "type": "brand",
+          "settings": {
+            "copy_key": "popup.edit_1",
+            "name": "IRI",
+            "status": "Nouveau cette semaine"
+          }
+        },
+        "brand_2": {
+          "type": "brand",
+          "settings": {
+            "copy_key": "popup.edit_2",
+            "name": "Art De Base",
+            "status": ""
+          }
+        },
+        "brand_3": {
+          "type": "brand",
+          "settings": {
+            "copy_key": "popup.edit_3",
+            "name": "Toyeong",
+            "status": "Nouveau cette semaine"
+          }
+        }
+      },
+      "block_order": [
+        "brand_1",
+        "brand_2",
+        "brand_3"
+      ],
+      "settings": {
+        "copy_key": "popup.brands",
+        "anchor": "marques",
+        "kicker": "",
+        "heading": "",
+        "text": "",
+        "tint": "sand",
+        "limit": 8
+      }
     }
   },
   "order": [
     "banner",
     "tiles",
+    "brands",
     "edits",
     "visit"
   ]
