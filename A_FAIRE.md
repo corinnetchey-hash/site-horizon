@@ -34,3 +34,6 @@ directement. Soit dupliquer le thème et travailler sur la copie, soit coller le
       horaires et textes des soins Institut, statut « Nouveau cette semaine » du pop-up, « Diagnostic de peau ».
       Traductions enregistrées via Shopify (Langues), aucun fichier du thème modifié.
       Si un texte est modifié dans l'éditeur, sa traduction anglaise doit être refaite.
+- [x] **Kapsule New remis à niveau** (05/10) — pendant qu'il était hors ligne : correction des noms de marque
+      (`kapsule-brand-key`, `kapsule-brand-handles`, `kapsule-brand`, empreintes identiques au thème en ligne)
+      et les 38 traductions anglaises des textes du thème. Kapsule New = « mise à jour 03/10 », il peut être republié.
