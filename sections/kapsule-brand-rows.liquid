@@ -1,7 +1,6 @@
 {%- comment -%}
-  Brand rows: one row per brand, each with a swipeable rail of product photos (pop-up store).
-  Photos added to a brand block come first; with none, the rail shows the products of the
-  brand's collection, or empty frames until photos are added.
+  Brand rows: one row per brand, each with a short description and a swipeable rail of
+  product photos (pop-up store). Shows empty frames until photos are added.
 {%- endcomment -%}
 {%- assign copy_key = 'kapsule.' | append: section.settings.copy_key | append: '.' -%}
 <section class="k-container k-section k-section--end k-ibrands" id="{{ section.settings.anchor | default: 'marques' }}">
@@ -17,15 +16,7 @@
       if block.settings.copy_key != blank
         assign block_key = 'kapsule.' | append: block.settings.copy_key | append: '.'
       endif
-      assign brand = block.settings.collection
       assign name = block.settings.name
-      if name == blank and brand != blank
-        assign name = brand.title
-      endif
-      assign link = block.settings.link
-      if link == blank and brand != blank
-        assign link = brand.url
-      endif
       assign photo_count = 0
       for i in (1..8)
         assign image_id = 'image_' | append: i
@@ -45,11 +36,6 @@
         {%- endif -%}
         {%- if block.settings.text != blank -%}
           <p class="k-ibrand__text">{{ block.settings.text }}</p>
-        {%- endif -%}
-        {%- if link != blank -%}
-          <a class="k-underline-link k-ibrand__link" href="{{ link }}">
-            {%- render 'kapsule-t', value: block.settings.link_label, key: copy_key, field: 'link' -%}
-          </a>
         {%- endif -%}
         <div class="k-ibrand__arrows">
           <button type="button" class="k-ibrand__arrow" data-k-rail-prev aria-controls="{{ rail_id }}" aria-label="{% render 'kapsule-t', value: '', key: copy_key, field: 'previous' %}">
@@ -79,20 +65,6 @@
                 {{ photo | image_url: width: 900 | image_tag: sizes: '(min-width: 990px) 22vw, (min-width: 700px) 30vw, 62vw', loading: 'lazy', alt: photo_alt }}
               </span>
               {%- if caption != blank -%}<span class="k-ibrand__caption">{{ caption }}</span>{%- endif -%}
-            </li>
-          {%- endfor -%}
-        {%- elsif brand != blank and brand.products_count > 0 -%}
-          {%- for product in brand.products limit: section.settings.limit -%}
-            <li class="k-ibrand__slide">
-              <a class="k-ibrand__card" href="{{ product.url }}">
-                <span class="k-ibrand__photo k-tint--{{ section.settings.tint }}">
-                  {%- if product.featured_media != blank -%}
-                    {{ product.featured_media | image_url: width: 900 | image_tag: sizes: '(min-width: 990px) 22vw, (min-width: 700px) 30vw, 62vw', loading: 'lazy', alt: product.title }}
-                  {%- endif -%}
-                </span>
-                <span class="k-ibrand__caption">{{ product.title | split: ' - ' | first }}</span>
-                <span class="k-ibrand__price">{{ product.price | money }}</span>
-              </a>
             </li>
           {%- endfor -%}
         {%- else -%}
@@ -129,16 +101,6 @@
         { "value": "popup", "label": "Magenta" }
       ],
       "default": "sand"
-    },
-    {
-      "type": "range",
-      "id": "limit",
-      "label": "Products per brand without photos",
-      "info": "When a brand has no photos but has a collection, its products are shown instead.",
-      "min": 3,
-      "max": 12,
-      "step": 1,
-      "default": 8
     }
   ],
   "blocks": [
@@ -149,10 +111,7 @@
         { "type": "text", "id": "copy_key", "label": "Default copy key", "info": "e.g. popup.edit_1 — supplies the name and status when left empty, and their English version." },
         { "type": "text", "id": "name", "label": "Name" },
         { "type": "text", "id": "status", "label": "Status", "info": "e.g. “Nouveau cette semaine”." },
-        { "type": "textarea", "id": "text", "label": "Short presentation" },
-        { "type": "collection", "id": "collection", "label": "Brand collection", "info": "Optional. Links the row to the brand's collection." },
-        { "type": "url", "id": "link", "label": "Link", "info": "Optional, e.g. the brand's Instagram. Defaults to the collection." },
-        { "type": "text", "id": "link_label", "label": "Link label", "info": "Defaults to “Découvrir la marque”." },
+        { "type": "textarea", "id": "text", "label": "Description", "info": "A few lines about the brand, shown under its name." },
         { "type": "header", "content": "Product photos", "info": "Up to 8 photos, shown in this order." },
         { "type": "image_picker", "id": "image_1", "label": "Photo 1" },
         { "type": "text", "id": "caption_1", "label": "Caption 1" },
