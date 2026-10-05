@@ -107,11 +107,11 @@
         "edit_2",
         "edit_3"
       ],
+      "disabled": true,
       "settings": {
         "copy_key": "popup.edits",
         "heading": ""
-      },
-      "disabled": true
+      }
     },
     "visit": {
       "type": "kapsule-visit",
@@ -127,28 +127,31 @@
       "type": "kapsule-brand-rows",
       "blocks": {
         "brand_1": {
-          "type": "brand",
+          "type": "_kapsule-brand",
           "settings": {
             "copy_key": "popup.edit_1",
             "name": "IRI",
             "status": "Nouveau cette semaine"
-          }
+          },
+          "blocks": {}
         },
         "brand_2": {
-          "type": "brand",
+          "type": "_kapsule-brand",
           "settings": {
             "copy_key": "popup.edit_2",
             "name": "Art De Base",
             "status": ""
-          }
+          },
+          "blocks": {}
         },
         "brand_3": {
-          "type": "brand",
+          "type": "_kapsule-brand",
           "settings": {
             "copy_key": "popup.edit_3",
             "name": "Toyeong",
             "status": "Nouveau cette semaine"
-          }
+          },
+          "blocks": {}
         }
       },
       "block_order": [

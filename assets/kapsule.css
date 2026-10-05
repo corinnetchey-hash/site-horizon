@@ -4213,7 +4213,7 @@ body:has([data-k-cart-page]) .k-bubble {
   border-top: 1px solid var(--k-hair);
 }
 
-.k-ibrand:last-child {
+.k-ibrand:last-of-type {
   border-bottom: 1px solid var(--k-hair);
 }
 
@@ -4223,7 +4223,17 @@ body:has([data-k-cart-page]) .k-bubble {
   align-items: flex-start;
 }
 
-.k-ibrand__index {
+.k-ibrands {
+  counter-reset: k-brand;
+}
+
+.k-ibrand {
+  counter-increment: k-brand;
+}
+
+/* Row number (01, 02…) above each brand name */
+.k-ibrand__info::before {
+  content: counter(k-brand, decimal-leading-zero);
   font-size: 11px;
   letter-spacing: 0.16em;
   color: var(--k-ink-3-light);
@@ -4253,6 +4263,10 @@ body:has([data-k-cart-page]) .k-bubble {
   font-size: 13.5px;
   line-height: 1.65;
   color: var(--k-ink-2);
+}
+
+.k-ibrand__link {
+  margin-top: 16px;
 }
 
 .k-ibrand__arrows {

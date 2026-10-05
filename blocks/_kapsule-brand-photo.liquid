@@ -1,0 +1,27 @@
+{%- comment -%}
+  One photo in a brand row's rail (pop-up store), with an optional caption.
+{%- endcomment -%}
+{%- liquid
+  assign photo = block.settings.image
+  assign caption = block.settings.caption
+  assign photo_alt = caption | default: photo.alt
+-%}
+<li class="k-ibrand__slide" {{ block.shopify_attributes }}>
+  <span class="k-ibrand__photo k-tint--{{ section.settings.tint }}">
+    {%- if photo != blank -%}
+      {{ photo | image_url: width: 900 | image_tag: sizes: '(min-width: 990px) 22vw, (min-width: 700px) 30vw, 62vw', loading: 'lazy', alt: photo_alt }}
+    {%- endif -%}
+  </span>
+  {%- if caption != blank -%}<span class="k-ibrand__caption">{{ caption }}</span>{%- endif -%}
+</li>
+
+{% schema %}
+{
+  "name": "Photo",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Photo" },
+    { "type": "text", "id": "caption", "label": "Caption" }
+  ],
+  "presets": [{ "name": "Photo" }]
+}
+{% endschema %}

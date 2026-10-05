@@ -1,6 +1,7 @@
 {%- comment -%}
-  Brand rows: one row per brand, each with a short description and a swipeable rail of
-  product photos (pop-up store). Shows empty frames until photos are added.
+  Brand rows (pop-up store): one row per brand, each with a short description, a link to the
+  brand's website and a swipeable rail of photos. Brands and their photos are blocks, so any
+  number of each can be added from the theme editor.
 {%- endcomment -%}
 {%- assign copy_key = 'kapsule.' | append: section.settings.copy_key | append: '.' -%}
 <section class="k-container k-section k-section--end k-ibrands" id="{{ section.settings.anchor | default: 'marques' }}">
@@ -9,76 +10,7 @@
     <h2 class="k-h2">{% render 'kapsule-t', value: section.settings.heading, key: copy_key, field: 'heading' %}</h2>
     <p class="k-ibrands__intro">{% render 'kapsule-t', value: section.settings.text, key: copy_key, field: 'text' %}</p>
   </div>
-
-  {%- for block in section.blocks -%}
-    {%- liquid
-      assign block_key = ''
-      if block.settings.copy_key != blank
-        assign block_key = 'kapsule.' | append: block.settings.copy_key | append: '.'
-      endif
-      assign name = block.settings.name
-      assign photo_count = 0
-      for i in (1..8)
-        assign image_id = 'image_' | append: i
-        if block.settings[image_id] != blank
-          assign photo_count = photo_count | plus: 1
-        endif
-      endfor
-      assign rail_id = 'KapsuleBrandRail-' | append: block.id
-    -%}
-    <div class="k-ibrand" data-k-rail {{ block.shopify_attributes }}>
-      <div class="k-ibrand__info">
-        <span class="k-ibrand__index">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
-        <h3 class="k-ibrand__name">{% render 'kapsule-t', value: name, key: block_key, field: 'name' %}</h3>
-        {%- capture status -%}{% render 'kapsule-t', value: block.settings.status, key: block_key, field: 'status' %}{%- endcapture -%}
-        {%- if status != blank -%}
-          <span class="k-ibrand__status">{{ status }}</span>
-        {%- endif -%}
-        {%- if block.settings.text != blank -%}
-          <p class="k-ibrand__text">{{ block.settings.text }}</p>
-        {%- endif -%}
-        <div class="k-ibrand__arrows">
-          <button type="button" class="k-ibrand__arrow" data-k-rail-prev aria-controls="{{ rail_id }}" aria-label="{% render 'kapsule-t', value: '', key: copy_key, field: 'previous' %}">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
-          </button>
-          <button type="button" class="k-ibrand__arrow" data-k-rail-next aria-controls="{{ rail_id }}" aria-label="{% render 'kapsule-t', value: '', key: copy_key, field: 'next' %}">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-          </button>
-        </div>
-      </div>
-
-      <ul class="k-ibrand__track" id="{{ rail_id }}" data-k-rail-track role="list">
-        {%- if photo_count > 0 -%}
-          {%- for i in (1..8) -%}
-            {%- liquid
-              assign image_id = 'image_' | append: i
-              assign caption_id = 'caption_' | append: i
-              assign photo = block.settings[image_id]
-              if photo == blank
-                continue
-              endif
-              assign caption = block.settings[caption_id]
-              assign photo_alt = caption | default: photo.alt | default: name
-            -%}
-            <li class="k-ibrand__slide">
-              <span class="k-ibrand__photo k-tint--{{ section.settings.tint }}">
-                {{ photo | image_url: width: 900 | image_tag: sizes: '(min-width: 990px) 22vw, (min-width: 700px) 30vw, 62vw', loading: 'lazy', alt: photo_alt }}
-              </span>
-              {%- if caption != blank -%}<span class="k-ibrand__caption">{{ caption }}</span>{%- endif -%}
-            </li>
-          {%- endfor -%}
-        {%- else -%}
-          {%- for i in (1..4) -%}
-            <li class="k-ibrand__slide">
-              <span class="k-ibrand__photo k-tint--{{ section.settings.tint }}">
-                <span class="k-media__label">{% render 'kapsule-t', value: '', key: copy_key, field: 'photo' %}</span>
-              </span>
-            </li>
-          {%- endfor -%}
-        {%- endif -%}
-      </ul>
-    </div>
-  {%- endfor -%}
+  {% content_for 'blocks' %}
 </section>
 
 {% schema %}
@@ -103,39 +35,11 @@
       "default": "sand"
     }
   ],
-  "blocks": [
-    {
-      "type": "brand",
-      "name": "Brand",
-      "settings": [
-        { "type": "text", "id": "copy_key", "label": "Default copy key", "info": "e.g. popup.edit_1 — supplies the name and status when left empty, and their English version." },
-        { "type": "text", "id": "name", "label": "Name" },
-        { "type": "text", "id": "status", "label": "Status", "info": "e.g. “Nouveau cette semaine”." },
-        { "type": "textarea", "id": "text", "label": "Description", "info": "A few lines about the brand, shown under its name." },
-        { "type": "header", "content": "Product photos", "info": "Up to 8 photos, shown in this order." },
-        { "type": "image_picker", "id": "image_1", "label": "Photo 1" },
-        { "type": "text", "id": "caption_1", "label": "Caption 1" },
-        { "type": "image_picker", "id": "image_2", "label": "Photo 2" },
-        { "type": "text", "id": "caption_2", "label": "Caption 2" },
-        { "type": "image_picker", "id": "image_3", "label": "Photo 3" },
-        { "type": "text", "id": "caption_3", "label": "Caption 3" },
-        { "type": "image_picker", "id": "image_4", "label": "Photo 4" },
-        { "type": "text", "id": "caption_4", "label": "Caption 4" },
-        { "type": "image_picker", "id": "image_5", "label": "Photo 5" },
-        { "type": "text", "id": "caption_5", "label": "Caption 5" },
-        { "type": "image_picker", "id": "image_6", "label": "Photo 6" },
-        { "type": "text", "id": "caption_6", "label": "Caption 6" },
-        { "type": "image_picker", "id": "image_7", "label": "Photo 7" },
-        { "type": "text", "id": "caption_7", "label": "Caption 7" },
-        { "type": "image_picker", "id": "image_8", "label": "Photo 8" },
-        { "type": "text", "id": "caption_8", "label": "Caption 8" }
-      ]
-    }
-  ],
+  "blocks": [{ "type": "_kapsule-brand" }],
   "presets": [
     {
       "name": "Kapsule brand rows",
-      "blocks": [{ "type": "brand" }, { "type": "brand" }, { "type": "brand" }]
+      "blocks": [{ "type": "_kapsule-brand" }, { "type": "_kapsule-brand" }, { "type": "_kapsule-brand" }]
     }
   ]
 }
