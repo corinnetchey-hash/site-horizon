@@ -15,55 +15,11 @@
         "copy_key": "pro.hero",
         "style": "bordeaux",
         "kicker": "KAPSULE PRO",
-        "heading": "L’excellence coréenne pour les professionnels",
-        "text": "Des produits à tarifs préférentiels et une formation à la méthode OAK-AN.",
+        "heading": "Offrez à vos clients le meilleur de la Corée",
+        "text": "Produits professionnels et formation OAK-AN, directement depuis notre institut parisien.",
         "body": "",
-        "button_label": "Faire une demande",
+        "button_label": "Devenir partenaire",
         "button_link": "/pages/professionnels#demande"
-      }
-    },
-    "offers": {
-      "type": "kapsule-grid",
-      "blocks": {
-        "offer_products": {
-          "type": "item",
-          "settings": {
-            "kicker": "Offre 01",
-            "title": "Produits B2B",
-            "text": "<ul><li>Soins coréens à tarifs préférentiels</li><li>Pour instituts, spas, hôtels et cliniques</li><li>Revente en établissement</li></ul>",
-            "photo_label": "PHOTO — PRODUITS",
-            "tint": "sand",
-            "button_label": "Voir l’offre produits",
-            "button_link": "/pages/professionnels#produits"
-          }
-        },
-        "offer_training": {
-          "type": "item",
-          "settings": {
-            "kicker": "Offre 02",
-            "title": "Formation OAK-AN",
-            "text": "<ul><li>La méthode du Kapsule Palais</li><li>Pratique encadrée et certificat Kapsule</li><li>À Paris ou dans votre établissement</li></ul>",
-            "photo_label": "PHOTO — FORMATION",
-            "tint": "sage",
-            "button_label": "Voir la formation",
-            "button_link": "/pages/professionnels#formation"
-          }
-        }
-      },
-      "block_order": [
-        "offer_products",
-        "offer_training"
-      ],
-      "settings": {
-        "anchor": "offres",
-        "kicker": "NOS OFFRES",
-        "heading": "Deux façons de travailler avec Kapsule",
-        "intro": "",
-        "center": false,
-        "columns": "2",
-        "style": "surface",
-        "show_media": true,
-        "end": false
       }
     },
     "figures": {
@@ -108,13 +64,13 @@
           "type": "item",
           "settings": {
             "kicker": "",
-            "title": "Les soins du Kapsule Palais, à tarifs professionnels",
-            "text": "<p>Les mêmes produits coréens s’utilisent en cabine, au spa, en chambre d’hôtel ou se revendent pour la routine à domicile.</p>",
+            "title": "Testés chaque jour au Kapsule Palais",
+            "text": "<p>Des actifs coréens qui font la différence en soin, et se revendent d’eux-mêmes.</p>",
             "tags": "Instituts, Spas, Hôtels, Cliniques esthétiques, Revente à domicile",
             "note": "ZISU’C · DM CELL · 3DAYSLOVE · Kohonjin",
             "photo_label": "PHOTO — LA GAMME",
             "tint": "sand",
-            "button_label": "Demander les tarifs",
+            "button_label": "Recevoir les tarifs pro",
             "button_link": "/pages/professionnels#demande"
           }
         }
@@ -124,8 +80,8 @@
       ],
       "settings": {
         "anchor": "produits",
-        "kicker": "OFFRE 01 — PRODUITS B2B",
-        "heading": "Une gamme, tous vos usages",
+        "kicker": "OFFRE 01 — PRODUITS",
+        "heading": "La K-beauty de cabine, au prix pro",
         "intro": "",
         "center": false,
         "columns": "1",
@@ -183,8 +139,8 @@
       "settings": {
         "anchor": "formation",
         "kicker": "OFFRE 02 — FORMATION",
-        "heading": "Formation à la méthode OAK-AN",
-        "text": "<p>34 ans de soin structurel coréen, transmis par la méthode de Jiwon Hong.</p>",
+        "heading": "Maîtrisez le soin signature OAK-AN",
+        "text": "<p>34 ans d’expertise coréenne, transmis à vos équipes. Un soin qui distingue votre carte et fidélise vos clients.</p>",
         "card_kicker": "EN PRATIQUE",
         "card_heading": "Formation OAK-AN",
         "details": "<ul><li><strong>Lieu</strong>Kapsule Palais, Paris 3e — ou sur site</li><li><strong>Durée</strong>[à confirmer]</li><li><strong>Groupe</strong>[x] participants max.</li><li><strong>Inclus</strong>Kit d’outils, support, certificat</li></ul>",
@@ -198,8 +154,8 @@
       "settings": {
         "anchor": "demande",
         "kicker": "CONTACT PRO",
-        "heading": "Faire une demande",
-        "intro": "Nous revenons vers vous avec les tarifs ou le programme.",
+        "heading": "Parlons de votre établissement",
+        "intro": "Tarifs ou programme de formation : envoyés sur simple demande.",
         "side": "<p><strong>Kapsule Palais</strong><br>10-12 Rue Charles-François Dupuis, 75003 Paris<br>info.kapsuleglobal@gmail.com</p>",
         "types": "Institut / salon de beauté\nSpa / centre de bien-être\nHôtel / resort\nClinique / médecine esthétique\nConcept store / revendeur\nEntreprise / cadeaux d’affaires\nAutre",
         "interests": "Offre produits B2B\nOffre formation"
@@ -208,7 +164,6 @@
   },
   "order": [
     "hero",
-    "offers",
     "figures",
     "ranges",
     "academy",
