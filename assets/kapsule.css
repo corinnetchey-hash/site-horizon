@@ -5288,6 +5288,50 @@ body:has(.k-pro-mode--jade) #MainContent .k-pro-form__choice input:checked + spa
   color: #f5f0e6;
 }
 
+/* Card kicker styles (e.g. “Offre 01 — Produits”) */
+.k-pro-grid--kicker-large .k-pro-item__kicker {
+  font-family: var(--k-serif);
+  font-size: clamp(24px, 2.4vw, 32px);
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1.15;
+  margin-bottom: 4px;
+}
+
+.k-pro-item__overlay {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 1;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: rgba(251, 248, 242, 0.94);
+  color: #1f2a24;
+  font-family: var(--k-serif);
+  font-size: clamp(20px, 2vw, 26px);
+  line-height: 1.1;
+  box-shadow: 0 6px 20px rgba(31, 42, 36, 0.12);
+}
+
+.k-pro-item--jade .k-pro-item__overlay {
+  background: #2f4a3c;
+  color: #f5f0e6;
+}
+
+.k-pro-item__band {
+  padding: 18px 24px;
+  background: #2f4a3c;
+  color: #f5f0e6;
+  font-family: var(--k-serif);
+  font-size: clamp(22px, 2.2vw, 28px);
+  line-height: 1.15;
+}
+
+.k-pro-item--jade .k-pro-item__band {
+  background: #c9a96a;
+  color: #1f2a24;
+}
+
 /* Card colours, chosen per card in the grid section */
 #MainContent .k-pro-grid .k-pro-item.k-pro-item--white {
   background: #ffffff;

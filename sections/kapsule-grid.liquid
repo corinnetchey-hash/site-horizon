@@ -8,11 +8,17 @@
     {%- if section.settings.heading != blank -%}<h2 class="k-h2">{{ section.settings.heading }}</h2>{%- endif -%}
     {%- if section.settings.intro != blank -%}<p class="k-pro-head__intro">{{ section.settings.intro }}</p>{%- endif -%}
   </div>
-  <div class="k-pro-grid k-pro-grid--{{ section.settings.columns }} k-pro-grid--{{ section.settings.style }}">
+  <div class="k-pro-grid k-pro-grid--{{ section.settings.columns }} k-pro-grid--{{ section.settings.style }} k-pro-grid--kicker-{{ section.settings.kicker_style | default: 'small' }}">
     {%- for block in section.blocks -%}
       <article class="k-pro-item k-pro-item--{{ block.settings.color | default: 'default' }}" {{ block.shopify_attributes }}>
+        {%- if section.settings.kicker_style == 'band' and block.settings.kicker != blank -%}
+          <div class="k-pro-item__band">{{ block.settings.kicker }}</div>
+        {%- endif -%}
         {%- if section.settings.show_media -%}
           <div class="k-pro-item__media k-tint--{{ block.settings.tint }}">
+            {%- if section.settings.kicker_style == 'overlay' and block.settings.kicker != blank -%}
+              <span class="k-pro-item__overlay">{{ block.settings.kicker }}</span>
+            {%- endif -%}
             {%- liquid
               assign media_image = block.settings.image
               if media_image == blank and block.settings.collection != blank
@@ -27,7 +33,11 @@
           </div>
         {%- endif -%}
         <div class="k-pro-item__body">
-          {%- if block.settings.kicker != blank -%}<div class="k-pro-item__kicker">{{ block.settings.kicker }}</div>{%- endif -%}
+          {%- if block.settings.kicker != blank -%}
+            {%- unless section.settings.show_media and section.settings.kicker_style == 'overlay' or section.settings.kicker_style == 'band' -%}
+              <div class="k-pro-item__kicker">{{ block.settings.kicker }}</div>
+            {%- endunless -%}
+          {%- endif -%}
           <h3 class="k-pro-item__title">{{ block.settings.title }}</h3>
           {%- if block.settings.text != blank -%}<div class="k-pro-item__text k-rte">{{ block.settings.text }}</div>{%- endif -%}
           {%- if block.settings.tags != blank -%}
@@ -82,6 +92,19 @@
       "default": "surface"
     },
     { "type": "checkbox", "id": "show_media", "label": "Show photos", "default": false },
+    {
+      "type": "select",
+      "id": "kicker_style",
+      "label": "Card kicker style",
+      "info": "How each card's kicker (e.g. “Offre 01 — Produits”) is shown.",
+      "options": [
+        { "value": "small", "label": "Small, above the title" },
+        { "value": "large", "label": "Large, above the title" },
+        { "value": "overlay", "label": "Large, on the photo" },
+        { "value": "band", "label": "Band above the photo" }
+      ],
+      "default": "small"
+    },
     { "type": "checkbox", "id": "end", "label": "Extra space below", "default": false }
   ],
   "blocks": [
