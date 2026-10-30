@@ -4650,7 +4650,12 @@ body:has([data-k-cart-page]) .k-bubble {
 
 .k-pro-item__button {
   align-self: flex-start;
-  margin-top: 22px;
+  margin-top: auto;
+}
+
+/* keeps the gap above the button when the card's content is the tallest */
+.k-pro-item__body > :nth-last-child(2) {
+  margin-bottom: 22px;
 }
 
 .k-pro-item__text ul {
@@ -4662,8 +4667,14 @@ body:has([data-k-cart-page]) .k-bubble {
   margin-top: 4px;
 }
 
+.k-pro-item__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
 .k-pro-item__note {
-  margin: auto 0 0;
+  margin: 0;
   padding-top: 14px;
   font-size: 12px;
   line-height: 1.5;
@@ -5150,9 +5161,35 @@ body:has([data-k-cart-page]) .k-bubble {
   }
 }
 
-/* ---------- Kapsule Pro look: the professional page's content switches to a dark palette ---------- */
+/* ---------- Kapsule Pro look: the professional page's content gets its own palette ---------- */
 
-body:has(.k-pro-mode) #MainContent {
+/* Warm stone: a deeper, warmer ground than the shop's cream, with bordeaux accents */
+body:has(.k-pro-mode--stone) #MainContent {
+  --k-canvas: #e9e2d6;
+  --k-surface: #f6f2eb;
+  --k-hair: rgba(58, 30, 22, 0.14);
+  --k-hair-strong: rgba(58, 30, 22, 0.3);
+  --k-pro-accent: var(--k-bordeaux);
+  background: var(--k-canvas);
+}
+
+body:has(.k-pro-mode--stone) #MainContent .k-kicker,
+body:has(.k-pro-mode--stone) #MainContent .k-stats__value {
+  color: var(--k-bordeaux);
+}
+
+body:has(.k-pro-mode--stone) #MainContent .k-btn--dark {
+  background: var(--k-bordeaux);
+  color: var(--k-light);
+}
+
+body:has(.k-pro-mode--stone) #MainContent .k-btn--dark:hover {
+  background: var(--k-bordeaux-hover);
+}
+
+/* Dark */
+
+body:has(.k-pro-mode--dark) #MainContent {
   --k-canvas: #141110;
   --k-surface: #1d1916;
   --k-surface-alt: #25201c;
@@ -5167,62 +5204,62 @@ body:has(.k-pro-mode) #MainContent {
   color: var(--k-ink);
 }
 
-body:has(.k-pro-mode) #MainContent .k-kicker,
-body:has(.k-pro-mode) #MainContent .k-pro-item__kicker,
-body:has(.k-pro-mode) #MainContent .k-academy__num,
-body:has(.k-pro-mode) #MainContent .k-stats__value {
+body:has(.k-pro-mode--dark) #MainContent .k-kicker,
+body:has(.k-pro-mode--dark) #MainContent .k-pro-item__kicker,
+body:has(.k-pro-mode--dark) #MainContent .k-academy__num,
+body:has(.k-pro-mode--dark) #MainContent .k-stats__value {
   color: var(--k-pro-accent);
 }
 
-body:has(.k-pro-mode) #MainContent .k-pro-item__tags li {
+body:has(.k-pro-mode--dark) #MainContent .k-pro-item__tags li {
   color: var(--k-ink);
 }
 
-body:has(.k-pro-mode) #MainContent .k-btn--dark {
+body:has(.k-pro-mode--dark) #MainContent .k-btn--dark {
   background: var(--k-pro-accent);
   color: #141110;
 }
 
-body:has(.k-pro-mode) #MainContent .k-btn--dark:hover {
+body:has(.k-pro-mode--dark) #MainContent .k-btn--dark:hover {
   background: #f3dcc4;
   color: #141110;
 }
 
-body:has(.k-pro-mode) #MainContent .k-btn--bordeaux {
+body:has(.k-pro-mode--dark) #MainContent .k-btn--bordeaux {
   background: var(--k-pro-accent);
   color: #141110;
 }
 
-body:has(.k-pro-mode) #MainContent .k-contact__fields input,
-body:has(.k-pro-mode) #MainContent .k-contact__fields textarea,
-body:has(.k-pro-mode) #MainContent .k-pro-form__fields select,
-body:has(.k-pro-mode) #MainContent .k-pro-form__choice span {
+body:has(.k-pro-mode--dark) #MainContent .k-contact__fields input,
+body:has(.k-pro-mode--dark) #MainContent .k-contact__fields textarea,
+body:has(.k-pro-mode--dark) #MainContent .k-pro-form__fields select,
+body:has(.k-pro-mode--dark) #MainContent .k-pro-form__choice span {
   background: #0f0d0c;
   border-color: rgba(244, 237, 227, 0.22);
   color: var(--k-ink);
 }
 
-body:has(.k-pro-mode) #MainContent .k-pro-form__choice input:checked + span {
+body:has(.k-pro-mode--dark) #MainContent .k-pro-form__choice input:checked + span {
   background: var(--k-pro-accent);
   border-color: var(--k-pro-accent);
   color: #141110;
 }
 
-body:has(.k-pro-mode) #MainContent .k-academy__card {
+body:has(.k-pro-mode--dark) #MainContent .k-academy__card {
   background: #241e1a;
   border: 1px solid rgba(233, 201, 168, 0.35);
 }
 
-body:has(.k-pro-mode) #MainContent .k-academy__price {
+body:has(.k-pro-mode--dark) #MainContent .k-academy__price {
   color: var(--k-pro-accent);
 }
 
-body:has(.k-pro-mode) #MainContent .k-academy__button {
+body:has(.k-pro-mode--dark) #MainContent .k-academy__button {
   background: var(--k-pro-accent);
   color: #141110;
 }
 
-body:has(.k-pro-mode) #MainContent .k-section--end {
+body:has(.k-pro-mode--dark) #MainContent .k-section--end {
   padding-bottom: 80px;
 }
 
@@ -5233,6 +5270,10 @@ body:has(.k-pro-mode) #MainContent .k-section--end {
   align-items: end;
   padding-top: clamp(48px, 8vw, 110px);
   padding-bottom: clamp(32px, 5vw, 56px);
+}
+
+.k-pro-intro--solo {
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .k-pro-intro__title {

@@ -11,33 +11,13 @@
   "sections": {
     "intro": {
       "type": "kapsule-pro-intro",
-      "blocks": {
-        "offer_products": {
-          "type": "offer",
-          "settings": {
-            "title": "Produits professionnels",
-            "text": "La K-beauty de cabine, au prix pro",
-            "link": "/pages/professionnels#produits"
-          }
-        },
-        "offer_training": {
-          "type": "offer",
-          "settings": {
-            "title": "Formation OAK-AN",
-            "text": "Le soin signature du Kapsule Palais",
-            "link": "/pages/professionnels#formation"
-          }
-        }
-      },
-      "block_order": [
-        "offer_products",
-        "offer_training"
-      ],
+      "blocks": {},
+      "block_order": [],
       "settings": {
-        "dark": true,
         "kicker": "KAPSULE PRO",
         "heading": "Espace professionnels",
-        "text": "Pour tous les professionnels de la beauté et du bien-être qui veulent offrir le meilleur de la Corée à leurs clients."
+        "text": "Pour tous les professionnels de la beauté et du bien-être qui veulent offrir le meilleur de la Corée à leurs clients.",
+        "look": "stone"
       }
     },
     "figures": {
@@ -75,96 +55,52 @@
         "padding_top": 24
       }
     },
-    "ranges": {
+    "offers": {
       "type": "kapsule-grid",
       "blocks": {
-        "range": {
+        "products": {
           "type": "item",
           "settings": {
-            "kicker": "",
-            "title": "Testés chaque jour au Kapsule Palais",
-            "text": "<p>Des actifs coréens qui font la différence en soin, et se revendent d’eux-mêmes.</p>",
-            "tags": "Instituts, Spas, Hôtels, Cliniques esthétiques, Distributeurs, Revente à domicile",
+            "kicker": "Offre 01 — Produits",
+            "title": "La K-beauty de cabine, au prix pro",
+            "text": "<p>Testés chaque jour au Kapsule Palais : des actifs coréens qui font la différence en soin, et se revendent d’eux-mêmes.</p>",
+            "tags": "Instituts, Spas, Hôtels, Cliniques, Distributeurs, Revente à domicile",
             "note": "ZISU’C · DM CELL · 3DAYSLOVE · Kohonjin",
             "photo_label": "PHOTO — LA GAMME",
             "tint": "sand",
             "button_label": "Recevoir les tarifs pro",
             "button_link": "/pages/professionnels#demande"
           }
+        },
+        "training": {
+          "type": "item",
+          "settings": {
+            "kicker": "Offre 02 — Formation",
+            "title": "Maîtrisez le soin signature OAK-AN",
+            "text": "<p>34 ans d’expertise coréenne, transmis à vos équipes : un soin qui distingue votre carte et fidélise vos clients.</p>",
+            "tags": "BATANG, Rituel OAK-AN, SU & JIN, SUSU-AN, Certification",
+            "note": "Paris 3e ou sur site · Durée [à confirmer] · Kit, support et certificat inclus",
+            "photo_label": "PHOTO — FORMATION",
+            "tint": "sage",
+            "button_label": "Recevoir le programme",
+            "button_link": "/pages/professionnels#demande"
+          }
         }
       },
       "block_order": [
-        "range"
+        "products",
+        "training"
       ],
       "settings": {
-        "anchor": "produits",
-        "kicker": "OFFRE 01 — PRODUITS",
-        "heading": "La K-beauty de cabine, au prix pro",
+        "anchor": "offres",
+        "kicker": "NOS OFFRES",
+        "heading": "",
         "intro": "",
         "center": false,
-        "columns": "1",
+        "columns": "2",
         "style": "surface",
         "show_media": true,
         "end": false
-      }
-    },
-    "academy": {
-      "type": "kapsule-academy",
-      "blocks": {
-        "module_1": {
-          "type": "module",
-          "settings": {
-            "title": "Fondements BATANG",
-            "text": "Méridiens, circulation, lecture du visage"
-          }
-        },
-        "module_2": {
-          "type": "module",
-          "settings": {
-            "title": "Rituel OAK-AN",
-            "text": "Outils en jade et laiton, acupression"
-          }
-        },
-        "module_3": {
-          "type": "module",
-          "settings": {
-            "title": "OAK-AN SU & JIN",
-            "text": "Les deux protocoles signature"
-          }
-        },
-        "module_4": {
-          "type": "module",
-          "settings": {
-            "title": "SUSU-AN",
-            "text": "Le rituel des mains"
-          }
-        },
-        "module_5": {
-          "type": "module",
-          "settings": {
-            "title": "Certification",
-            "text": "Pratique encadrée, certificat Kapsule"
-          }
-        }
-      },
-      "block_order": [
-        "module_1",
-        "module_2",
-        "module_3",
-        "module_4",
-        "module_5"
-      ],
-      "settings": {
-        "anchor": "formation",
-        "kicker": "OFFRE 02 — FORMATION",
-        "heading": "Maîtrisez le soin signature OAK-AN",
-        "text": "<p>34 ans d’expertise coréenne, transmis à vos équipes. Un soin qui distingue votre carte et fidélise vos clients.</p>",
-        "card_kicker": "EN PRATIQUE",
-        "card_heading": "Formation OAK-AN",
-        "details": "<ul><li><strong>Lieu</strong>Kapsule Palais, Paris 3e — ou sur site</li><li><strong>Durée</strong>[à confirmer]</li><li><strong>Groupe</strong>[x] participants max.</li><li><strong>Inclus</strong>Kit d’outils, support, certificat</li></ul>",
-        "price": "Tarif : sur demande",
-        "button_label": "Recevoir le programme",
-        "button_link": "/pages/professionnels#demande"
       }
     },
     "enquiry": {
@@ -183,8 +119,7 @@
   "order": [
     "intro",
     "figures",
-    "ranges",
-    "academy",
+    "offers",
     "enquiry"
   ]
 }
