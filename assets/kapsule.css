@@ -4653,6 +4653,11 @@ body:has([data-k-cart-page]) .k-bubble {
   margin-top: auto;
 }
 
+/* a closing note (no button) sits at the bottom, so notes line up across cards */
+.k-pro-item__body > .k-pro-item__note:last-child {
+  margin-top: auto;
+}
+
 /* keeps the gap above the button when the card's content is the tallest */
 .k-pro-item__body > :nth-last-child(2) {
   margin-bottom: 22px;
