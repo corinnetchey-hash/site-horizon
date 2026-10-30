@@ -6,6 +6,7 @@
 -%}
 {%- liquid
   assign menu = section.settings.menu
+  assign pro_url = section.settings.pro_url
   assign languages = localization.available_languages
 -%}
 <div class="k-stripe" aria-hidden="true"></div>
@@ -54,7 +55,7 @@
             </div>
           {%- else -%}
             <a
-              class="k-nav__link"
+              class="k-nav__link{% if pro_url != blank and link.url contains pro_url %} k-nav__link--pro{% endif %}"
               href="{{ link.url }}"
               {% if link.current or link.child_active %}
                 aria-current="page"
@@ -93,6 +94,11 @@
         <a class="k-nav__link" href="{{ locale_root }}/pages/contact" {% if page.handle == 'contact' %}aria-current="page"{% endif %}>
           {{- 'kapsule.nav.contact' | t -}}
         </a>
+        {%- if pro_url != blank -%}
+          <a class="k-nav__link k-nav__link--pro" href="{{ locale_root }}{{ pro_url }}" {% if request.path contains pro_url %}aria-current="page"{% endif %}>
+            {{- 'kapsule.nav.pro' | t -}}
+          </a>
+        {%- endif -%}
       {%- endif -%}
     </nav>
 
@@ -189,6 +195,13 @@
       "label": "Menu",
       "default": "main-menu",
       "info": "Without links, the default Kapsule navigation is shown (Accueil · Boutique · Institut · Pop-up · Notre vision)."
+    },
+    {
+      "type": "text",
+      "id": "pro_url",
+      "label": "Professional page address",
+      "default": "/pages/professionnels",
+      "info": "The menu link to this address is shown as a bordeaux pill so professionals spot it at once. Leave empty to turn it off."
     },
     {
       "type": "checkbox",

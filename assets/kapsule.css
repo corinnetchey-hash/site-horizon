@@ -506,6 +506,21 @@ a.k-marquee__item:hover {
   border-bottom-color: rgba(26, 23, 20, 0.7);
 }
 
+/* Professional (B2B) page: a bordeaux pill so it stands out in the menu */
+.k-nav__link--pro,
+.k-nav__link--pro[aria-current='page'] {
+  padding: 6px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--k-bordeaux);
+  color: var(--k-light);
+}
+
+.k-nav__link--pro:hover {
+  background: var(--k-bordeaux-hover);
+  color: var(--k-light);
+}
+
 /* Menu items with children (e.g. E-shop): hover / focus dropdown on desktop */
 .k-nav__group {
   position: relative;
@@ -4413,7 +4428,7 @@ body:has([data-k-cart-page]) .k-bubble {
 
 .k-stats {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
   margin: 0;
   border-block: 1px solid var(--k-hair);
 }
@@ -4565,6 +4580,10 @@ body:has([data-k-cart-page]) .k-bubble {
   object-fit: cover;
 }
 
+.k-pro-grid--2 .k-pro-item__media {
+  aspect-ratio: 16 / 10;
+}
+
 .k-pro-item__kicker {
   font-size: 11px;
   letter-spacing: 0.16em;
@@ -4585,6 +4604,20 @@ body:has([data-k-cart-page]) .k-bubble {
   font-size: 13.5px;
   line-height: 1.65;
   color: var(--k-ink-2);
+}
+
+.k-pro-item__button {
+  align-self: flex-start;
+  margin-top: 22px;
+}
+
+.k-pro-item__text ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.k-pro-item__text li + li {
+  margin-top: 4px;
 }
 
 .k-pro-item__note {
@@ -5032,12 +5065,30 @@ body:has([data-k-cart-page]) .k-bubble {
 
 @media (max-width: 599px) {
   .k-pro-grid--2,
-  .k-pro-grid--3,
-  .k-pro-grid--4 {
+  .k-pro-grid--3 {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .k-pro-item__media {
+  /* four short cards read best as a 2 × 2 grid on phones */
+  .k-pro-grid--4.k-pro-grid--surface {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .k-pro-grid--4.k-pro-grid--surface .k-pro-item__body {
+    padding: 14px 14px 16px;
+  }
+
+  .k-pro-grid--4 .k-pro-item__title {
+    font-size: 17px;
+  }
+
+  .k-pro-grid--4 .k-pro-item__text {
+    font-size: 12.5px;
+  }
+
+  .k-pro-grid--2 .k-pro-item__media,
+  .k-pro-grid--3 .k-pro-item__media {
     aspect-ratio: 3 / 2;
   }
 

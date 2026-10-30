@@ -14,12 +14,56 @@
       "settings": {
         "copy_key": "pro.hero",
         "style": "bordeaux",
-        "kicker": "KAPSULE PROFESSIONNEL — B2B",
-        "heading": "Le savoir-faire coréen au service de votre établissement",
-        "text": "Instituts, spas, hôtels, cliniques et revendeurs : accédez à notre sélection de soins coréens à tarifs professionnels et formez vos équipes à la méthode OAK-AN, transmise depuis le Kapsule Palais, à Paris.",
+        "kicker": "KAPSULE PRO",
+        "heading": "L’excellence coréenne pour les professionnels",
+        "text": "Des produits à tarifs préférentiels et une formation à la méthode OAK-AN.",
         "body": "",
-        "button_label": "Devenir partenaire",
+        "button_label": "Faire une demande",
         "button_link": "/pages/professionnels#demande"
+      }
+    },
+    "offers": {
+      "type": "kapsule-grid",
+      "blocks": {
+        "offer_products": {
+          "type": "item",
+          "settings": {
+            "kicker": "Offre 01",
+            "title": "Produits B2B",
+            "text": "<ul><li>Soins coréens à tarifs préférentiels</li><li>Gammes institut, spa, hôtellerie et soins à domicile</li><li>Revente en établissement</li></ul>",
+            "photo_label": "PHOTO — PRODUITS",
+            "tint": "sand",
+            "button_label": "Voir l’offre produits",
+            "button_link": "/pages/professionnels#produits"
+          }
+        },
+        "offer_training": {
+          "type": "item",
+          "settings": {
+            "kicker": "Offre 02",
+            "title": "Formation OAK-AN",
+            "text": "<ul><li>La méthode du Kapsule Palais</li><li>Pratique encadrée et certificat Kapsule</li><li>À Paris ou dans votre établissement</li></ul>",
+            "photo_label": "PHOTO — FORMATION",
+            "tint": "sage",
+            "button_label": "Voir la formation",
+            "button_link": "/pages/professionnels#formation"
+          }
+        }
+      },
+      "block_order": [
+        "offer_products",
+        "offer_training"
+      ],
+      "settings": {
+        "anchor": "offres",
+        "kicker": "NOS OFFRES",
+        "heading": "Deux façons de travailler avec Kapsule",
+        "intro": "",
+        "center": false,
+        "columns": "2",
+        "style": "surface",
+        "show_media": true,
+        "end": false
       }
     },
     "figures": {
@@ -29,112 +73,32 @@
           "type": "stat",
           "settings": {
             "value": "34 ans",
-            "label": "de pratique du soin structurel coréen"
+            "label": "de soin structurel coréen"
           }
         },
         "stat_2": {
           "type": "stat",
           "settings": {
             "value": "20 000+",
-            "label": "cas cliniques à l’origine de la méthode"
+            "label": "cas cliniques"
           }
         },
         "stat_3": {
           "type": "stat",
           "settings": {
             "value": "35+",
-            "label": "maisons coréennes sélectionnées"
-          }
-        },
-        "stat_4": {
-          "type": "stat",
-          "settings": {
-            "value": "Paris 3e",
-            "label": "un institut-école au cœur du Marais"
+            "label": "maisons coréennes"
           }
         }
       },
       "block_order": [
         "stat_1",
         "stat_2",
-        "stat_3",
-        "stat_4"
+        "stat_3"
       ],
       "settings": {
         "style": "plain",
         "padding_top": 24
-      }
-    },
-    "audiences": {
-      "type": "kapsule-grid",
-      "blocks": {
-        "aud_1": {
-          "type": "item",
-          "settings": {
-            "kicker": "Instituts & salons",
-            "title": "Enrichir votre carte de soins",
-            "text": "<p>Produits cabine, ampoules concentrées et protocoles complets pour proposer des soins coréens de haute technicité.</p>"
-          }
-        },
-        "aud_2": {
-          "type": "item",
-          "settings": {
-            "kicker": "Spas & bien-être",
-            "title": "Créer une expérience signature",
-            "text": "<p>Rituels visage et corps, masques et gestes inspirés de Séoul pour une carte sensorielle qui fidélise.</p>"
-          }
-        },
-        "aud_3": {
-          "type": "item",
-          "settings": {
-            "kicker": "Hôtels & resorts",
-            "title": "Une hospitalité K-Premium",
-            "text": "<p>Produits d’accueil, miniatures, coffrets et soins au spa : la signature beauté coréenne pour vos hôtes.</p>"
-          }
-        },
-        "aud_4": {
-          "type": "item",
-          "settings": {
-            "kicker": "Cliniques & médecine esthétique",
-            "title": "Prolonger vos actes",
-            "text": "<p>Une dermo-cosmétique coréenne de qualité clinique pour accompagner vos patients avant et après leurs soins.</p>"
-          }
-        },
-        "aud_5": {
-          "type": "item",
-          "settings": {
-            "kicker": "Concept stores & revendeurs",
-            "title": "Distribuer des marques rares",
-            "text": "<p>Des maisons coréennes sélectionnées et importées par Kapsule, avec un accompagnement à la vente.</p>"
-          }
-        },
-        "aud_6": {
-          "type": "item",
-          "settings": {
-            "kicker": "Entreprises",
-            "title": "Offrir l’exception",
-            "text": "<p>Coffrets sur mesure pour vos clients, partenaires et collaborateurs, avec ou sans personnalisation.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "aud_1",
-        "aud_2",
-        "aud_3",
-        "aud_4",
-        "aud_5",
-        "aud_6"
-      ],
-      "settings": {
-        "anchor": "pour-qui",
-        "kicker": "À QUI S’ADRESSE L’OFFRE",
-        "heading": "Une offre pensée pour chaque univers professionnel",
-        "intro": "",
-        "center": false,
-        "columns": "3",
-        "style": "lines",
-        "show_media": false,
-        "end": false
       }
     },
     "ranges": {
@@ -143,9 +107,9 @@
         "range_1": {
           "type": "item",
           "settings": {
-            "kicker": "01 — Gamme institut",
-            "title": "Les soins de la cabine",
-            "text": "<p>Les formats professionnels et ampoules utilisés chaque jour au Kapsule Palais : exosomes, peptides, PDRN, micro-spicules… Des actifs de haute technicité intégrés à des protocoles éprouvés.</p>",
+            "kicker": "",
+            "title": "Institut",
+            "text": "<p>Formats cabine et ampoules</p>",
             "note": "ZISU’C · DM CELL · 3DAYSLOVE · Kohonjin",
             "photo_label": "PHOTO — PRODUITS CABINE",
             "tint": "sand"
@@ -154,10 +118,10 @@
         "range_2": {
           "type": "item",
           "settings": {
-            "kicker": "02 — Spa & bien-être",
-            "title": "Rituels visage et corps",
-            "text": "<p>Masques, brumes, huiles et soins corps, associés aux outils traditionnels — jade, Gua Sha — pour composer une carte de rituels sensoriels.</p>",
-            "note": "Soins visage & corps · outils de massage",
+            "kicker": "",
+            "title": "Spa & bien-être",
+            "text": "<p>Rituels visage et corps</p>",
+            "note": "",
             "photo_label": "PHOTO — RITUEL SPA",
             "tint": "sage"
           }
@@ -165,10 +129,10 @@
         "range_3": {
           "type": "item",
           "settings": {
-            "kicker": "03 — Hôtellerie",
-            "title": "L’accueil à la coréenne",
-            "text": "<p>Produits d’accueil, miniatures et kits voyage, coffrets de bienvenue et soins en chambre : une attention beauté qui marque le séjour.</p>",
-            "note": "Miniatures · kits voyage · coffrets personnalisables",
+            "kicker": "",
+            "title": "Hôtellerie",
+            "text": "<p>Accueil, miniatures, coffrets</p>",
+            "note": "",
             "photo_label": "PHOTO — AMENITIES HÔTEL",
             "tint": "rose"
           }
@@ -176,10 +140,10 @@
         "range_4": {
           "type": "item",
           "settings": {
-            "kicker": "04 — Dermo-esthétique à domicile",
-            "title": "Le relais entre deux séances",
-            "text": "<p>Une sélection de soins coréens de qualité clinique — régénération, éclat, barrière cutanée — à recommander ou revendre pour prolonger les résultats à la maison.</p>",
-            "note": "Revente en établissement · conseils de routine",
+            "kicker": "",
+            "title": "Soins à domicile",
+            "text": "<p>Dermo-esthétique coréenne</p>",
+            "note": "",
             "photo_label": "PHOTO — ROUTINE À DOMICILE",
             "tint": "sand"
           }
@@ -192,10 +156,10 @@
         "range_4"
       ],
       "settings": {
-        "anchor": "gammes",
-        "kicker": "NOS GAMMES PROFESSIONNELLES",
-        "heading": "Des soins coréens pour la cabine, l’accueil et la maison",
-        "intro": "Une sélection rigoureuse de maisons coréennes, choisies sur place pour la noblesse de leurs actifs et l’efficacité de leurs formules, disponible à tarifs professionnels.",
+        "anchor": "produits",
+        "kicker": "OFFRE 01 — PRODUITS B2B",
+        "heading": "Nos gammes professionnelles",
+        "intro": "",
         "center": false,
         "columns": "4",
         "style": "surface",
@@ -209,36 +173,36 @@
         "module_1": {
           "type": "module",
           "settings": {
-            "title": "Les fondements BATANG",
-            "text": "Lecture structurelle du visage : méridiens, circulation, flux lymphatique et équilibre musculaire du cou et des épaules."
+            "title": "Fondements BATANG",
+            "text": "Méridiens, circulation, lecture du visage"
           }
         },
         "module_2": {
           "type": "module",
           "settings": {
-            "title": "Le rituel OAK-AN",
-            "text": "Les outils traditionnels en jade et en laiton, l’acupression coréenne et les pressions rythmiques, geste par geste."
+            "title": "Rituel OAK-AN",
+            "text": "Outils en jade et laiton, acupression"
           }
         },
         "module_3": {
           "type": "module",
           "settings": {
-            "title": "OAK-AN SU & OAK-AN JIN",
-            "text": "Les deux protocoles signature — hydratation et équilibre, anti-âge et résilience — et le choix des ampoules selon chaque peau."
+            "title": "OAK-AN SU & JIN",
+            "text": "Les deux protocoles signature"
           }
         },
         "module_4": {
           "type": "module",
           "settings": {
-            "title": "SUSU-AN, le rituel des mains",
-            "text": "Le soin des méridiens des mains, en complément d’un soin visage ou en soin express."
+            "title": "SUSU-AN",
+            "text": "Le rituel des mains"
           }
         },
         "module_5": {
           "type": "module",
           "settings": {
-            "title": "Pratique encadrée & certification",
-            "text": "Mises en situation au Kapsule Palais, évaluation finale et remise du certificat Kapsule."
+            "title": "Certification",
+            "text": "Pratique encadrée, certificat Kapsule"
           }
         }
       },
@@ -251,269 +215,36 @@
       ],
       "settings": {
         "anchor": "formation",
-        "kicker": "KAPSULE ACADEMY — FORMATION OAK-AN",
-        "heading": "Formez vos équipes à la méthode OAK-AN",
-        "text": "<p>Issue de 34 ans de soin structurel coréen et de la Méthode de Soin par Suivi Intégré de Jiwon Hong, la formation OAK-AN ne transmet pas une simple technique : elle enseigne un <strong>système compréhensible, reproductible et pratiqué de manière responsable</strong>. Des praticiens formés à cette méthode exercent aujourd’hui en Corée, aux États-Unis et aux Émirats arabes unis.</p>",
+        "kicker": "OFFRE 02 — FORMATION",
+        "heading": "Formation à la méthode OAK-AN",
+        "text": "<p>34 ans de soin structurel coréen, transmis par la méthode de Jiwon Hong.</p>",
         "card_kicker": "EN PRATIQUE",
-        "card_heading": "Formation professionnelle OAK-AN",
-        "details": "<ul><li><strong>Lieu</strong>Au Kapsule Palais, Paris 3e — ou dans votre établissement</li><li><strong>Durée</strong>[à confirmer — ex. 3 jours]</li><li><strong>Format</strong>Petits groupes de [x] participants maximum</li><li><strong>Public</strong>Esthéticiennes, praticiens spa, équipes d’institut</li><li><strong>Langues</strong>Français, anglais</li><li><strong>Inclus</strong>Kit d’outils OAK-AN, support de cours, certificat Kapsule</li></ul>",
+        "card_heading": "Formation OAK-AN",
+        "details": "<ul><li><strong>Lieu</strong>Kapsule Palais, Paris 3e — ou sur site</li><li><strong>Durée</strong>[à confirmer]</li><li><strong>Groupe</strong>[x] participants max.</li><li><strong>Inclus</strong>Kit d’outils, support, certificat</li></ul>",
         "price": "Tarif : sur demande",
         "button_label": "Recevoir le programme",
         "button_link": "/pages/professionnels#demande"
-      }
-    },
-    "membership": {
-      "type": "kapsule-tiers",
-      "blocks": {
-        "tier_1": {
-          "type": "tier",
-          "settings": {
-            "name": "Essentiel",
-            "badge": "",
-            "highlight": false,
-            "tagline": "Pour intégrer les soins coréens à votre établissement.",
-            "price": "Adhésion offerte",
-            "features": "<ul><li>Accès au catalogue professionnel</li><li>Tarifs préférentiels jusqu’à -[xx] %</li><li>Minimum de commande [xxx] € HT</li><li>Fiches produits et argumentaires de vente</li><li>Livraison en France et en Europe</li></ul>",
-            "button_label": "Ouvrir mon compte pro",
-            "button_link": "/pages/professionnels#demande"
-          }
-        },
-        "tier_2": {
-          "type": "tier",
-          "settings": {
-            "name": "Signature",
-            "badge": "Le plus choisi",
-            "highlight": true,
-            "tagline": "Pour les instituts et spas qui adoptent la méthode OAK-AN.",
-            "price": "[xxx] € HT / an",
-            "features": "<ul><li>Tous les avantages Essentiel</li><li>Remise renforcée jusqu’à -[xx] %</li><li>Une place de formation OAK-AN incluse</li><li>Kit cabine de démarrage</li><li>Visuels et supports marketing</li><li>Référencement « Partenaire Kapsule » sur notre site</li></ul>",
-            "button_label": "Devenir partenaire Signature",
-            "button_link": "/pages/professionnels#demande"
-          }
-        },
-        "tier_3": {
-          "type": "tier",
-          "settings": {
-            "name": "Prestige",
-            "badge": "",
-            "highlight": false,
-            "tagline": "Pour les hôtels, groupes et distributeurs.",
-            "price": "Sur devis",
-            "features": "<ul><li>Tous les avantages Signature</li><li>Conditions et volumes sur mesure</li><li>Formation des équipes sur site</li><li>Produits d’accueil et coffrets personnalisés</li><li>Exclusivité de distribution possible par zone</li><li>Un interlocuteur dédié</li></ul>",
-            "button_label": "Demander un devis",
-            "button_link": "/pages/professionnels#demande"
-          }
-        }
-      },
-      "block_order": [
-        "tier_1",
-        "tier_2",
-        "tier_3"
-      ],
-      "settings": {
-        "anchor": "adhesion",
-        "kicker": "PROGRAMME PARTENAIRE",
-        "heading": "Choisissez votre adhésion Kapsule Pro",
-        "intro": "Trois niveaux d’accompagnement pour accéder aux tarifs professionnels, à la formation et à nos outils de vente.",
-        "note": "Offre réservée aux professionnels sur présentation d’un SIRET ou d’un numéro de TVA intracommunautaire. Les conditions tarifaires détaillées sont communiquées après validation de votre compte."
-      }
-    },
-    "why": {
-      "type": "kapsule-grid",
-      "blocks": {
-        "why_1": {
-          "type": "item",
-          "settings": {
-            "kicker": "Sourcing",
-            "title": "Direct depuis la Corée",
-            "text": "<p>Des maisons choisies sur place pour leurs actifs et leurs résultats. Authenticité et traçabilité garanties.</p>"
-          }
-        },
-        "why_2": {
-          "type": "item",
-          "settings": {
-            "kicker": "Expertise",
-            "title": "Un institut-école à Paris",
-            "text": "<p>Nos produits et protocoles sont utilisés chaque jour au Kapsule Palais avant de vous être proposés.</p>"
-          }
-        },
-        "why_3": {
-          "type": "item",
-          "settings": {
-            "kicker": "Accompagnement",
-            "title": "À vos côtés",
-            "text": "<p>Conseil produit, formation et supports de vente pour réussir le lancement dans votre établissement.</p>"
-          }
-        },
-        "why_4": {
-          "type": "item",
-          "settings": {
-            "kicker": "Logistique",
-            "title": "Simple et rapide",
-            "text": "<p>Stock à Paris, expédition en France et en Europe, réassort facilité.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "why_1",
-        "why_2",
-        "why_3",
-        "why_4"
-      ],
-      "settings": {
-        "anchor": "",
-        "kicker": "POURQUOI KAPSULE",
-        "heading": "Un partenaire, pas seulement un fournisseur",
-        "intro": "",
-        "center": false,
-        "columns": "4",
-        "style": "surface",
-        "show_media": false,
-        "end": false
-      }
-    },
-    "steps": {
-      "type": "kapsule-grid",
-      "blocks": {
-        "step_1": {
-          "type": "item",
-          "settings": {
-            "title": "Votre demande",
-            "text": "<p>Quelques informations sur votre établissement via le formulaire ci-dessous.</p>"
-          }
-        },
-        "step_2": {
-          "type": "item",
-          "settings": {
-            "title": "Un échange découverte",
-            "text": "<p>Nous étudions votre projet et vous recontactons sous 48 h ouvrées.</p>"
-          }
-        },
-        "step_3": {
-          "type": "item",
-          "settings": {
-            "title": "Votre compte pro",
-            "text": "<p>Après vérification de votre SIRET ou numéro de TVA : accès au catalogue et à vos tarifs.</p>"
-          }
-        },
-        "step_4": {
-          "type": "item",
-          "settings": {
-            "title": "Commande & formation",
-            "text": "<p>Premières commandes, kit de démarrage et planification de la formation de vos équipes.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "step_1",
-        "step_2",
-        "step_3",
-        "step_4"
-      ],
-      "settings": {
-        "anchor": "",
-        "kicker": "COMMENT ÇA MARCHE",
-        "heading": "Devenir partenaire en quatre étapes",
-        "intro": "",
-        "center": false,
-        "columns": "4",
-        "style": "steps",
-        "show_media": false,
-        "end": false
-      }
-    },
-    "faq": {
-      "type": "kapsule-faq",
-      "blocks": {
-        "faq_1": {
-          "type": "question",
-          "settings": {
-            "question": "Qui peut ouvrir un compte professionnel ?",
-            "answer": "<p>Toute entreprise des secteurs de la beauté, du bien-être, de l’hôtellerie, de la santé ou de la distribution, sur présentation d’un SIRET ou d’un numéro de TVA intracommunautaire.</p>"
-          }
-        },
-        "faq_2": {
-          "type": "question",
-          "settings": {
-            "question": "Y a-t-il un minimum de commande ?",
-            "answer": "<p>Oui : [xxx] € HT pour la première commande, puis [xxx] € HT pour les réassorts. Les conditions Prestige sont définies sur devis.</p>"
-          }
-        },
-        "faq_3": {
-          "type": "question",
-          "settings": {
-            "question": "Puis-je revendre les produits dans mon établissement ?",
-            "answer": "<p>Oui. Nous vous accompagnons avec des fiches produits, des argumentaires et des visuels pour conseiller vos clients et prolonger leurs soins à la maison.</p>"
-          }
-        },
-        "faq_4": {
-          "type": "question",
-          "settings": {
-            "question": "La formation OAK-AN est-elle certifiante ?",
-            "answer": "<p>Elle se conclut par une évaluation pratique et la remise d’un certificat Kapsule attestant de la maîtrise du protocole OAK-AN.</p>"
-          }
-        },
-        "faq_5": {
-          "type": "question",
-          "settings": {
-            "question": "La formation peut-elle avoir lieu dans mon établissement ?",
-            "answer": "<p>Oui, pour les groupes et l’adhésion Prestige, une formatrice Kapsule peut se déplacer pour former vos équipes sur place.</p>"
-          }
-        },
-        "faq_6": {
-          "type": "question",
-          "settings": {
-            "question": "Livrez-vous à l’international ?",
-            "answer": "<p>Nous livrons la France et l’Europe. Pour les autres destinations, contactez-nous pour un devis de transport.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "faq_1",
-        "faq_2",
-        "faq_3",
-        "faq_4",
-        "faq_5",
-        "faq_6"
-      ],
-      "settings": {
-        "anchor": "faq",
-        "kicker": "QUESTIONS FRÉQUENTES",
-        "heading": "Tout savoir avant de nous rejoindre"
       }
     },
     "enquiry": {
       "type": "kapsule-pro-form",
       "settings": {
         "anchor": "demande",
-        "kicker": "DEMANDE PROFESSIONNELLE",
-        "heading": "Parlons de votre projet",
-        "intro": "Remplissez ce formulaire : notre équipe professionnelle vous recontacte avec le catalogue, les conditions tarifaires et le programme de formation.",
-        "side": "<p><strong>Kapsule Palais</strong><br>10-12 Rue Charles-François Dupuis, 75003 Paris</p><p>info.kapsuleglobal@gmail.com</p><p>Rendez-vous possible sur place pour découvrir les produits et un soin OAK-AN.</p>",
+        "kicker": "CONTACT PRO",
+        "heading": "Faire une demande",
+        "intro": "Nous revenons vers vous avec les tarifs ou le programme.",
+        "side": "<p><strong>Kapsule Palais</strong><br>10-12 Rue Charles-François Dupuis, 75003 Paris<br>info.kapsuleglobal@gmail.com</p>",
         "types": "Institut / salon de beauté\nSpa / centre de bien-être\nHôtel / resort\nClinique / médecine esthétique\nConcept store / revendeur\nEntreprise / cadeaux d’affaires\nAutre",
-        "interests": "Produits professionnels\nFormation OAK-AN\nAdhésion Kapsule Pro\nProduits d’accueil hôtel\nCoffrets sur mesure"
-      }
-    },
-    "quote": {
-      "type": "kapsule-quote",
-      "settings": {
-        "copy_key": "pro.quote",
-        "quote": "« Je ne me vois pas simplement comme une personne qui enseigne des techniques. Je crois que mon rôle est de transmettre un standard d’excellence. »",
-        "author": "— Jiwon Hong, fondatrice de la méthode, 34 ans de pratique en Corée"
+        "interests": "Offre produits B2B\nOffre formation"
       }
     }
   },
   "order": [
     "hero",
+    "offers",
     "figures",
-    "audiences",
     "ranges",
-    "quote",
     "academy",
-    "membership",
-    "why",
-    "steps",
-    "faq",
     "enquiry"
   ]
 }
