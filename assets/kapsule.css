@@ -5176,6 +5176,113 @@ body:has([data-k-cart-page]) .k-bubble {
 
 /* ---------- Kapsule Pro look: the professional page's content gets its own palette ---------- */
 
+/* Jade & brass, from the OAK-AN training deck: cream ground, deep jade bands for the opening,
+   the loyalty "Jade" status and the enquiry, brass accents. */
+body:has(.k-pro-mode--jade) #MainContent {
+  --k-canvas: #f5f0e6;
+  --k-surface: #fbf8f2;
+  --k-ink: #1f2a24;
+  --k-ink-2: #46514a;
+  --k-ink-3: #7d857f;
+  --k-ink-3-light: #9a7535;
+  --k-hair: rgba(31, 42, 36, 0.12);
+  --k-hair-strong: rgba(31, 42, 36, 0.28);
+  --k-pro-accent: #9a7535;
+  --k-pro-jade: #2f4a3c;
+  --k-pro-brass: #c9a96a;
+  background: var(--k-canvas);
+  color: var(--k-ink);
+}
+
+/* deep jade bands: opening and enquiry */
+body:has(.k-pro-mode--jade) #MainContent > :has(.k-pro-intro),
+body:has(.k-pro-mode--jade) #MainContent > :has(.k-pro-form) {
+  --k-ink: #f5f0e6;
+  --k-ink-2: rgba(245, 240, 230, 0.78);
+  --k-ink-3: rgba(245, 240, 230, 0.6);
+  --k-ink-3-light: var(--k-pro-brass);
+  --k-hair: rgba(245, 240, 230, 0.16);
+  --k-hair-strong: rgba(245, 240, 230, 0.32);
+  background: linear-gradient(160deg, #2f4a3c 0%, #263d31 100%);
+  color: var(--k-ink);
+}
+
+body:has(.k-pro-mode--jade) #MainContent > :has(.k-pro-intro) .k-pro-intro {
+  padding-bottom: clamp(48px, 7vw, 96px);
+}
+
+body:has(.k-pro-mode--jade) #MainContent > :has(.k-pro-grid) {
+  padding-bottom: 56px;
+}
+
+/* light band behind the loyalty programme */
+body:has(.k-pro-mode--jade) #MainContent > :has(.k-tiers) {
+  background: #ece4d4;
+  padding-bottom: 64px;
+}
+
+body:has(.k-pro-mode--jade) #MainContent :is(.k-pro-item__kicker, .k-stats__value, .k-academy__num) {
+  color: var(--k-pro-accent);
+}
+
+body:has(.k-pro-mode--jade) #MainContent .k-stats {
+  border-top: 0;
+}
+
+body:has(.k-pro-mode--jade) #MainContent .k-stats__item {
+  border-top: 1px solid var(--k-pro-brass);
+}
+
+body:has(.k-pro-mode--jade) #MainContent .k-stats__value {
+  color: var(--k-pro-jade);
+}
+
+body:has(.k-pro-mode--jade) #MainContent :is(.k-pro-item, .k-tier) {
+  background: var(--k-surface);
+  border-color: rgba(31, 42, 36, 0.08);
+}
+
+/* the first loyalty status, "Jade", is shown in jade */
+body:has(.k-pro-mode--jade) #MainContent .k-tier:first-child {
+  --k-ink: #f5f0e6;
+  --k-ink-2: rgba(245, 240, 230, 0.78);
+  background: var(--k-pro-jade);
+  color: var(--k-ink);
+}
+
+body:has(.k-pro-mode--jade) #MainContent .k-tier:not(:has(.k-tier__features)) .k-tier__price {
+  color: var(--k-pro-accent);
+}
+
+body:has(.k-pro-mode--jade) #MainContent .k-tier:first-child .k-tier__price {
+  color: var(--k-pro-brass);
+}
+
+body:has(.k-pro-mode--jade) #MainContent .k-contact__fields {
+  --k-ink: #1f2a24;
+  --k-ink-2: #46514a;
+  --k-ink-3: #7d857f;
+  --k-hair: rgba(31, 42, 36, 0.12);
+  background: #fbf8f2;
+  border-color: transparent;
+  color: var(--k-ink);
+}
+
+body:has(.k-pro-mode--jade) #MainContent :is(.k-btn--bordeaux, .k-btn--dark) {
+  background: var(--k-pro-jade);
+  color: #f5f0e6;
+}
+
+body:has(.k-pro-mode--jade) #MainContent :is(.k-btn--bordeaux, .k-btn--dark):hover {
+  background: #1f2a24;
+}
+
+body:has(.k-pro-mode--jade) #MainContent .k-pro-form__choice input:checked + span {
+  background: var(--k-pro-jade);
+  border-color: var(--k-pro-jade);
+  color: #f5f0e6;
+}
+
 /* Coloured grounds (bordeaux, sand, sage): the page takes a Kapsule colour, while cards and the
    form stay cream so they read as panels laid on it. */
 body:has(.k-pro-mode--bordeaux) #MainContent {
