@@ -37,7 +37,7 @@
         "dark": true,
         "kicker": "KAPSULE PRO",
         "heading": "Espace professionnels",
-        "text": "Pour les instituts, spas, hôtels et cliniques qui veulent offrir le meilleur de la Corée."
+        "text": "Pour tous les professionnels de la beauté et du bien-être qui veulent offrir le meilleur de la Corée à leurs clients."
       }
     },
     "figures": {
@@ -84,7 +84,7 @@
             "kicker": "",
             "title": "Testés chaque jour au Kapsule Palais",
             "text": "<p>Des actifs coréens qui font la différence en soin, et se revendent d’eux-mêmes.</p>",
-            "tags": "Instituts, Spas, Hôtels, Cliniques esthétiques, Revente à domicile",
+            "tags": "Instituts, Spas, Hôtels, Cliniques esthétiques, Distributeurs, Revente à domicile",
             "note": "ZISU’C · DM CELL · 3DAYSLOVE · Kohonjin",
             "photo_label": "PHOTO — LA GAMME",
             "tint": "sand",
@@ -175,7 +175,7 @@
         "heading": "Parlons de votre établissement",
         "intro": "Tarifs ou programme de formation : envoyés sur simple demande.",
         "side": "<p><strong>Kapsule Palais</strong><br>10-12 Rue Charles-François Dupuis, 75003 Paris<br>info.kapsuleglobal@gmail.com</p>",
-        "types": "Institut / salon de beauté\nSpa / centre de bien-être\nHôtel / resort\nClinique / médecine esthétique\nConcept store / revendeur\nEntreprise / cadeaux d’affaires\nAutre",
+        "types": "Institut / salon de beauté\nSpa / centre de bien-être\nHôtel / resort\nClinique / médecine esthétique\nDistributeur / grossiste\nConcept store / revendeur\nAutre",
         "interests": "Offre produits B2B\nOffre formation"
       }
     }
