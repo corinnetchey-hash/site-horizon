@@ -4915,6 +4915,19 @@ body:has([data-k-cart-page]) .k-bubble {
   margin-top: auto;
 }
 
+/* Loyalty statuses: compact cards when a tier has no feature list */
+.k-tier:not(:has(.k-tier__features)) .k-tier__price {
+  margin-top: 26px;
+  padding-bottom: 0;
+  border-bottom: 0;
+  font-size: 26px;
+  color: var(--k-bordeaux);
+}
+
+.k-tiers:has(.k-tier:nth-child(4)) {
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+}
+
 .k-tiers__note {
   max-width: 680px;
   margin: 20px auto 0;

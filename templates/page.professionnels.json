@@ -62,14 +62,14 @@
           "type": "item",
           "settings": {
             "kicker": "Offre 01 — Produits",
-            "title": "La K-beauty de cabine, au prix pro",
-            "text": "<p>Testés chaque jour au Kapsule Palais : des actifs coréens qui font la différence en soin, et se revendent d’eux-mêmes.</p>",
-            "tags": "Instituts, Spas, Hôtels, Cliniques, Distributeurs, Revente à domicile",
-            "note": "ZISU’C · DM CELL · 3DAYSLOVE · Kohonjin",
+            "title": "La K-beauty d’exception, au prix pro",
+            "text": "<p>Des soins coréens choisis pour leurs résultats : à utiliser en soin, à proposer à la revente ou à distribuer.</p>",
+            "tags": "Instituts, Spas, Hôtels, Cliniques, Distributeurs, Revente",
+            "note": "ZISU’C · DM CELL · 3DAYSLOVE · Vegetology · Della Born",
             "photo_label": "PHOTO — LA GAMME",
             "tint": "sand",
-            "button_label": "Recevoir les tarifs pro",
-            "button_link": "/pages/professionnels#demande"
+            "button_label": "",
+            "button_link": ""
           }
         },
         "training": {
@@ -82,8 +82,8 @@
             "note": "Paris 3e ou sur site · Durée [à confirmer] · Kit, support et certificat inclus",
             "photo_label": "PHOTO — FORMATION",
             "tint": "sage",
-            "button_label": "Recevoir le programme",
-            "button_link": "/pages/professionnels#demande"
+            "button_label": "",
+            "button_link": ""
           }
         }
       },
@@ -103,6 +103,76 @@
         "end": false
       }
     },
+    "loyalty": {
+      "type": "kapsule-tiers",
+      "blocks": {
+        "jade": {
+          "type": "tier",
+          "settings": {
+            "name": "Jade",
+            "badge": "",
+            "highlight": false,
+            "tagline": "Dès la première commande",
+            "price": "Prix pro",
+            "features": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "amethyst": {
+          "type": "tier",
+          "settings": {
+            "name": "Amethyst",
+            "badge": "",
+            "highlight": false,
+            "tagline": "Plus de 1 000 € HT sur 6 mois",
+            "price": "+5 % de remise",
+            "features": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "pearl": {
+          "type": "tier",
+          "settings": {
+            "name": "Pearl",
+            "badge": "",
+            "highlight": false,
+            "tagline": "Plus de 3 000 € HT sur 6 mois",
+            "price": "+10 % de remise",
+            "features": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "diamond": {
+          "type": "tier",
+          "settings": {
+            "name": "Diamond",
+            "badge": "",
+            "highlight": false,
+            "tagline": "Plus de 5 000 € HT sur 6 mois",
+            "price": "+15 % de remise",
+            "features": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "jade",
+        "amethyst",
+        "pearl",
+        "diamond"
+      ],
+      "settings": {
+        "anchor": "fidelite",
+        "kicker": "PROGRAMME FIDÉLITÉ — PRODUITS",
+        "heading": "Plus vous commandez, plus vous gagnez",
+        "intro": "Le prix pro dès la première commande, puis une remise supplémentaire selon vos achats.",
+        "note": "Bienvenue : -5 % sur votre première commande · Statut recalculé tous les 6 mois · Minimum 5 pièces par référence"
+      }
+    },
     "enquiry": {
       "type": "kapsule-pro-form",
       "settings": {
@@ -120,6 +190,7 @@
     "intro",
     "figures",
     "offers",
+    "loyalty",
     "enquiry"
   ]
 }
