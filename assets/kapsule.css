@@ -5313,9 +5313,15 @@ body:has(.k-pro-mode--jade) #MainContent .k-pro-form__choice input:checked + spa
   box-shadow: 0 6px 20px rgba(31, 42, 36, 0.12);
 }
 
-.k-pro-item--jade .k-pro-item__overlay {
+/* like the tags: a label in the opposite colour of its card */
+.k-pro-item--white .k-pro-item__overlay {
   background: #2f4a3c;
   color: #f5f0e6;
+}
+
+.k-pro-item--jade .k-pro-item__overlay {
+  background: #ffffff;
+  color: #2f4a3c;
 }
 
 .k-pro-item__band {

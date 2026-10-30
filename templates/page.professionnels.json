@@ -105,7 +105,8 @@
         "columns": "2",
         "style": "surface",
         "show_media": true,
-        "end": false
+        "end": false,
+        "kicker_style": "overlay"
       }
     },
     "loyalty": {
