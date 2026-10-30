@@ -10,7 +10,7 @@
   </div>
   <div class="k-pro-grid k-pro-grid--{{ section.settings.columns }} k-pro-grid--{{ section.settings.style }}">
     {%- for block in section.blocks -%}
-      <article class="k-pro-item" {{ block.shopify_attributes }}>
+      <article class="k-pro-item k-pro-item--{{ block.settings.color | default: 'default' }}" {{ block.shopify_attributes }}>
         {%- if section.settings.show_media -%}
           <div class="k-pro-item__media k-tint--{{ block.settings.tint }}">
             {%- if block.settings.image != blank -%}
@@ -83,6 +83,17 @@
       "type": "item",
       "name": "Item",
       "settings": [
+        {
+          "type": "select",
+          "id": "color",
+          "label": "Card colour",
+          "options": [
+            { "value": "default", "label": "Page default" },
+            { "value": "white", "label": "White" },
+            { "value": "jade", "label": "Jade green" }
+          ],
+          "default": "default"
+        },
         { "type": "text", "id": "kicker", "label": "Number or kicker" },
         { "type": "text", "id": "title", "label": "Title", "default": "Titre" },
         { "type": "richtext", "id": "text", "label": "Text" },

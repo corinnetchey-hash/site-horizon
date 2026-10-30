@@ -69,7 +69,9 @@
             "photo_label": "PHOTO — LA GAMME",
             "tint": "sand",
             "button_label": "",
-            "button_link": ""
+            "button_link": "",
+            "color": "white",
+            "image": "shopify://shop_images/tageres_boutique_Kapsule.jpg"
           }
         },
         "training": {
@@ -83,7 +85,9 @@
             "photo_label": "PHOTO — FORMATION",
             "tint": "sage",
             "button_label": "",
-            "button_link": ""
+            "button_link": "",
+            "color": "jade",
+            "image": "shopify://shop_images/Photo_Oak-An_Su_Charlotte.jpg"
           }
         }
       },

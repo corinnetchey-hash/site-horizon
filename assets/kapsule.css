@@ -5288,6 +5288,30 @@ body:has(.k-pro-mode--jade) #MainContent .k-pro-form__choice input:checked + spa
   color: #f5f0e6;
 }
 
+/* Card colours, chosen per card in the grid section */
+#MainContent .k-pro-grid .k-pro-item.k-pro-item--white {
+  background: #ffffff;
+}
+
+#MainContent .k-pro-grid .k-pro-item.k-pro-item--jade {
+  --k-ink: #f5f0e6;
+  --k-ink-2: rgba(245, 240, 230, 0.8);
+  --k-ink-3: rgba(245, 240, 230, 0.62);
+  --k-hair-strong: rgba(245, 240, 230, 0.4);
+  background: #2f4a3c;
+  border-color: transparent;
+  color: var(--k-ink);
+}
+
+#MainContent .k-pro-grid .k-pro-item--jade .k-pro-item__kicker {
+  color: #c9a96a;
+}
+
+#MainContent .k-pro-grid .k-pro-item--jade .k-pro-item__tags li {
+  color: #f5f0e6;
+  border-color: rgba(245, 240, 230, 0.4);
+}
+
 /* Coloured grounds (bordeaux, sand, sage): the page takes a Kapsule colour, while cards and the
    form stay cream so they read as panels laid on it. */
 body:has(.k-pro-mode--bordeaux) #MainContent {
