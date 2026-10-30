@@ -9,17 +9,35 @@
  */
 {
   "sections": {
-    "hero": {
-      "type": "kapsule-banner",
+    "intro": {
+      "type": "kapsule-pro-intro",
+      "blocks": {
+        "offer_products": {
+          "type": "offer",
+          "settings": {
+            "title": "Produits professionnels",
+            "text": "La K-beauty de cabine, au prix pro",
+            "link": "/pages/professionnels#produits"
+          }
+        },
+        "offer_training": {
+          "type": "offer",
+          "settings": {
+            "title": "Formation OAK-AN",
+            "text": "Le soin signature du Kapsule Palais",
+            "link": "/pages/professionnels#formation"
+          }
+        }
+      },
+      "block_order": [
+        "offer_products",
+        "offer_training"
+      ],
       "settings": {
-        "copy_key": "pro.hero",
-        "style": "bordeaux",
+        "dark": true,
         "kicker": "KAPSULE PRO",
-        "heading": "Offrez à vos clients le meilleur de la Corée",
-        "text": "Produits professionnels et formation OAK-AN, directement depuis notre institut parisien.",
-        "body": "",
-        "button_label": "Devenir partenaire",
-        "button_link": "/pages/professionnels#demande"
+        "heading": "Espace professionnels",
+        "text": "Pour les instituts, spas, hôtels et cliniques qui veulent offrir le meilleur de la Corée."
       }
     },
     "figures": {
@@ -163,7 +181,7 @@
     }
   },
   "order": [
-    "hero",
+    "intro",
     "figures",
     "ranges",
     "academy",
