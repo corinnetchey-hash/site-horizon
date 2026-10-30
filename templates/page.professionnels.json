@@ -30,7 +30,7 @@
           "settings": {
             "kicker": "Offre 01",
             "title": "Produits B2B",
-            "text": "<ul><li>Soins coréens à tarifs préférentiels</li><li>Gammes institut, spa, hôtellerie et soins à domicile</li><li>Revente en établissement</li></ul>",
+            "text": "<ul><li>Soins coréens à tarifs préférentiels</li><li>Pour instituts, spas, hôtels et cliniques</li><li>Revente en établissement</li></ul>",
             "photo_label": "PHOTO — PRODUITS",
             "tint": "sand",
             "button_label": "Voir l’offre produits",
@@ -104,64 +104,31 @@
     "ranges": {
       "type": "kapsule-grid",
       "blocks": {
-        "range_1": {
+        "range": {
           "type": "item",
           "settings": {
             "kicker": "",
-            "title": "Institut",
-            "text": "<p>Formats cabine et ampoules</p>",
+            "title": "Les soins du Kapsule Palais, à tarifs professionnels",
+            "text": "<p>Les mêmes produits coréens s’utilisent en cabine, au spa, en chambre d’hôtel ou se revendent pour la routine à domicile.</p>",
+            "tags": "Instituts, Spas, Hôtels, Cliniques esthétiques, Revente à domicile",
             "note": "ZISU’C · DM CELL · 3DAYSLOVE · Kohonjin",
-            "photo_label": "PHOTO — PRODUITS CABINE",
-            "tint": "sand"
-          }
-        },
-        "range_2": {
-          "type": "item",
-          "settings": {
-            "kicker": "",
-            "title": "Spa & bien-être",
-            "text": "<p>Rituels visage et corps</p>",
-            "note": "",
-            "photo_label": "PHOTO — RITUEL SPA",
-            "tint": "sage"
-          }
-        },
-        "range_3": {
-          "type": "item",
-          "settings": {
-            "kicker": "",
-            "title": "Hôtellerie",
-            "text": "<p>Accueil, miniatures, coffrets</p>",
-            "note": "",
-            "photo_label": "PHOTO — AMENITIES HÔTEL",
-            "tint": "rose"
-          }
-        },
-        "range_4": {
-          "type": "item",
-          "settings": {
-            "kicker": "",
-            "title": "Soins à domicile",
-            "text": "<p>Dermo-esthétique coréenne</p>",
-            "note": "",
-            "photo_label": "PHOTO — ROUTINE À DOMICILE",
-            "tint": "sand"
+            "photo_label": "PHOTO — LA GAMME",
+            "tint": "sand",
+            "button_label": "Demander les tarifs",
+            "button_link": "/pages/professionnels#demande"
           }
         }
       },
       "block_order": [
-        "range_1",
-        "range_2",
-        "range_3",
-        "range_4"
+        "range"
       ],
       "settings": {
         "anchor": "produits",
         "kicker": "OFFRE 01 — PRODUITS B2B",
-        "heading": "Nos gammes professionnelles",
+        "heading": "Une gamme, tous vos usages",
         "intro": "",
         "center": false,
-        "columns": "4",
+        "columns": "1",
         "style": "surface",
         "show_media": true,
         "end": false

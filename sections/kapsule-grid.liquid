@@ -24,6 +24,15 @@
           {%- if block.settings.kicker != blank -%}<div class="k-pro-item__kicker">{{ block.settings.kicker }}</div>{%- endif -%}
           <h3 class="k-pro-item__title">{{ block.settings.title }}</h3>
           {%- if block.settings.text != blank -%}<div class="k-pro-item__text k-rte">{{ block.settings.text }}</div>{%- endif -%}
+          {%- if block.settings.tags != blank -%}
+            <ul class="k-pro-item__tags" role="list">
+              {%- assign tags = block.settings.tags | split: ',' -%}
+              {%- for tag in tags -%}
+                {%- assign tag = tag | strip -%}
+                {%- if tag != blank -%}<li>{{ tag }}</li>{%- endif -%}
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
           {%- if block.settings.note != blank -%}<p class="k-pro-item__note">{{ block.settings.note }}</p>{%- endif -%}
           {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
             <a class="k-btn k-btn--dark k-pro-item__button" href="{{ block.settings.button_link }}">{{ block.settings.button_label }}</a>
@@ -48,6 +57,7 @@
       "id": "columns",
       "label": "Columns on desktop",
       "options": [
+        { "value": "1", "label": "1 (photo beside the text)" },
         { "value": "2", "label": "2" },
         { "value": "3", "label": "3" },
         { "value": "4", "label": "4" }
@@ -76,6 +86,7 @@
         { "type": "text", "id": "kicker", "label": "Number or kicker" },
         { "type": "text", "id": "title", "label": "Title", "default": "Titre" },
         { "type": "richtext", "id": "text", "label": "Text" },
+        { "type": "text", "id": "tags", "label": "Tags", "info": "Comma separated, e.g. Instituts, Spas, Hôtels." },
         { "type": "text", "id": "note", "label": "Small note" },
         { "type": "text", "id": "button_label", "label": "Button label" },
         { "type": "url", "id": "button_link", "label": "Button link" },
