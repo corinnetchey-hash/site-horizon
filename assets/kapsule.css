@@ -5176,6 +5176,74 @@ body:has([data-k-cart-page]) .k-bubble {
 
 /* ---------- Kapsule Pro look: the professional page's content gets its own palette ---------- */
 
+/* Coloured grounds (bordeaux, sand, sage): the page takes a Kapsule colour, while cards and the
+   form stay cream so they read as panels laid on it. */
+body:has(.k-pro-mode--bordeaux) #MainContent {
+  --k-canvas: #5a1410;
+  --k-ink: #fbf6f0;
+  --k-ink-2: rgba(251, 246, 240, 0.8);
+  --k-ink-3: rgba(251, 246, 240, 0.62);
+  --k-ink-3-light: rgba(251, 246, 240, 0.62);
+  --k-hair: rgba(251, 246, 240, 0.16);
+  --k-hair-strong: rgba(251, 246, 240, 0.34);
+  --k-pro-accent: var(--k-sand);
+  background: linear-gradient(180deg, #6a1a14 0%, #5a1410 45%, #4a110d 100%);
+  color: var(--k-ink);
+}
+
+body:has(.k-pro-mode--sand) #MainContent {
+  --k-canvas: #e9c9a8;
+  --k-ink: #3a120e;
+  --k-ink-2: #5a2a1f;
+  --k-ink-3: #7a4a3a;
+  --k-ink-3-light: #7a4a3a;
+  --k-hair: rgba(90, 20, 16, 0.16);
+  --k-hair-strong: rgba(90, 20, 16, 0.34);
+  --k-pro-accent: var(--k-bordeaux);
+  background: linear-gradient(180deg, #ecd0b2 0%, #e4c19e 100%);
+  color: var(--k-ink);
+}
+
+body:has(.k-pro-mode--sage) #MainContent {
+  --k-canvas: #a9c2ae;
+  --k-ink: #15211a;
+  --k-ink-2: #2c3d31;
+  --k-ink-3: #46594b;
+  --k-ink-3-light: #46594b;
+  --k-hair: rgba(21, 33, 26, 0.16);
+  --k-hair-strong: rgba(21, 33, 26, 0.34);
+  --k-pro-accent: var(--k-bordeaux);
+  background: linear-gradient(180deg, #b3c9b7 0%, #9fb9a4 100%);
+  color: var(--k-ink);
+}
+
+body:is(:has(.k-pro-mode--bordeaux), :has(.k-pro-mode--sand), :has(.k-pro-mode--sage)) #MainContent :is(.k-pro-item, .k-tier, .k-contact__fields) {
+  --k-ink: #1a1714;
+  --k-ink-2: #4a443e;
+  --k-ink-3: #8a8178;
+  --k-ink-3-light: #9a9189;
+  --k-hair: rgba(26, 23, 20, 0.1);
+  --k-hair-strong: rgba(26, 23, 20, 0.32);
+  background: #fbf6f0;
+  border-color: transparent;
+  color: var(--k-ink);
+}
+
+body:is(:has(.k-pro-mode--bordeaux), :has(.k-pro-mode--sand), :has(.k-pro-mode--sage)) #MainContent > * > :is(section, div) > .k-pro-head .k-kicker,
+body:is(:has(.k-pro-mode--bordeaux), :has(.k-pro-mode--sand), :has(.k-pro-mode--sage)) #MainContent .k-pro-intro .k-kicker,
+body:is(:has(.k-pro-mode--bordeaux), :has(.k-pro-mode--sand), :has(.k-pro-mode--sage)) #MainContent .k-pro-form__intro .k-kicker,
+body:is(:has(.k-pro-mode--bordeaux), :has(.k-pro-mode--sand), :has(.k-pro-mode--sage)) #MainContent .k-stats__value {
+  color: var(--k-pro-accent);
+}
+
+body:is(:has(.k-pro-mode--bordeaux), :has(.k-pro-mode--sand), :has(.k-pro-mode--sage)) #MainContent :is(.k-pro-item__kicker, .k-tier__price) {
+  color: var(--k-bordeaux);
+}
+
+body:is(:has(.k-pro-mode--bordeaux), :has(.k-pro-mode--sand), :has(.k-pro-mode--sage)) #MainContent .k-pro-item__tags li {
+  color: #1a1714;
+}
+
 /* Warm stone: a deeper, warmer ground than the shop's cream, with bordeaux accents */
 body:has(.k-pro-mode--stone) #MainContent {
   --k-canvas: #e9e2d6;
