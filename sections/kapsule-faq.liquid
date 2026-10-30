@@ -1,0 +1,41 @@
+{%- comment -%}
+  Questions and answers as an accordion (native <details>, no script needed).
+{%- endcomment -%}
+<section class="k-container k-section" id="{{ section.settings.anchor }}">
+  <div class="k-faq">
+    <div class="k-faq__head">
+      {%- if section.settings.kicker != blank -%}<div class="k-kicker">{{ section.settings.kicker }}</div>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="k-h2">{{ section.settings.heading }}</h2>{%- endif -%}
+    </div>
+    <div class="k-faq__list">
+      {%- for block in section.blocks -%}
+        <details class="k-faq__item" {{ block.shopify_attributes }}>
+          <summary class="k-faq__q">{{ block.settings.question }}</summary>
+          <div class="k-faq__a k-rte">{{ block.settings.answer }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Kapsule FAQ",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Anchor ID", "default": "faq" },
+    { "type": "text", "id": "kicker", "label": "Kicker" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Questions fréquentes" }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Question" },
+        { "type": "richtext", "id": "answer", "label": "Answer" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Kapsule FAQ", "blocks": [{ "type": "question" }, { "type": "question" }] }]
+}
+{% endschema %}

@@ -1,0 +1,43 @@
+{%- comment -%}
+  A row of key figures (e.g. "34 ans — de pratique du soin structurel"), on the canvas or a bordeaux band.
+{%- endcomment -%}
+<div class="k-container" style="padding-top: {{ section.settings.padding_top }}px">
+  <dl class="k-stats k-stats--{{ section.settings.style }}">
+    {%- for block in section.blocks -%}
+      <div class="k-stats__item" {{ block.shopify_attributes }}>
+        <dt class="k-stats__value">{{ block.settings.value }}</dt>
+        <dd class="k-stats__label">{{ block.settings.label }}</dd>
+      </div>
+    {%- endfor -%}
+  </dl>
+</div>
+
+{% schema %}
+{
+  "name": "Kapsule key figures",
+  "settings": [
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Style",
+      "options": [
+        { "value": "plain", "label": "Canvas" },
+        { "value": "bordeaux", "label": "Bordeaux band" }
+      ],
+      "default": "plain"
+    },
+    { "type": "range", "id": "padding_top", "label": "Space above", "min": 0, "max": 64, "step": 4, "unit": "px", "default": 24 }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Figure",
+      "settings": [
+        { "type": "text", "id": "value", "label": "Figure", "default": "34 ans" },
+        { "type": "text", "id": "label", "label": "Label" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Kapsule key figures", "blocks": [{ "type": "stat" }, { "type": "stat" }, { "type": "stat" }] }]
+}
+{% endschema %}

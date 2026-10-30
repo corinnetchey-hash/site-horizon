@@ -1,0 +1,96 @@
+{%- comment -%}
+  Professional enquiry form (sent through Shopify's contact form to the shop's email), with a
+  side card for direct contact details. Field labels come from the locale files; the lists of
+  establishment types and interests come from the section settings, one option per line.
+{%- endcomment -%}
+<section class="k-container k-section k-section--end" id="{{ section.settings.anchor | default: 'demande' }}">
+  <div class="k-pro-form">
+    <div class="k-pro-form__intro">
+      {%- if section.settings.kicker != blank -%}<div class="k-kicker">{{ section.settings.kicker }}</div>{%- endif -%}
+      <h2 class="k-h2">{{ section.settings.heading }}</h2>
+      {%- if section.settings.intro != blank -%}<p class="k-pro-head__intro">{{ section.settings.intro }}</p>{%- endif -%}
+      {%- if section.settings.side != blank -%}<div class="k-pro-form__side k-rte">{{ section.settings.side }}</div>{%- endif -%}
+    </div>
+
+    {%- form 'contact', class: 'k-contact__fields k-pro-form__fields', id: 'KapsuleProForm' -%}
+      {%- if form.posted_successfully? -%}
+        <p class="k-contact__msg" role="status">{{ 'kapsule.pro_form.sent' | t }}</p>
+      {%- endif -%}
+      {%- if form.errors -%}
+        <p class="k-contact__msg" role="alert">{{ 'kapsule.contact.error' | t }}</p>
+      {%- endif -%}
+      <input type="hidden" name="contact[Source]" value="{{ page.title | default: 'Page professionnels' }}">
+      <div class="k-contact__row">
+        <div class="k-contact__field">
+          <label for="KapsuleProName">{{ 'kapsule.pro_form.name' | t }}</label>
+          <input id="KapsuleProName" type="text" name="contact[name]" autocomplete="name" required value="{{ form.name }}">
+        </div>
+        <div class="k-contact__field">
+          <label for="KapsuleProCompany">{{ 'kapsule.pro_form.company' | t }}</label>
+          <input id="KapsuleProCompany" type="text" name="contact[Établissement]" autocomplete="organization" required>
+        </div>
+      </div>
+      <div class="k-contact__row">
+        <div class="k-contact__field">
+          <label for="KapsuleProEmail">{{ 'kapsule.contact.email' | t }}</label>
+          <input id="KapsuleProEmail" type="email" name="contact[email]" autocomplete="email" required value="{{ form.email }}">
+        </div>
+        <div class="k-contact__field">
+          <label for="KapsuleProPhone">{{ 'kapsule.contact.phone' | t }}</label>
+          <input id="KapsuleProPhone" type="tel" name="contact[phone]" autocomplete="tel" value="{{ form.phone }}">
+        </div>
+      </div>
+      <div class="k-contact__row">
+        <div class="k-contact__field">
+          <label for="KapsuleProType">{{ 'kapsule.pro_form.type' | t }}</label>
+          <select id="KapsuleProType" name="contact[Type d'établissement]" required>
+            <option value="">{{ 'kapsule.pro_form.choose' | t }}</option>
+            {%- assign types = section.settings.types | newline_to_br | split: '<br />' -%}
+            {%- for option in types -%}
+              {%- assign option = option | strip -%}
+              {%- if option != blank -%}<option value="{{ option | escape }}">{{ option }}</option>{%- endif -%}
+            {%- endfor -%}
+          </select>
+        </div>
+        <div class="k-contact__field">
+          <label for="KapsuleProCity">{{ 'kapsule.pro_form.city' | t }}</label>
+          <input id="KapsuleProCity" type="text" name="contact[Ville / pays]" autocomplete="address-level2">
+        </div>
+      </div>
+      <fieldset class="k-pro-form__choices">
+        <legend>{{ 'kapsule.pro_form.interest' | t }}</legend>
+        {%- assign interests = section.settings.interests | newline_to_br | split: '<br />' -%}
+        {%- for option in interests -%}
+          {%- assign option = option | strip -%}
+          {%- if option == blank -%}{%- continue -%}{%- endif -%}
+          <label class="k-pro-form__choice">
+            <input type="checkbox" name="contact[Intérêt — {{ option | escape }}]" value="Oui">
+            <span>{{ option }}</span>
+          </label>
+        {%- endfor -%}
+      </fieldset>
+      <div class="k-contact__field">
+        <label for="KapsuleProMessage">{{ 'kapsule.pro_form.message' | t }}</label>
+        <textarea id="KapsuleProMessage" name="contact[body]" rows="5" placeholder="{{ 'kapsule.pro_form.placeholder' | t }}">{{ form.body }}</textarea>
+      </div>
+      <button type="submit" class="k-btn k-btn--bordeaux">{{ 'kapsule.pro_form.send' | t }}</button>
+      <p class="k-pro-form__legal">{{ 'kapsule.pro_form.legal' | t }}</p>
+    {%- endform -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Kapsule pro enquiry form",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Anchor ID", "default": "demande" },
+    { "type": "text", "id": "kicker", "label": "Kicker" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Parlons de votre projet" },
+    { "type": "textarea", "id": "intro", "label": "Introduction" },
+    { "type": "richtext", "id": "side", "label": "Contact details" },
+    { "type": "textarea", "id": "types", "label": "Types of establishment", "info": "One per line." },
+    { "type": "textarea", "id": "interests", "label": "Interests (checkboxes)", "info": "One per line." }
+  ],
+  "presets": [{ "name": "Kapsule pro enquiry form" }]
+}
+{% endschema %}

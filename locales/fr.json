@@ -441,6 +441,19 @@
         "text_html": "<p><strong>Mardi au dimanche</strong><br>11h00 — 20h00</p><p><strong>Lundi</strong><br>Fermé</p><p>De 19h à 20h du mardi au samedi, et le dimanche toute la journée, accès uniquement sur réservation en ligne.</p>"
       }
     },
+    "pro_form": {
+      "name": "Nom et prénom",
+      "company": "Établissement",
+      "type": "Type d'établissement",
+      "choose": "Choisir…",
+      "city": "Ville, pays",
+      "interest": "Vous êtes intéressé·e par",
+      "message": "Votre projet",
+      "placeholder": "Nombre de cabines, volumes envisagés, dates souhaitées pour la formation…",
+      "send": "Envoyer ma demande",
+      "sent": "Merci ! Votre demande a bien été envoyée : notre équipe professionnelle vous recontacte très vite.",
+      "legal": "Offre réservée aux professionnels. Vos informations servent uniquement à traiter votre demande."
+    },
     "contact": {
       "sent": "Merci ! Votre message a bien été envoyé, nous vous répondons sous 24 à 48 heures.",
       "error": "Merci de vérifier les champs du formulaire.",
