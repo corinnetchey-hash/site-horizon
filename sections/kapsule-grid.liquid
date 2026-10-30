@@ -13,8 +13,14 @@
       <article class="k-pro-item k-pro-item--{{ block.settings.color | default: 'default' }}" {{ block.shopify_attributes }}>
         {%- if section.settings.show_media -%}
           <div class="k-pro-item__media k-tint--{{ block.settings.tint }}">
-            {%- if block.settings.image != blank -%}
-              {{ block.settings.image | image_url: width: 1000 | image_tag: sizes: '(min-width: 900px) 33vw, 100vw', loading: 'lazy', alt: block.settings.title }}
+            {%- liquid
+              assign media_image = block.settings.image
+              if media_image == blank and block.settings.collection != blank
+                assign media_image = block.settings.collection.image | default: block.settings.collection.products.first.featured_image
+              endif
+            -%}
+            {%- if media_image != blank -%}
+              {{ media_image | image_url: width: 1000 | image_tag: sizes: '(min-width: 900px) 33vw, 100vw', loading: 'lazy', alt: block.settings.title }}
             {%- else -%}
               <span class="k-media__label">{{ block.settings.photo_label | default: 'PHOTO' }}</span>
             {%- endif -%}
@@ -102,6 +108,7 @@
         { "type": "text", "id": "button_label", "label": "Button label" },
         { "type": "url", "id": "button_link", "label": "Button link" },
         { "type": "image_picker", "id": "image", "label": "Photo", "info": "Shown when the section's “Show photos” is on." },
+        { "type": "collection", "id": "collection", "label": "Or a collection's photo", "info": "Used when no photo is picked: the collection's image, or its first product's photo." },
         { "type": "text", "id": "photo_label", "label": "Placeholder label" },
         {
           "type": "select",

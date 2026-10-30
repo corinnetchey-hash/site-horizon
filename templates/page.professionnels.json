@@ -71,7 +71,8 @@
             "button_label": "",
             "button_link": "",
             "color": "white",
-            "image": "shopify://shop_images/tageres_boutique_Kapsule.jpg"
+            "image": "",
+            "collection": "soins-vegetology"
           }
         },
         "training": {

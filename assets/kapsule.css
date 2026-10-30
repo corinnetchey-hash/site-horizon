@@ -5307,9 +5307,17 @@ body:has(.k-pro-mode--jade) #MainContent .k-pro-form__choice input:checked + spa
   color: #c9a96a;
 }
 
-#MainContent .k-pro-grid .k-pro-item--jade .k-pro-item__tags li {
+/* filled tags in the opposite colour of their card, so they stand out */
+#MainContent .k-pro-grid .k-pro-item.k-pro-item--jade .k-pro-item__tags li {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #2f4a3c;
+}
+
+#MainContent .k-pro-grid .k-pro-item.k-pro-item--white .k-pro-item__tags li {
+  background: #2f4a3c;
+  border-color: #2f4a3c;
   color: #f5f0e6;
-  border-color: rgba(245, 240, 230, 0.4);
 }
 
 /* Coloured grounds (bordeaux, sand, sage): the page takes a Kapsule colour, while cards and the
