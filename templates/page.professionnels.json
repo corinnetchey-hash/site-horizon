@@ -71,8 +71,8 @@
             "button_label": "",
             "button_link": "",
             "color": "white",
-            "image": "",
-            "collection": "soins-vegetology"
+            "image": "shopify://shop_images/DMCELL_Intensive_BTX.jpg",
+            "collection": "dm-cell"
           }
         },
         "training": {
@@ -186,7 +186,7 @@
         "kicker": "CONTACT PRO",
         "heading": "Parlons de votre établissement",
         "intro": "Tarifs ou programme de formation : envoyés sur simple demande.",
-        "side": "<p><strong>Kapsule Palais</strong><br>10-12 Rue Charles-François Dupuis, 75003 Paris<br>info.kapsuleglobal@gmail.com</p>",
+        "side": "<p><strong>Kapsule Palais</strong><br>10-12 Rue Charles-François Dupuis, 75003 Paris<br>info.kapsuleglobal01@gmail.com</p>",
         "types": "Institut / salon de beauté\nSpa / centre de bien-être\nHôtel / resort\nClinique / médecine esthétique\nDistributeur / grossiste\nConcept store / revendeur\nAutre",
         "interests": "Offre produits B2B\nOffre formation"
       }
