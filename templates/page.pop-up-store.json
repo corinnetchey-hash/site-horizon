@@ -9,118 +9,12 @@
  */
 {
   "sections": {
-    "banner": {
-      "type": "kapsule-banner",
+    "video": {
+      "type": "kapsule-video-hero",
       "settings": {
         "copy_key": "popup.hero",
-        "style": "popup",
-        "kicker": "",
-        "heading": "",
-        "text": "",
-        "body": "",
-        "button_label": "",
-        "button_link": ""
-      }
-    },
-    "tiles": {
-      "type": "kapsule-tiles",
-      "blocks": {
-        "tile_1": {
-          "type": "tile",
-          "settings": {
-            "image": "shopify://shop_images/IMG_9308.jpg",
-            "copy_key": "popup.tile_1",
-            "label": "",
-            "tint": "sand",
-            "height": 320
-          }
-        },
-        "tile_2": {
-          "type": "tile",
-          "settings": {
-            "image": "shopify://shop_images/IMG_1422.jpg",
-            "copy_key": "popup.tile_2",
-            "label": "",
-            "tint": "amber",
-            "height": 150
-          }
-        },
-        "tile_3": {
-          "type": "tile",
-          "settings": {
-            "image": "shopify://shop_images/IMG_1427.jpg",
-            "copy_key": "popup.tile_3",
-            "label": "",
-            "tint": "green",
-            "height": 150
-          }
-        },
-        "tile_4": {
-          "type": "tile",
-          "settings": {
-            "image": "shopify://shop_images/IMG_1425.jpg",
-            "copy_key": "popup.tile_4",
-            "label": "",
-            "tint": "stone",
-            "height": 150
-          }
-        }
-      },
-      "block_order": [
-        "tile_1",
-        "tile_2",
-        "tile_3",
-        "tile_4"
-      ],
-      "settings": {}
-    },
-    "edits": {
-      "type": "kapsule-edits",
-      "blocks": {
-        "edit_1": {
-          "type": "edit",
-          "settings": {
-            "copy_key": "popup.edit_1",
-            "name": "IRI",
-            "status": "Nouveau cette semaine"
-          }
-        },
-        "edit_2": {
-          "type": "edit",
-          "settings": {
-            "copy_key": "popup.edit_2",
-            "name": "Art De Base",
-            "status": ""
-          }
-        },
-        "edit_3": {
-          "type": "edit",
-          "settings": {
-            "copy_key": "popup.edit_3",
-            "name": "Toyeong",
-            "status": "Nouveau cette semaine"
-          }
-        }
-      },
-      "block_order": [
-        "edit_1",
-        "edit_2",
-        "edit_3"
-      ],
-      "disabled": true,
-      "settings": {
-        "copy_key": "popup.edits",
-        "heading": ""
-      }
-    },
-    "visit": {
-      "type": "kapsule-visit",
-      "settings": {
-        "copy_key": "popup.visit",
-        "heading": "",
-        "text": "",
-        "image": "shopify://shop_images/Devanture_Kapsule.png",
-        "tint": "popup"
+        "height": "full",
+        "scroll_to": "marques"
       }
     },
     "brands": {
@@ -151,7 +45,45 @@
             "name": "Toyeong",
             "status": "Nouveau cette semaine"
           },
-          "blocks": {}
+          "blocks": {
+            "photo_1": {
+              "type": "_kapsule-brand-photo",
+              "settings": {
+                "image": "shopify://shop_images/Toyeong_popup_1.jpg"
+              }
+            },
+            "photo_2": {
+              "type": "_kapsule-brand-photo",
+              "settings": {
+                "image": "shopify://shop_images/Toyeong_popup_2.jpg"
+              }
+            },
+            "photo_3": {
+              "type": "_kapsule-brand-photo",
+              "settings": {
+                "image": "shopify://shop_images/Toyeong_popup_3.jpg"
+              }
+            },
+            "photo_4": {
+              "type": "_kapsule-brand-photo",
+              "settings": {
+                "image": "shopify://shop_images/Toyeong_popup_4.jpg"
+              }
+            },
+            "photo_5": {
+              "type": "_kapsule-brand-photo",
+              "settings": {
+                "image": "shopify://shop_images/Toyeong_popup_5.jpg"
+              }
+            }
+          },
+          "block_order": [
+            "photo_1",
+            "photo_2",
+            "photo_3",
+            "photo_4",
+            "photo_5"
+          ]
         }
       },
       "block_order": [
@@ -170,10 +102,7 @@
     }
   },
   "order": [
-    "banner",
-    "tiles",
-    "brands",
-    "edits",
-    "visit"
+    "video",
+    "brands"
   ]
 }

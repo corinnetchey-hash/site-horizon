@@ -6,10 +6,10 @@
   assign caption = block.settings.caption
   assign photo_alt = caption | default: photo.alt
 -%}
-<li class="k-ibrand__slide" {{ block.shopify_attributes }}>
+<li class="k-ibrand__slide{% if photo != blank %} k-ibrand__slide--photo{% endif %}" {{ block.shopify_attributes }}>
   <span class="k-ibrand__photo k-tint--{{ section.settings.tint }}">
     {%- if photo != blank -%}
-      {{ photo | image_url: width: 900 | image_tag: sizes: '(min-width: 990px) 22vw, (min-width: 700px) 30vw, 62vw', loading: 'lazy', alt: photo_alt }}
+      {{ photo | image_url: height: 1000 | image_tag: sizes: '(min-width: 600px) 40vw, 80vw', loading: 'lazy', alt: photo_alt }}
     {%- endif -%}
   </span>
   {%- if caption != blank -%}<span class="k-ibrand__caption">{{ caption }}</span>{%- endif -%}

@@ -781,6 +781,7 @@
       frame = window.requestAnimationFrame(update);
     });
     if ('ResizeObserver' in window) new ResizeObserver(update).observe(track);
+    track.querySelectorAll('img').forEach((img) => img.addEventListener('load', update));
     update();
   }
 

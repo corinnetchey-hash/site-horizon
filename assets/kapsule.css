@@ -4362,6 +4362,25 @@ body:has([data-k-cart-page]) .k-bubble {
   object-fit: cover;
 }
 
+/* Real photos keep their own shape: same height for all, full image visible, no cropping */
+.k-ibrand__slide--photo {
+  flex: 0 0 auto;
+}
+
+.k-ibrand__slide--photo .k-ibrand__photo {
+  aspect-ratio: auto;
+  height: clamp(270px, 30vw, 440px);
+  padding: 0;
+  background: none;
+}
+
+.k-ibrand__slide--photo .k-ibrand__photo img {
+  position: static;
+  width: auto;
+  height: 100%;
+  border-radius: 4px;
+}
+
 .k-ibrand__caption {
   display: block;
   margin-top: 10px;
@@ -4394,6 +4413,12 @@ body:has([data-k-cart-page]) .k-bubble {
 @media (max-width: 599px) {
   .k-ibrand__slide {
     flex-basis: 62%;
+  }
+}
+
+@media (max-width: 899px) {
+  .k-ibrand__slide.k-ibrand__slide--photo {
+    flex-basis: auto;
   }
 }
 
