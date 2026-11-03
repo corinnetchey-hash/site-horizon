@@ -775,7 +775,11 @@
       "hero": {
         "kicker": "—— POP-UP STORE",
         "heading": "L'exclusivité lifestyle",
-        "text": "Un espace éphémère dédié à la culture lifestyle coréenne — marques, créateurs émergents et pièces uniques, à travers des sélections exclusives et tournantes."
+        "text": "Un espace éphémère dédié à la culture lifestyle coréenne — marques, créateurs émergents et pièces uniques, à travers des sélections exclusives et tournantes.",
+        "video": "VIDÉO D'INTRODUCTION DU POP-UP",
+        "scroll": "Découvrir les marques",
+        "sound_on": "Activer le son",
+        "sound_off": "Couper le son"
       },
       "tile_1": "PHOTO — VITRINE",
       "tile_2": "CÉRAMIQUE",
@@ -791,7 +795,8 @@
         "link": "Découvrir la marque",
         "previous": "Photos précédentes",
         "next": "Photos suivantes",
-        "photo": "PHOTO PRODUIT"
+        "photo": "PHOTO PRODUIT",
+        "instagram": "Instagram"
       },
       "edit_1": {
         "name": "IRI",

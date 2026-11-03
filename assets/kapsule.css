@@ -4403,6 +4403,172 @@ body:has([data-k-cart-page]) .k-bubble {
   }
 }
 
+/* Website + Instagram links under each brand's description */
+.k-ibrand__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 20px;
+  margin-top: 16px;
+}
+
+.k-ibrand__links .k-ibrand__link {
+  margin-top: 0;
+}
+
+.k-ibrand__insta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.k-ibrand__insta:hover {
+  color: var(--k-bordeaux);
+}
+
+/* ---------- Intro video (pop-up store): full-width video under the header ---------- */
+
+.k-vhero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: var(--k-grad-popup);
+  color: #fff;
+}
+
+.k-vhero--full {
+  height: clamp(460px, calc(100svh - 150px), 920px);
+}
+
+.k-vhero--tall {
+  height: clamp(420px, 72svh, 760px);
+}
+
+.k-vhero--medium {
+  height: clamp(360px, 56svh, 600px);
+}
+
+.k-vhero__media,
+.k-vhero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.k-vhero__video {
+  object-fit: cover;
+}
+
+/* Darkens the bottom-left corner so the title stays readable on any footage */
+.k-vhero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(20deg, rgba(20, 10, 24, 0.62) 0%, rgba(20, 10, 24, 0.2) 45%, rgba(20, 10, 24, 0) 70%);
+  pointer-events: none;
+}
+
+.k-vhero__placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.k-vhero__placeholder .k-media__label {
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.08em;
+}
+
+.k-vhero__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--k-max);
+  margin: 0 auto;
+  padding: 0 var(--k-gutter) clamp(36px, 6vw, 72px);
+}
+
+.k-vhero__kicker {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.k-vhero__title {
+  margin: 16px 0 0;
+  max-width: 720px;
+  font-family: var(--k-serif);
+  font-weight: 400;
+  font-size: clamp(36px, 5.4vw, 68px);
+  line-height: 1.06;
+}
+
+.k-vhero__text {
+  margin: 16px 0 0;
+  max-width: 520px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.k-vhero__down {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 26px;
+  padding: 11px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+  font-size: 13px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.k-vhero__down:hover {
+  background: #fff;
+  color: var(--k-ink);
+}
+
+.k-vhero__sound {
+  position: absolute;
+  z-index: 1;
+  right: var(--k-gutter);
+  bottom: clamp(36px, 6vw, 72px);
+  padding: 9px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+  background: rgba(20, 10, 24, 0.25);
+  font: inherit;
+  font-size: 12px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.k-vhero__sound:hover {
+  background: rgba(20, 10, 24, 0.5);
+}
+
+@media (max-width: 599px) {
+  .k-vhero--full {
+    height: clamp(420px, calc(100svh - 120px), 760px);
+  }
+
+  .k-vhero__sound {
+    top: 16px;
+    bottom: auto;
+  }
+}
+
 /* ---------- Professional (B2B) page: shared heading, figures, grid, training, tiers, FAQ, form ---------- */
 
 .k-pro-head {

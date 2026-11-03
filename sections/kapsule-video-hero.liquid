@@ -1,0 +1,88 @@
+{%- comment -%}
+  Full-width intro video (pop-up store): plays muted on a loop as soon as the page opens, with a
+  sound toggle and a link down to the brands. Falls back to the poster image, then to the pop-up
+  gradient, when no video is chosen.
+{%- endcomment -%}
+{%- liquid
+  assign copy_key = 'kapsule.' | append: section.settings.copy_key | append: '.'
+  assign video = section.settings.video
+  assign poster = section.settings.poster
+  if poster == blank and video != blank
+    assign poster = video.preview_image
+  endif
+-%}
+<section class="k-vhero k-vhero--{{ section.settings.height }}" data-k-vhero>
+  <div class="k-vhero__media">
+    {%- if video != blank -%}
+      {{
+        video
+        | video_tag:
+          autoplay: true,
+          loop: true,
+          muted: true,
+          playsinline: true,
+          controls: false,
+          preload: 'metadata',
+          image_size: '1920x',
+          class: 'k-vhero__video'
+      }}
+    {%- elsif poster != blank -%}
+      {{ poster | image_url: width: 2400 | image_tag: class: 'k-vhero__video', loading: 'eager', fetchpriority: 'high', sizes: '100vw' }}
+    {%- else -%}
+      <span class="k-vhero__placeholder">
+        <svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><circle cx="12" cy="12" r="10.5"/><path d="M10 8.5v7l5.5-3.5z" fill="currentColor" stroke="none"/></svg>
+        <span class="k-media__label">{% render 'kapsule-t', value: section.settings.placeholder, key: copy_key, field: 'video' %}</span>
+      </span>
+    {%- endif -%}
+  </div>
+
+  <div class="k-vhero__content">
+    {%- capture kicker -%}{% render 'kapsule-t', value: section.settings.kicker, key: copy_key, field: 'kicker' %}{%- endcapture -%}
+    {%- if kicker != blank -%}<div class="k-vhero__kicker">{{ kicker }}</div>{%- endif -%}
+    <h1 class="k-vhero__title">{% render 'kapsule-t', value: section.settings.heading, key: copy_key, field: 'heading' %}</h1>
+    {%- capture text -%}{% render 'kapsule-t', value: section.settings.text, key: copy_key, field: 'text' %}{%- endcapture -%}
+    {%- if text != blank -%}<p class="k-vhero__text">{{ text }}</p>{%- endif -%}
+    {%- if section.settings.scroll_to != blank -%}
+      <a class="k-vhero__down" href="#{{ section.settings.scroll_to }}">
+        {%- render 'kapsule-t', value: section.settings.scroll_label, key: copy_key, field: 'scroll' -%}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+      </a>
+    {%- endif -%}
+  </div>
+
+  {%- if video != blank -%}
+    <button type="button" class="k-vhero__sound" data-k-vhero-sound aria-pressed="false">
+      <span data-k-vhero-sound-off>{% render 'kapsule-t', value: '', key: copy_key, field: 'sound_on' %}</span>
+      <span data-k-vhero-sound-on hidden>{% render 'kapsule-t', value: '', key: copy_key, field: 'sound_off' %}</span>
+    </button>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Kapsule intro video",
+  "settings": [
+    { "type": "text", "id": "copy_key", "label": "Default copy key", "default": "popup.hero" },
+    { "type": "video", "id": "video", "label": "Video", "info": "Plays muted on a loop when the page opens; visitors can turn the sound on. MP4, ideally under 30 seconds." },
+    { "type": "image_picker", "id": "poster", "label": "Cover image", "info": "Shown while the video loads, or instead of it when no video is chosen." },
+    {
+      "type": "select",
+      "id": "height",
+      "label": "Height",
+      "options": [
+        { "value": "full", "label": "Full screen" },
+        { "value": "tall", "label": "Tall" },
+        { "value": "medium", "label": "Medium" }
+      ],
+      "default": "full"
+    },
+    { "type": "text", "id": "kicker", "label": "Kicker" },
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "textarea", "id": "text", "label": "Text" },
+    { "type": "text", "id": "scroll_to", "label": "Scroll link target (anchor)", "default": "marques", "info": "Anchor of the section the arrow link goes to. Leave empty to hide the link." },
+    { "type": "text", "id": "scroll_label", "label": "Scroll link label" },
+    { "type": "text", "id": "placeholder", "label": "Placeholder label", "info": "Shown in the empty frame until a video or image is chosen." }
+  ],
+  "presets": [{ "name": "Kapsule intro video" }]
+}
+{% endschema %}

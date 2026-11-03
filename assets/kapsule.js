@@ -789,6 +789,35 @@
     event.target.querySelectorAll('[data-k-rail]').forEach(initRail);
   });
 
+  /* ------------------------------------------- intro video (pop-up store) */
+
+  function initVideoHero(root) {
+    if (root.dataset.kVheroReady) return;
+    root.dataset.kVheroReady = 'true';
+    const video = root.querySelector('video');
+    if (!video) return;
+    video.muted = true;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      video.removeAttribute('autoplay');
+      video.pause();
+      video.controls = true;
+    }
+    const sound = root.querySelector('[data-k-vhero-sound]');
+    if (!sound) return;
+    sound.addEventListener('click', () => {
+      video.muted = !video.muted;
+      if (!video.muted && video.paused) video.play().catch(() => {});
+      sound.setAttribute('aria-pressed', String(!video.muted));
+      sound.querySelector('[data-k-vhero-sound-off]').hidden = !video.muted;
+      sound.querySelector('[data-k-vhero-sound-on]').hidden = video.muted;
+    });
+  }
+
+  document.querySelectorAll('[data-k-vhero]').forEach(initVideoHero);
+  document.addEventListener('shopify:section:load', (event) => {
+    event.target.querySelectorAll('[data-k-vhero]').forEach(initVideoHero);
+  });
+
   /* ------------------------------------------------------------------ init */
 
   window.Kapsule = Object.assign(K, { addToCart: addToCart, openCart: openCart, fetchCart: fetchCart, money: money });

@@ -796,7 +796,11 @@
       "hero": {
         "kicker": "—— POP-UP STORE",
         "heading": "Lifestyle exclusivity",
-        "text": "An ephemeral space devoted to Korean lifestyle culture — houses, emerging creators and unique pieces, in exclusive rotating edits."
+        "text": "An ephemeral space devoted to Korean lifestyle culture — houses, emerging creators and unique pieces, in exclusive rotating edits.",
+        "video": "POP-UP INTRO VIDEO",
+        "scroll": "Discover the brands",
+        "sound_on": "Sound on",
+        "sound_off": "Sound off"
       },
       "tile_1": "PHOTO — WINDOW",
       "tile_2": "CERAMICS",
@@ -812,7 +816,8 @@
         "link": "Discover the brand",
         "previous": "Previous photos",
         "next": "Next photos",
-        "photo": "PRODUCT PHOTO"
+        "photo": "PRODUCT PHOTO",
+        "instagram": "Instagram"
       },
       "edit_1": {
         "name": "IRI",
