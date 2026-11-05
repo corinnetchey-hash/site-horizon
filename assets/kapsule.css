@@ -4321,10 +4321,11 @@ body:has([data-k-cart-page]) .k-bubble {
 
 .k-ibrand__track {
   --k-ibrand-gap: 14px;
+  --k-ibrand-per-view: 3;
   display: flex;
   gap: var(--k-ibrand-gap);
-  margin: 0 calc(-1 * var(--k-gutter)) 0 0;
-  padding: 0 var(--k-gutter) 4px 0;
+  margin: 0;
+  padding: 0;
   list-style: none;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
@@ -4337,8 +4338,9 @@ body:has([data-k-cart-page]) .k-bubble {
   display: none;
 }
 
+/* Whole frames only: exactly N frames fill the row, the rest is reached with the arrows */
 .k-ibrand__slide {
-  flex: 0 0 calc((100% - 3 * var(--k-ibrand-gap)) / 3.35);
+  flex: 0 0 calc((100% - (var(--k-ibrand-per-view) - 1) * var(--k-ibrand-gap)) / var(--k-ibrand-per-view));
   min-width: 0;
   scroll-snap-align: start;
 }
@@ -4354,31 +4356,17 @@ body:has([data-k-cart-page]) .k-bubble {
   box-sizing: border-box;
 }
 
+/* The full photo is shown as it is, never cropped, centred in its frame */
 .k-ibrand__photo img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-}
-
-/* Real photos keep their own shape: same height for all, full image visible, no cropping */
-.k-ibrand__slide--photo {
-  flex: 0 0 auto;
+  object-fit: contain;
 }
 
 .k-ibrand__slide--photo .k-ibrand__photo {
-  aspect-ratio: auto;
-  height: clamp(270px, 30vw, 440px);
-  padding: 0;
-  background: none;
-}
-
-.k-ibrand__slide--photo .k-ibrand__photo img {
-  position: static;
-  width: auto;
-  height: 100%;
-  border-radius: 4px;
+  background: var(--k-photo);
 }
 
 .k-ibrand__caption {
@@ -4395,30 +4383,19 @@ body:has([data-k-cart-page]) .k-bubble {
     padding: 28px 0;
   }
 
-  .k-ibrand__arrows {
-    display: none;
-  }
-
   .k-ibrand__track {
-    margin-left: calc(-1 * var(--k-gutter));
-    padding-left: var(--k-gutter);
-    scroll-padding-left: var(--k-gutter);
+    --k-ibrand-per-view: 2;
   }
 
-  .k-ibrand__slide {
-    flex-basis: 40%;
+  /* Arrows stay available on smaller screens, under the brand's links */
+  .k-ibrand__arrows {
+    padding-top: 18px;
   }
 }
 
 @media (max-width: 599px) {
-  .k-ibrand__slide {
-    flex-basis: 62%;
-  }
-}
-
-@media (max-width: 899px) {
-  .k-ibrand__slide.k-ibrand__slide--photo {
-    flex-basis: auto;
+  .k-ibrand__track {
+    --k-ibrand-per-view: 1;
   }
 }
 
