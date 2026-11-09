@@ -23,136 +23,94 @@
         "button_link": "https://www.fresha.com/a/kapsule-paris-10-12-rue-charles-francois-dupuis-mjeorknn?pId=2793504"
       }
     },
-    "fondatrice_duo": {
-      "type": "kapsule-duo",
+    "method": {
+      "type": "kapsule-method",
+      "settings": {
+        "copy_key": "institut_page.fondatrice",
+        "anchor": "methode",
+        "tint": "sand"
+      },
       "blocks": {
-        "fondatrice": {
-          "type": "column",
+        "point_technique": {
+          "type": "point",
           "settings": {
-            "style": "surface",
-            "copy_key": "institut_page.fondatrice",
-            "kicker": "",
-            "heading": "",
-            "quote": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
+            "copy_key": "institut_page.technique"
           }
         },
-        "technique": {
-          "type": "column",
+        "point_batang": {
+          "type": "point",
           "settings": {
-            "style": "white",
-            "copy_key": "institut_page.technique",
-            "kicker": "",
-            "heading": "",
-            "quote": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
+            "copy_key": "institut_page.batang"
+          }
+        },
+        "point_origine": {
+          "type": "point",
+          "settings": {
+            "copy_key": "institut_page.origine"
+          }
+        },
+        "chapter_fondatrice": {
+          "type": "chapter",
+          "settings": {
+            "copy_key": "institut_page.fondatrice"
+          }
+        },
+        "chapter_technique": {
+          "type": "chapter",
+          "settings": {
+            "copy_key": "institut_page.technique"
+          }
+        },
+        "chapter_batang": {
+          "type": "chapter",
+          "settings": {
+            "copy_key": "institut_page.batang"
+          }
+        },
+        "chapter_origine": {
+          "type": "chapter",
+          "settings": {
+            "copy_key": "institut_page.origine"
+          }
+        },
+        "chapter_visage": {
+          "type": "chapter",
+          "settings": {
+            "copy_key": "institut_page.visage"
+          }
+        },
+        "chapter_experience": {
+          "type": "chapter",
+          "settings": {
+            "copy_key": "institut_page.experience"
+          }
+        },
+        "chapter_education": {
+          "type": "chapter",
+          "settings": {
+            "copy_key": "institut_page.education"
+          }
+        },
+        "chapter_exigence": {
+          "type": "chapter",
+          "settings": {
+            "copy_key": "institut_page.exigence"
           }
         }
       },
       "block_order": [
-        "fondatrice",
-        "technique"
-      ],
-      "settings": {
-        "layout": "separate",
-        "style": "surface"
-      }
-    },
-    "philosophie": {
-      "type": "kapsule-duo",
-      "blocks": {
-        "batang": {
-          "type": "column",
-          "settings": {
-            "style": "surface",
-            "copy_key": "institut_page.batang",
-            "kicker": "",
-            "heading": "",
-            "quote": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "origine": {
-          "type": "column",
-          "settings": {
-            "style": "surface",
-            "copy_key": "institut_page.origine",
-            "kicker": "",
-            "heading": "",
-            "quote": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "batang",
-        "origine"
-      ],
-      "settings": {
-        "layout": "joined",
-        "style": "surface"
-      }
-    },
-    "visage": {
-      "type": "kapsule-editorial",
-      "settings": {
-        "copy_key": "institut_page.visage",
-        "anchor": "",
-        "flip": true,
-        "tint": "sand",
-        "kicker": "",
-        "heading": "",
-        "text": "",
-        "link_label": "",
-        "link": ""
-      }
-    },
-    "programmes": {
-      "type": "kapsule-duo",
-      "blocks": {
-        "oak_an": {
-          "type": "column",
-          "settings": {
-            "style": "bordeaux",
-            "copy_key": "institut_page.oak_an",
-            "kicker": "",
-            "heading": "",
-            "quote": "",
-            "text": "",
-            "link_label": "",
-            "link": "https://www.fresha.com/book-now/kapsule-vpzocr2g/services?lid=2889132&eid=5105548&oiid=sv%3A26746772&share=true&pId=2793504"
-          }
-        },
-        "susu_an": {
-          "type": "column",
-          "settings": {
-            "style": "white",
-            "copy_key": "institut_page.susu_an",
-            "kicker": "",
-            "heading": "",
-            "quote": "",
-            "text": "",
-            "link_label": "",
-            "link": "https://www.fresha.com/a/kapsule-paris-10-12-rue-charles-francois-dupuis-mjeorknn?pId=2793504"
-          }
-        }
-      },
-      "block_order": [
-        "oak_an",
-        "susu_an"
-      ],
-      "settings": {
-        "layout": "separate",
-        "style": "surface"
-      }
+        "point_technique",
+        "point_batang",
+        "point_origine",
+        "chapter_fondatrice",
+        "chapter_technique",
+        "chapter_batang",
+        "chapter_origine",
+        "chapter_visage",
+        "chapter_experience",
+        "chapter_education",
+        "chapter_exigence"
+      ]
     },
     "treatments": {
       "type": "kapsule-treatments",
@@ -216,7 +174,7 @@
         "copy_key": "institut_page.treatments",
         "heading": "",
         "layout": "cards",
-        "show_venue": false,
+        "show_venue": true,
         "selected": 2,
         "image": "shopify://shop_images/Kapsule_Palais.webp",
         "venue": "Kapsule Palais",
@@ -226,67 +184,20 @@
         "booking_url": "https://www.fresha.com/a/kapsule-paris-10-12-rue-charles-francois-dupuis-mjeorknn?pId=2793504"
       }
     },
-    "transmission": {
-      "type": "kapsule-duo",
-      "blocks": {
-        "experience": {
-          "type": "column",
-          "settings": {
-            "style": "surface",
-            "copy_key": "institut_page.experience",
-            "kicker": "",
-            "heading": "",
-            "quote": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "education": {
-          "type": "column",
-          "settings": {
-            "style": "surface",
-            "copy_key": "institut_page.education",
-            "kicker": "",
-            "heading": "",
-            "quote": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "experience",
-        "education"
-      ],
-      "settings": {
-        "layout": "joined",
-        "style": "surface"
-      }
-    },
-    "exigence": {
+    "formation": {
       "type": "kapsule-text",
       "settings": {
         "style": "bordeaux",
         "alignment": "center",
-        "copy_key": "institut_page.exigence",
-        "kicker": "",
-        "heading": "",
-        "text": "",
-        "button_label": "",
-        "button_link": "https://www.fresha.com/a/kapsule-paris-10-12-rue-charles-francois-dupuis-mjeorknn?pId=2793504"
+        "copy_key": "institut_page.formation",
+        "button_link": "/pages/formation-oak-an"
       }
     }
   },
   "order": [
     "banner",
-    "fondatrice_duo",
-    "philosophie",
-    "visage",
-    "programmes",
+    "method",
     "treatments",
-    "transmission",
-    "exigence"
+    "formation"
   ]
 }

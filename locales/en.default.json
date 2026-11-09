@@ -373,7 +373,34 @@
     }
   },
   "kapsule": {
+    "formation_page": {
+      "tools": {
+        "kicker": "YOUR TOOLS",
+        "heading": "Tradition in one hand, advanced technology in the other",
+        "text": "Jade holds warmth and passes on pressure without stressing the skin. Korean Yugi brass releases muscles and fascia with warming techniques. DM.Cell ampoules are proven in the aesthetic clinics of Seoul.",
+        "photo": "OAK-AN TREATMENT VIDEO"
+      },
+      "hero": {
+        "kicker": "OAK-AN TRAINING · 옥안",
+        "heading": "Learn the OAK-AN signature treatment",
+        "text": "A Korean structural care ritual performed entirely by hand, with jade and brass tools. Offer your clients the treatment they will not find anywhere else.",
+        "scroll": "Request the programme",
+        "video": "TRAINING PHOTO OR VIDEO"
+      },
+      "about": {
+        "kicker": "THE BATANG METHOD · 바탕",
+        "heading": "Korean expertise, adapted for a Parisian clientele",
+        "text": "Kapsule Palais passes on BATANG, the structural care system Jiwon Hong developed in Korea over 34 years of practice and 20,000 cases. OAK-AN, “skin like jade”, is its signature protocol.",
+        "link": "Discover the method"
+      }
+    },
     "institut_page": {
+      "formation": {
+        "kicker": "PASSING IT ON",
+        "heading": "Are you a beauty professional?",
+        "text_html": "<p>Jiwon Hong has trained practitioners in Korea, the United States and the United Arab Emirates. Learn the OAK-AN signature treatment in turn, at Kapsule Palais.</p>",
+        "button": "Discover the training"
+      },
       "banner": {
         "kicker": "KAPSULE PALAIS — PARIS HAUT-MARAIS",
         "heading": "Institut",
@@ -385,6 +412,8 @@
         "kicker": "A WORD FROM OUR FOUNDER",
         "heading": "The Art of Structural Care",
         "quote": "“Working on the human body ultimately means touching a person's life.”",
+        "more": "Read the story of the method",
+        "photo": "PHOTO — JIWON HONG",
         "text_html": "<p>For 34 years in Korea, I have practised structural aesthetic care guided by this fundamental principle. Through tens of thousands of treatments, I have come to understand that the skin is never an isolated surface. It mirrors the body's circulation, its structural balance and each person's rhythm of life.</p><p>When the body loses its balance, fatigue builds up. Sleep becomes fragile. Mental clarity fades. Over time, these internal changes inevitably leave their mark on the skin.</p><p>That is why I have never seen aesthetics as a mere way of improving appearance. My approach has always been to restore the conditions the body needs to regain its natural ability to recover.</p>"
       },
       "technique": {
@@ -420,7 +449,12 @@
         "link_label": "Book SUSU-AN"
       },
       "treatments": {
-        "heading": "Our treatments"
+        "heading": "Our treatments",
+        "button": "Book a treatment",
+        "photo": "PHOTO — KAPSULE PALAIS",
+        "venue": "Kapsule Palais",
+        "address": "10-12 Rue Charles-François Dupuis, 75003 Paris",
+        "hours": "Tuesday to Sunday — 11am to 8pm"
       },
       "experience": {
         "kicker": "YOUR VISIT",

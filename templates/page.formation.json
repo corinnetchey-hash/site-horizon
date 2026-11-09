@@ -1,0 +1,254 @@
+{
+  "sections": {
+    "hero": {
+      "type": "kapsule-video-hero",
+      "settings": {
+        "copy_key": "formation_page.hero",
+        "poster": "shopify://shop_images/Photo_Oak-An_Su_Charlotte.jpg",
+        "height": "tall",
+        "scroll_to": "demande"
+      }
+    },
+    "about": {
+      "type": "kapsule-editorial",
+      "settings": {
+        "copy_key": "formation_page.about",
+        "anchor": "methode",
+        "flip": false,
+        "tint": "sand",
+        "image": "shopify://shop_images/Kapsule_Palais.webp",
+        "link": "/pages/institut#methode"
+      }
+    },
+    "figures": {
+      "type": "kapsule-stats",
+      "blocks": {
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "value": "12 h",
+            "label": "4 sessions de 3h30, sur 2 jours"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "value": "1:1",
+            "label": "ou en petit groupe de 4 maximum"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "value": "Sur mesure",
+            "label": "dates selon votre planning"
+          }
+        },
+        "s4": {
+          "type": "stat",
+          "settings": {
+            "value": "Certificat",
+            "label": "Kapsule Palais en fin de parcours"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "settings": {
+        "style": "plain",
+        "padding_top": 0
+      }
+    },
+    "program": {
+      "type": "kapsule-grid",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "color": "default",
+            "kicker": "",
+            "title": "Lire la peau au toucher",
+            "text": "<p>Philosophie BATANG, gamme DM.Cell, diagnostic dès le nettoyage.</p>",
+            "tags": "",
+            "note": "",
+            "button_label": "",
+            "button_link": "",
+            "image": "",
+            "photo_label": "",
+            "tint": "sand"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "color": "default",
+            "kicker": "",
+            "title": "Travailler les méridiens",
+            "text": "<p>Serviettes chaudes, acupression du visage, cartographie de la main.</p>",
+            "tags": "",
+            "note": "",
+            "button_label": "",
+            "button_link": "",
+            "image": "",
+            "photo_label": "",
+            "tint": "sand"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "color": "default",
+            "kicker": "",
+            "title": "Enchaîner les rituels sans temps mort",
+            "text": "<p>Gua Sha en jade, ampoules, SUSU-AN pendant la pose du masque.</p>",
+            "tags": "",
+            "note": "",
+            "button_label": "",
+            "button_link": "",
+            "image": "",
+            "photo_label": "",
+            "tint": "sand"
+          }
+        },
+        "item_4": {
+          "type": "item",
+          "settings": {
+            "color": "default",
+            "kicker": "",
+            "title": "Sculpter et vendre le soin",
+            "text": "<p>Remodelage des fascias, examen pratique, argumentaire client.</p>",
+            "tags": "",
+            "note": "",
+            "button_label": "",
+            "button_link": "",
+            "image": "",
+            "photo_label": "",
+            "tint": "sand"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4"
+      ],
+      "settings": {
+        "anchor": "",
+        "kicker": "VOTRE PARCOURS · 4 SESSIONS",
+        "heading": "À la fin, vous saurez…",
+        "intro": "",
+        "center": false,
+        "columns": "4",
+        "style": "steps",
+        "show_media": false,
+        "kicker_style": "small",
+        "end": false
+      }
+    },
+    "why": {
+      "type": "kapsule-grid",
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "color": "default",
+            "kicker": "",
+            "title": "Une technique rare",
+            "text": "<p>Le seul lieu de K-esthétique à proposer OAK-AN, et le premier en France à apporter un véritable protocole transmis directement depuis Séoul.</p>",
+            "tags": "",
+            "note": "",
+            "button_label": "",
+            "button_link": "",
+            "image": "",
+            "photo_label": "",
+            "tint": "sand"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "color": "default",
+            "kicker": "",
+            "title": "En tête-à-tête ou en petit groupe",
+            "text": "<p>Une facialiste de plus de dix ans d'expérience corrige votre posture, l'angle de vos outils et la justesse de vos pressions. Les dates suivent votre agenda.</p>",
+            "tags": "",
+            "note": "",
+            "button_label": "",
+            "button_link": "",
+            "image": "",
+            "photo_label": "",
+            "tint": "sand"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "color": "default",
+            "kicker": "",
+            "title": "Certificat et suivi 3 ans",
+            "text": "<p>Examen pratique et certificat Kapsule Palais en fin de parcours, puis un suivi et une garantie de 3 ans.</p>",
+            "tags": "",
+            "note": "",
+            "button_label": "",
+            "button_link": "",
+            "image": "",
+            "photo_label": "",
+            "tint": "sand"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3"
+      ],
+      "settings": {
+        "anchor": "",
+        "kicker": "CE QUI NOUS DISTINGUE",
+        "heading": "Pourquoi se former chez Kapsule",
+        "intro": "",
+        "center": false,
+        "columns": "3",
+        "style": "surface",
+        "show_media": false,
+        "kicker_style": "small",
+        "end": false
+      }
+    },
+    "tools": {
+      "type": "kapsule-editorial",
+      "settings": {
+        "copy_key": "formation_page.tools",
+        "anchor": "outils",
+        "flip": true,
+        "tint": "sage"
+      }
+    },
+    "enquiry": {
+      "type": "kapsule-pro-form",
+      "settings": {
+        "anchor": "demande",
+        "kicker": "FORMATION OAK-AN",
+        "heading": "Prête à maîtriser le soin OAK-AN ?",
+        "intro": "Programme détaillé et prochaines dates envoyés sur simple demande.",
+        "side": "<p><strong>Kapsule Palais</strong><br>10-12 Rue Charles-François Dupuis, 75003 Paris<br>info.kapsuleglobal01@gmail.com</p>",
+        "types": "Institut / salon de beauté\nSpa / centre de bien-être\nHôtel / resort\nClinique / médecine esthétique\nEsthéticienne indépendante\nAutre",
+        "interests": "Formation en 1:1\nFormation en petit groupe (4 max)\nVivre le soin avant de se former"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "about",
+    "figures",
+    "program",
+    "why",
+    "tools",
+    "enquiry"
+  ]
+}
