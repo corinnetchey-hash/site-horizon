@@ -1,16 +1,6 @@
 {%- comment -%}
   A row of key figures (e.g. "34 ans — de pratique du soin structurel"), on the canvas or a bordeaux band.
 {%- endcomment -%}
-{%- liquid
-  assign access = 'open'
-  if section.settings.restricted
-    capture access
-      render 'kapsule-pro-access', customer: customer
-    endcapture
-    assign access = access | strip
-  endif
--%}
-{%- if access == 'open' -%}
 <div class="k-container" style="padding-top: {{ section.settings.padding_top }}px">
   <dl class="k-stats k-stats--{{ section.settings.style }}">
     {%- for block in section.blocks -%}
@@ -21,13 +11,11 @@
     {%- endfor -%}
   </dl>
 </div>
-{%- endif -%}
 
 {% schema %}
 {
   "name": "Kapsule key figures",
   "settings": [
-    { "type": "checkbox", "id": "restricted", "label": "Reserved for validated professionals", "default": false, "info": "Hidden until the visitor signs in with a customer account tagged pro (Customers → customer → Tags)." },
     {
       "type": "select",
       "id": "style",

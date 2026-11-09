@@ -2,16 +2,6 @@
   Heading + a grid of items (audiences, product ranges, steps, reasons…). Each item can carry
   a number or kicker, a title, a text, a small note and an optional photo.
 {%- endcomment -%}
-{%- liquid
-  assign access = 'open'
-  if section.settings.restricted
-    capture access
-      render 'kapsule-pro-access', customer: customer
-    endcapture
-    assign access = access | strip
-  endif
--%}
-{%- if access == 'open' -%}
 <section class="k-container k-section{% if section.settings.end %} k-section--end{% endif %}" id="{{ section.settings.anchor }}">
   <div class="k-pro-head{% if section.settings.center %} k-pro-head--center{% endif %}">
     {%- if section.settings.kicker != blank -%}<div class="k-kicker">{{ section.settings.kicker }}</div>{%- endif -%}
@@ -68,13 +58,11 @@
     {%- endfor -%}
   </div>
 </section>
-{%- endif -%}
 
 {% schema %}
 {
   "name": "Kapsule grid",
   "settings": [
-    { "type": "checkbox", "id": "restricted", "label": "Reserved for validated professionals", "default": false, "info": "Hidden until the visitor signs in with a customer account tagged pro (Customers → customer → Tags)." },
     { "type": "text", "id": "anchor", "label": "Anchor ID" },
     { "type": "text", "id": "kicker", "label": "Kicker" },
     { "type": "text", "id": "heading", "label": "Heading" },

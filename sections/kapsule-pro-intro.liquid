@@ -3,37 +3,13 @@
   offer linking to its part of the page (optional). The "Page look" setting gives the whole
   page content its own Kapsule Pro palette (see .k-pro-mode in kapsule.css).
 {%- endcomment -%}
-{%- liquid
-  assign access = 'open'
-  if section.settings.restricted
-    capture access
-      render 'kapsule-pro-access', customer: customer
-    endcapture
-    assign access = access | strip
-  endif
--%}
 <section class="k-container k-pro-intro{% if section.settings.look != 'none' %} k-pro-mode k-pro-mode--{{ section.settings.look }}{% endif %}{% if section.blocks.size == 0 %} k-pro-intro--solo{% endif %}">
   <div class="k-pro-intro__lead">
     {%- if section.settings.kicker != blank -%}<div class="k-kicker">{{ section.settings.kicker }}</div>{%- endif -%}
     <h1 class="k-pro-intro__title">{{ section.settings.heading }}</h1>
     {%- if section.settings.text != blank -%}<p class="k-pro-intro__text">{{ section.settings.text }}</p>{%- endif -%}
-    {%- if access == 'locked' -%}
-      <div class="k-pro-gate">
-        <p class="k-pro-gate__title">{{ 'kapsule.pro_gate.title' | t }}</p>
-        <p class="k-pro-gate__text">{{ 'kapsule.pro_gate.text' | t }}</p>
-        <div class="k-pro-gate__actions">
-          <a class="k-btn k-pro-gate__login" href="{{ routes.account_login_url }}">{{ 'kapsule.pro_gate.login' | t }}</a>
-          <a class="k-btn k-pro-gate__request" href="#{{ section.settings.request_anchor | default: 'demande' }}">{{ 'kapsule.pro_gate.request' | t }}</a>
-        </div>
-      </div>
-    {%- elsif access == 'pending' -%}
-      <div class="k-pro-gate">
-        <p class="k-pro-gate__title">{{ 'kapsule.pro_gate.pending_title' | t }}</p>
-        <p class="k-pro-gate__text">{{ 'kapsule.pro_gate.pending_text' | t }}</p>
-      </div>
-    {%- endif -%}
   </div>
-  {%- if section.blocks.size > 0 and access == 'open' -%}
+  {%- if section.blocks.size > 0 -%}
   <nav class="k-pro-intro__offers" aria-label="{{ section.settings.heading | escape }}">
     {%- for block in section.blocks -%}
       <a class="k-pro-intro__offer" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
@@ -68,10 +44,7 @@
     },
     { "type": "text", "id": "kicker", "label": "Kicker", "default": "KAPSULE PRO" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Espace professionnels" },
-    { "type": "textarea", "id": "text", "label": "Text" },
-    { "type": "header", "content": "Access" },
-    { "type": "checkbox", "id": "restricted", "label": "Reserved for validated professionals", "default": false, "info": "Visitors who are not signed in see a short message with Sign in and Request access buttons. Mark the other sections of the page as reserved too." },
-    { "type": "text", "id": "request_anchor", "label": "Request access button target (anchor)", "default": "demande", "info": "Anchor of the form section." }
+    { "type": "textarea", "id": "text", "label": "Text" }
   ],
   "blocks": [
     {

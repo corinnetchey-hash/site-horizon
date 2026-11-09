@@ -441,21 +441,6 @@
         "text_html": "<p><strong>Mardi au dimanche</strong><br>11h00 — 20h00</p><p><strong>Lundi</strong><br>Fermé</p><p>De 19h à 20h du mardi au samedi, et le dimanche toute la journée, accès uniquement sur réservation en ligne.</p>"
       }
     },
-    "pro_gate": {
-      "title": "Espace réservé aux professionnels",
-      "text": "Nos offres, nos tarifs et notre programme fidélité sont réservés aux professionnels de la beauté et du bien-être. Connectez-vous à votre compte pro, ou demandez votre accès : nous vérifions votre établissement puis nous ouvrons votre espace.",
-      "login": "Se connecter",
-      "request": "Demander un accès",
-      "pending_title": "Votre accès est en cours de validation",
-      "pending_text": "Nous vérifions les informations de votre établissement. Vous verrez l'espace pro dès que votre compte sera validé.",
-      "form_kicker": "DEMANDE D'ACCÈS",
-      "form_heading": "Demandez votre accès pro",
-      "form_intro": "Présentez votre établissement : après vérification, nous ouvrons votre accès et vous vous connectez avec votre adresse e-mail.",
-      "siret": "SIRET / n° d'entreprise",
-      "form_send": "Demander mon accès",
-      "form_sent": "Merci ! Votre demande d'accès a bien été envoyée. Nous vous écrivons dès que votre espace pro est ouvert.",
-      "placeholder": "Votre activité, les marques ou la formation qui vous intéressent…"
-    },
     "pro_form": {
       "name": "Nom et prénom",
       "company": "Établissement",

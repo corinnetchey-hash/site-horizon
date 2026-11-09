@@ -462,21 +462,6 @@
         "text_html": "<p><strong>Tuesday to Sunday</strong><br>11am — 8pm</p><p><strong>Monday</strong><br>Closed</p><p>From 7pm to 8pm Tuesday to Saturday, and all day on Sunday, access is by online booking only.</p>"
       }
     },
-    "pro_gate": {
-      "title": "For professionals only",
-      "text": "Our offers, prices and loyalty programme are reserved for beauty and wellness professionals. Sign in to your pro account, or request access: we check your business, then open your space.",
-      "login": "Sign in",
-      "request": "Request access",
-      "pending_title": "Your access is being reviewed",
-      "pending_text": "We are checking your business details. You will see the pro space as soon as your account is approved.",
-      "form_kicker": "ACCESS REQUEST",
-      "form_heading": "Request your pro access",
-      "form_intro": "Tell us about your business: once checked, we open your access and you sign in with your email address.",
-      "siret": "Company registration number",
-      "form_send": "Request access",
-      "form_sent": "Thank you! Your access request has been sent. We will email you as soon as your pro space is open.",
-      "placeholder": "Your business, and the brands or training you are interested in…"
-    },
     "pro_form": {
       "name": "Full name",
       "company": "Business name",
