@@ -441,6 +441,14 @@
         "text_html": "<p><strong>Mardi au dimanche</strong><br>11h00 — 20h00</p><p><strong>Lundi</strong><br>Fermé</p><p>De 19h à 20h du mardi au samedi, et le dimanche toute la journée, accès uniquement sur réservation en ligne.</p>"
       }
     },
+    "pro_gate": {
+      "title": "Réservé aux professionnels validés",
+      "text": "Connectez-vous à votre compte pro pour découvrir les paliers de remise. Pas encore de compte ? Faites votre demande avec le formulaire ci-dessous.",
+      "login": "Se connecter",
+      "request": "Demander un accès",
+      "pending_title": "Votre accès est en cours de validation",
+      "pending_text": "Nous vérifions les informations de votre établissement. Vous verrez le programme dès que votre compte pro sera validé."
+    },
     "pro_form": {
       "name": "Nom et prénom",
       "company": "Établissement",

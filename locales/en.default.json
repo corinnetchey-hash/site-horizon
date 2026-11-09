@@ -462,6 +462,14 @@
         "text_html": "<p><strong>Tuesday to Sunday</strong><br>11am — 8pm</p><p><strong>Monday</strong><br>Closed</p><p>From 7pm to 8pm Tuesday to Saturday, and all day on Sunday, access is by online booking only.</p>"
       }
     },
+    "pro_gate": {
+      "title": "For approved professionals only",
+      "text": "Sign in to your pro account to see the discount tiers. No account yet? Send your request with the form below.",
+      "login": "Sign in",
+      "request": "Request access",
+      "pending_title": "Your access is being reviewed",
+      "pending_text": "We are checking your business details. You will see the programme as soon as your pro account is approved."
+    },
     "pro_form": {
       "name": "Full name",
       "company": "Business name",

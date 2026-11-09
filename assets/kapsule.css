@@ -5101,6 +5101,50 @@ body:has([data-k-cart-page]) .k-bubble {
   grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
 }
 
+/* Loyalty programme hidden from visitors: invitation to sign in or request access */
+.k-tiers-gate {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: clamp(28px, 4vw, 44px) clamp(22px, 4vw, 48px);
+  border: 1px solid var(--k-hair);
+  border-radius: 6px;
+  background: var(--k-surface);
+  text-align: center;
+}
+
+.k-tiers-gate__icon {
+  color: var(--k-pro-brass, var(--k-ink-3));
+}
+
+.k-tiers-gate__title {
+  margin: 12px 0 0;
+  font-family: var(--k-serif);
+  font-weight: 400;
+  font-size: clamp(22px, 2.4vw, 28px);
+  line-height: 1.2;
+}
+
+.k-tiers-gate__text {
+  margin: 12px auto 0;
+  max-width: 460px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--k-ink-2);
+}
+
+.k-tiers-gate__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+body:has(.k-pro-mode--jade) #MainContent .k-tiers-gate .k-btn--dark {
+  background: var(--k-pro-jade);
+  border-color: var(--k-pro-jade);
+}
+
 .k-tiers__note {
   max-width: none;
   margin: 20px auto 0;
@@ -5389,7 +5433,7 @@ body:has(.k-pro-mode--jade) #MainContent > :has(.k-pro-grid) {
 }
 
 /* light band behind the loyalty programme */
-body:has(.k-pro-mode--jade) #MainContent > :has(.k-tiers) {
+body:has(.k-pro-mode--jade) #MainContent > :has(.k-tiers, .k-tiers-gate) {
   background: #ece4d4;
   padding-bottom: 64px;
 }

@@ -176,7 +176,10 @@
         "kicker": "PROGRAMME FIDÉLITÉ — PRODUITS B2B",
         "heading": "Plus vous commandez, plus vous gagnez",
         "intro": "Le prix pro dès la première commande, puis une remise supplémentaire selon vos achats.",
-        "note": "Valable sur les produits B2B uniquement · Statut recalculé tous les 6 mois"
+        "note": "Valable sur les produits B2B uniquement · Statut recalculé tous les 6 mois",
+        "restricted": true,
+        "customer_tag": "pro",
+        "request_anchor": "demande"
       }
     },
     "enquiry": {
