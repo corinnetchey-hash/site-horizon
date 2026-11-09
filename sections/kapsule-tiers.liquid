@@ -1,43 +1,24 @@
 {%- comment -%}
   Membership tiers: side-by-side cards with a name, short pitch, price line, feature list and
-  a button; one tier can be highlighted. When "Reserved for validated professionals" is on, only
-  signed-in customers with the chosen tag see the tiers; everyone else sees an invitation to
-  sign in or to request access.
+  a button; one tier can be highlighted. When "Reserved for validated professionals" is on, the
+  section only shows for signed-in customers with the chosen tag.
 {%- endcomment -%}
 {%- liquid
-  assign gate_tag = section.settings.customer_tag | default: 'pro' | strip
-  assign unlocked = true
+  assign access = 'open'
   if section.settings.restricted
-    assign unlocked = false
-    if customer and customer.tags contains gate_tag
-      assign unlocked = true
-    endif
+    capture access
+      render 'kapsule-pro-access', tag: section.settings.customer_tag, customer: customer
+    endcapture
+    assign access = access | strip
   endif
 -%}
+{%- if access == 'open' -%}
 <section class="k-container k-section" id="{{ section.settings.anchor }}">
   <div class="k-pro-head k-pro-head--center">
     {%- if section.settings.kicker != blank -%}<div class="k-kicker">{{ section.settings.kicker }}</div>{%- endif -%}
     {%- if section.settings.heading != blank -%}<h2 class="k-h2">{{ section.settings.heading }}</h2>{%- endif -%}
     {%- if section.settings.intro != blank -%}<p class="k-pro-head__intro">{{ section.settings.intro }}</p>{%- endif -%}
   </div>
-  {%- unless unlocked -%}
-    <div class="k-tiers-gate">
-      <svg class="k-tiers-gate__icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
-      {%- if customer -%}
-        <h3 class="k-tiers-gate__title">{{ 'kapsule.pro_gate.pending_title' | t }}</h3>
-        <p class="k-tiers-gate__text">{{ 'kapsule.pro_gate.pending_text' | t }}</p>
-      {%- else -%}
-        <h3 class="k-tiers-gate__title">{{ 'kapsule.pro_gate.title' | t }}</h3>
-        <p class="k-tiers-gate__text">{{ 'kapsule.pro_gate.text' | t }}</p>
-        <div class="k-tiers-gate__actions">
-          <a class="k-btn k-btn--dark" href="{{ routes.account_login_url }}">{{ 'kapsule.pro_gate.login' | t }}</a>
-          {%- if section.settings.request_anchor != blank -%}
-            <a class="k-btn k-btn--outline" href="#{{ section.settings.request_anchor }}">{{ 'kapsule.pro_gate.request' | t }}</a>
-          {%- endif -%}
-        </div>
-      {%- endif -%}
-    </div>
-  {%- else -%}
   <div class="k-tiers">
     {%- for block in section.blocks -%}
       <article class="k-tier{% if block.settings.highlight %} k-tier--highlight{% endif %}" {{ block.shopify_attributes }}>
@@ -53,8 +34,8 @@
     {%- endfor -%}
   </div>
   {%- if section.settings.note != blank -%}<p class="k-tiers__note">{{ section.settings.note }}</p>{%- endif -%}
-  {%- endunless -%}
 </section>
+{%- endif -%}
 
 {% schema %}
 {
@@ -66,9 +47,8 @@
     { "type": "textarea", "id": "intro", "label": "Introduction" },
     { "type": "textarea", "id": "note", "label": "Note under the tiers" },
     { "type": "header", "content": "Access" },
-    { "type": "checkbox", "id": "restricted", "label": "Reserved for validated professionals", "default": false, "info": "Only signed-in customers with the tag below see the tiers and the note. Add the tag to a customer in Customers once you have checked their business." },
-    { "type": "text", "id": "customer_tag", "label": "Customer tag", "default": "pro" },
-    { "type": "text", "id": "request_anchor", "label": "Request access button target (anchor)", "default": "demande", "info": "Anchor of the enquiry form on the page. Leave empty to hide the button." }
+    { "type": "checkbox", "id": "restricted", "label": "Reserved for validated professionals", "default": false, "info": "Only signed-in customers with the tag below see this section. Add the tag to a customer in Customers once you have checked their business." },
+    { "type": "text", "id": "customer_tag", "label": "Customer tag", "default": "pro" }
   ],
   "blocks": [
     {

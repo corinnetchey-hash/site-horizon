@@ -463,12 +463,19 @@
       }
     },
     "pro_gate": {
-      "title": "For approved professionals only",
-      "text": "Sign in to your pro account to see the discount tiers. No account yet? Send your request with the form below.",
+      "title": "For professionals only",
+      "text": "Our offers, prices and loyalty programme are reserved for beauty and wellness professionals. Sign in to your pro account, or request access: we check your business, then open your space.",
       "login": "Sign in",
       "request": "Request access",
       "pending_title": "Your access is being reviewed",
-      "pending_text": "We are checking your business details. You will see the programme as soon as your pro account is approved."
+      "pending_text": "We are checking your business details. You will see the pro space as soon as your account is approved.",
+      "form_kicker": "ACCESS REQUEST",
+      "form_heading": "Request your pro access",
+      "form_intro": "Tell us about your business: once checked, we open your access and you sign in with your email address.",
+      "siret": "Company registration number",
+      "form_send": "Request access",
+      "form_sent": "Thank you! Your access request has been sent. We will email you as soon as your pro space is open.",
+      "placeholder": "Your business, and the brands or training you are interested in…"
     },
     "pro_form": {
       "name": "Full name",

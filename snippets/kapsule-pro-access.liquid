@@ -1,0 +1,22 @@
+{%- comment -%}
+  Professional space access for the current visitor. Outputs one word:
+  - open: signed in and tagged as a validated professional
+  - pending: signed in, not validated yet
+  - locked: not signed in
+
+  Accepts:
+  - tag {string} - Customer tag that marks validated professionals (default "pro")
+
+  Usage:
+  {%- capture access -%}{% render 'kapsule-pro-access' %}{%- endcapture -%}
+{%- endcomment -%}
+{%- liquid
+  assign pro_tag = tag | default: 'pro' | strip
+  if customer and customer.tags contains pro_tag
+    echo 'open'
+  elsif customer
+    echo 'pending'
+  else
+    echo 'locked'
+  endif
+-%}

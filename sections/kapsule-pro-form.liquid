@@ -3,23 +3,42 @@
   side card for direct contact details. Field labels come from the locale files; the lists of
   establishment types and interests come from the section settings, one option per line.
 {%- endcomment -%}
+{%- liquid
+  assign access = 'open'
+  if section.settings.restricted
+    capture access
+      render 'kapsule-pro-access', customer: customer
+    endcapture
+    assign access = access | strip
+  endif
+  assign requesting = false
+  if access != 'open'
+    assign requesting = true
+  endif
+-%}
 <section class="k-container k-section k-section--end" id="{{ section.settings.anchor | default: 'demande' }}">
   <div class="k-pro-form">
     <div class="k-pro-form__intro">
-      {%- if section.settings.kicker != blank -%}<div class="k-kicker">{{ section.settings.kicker }}</div>{%- endif -%}
-      <h2 class="k-h2">{{ section.settings.heading }}</h2>
-      {%- if section.settings.intro != blank -%}<p class="k-pro-head__intro">{{ section.settings.intro }}</p>{%- endif -%}
+      {%- if requesting -%}
+        <div class="k-kicker">{{ 'kapsule.pro_gate.form_kicker' | t }}</div>
+        <h2 class="k-h2">{{ 'kapsule.pro_gate.form_heading' | t }}</h2>
+        <p class="k-pro-head__intro">{{ 'kapsule.pro_gate.form_intro' | t }}</p>
+      {%- else -%}
+        {%- if section.settings.kicker != blank -%}<div class="k-kicker">{{ section.settings.kicker }}</div>{%- endif -%}
+        <h2 class="k-h2">{{ section.settings.heading }}</h2>
+        {%- if section.settings.intro != blank -%}<p class="k-pro-head__intro">{{ section.settings.intro }}</p>{%- endif -%}
+      {%- endif -%}
       {%- if section.settings.side != blank -%}<div class="k-pro-form__side k-rte">{{ section.settings.side }}</div>{%- endif -%}
     </div>
 
     {%- form 'contact', class: 'k-contact__fields k-pro-form__fields', id: 'KapsuleProForm' -%}
       {%- if form.posted_successfully? -%}
-        <p class="k-contact__msg" role="status">{{ 'kapsule.pro_form.sent' | t }}</p>
+        <p class="k-contact__msg" role="status">{% if requesting %}{{ 'kapsule.pro_gate.form_sent' | t }}{% else %}{{ 'kapsule.pro_form.sent' | t }}{% endif %}</p>
       {%- endif -%}
       {%- if form.errors -%}
         <p class="k-contact__msg" role="alert">{{ 'kapsule.contact.error' | t }}</p>
       {%- endif -%}
-      <input type="hidden" name="contact[Source]" value="{{ page.title | default: 'Page professionnels' }}">
+      <input type="hidden" name="contact[Source]" value="{% if requesting %}Demande d'accès espace pro{% else %}{{ page.title | default: 'Page professionnels' }}{% endif %}">
       <div class="k-contact__row">
         <div class="k-contact__field">
           <label for="KapsuleProName">{{ 'kapsule.pro_form.name' | t }}</label>
@@ -57,6 +76,13 @@
           <input id="KapsuleProCity" type="text" name="contact[Ville / pays]" autocomplete="address-level2">
         </div>
       </div>
+      {%- if requesting -%}
+        <div class="k-contact__field">
+          <label for="KapsuleProSiret">{{ 'kapsule.pro_gate.siret' | t }}</label>
+          <input id="KapsuleProSiret" type="text" name="contact[SIRET / n° d'entreprise]" inputmode="text" autocomplete="off">
+        </div>
+      {%- endif -%}
+      {%- unless requesting -%}
       <fieldset class="k-pro-form__choices">
         <legend>{{ 'kapsule.pro_form.interest' | t }}</legend>
         {%- assign interests = section.settings.interests | newline_to_br | split: '<br />' -%}
@@ -69,11 +95,12 @@
           </label>
         {%- endfor -%}
       </fieldset>
+      {%- endunless -%}
       <div class="k-contact__field">
         <label for="KapsuleProMessage">{{ 'kapsule.pro_form.message' | t }}</label>
-        <textarea id="KapsuleProMessage" name="contact[body]" rows="5" placeholder="{{ 'kapsule.pro_form.placeholder' | t }}">{{ form.body }}</textarea>
+        <textarea id="KapsuleProMessage" name="contact[body]" rows="5" placeholder="{% if requesting %}{{ 'kapsule.pro_gate.placeholder' | t }}{% else %}{{ 'kapsule.pro_form.placeholder' | t }}{% endif %}">{{ form.body }}</textarea>
       </div>
-      <button type="submit" class="k-btn k-btn--bordeaux">{{ 'kapsule.pro_form.send' | t }}</button>
+      <button type="submit" class="k-btn k-btn--bordeaux">{% if requesting %}{{ 'kapsule.pro_gate.form_send' | t }}{% else %}{{ 'kapsule.pro_form.send' | t }}{% endif %}</button>
       <p class="k-pro-form__legal">{{ 'kapsule.pro_form.legal' | t }}</p>
     {%- endform -%}
   </div>
@@ -83,6 +110,7 @@
 {
   "name": "Kapsule pro enquiry form",
   "settings": [
+    { "type": "checkbox", "id": "restricted", "label": "Access request for visitors", "default": false, "info": "Visitors who are not validated professionals see an access request form (with a SIRET field) instead of the enquiry form." },
     { "type": "text", "id": "anchor", "label": "Anchor ID", "default": "demande" },
     { "type": "text", "id": "kicker", "label": "Kicker" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Parlons de votre projet" },

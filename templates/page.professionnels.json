@@ -17,7 +17,9 @@
         "kicker": "KAPSULE PRO",
         "heading": "Espace professionnels",
         "text": "Pour tous les professionnels de la beauté et du bien-être qui veulent offrir le meilleur de la Corée à leurs clients.",
-        "look": "jade"
+        "look": "jade",
+        "restricted": true,
+        "request_anchor": "demande"
       }
     },
     "figures": {
@@ -52,7 +54,8 @@
       ],
       "settings": {
         "style": "plain",
-        "padding_top": 24
+        "padding_top": 24,
+        "restricted": true
       }
     },
     "offers": {
@@ -106,7 +109,8 @@
         "style": "surface",
         "show_media": true,
         "end": false,
-        "kicker_style": "overlay"
+        "kicker_style": "overlay",
+        "restricted": true
       }
     },
     "loyalty": {
@@ -178,8 +182,7 @@
         "intro": "Le prix pro dès la première commande, puis une remise supplémentaire selon vos achats.",
         "note": "Valable sur les produits B2B uniquement · Statut recalculé tous les 6 mois",
         "restricted": true,
-        "customer_tag": "pro",
-        "request_anchor": "demande"
+        "customer_tag": "pro"
       }
     },
     "enquiry": {
@@ -191,7 +194,8 @@
         "intro": "Tarifs ou programme de formation : envoyés sur simple demande.",
         "side": "<p><strong>Kapsule Palais</strong><br>10-12 Rue Charles-François Dupuis, 75003 Paris<br>info.kapsuleglobal01@gmail.com</p>",
         "types": "Institut / salon de beauté\nSpa / centre de bien-être\nHôtel / resort\nClinique / médecine esthétique\nDistributeur / grossiste\nConcept store / revendeur\nAutre",
-        "interests": "Offre produits B2B\nOffre formation"
+        "interests": "Offre produits B2B\nOffre formation",
+        "restricted": true
       }
     }
   },
